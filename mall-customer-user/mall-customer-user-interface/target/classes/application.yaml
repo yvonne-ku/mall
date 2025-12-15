@@ -1,0 +1,41 @@
+server:
+  port: 8002
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: customer-user-service
+  cloud:
+    openfeign:
+      client:
+        config:
+          mall-message-service:
+            connect-timeout: 5000
+            read-timeout: 5000
+            logger-level: basic
+
+# 自定义 starter 的参数
+mall:
+  fastjson:
+    safe-mode: true
+  message-service:
+    url: "http://localhost:8001"
+  cache:
+    redis:
+      prefix: 'mall:customer-user:'
+      value-timeout: 50000
+
+customer:
+  user:
+    register:
+      verify:
+        sender: mall@163.com
+        template-id: userRegisterVerification
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
