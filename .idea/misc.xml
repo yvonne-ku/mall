@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-cache-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-base-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-bff/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-bff/mall-bff-biz/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-database-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/test/pom.xml" />
+        <option value="$PROJECT_DIR$/test/mall-framework-cache-test/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-designpattern-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-mybatisplus-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-ddd-framework-core/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-httputil-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-openfeign-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-idempotent-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-base-spring-boot-starter/mall-web-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-web-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-log-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-minio-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-xxljob-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-customer-user/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-customer-user/mall-customer-user-application/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-customer-user/mall-customer-user-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-customer-user/mall-customer-user-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-customer-user/mall-customer-user-infrastructure/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-customer-user/mall-customer-user-mock/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-swagger-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mail-message/pom.xml" />
+        <option value="$PROJECT_DIR$/mail-message/mall-message-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/mail-message/mall-message-application/pom.xml" />
+        <option value="$PROJECT_DIR$/mail-message/mall-message-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/mail-message/mall-message-infrastructure/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-openfeign-spring-boot-starter/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
