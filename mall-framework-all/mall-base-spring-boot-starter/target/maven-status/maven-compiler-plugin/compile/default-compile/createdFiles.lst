@@ -1,0 +1,6 @@
+com\noinch\mall\springboot\starter\base\safe\FastJsonSafeMode.class
+com\noinch\mall\springboot\starter\base\Singleton.class
+com\noinch\mall\springboot\starter\base\config\ApplicationBaseAutoConfiguration.class
+com\noinch\mall\springboot\starter\base\init\ApplicationContentPostProcessor.class
+com\noinch\mall\springboot\starter\base\ApplicationContextHolder.class
+com\noinch\mall\springboot\starter\base\init\ApplicationInitializingEvent.class

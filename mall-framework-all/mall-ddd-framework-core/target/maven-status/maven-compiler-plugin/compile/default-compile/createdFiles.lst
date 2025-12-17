@@ -1,0 +1,5 @@
+com\noinch\mall\ddd\framework\core\domain\CommandHandler.class
+com\noinch\mall\ddd\framework\core\domain\ValueObject.class
+com\noinch\mall\ddd\framework\core\domain\DomainEvent.class
+com\noinch\mall\ddd\framework\core\domain\Entity.class
+com\noinch\mall\ddd\framework\core\domain\AggregateRoot.class
