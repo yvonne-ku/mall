@@ -8,8 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.env.ConfigurableEnvironment;
 
 /**
- * Knife4j api 地址打印
- */
+ * Knife4j api 地址打印 */
 @Slf4j
 @AllArgsConstructor
 public class Knife4jDocUrlPrintHandler implements ApplicationRunner {

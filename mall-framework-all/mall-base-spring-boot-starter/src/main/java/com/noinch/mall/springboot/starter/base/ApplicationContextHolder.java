@@ -9,8 +9,7 @@ import java.lang.annotation.Annotation;
 import java.util.Map;
 
 /**
- * Application context holder.
- */
+ * Application context holder. */
 public class ApplicationContextHolder implements ApplicationContextAware {
 
     private static ApplicationContext CONTEXT;

@@ -6,8 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Aliyun 短信配置
- */
+ * Aliyun 短信配置 */
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "aliyun.sms")

@@ -10,8 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 /**
  * 雪花算法模板生成
- *
- */
+ * */
 @Slf4j
 public class SnowflakeInitializer {
 

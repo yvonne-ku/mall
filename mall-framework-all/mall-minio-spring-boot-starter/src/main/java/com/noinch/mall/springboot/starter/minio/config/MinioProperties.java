@@ -6,8 +6,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * Minio 配置类
- */
+ * Minio 配置类 */
 @Data
 @ConfigurationProperties(prefix = MinioProperties.PREFIX)
 public class MinioProperties {
