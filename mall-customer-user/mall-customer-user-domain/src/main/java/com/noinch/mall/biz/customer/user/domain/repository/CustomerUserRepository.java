@@ -6,7 +6,6 @@ import com.noinch.mall.biz.customer.user.domain.aggregate.CustomerUser;
 
 /**
  * C 端用户仓储层
-
  */
 public interface CustomerUserRepository {
     

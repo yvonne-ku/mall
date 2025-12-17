@@ -7,8 +7,7 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * Assert.
- */
+ * Assert. */
 public class Assert {
 
     public static void isTrue(boolean expression, String message) {

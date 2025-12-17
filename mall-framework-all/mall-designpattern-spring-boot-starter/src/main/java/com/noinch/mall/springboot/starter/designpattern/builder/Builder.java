@@ -5,8 +5,7 @@ import java.io.Serializable;
 
 /**
  * Builder 模式抽象接口
- * 构建者模式：每个配置方法都返回 this，支持链式调用
- */
+ * 构建者模式：每个配置方法都返回 this，支持链式调用 */
 public interface Builder<T> extends Serializable {
     
     /**

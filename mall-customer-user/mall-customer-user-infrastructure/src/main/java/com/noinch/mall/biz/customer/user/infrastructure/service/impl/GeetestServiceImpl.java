@@ -13,8 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 /**
- * 极验验证码服务（基于官方SDK重写）
- */
+ * 极验验证码服务（基于官方SDK重写） */
 @Slf4j
 @Service
 @RequiredArgsConstructor

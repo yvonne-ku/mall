@@ -42,6 +42,11 @@
         <option value="$PROJECT_DIR$/mall-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/mall-message/pom.xml" />
         <option value="$PROJECT_DIR$/mall-framework-all/mall-jwt-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-product/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-product/mall-product-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-product/mall-product-application/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-product/mall-product-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-product/mall-product-infrastructure/pom.xml" />
       </list>
     </option>
   </component>

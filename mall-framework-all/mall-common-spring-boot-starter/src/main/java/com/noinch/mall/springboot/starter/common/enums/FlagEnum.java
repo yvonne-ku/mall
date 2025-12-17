@@ -3,8 +3,7 @@ package com.noinch.mall.springboot.starter.common.enums;
 
 /**
  * 标识枚举，非 {@link Boolean#TRUE} 即 {@link Boolean#FALSE}
- *
- */
+ * */
 public enum FlagEnum {
     
     /**

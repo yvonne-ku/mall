@@ -4,8 +4,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * JWT配置属性
- */
+ * JWT配置属性 */
 @Data
 @ConfigurationProperties(prefix = "mall.jwt")
 public class JwtProperties {

@@ -8,8 +8,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 
 /**
- * Minio 自动装配配置
- */
+ * Minio 自动装配配置 */
 @AllArgsConstructor
 @EnableConfigurationProperties(MinioProperties.class)
 public class MinioAutoConfiguration {

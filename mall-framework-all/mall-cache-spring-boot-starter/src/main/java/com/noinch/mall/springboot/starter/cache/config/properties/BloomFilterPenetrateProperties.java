@@ -5,8 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * 缓存穿透布隆过滤器配置类
- *
- */
+ * */
 @Data
 @ConfigurationProperties(prefix = BloomFilterPenetrateProperties.PREFIX)
 public class BloomFilterPenetrateProperties {

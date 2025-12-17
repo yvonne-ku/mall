@@ -3,8 +3,7 @@ package com.noinch.mall.springboot.starter.common.enums;
 
 /**
  * 状态枚举
- *
- */
+ * */
 public enum StatusEnum {
     
     /**
