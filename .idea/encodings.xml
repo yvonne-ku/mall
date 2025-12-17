@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/mail-message/mall-message-application/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mail-message/mall-message-application/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mail-message/mall-message-domain/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mail-message/mall-message-domain/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mail-message/mall-message-infrastructure/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mail-message/mall-message-infrastructure/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mail-message/mall-message-interface/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mail-message/mall-message-interface/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mail-message/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mail-message/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-customer-user/mall-customer-user-application/src/main/java" charset="UTF-8" />
@@ -46,6 +38,8 @@
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-httputil-spring-boot-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-idempotent-spring-boot-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-idempotent-spring-boot-starter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-framework-all/mall-jwt-spring-boot-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-framework-all/mall-jwt-spring-boot-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-log-spring-boot-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-log-spring-boot-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-minio-spring-boot-starter/src/main/java" charset="UTF-8" />
@@ -62,6 +56,18 @@
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-xxljob-spring-boot-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-message/mall-message-application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-message/mall-message-application/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-message/mall-message-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-message/mall-message-domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-message/mall-message-infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-message/mall-message-infrastructure/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-message/mall-message-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-message/mall-message-interface/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-message/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-message/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />

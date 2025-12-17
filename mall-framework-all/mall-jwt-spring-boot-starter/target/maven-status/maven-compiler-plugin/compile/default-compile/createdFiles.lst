@@ -1,0 +1,3 @@
+com\noinch\mall\springboot\starter\jwt\toolkit\TokenUtil.class
+com\noinch\mall\springboot\starter\jwt\config\JwtProperties.class
+com\noinch\mall\springboot\starter\jwt\config\JwtAutoConfiguration.class
