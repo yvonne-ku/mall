@@ -5,8 +5,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.*;
 
 /**
- * 应用初始化后置处理器，防止 Spring 事件被多次执行
- */
+ * 应用初始化后置处理器，防止 Spring 事件被多次执行 */
 public class ApplicationContentPostProcessor implements ApplicationListener<ApplicationReadyEvent> {
 
     @Resource

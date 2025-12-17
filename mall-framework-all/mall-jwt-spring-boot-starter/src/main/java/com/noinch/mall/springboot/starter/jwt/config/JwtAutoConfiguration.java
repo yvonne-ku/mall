@@ -8,8 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * JWT自动配置类
- */
+ * JWT自动配置类 */
 @Configuration
 @ConditionalOnClass(TokenUtil.class)
 @EnableConfigurationProperties(JwtProperties.class)

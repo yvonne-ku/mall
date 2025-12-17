@@ -27,8 +27,7 @@ import java.util.List;
  * 前端通过 nginx 将所有流量转发到网关，
  * 网关通过 JwtAuthenticationFilter 过滤器来验证请求中的 JWT 令牌，
  * 验证通过后，网关会将请求转发到后端服务，
- * 后端服务通过 X-User-Id 和 X-Username 头信息来识别用户。
- */
+ * 后端服务通过 X-User-Id 和 X-Username 头信息来识别用户。 */
 @Slf4j
 @Component
 @AllArgsConstructor

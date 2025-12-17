@@ -5,8 +5,7 @@ import com.noinch.mall.springboot.starter.distributedid.core.snowflakeid.Snowfla
 
 /**
  * 业务 ID 生成器
- *
- */
+ * */
 public interface ServiceIdGenerator extends IdGenerator {
 
     /**

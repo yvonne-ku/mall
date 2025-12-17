@@ -23,8 +23,7 @@ import javax.validation.Valid;
 
 /**
  * C端用户登录控制层
- *
- */
+ * */
 @RestController
 @RequiredArgsConstructor
 @Api(tags = "C端用户登录")

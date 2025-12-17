@@ -7,8 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Collection;
 
 /**
- * 缓存接口
- */
+ * 缓存接口 */
 public interface Cache {
     
     /**

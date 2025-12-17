@@ -7,8 +7,7 @@ import lombok.experimental.Accessors;
 
 
 /**
- * Aliyun 短信发送实体
- */
+ * Aliyun 短信发送实体 */
 @Data
 @Accessors(chain = true)
 @TableName("message_aliyun_sms_send_test")

@@ -27,8 +27,7 @@ import java.util.Date;
  * 最后 12 位是毫秒内的计数（12位的计数顺序号支持每个节点每毫秒产生4096个ID序号）
  * <p>
  * 并且可以通过生成的 id 反推出生成时间, datacenterId 和 workerId
- * <p>
- */
+ * <p> */
 public class Snowflake implements Serializable, IdGenerator {
     
     private static final long serialVersionUID = 1L;

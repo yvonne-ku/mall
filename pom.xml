@@ -34,6 +34,9 @@
         <!-- OkHttp3 -->
         <okhttp3.version>4.9.3</okhttp3.version>
 
+        <!-- Hippo4J Config Spring Boot Starter -->
+        <hippo4j-config.version>1.4.3</hippo4j-config.version>
+
         <!-- Jakarta Servlet API -->
         <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
 
@@ -182,6 +185,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
                 <version>${spring-boot.version}</version>
+            </dependency>
+
+            <!-- Hippo4J Config Spring Boot Starter -->
+            <dependency>
+                <groupId>cn.hippo4j</groupId>
+                <artifactId>hippo4j-config-spring-boot-starter</artifactId>
+                <version>${hippo4j-config.version}</version>
             </dependency>
 
             <!-- SkyWalking APM Toolkit Trace -->

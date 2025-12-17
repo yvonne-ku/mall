@@ -14,8 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 3. 任务提交时，若核心线程和最大线程都满，交给队列等待将来处理
  * 4. 任务提交时，若队列也满了，触发拒绝策略处理
  *
- * 这个工作逻辑是在 TaskQueue 的 offer 方法上实现的。结合 jdk 的 ThreadPoolExecutor 内部源码对 offer 方法的调用和反馈。
- */
+ * 这个工作逻辑是在 TaskQueue 的 offer 方法上实现的。结合 jdk 的 ThreadPoolExecutor 内部源码对 offer 方法的调用和反馈。 */
 public class EagerThreadPoolExecutor extends ThreadPoolExecutor {
 
     public EagerThreadPoolExecutor(int corePoolSize,
