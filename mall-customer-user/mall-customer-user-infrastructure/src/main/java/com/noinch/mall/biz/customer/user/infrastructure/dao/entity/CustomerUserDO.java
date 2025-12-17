@@ -7,8 +7,7 @@ import com.noinch.mall.springboot.starter.mybatisplus.BaseDO;
 
 /**
  * C 端用户数据对象
- *
- */
+ * */
 @Data
 @TableName("customer_user_test")
 public class CustomerUserDO extends BaseDO {

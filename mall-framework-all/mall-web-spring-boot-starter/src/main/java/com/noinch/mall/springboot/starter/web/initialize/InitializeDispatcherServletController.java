@@ -10,8 +10,7 @@ import static com.noinch.mall.springboot.starter.web.config.WebAutoConfiguration
 
 /**
  * 初始化 {@link org.springframework.web.servlet.DispatcherServlet}
- *
- */
+ * */
 @Slf4j(topic = "Initialize DispatcherServlet")
 @RestController
 public final class InitializeDispatcherServletController {

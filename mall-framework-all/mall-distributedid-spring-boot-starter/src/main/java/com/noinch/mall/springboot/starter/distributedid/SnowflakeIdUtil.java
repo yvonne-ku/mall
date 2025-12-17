@@ -8,8 +8,7 @@ import com.noinch.mall.springboot.starter.distributedid.core.manager.IdGenerator
 
 /**
  * 分布式雪花 ID 生成器
- *
- */
+ * */
 public final class SnowflakeIdUtil {
     
     /**

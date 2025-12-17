@@ -7,8 +7,7 @@ import com.noinch.mall.springboot.starter.distributedid.SnowflakeIdUtil;
 
 /**
  * 默认业务 ID 生成器
- *
- */
+ * */
 public final class DefaultServiceIdGenerator implements ServiceIdGenerator {
     
     private final IdGenerator idGenerator;

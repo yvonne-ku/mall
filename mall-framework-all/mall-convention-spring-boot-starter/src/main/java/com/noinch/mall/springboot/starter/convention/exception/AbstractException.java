@@ -12,8 +12,7 @@ import java.util.Optional;
  *
  * @see ClientException
  * @see ServiceException
- * @see RemoteException
- */
+ * @see RemoteException */
 @Getter
 public abstract class AbstractException extends RuntimeException {
     

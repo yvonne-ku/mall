@@ -9,8 +9,7 @@ import java.util.function.Supplier;
 
 /**
  * 单例对象容器
- *
- */
+ * */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Singleton {
 

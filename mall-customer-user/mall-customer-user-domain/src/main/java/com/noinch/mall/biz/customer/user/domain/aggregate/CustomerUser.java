@@ -9,8 +9,7 @@ import com.noinch.mall.biz.customer.user.domain.mode.ReceiveAddress;
 import java.util.List;
 
 /**
- * C 端用户实体
- */
+ * C 端用户实体 */
 @Data
 @Builder
 @AllArgsConstructor

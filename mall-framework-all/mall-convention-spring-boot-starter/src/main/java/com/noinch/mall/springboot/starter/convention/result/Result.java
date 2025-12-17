@@ -8,8 +8,7 @@ import java.io.Serializable;
 
 /**
  * 全局返回对象
- *
- */
+ * */
 @Data
 @Accessors(chain = true)
 public class Result<T> implements Serializable {

@@ -4,8 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 /**
- * 极验验证码初始化响应
- */
+ * 极验验证码初始化响应 */
 @Data
 @Builder
 public class GeetestRespDTO {

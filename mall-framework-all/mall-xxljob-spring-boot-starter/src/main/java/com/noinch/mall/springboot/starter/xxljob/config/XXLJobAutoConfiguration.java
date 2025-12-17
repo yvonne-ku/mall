@@ -7,8 +7,7 @@ import org.springframework.context.annotation.Bean;
 
 /**
  * XXL-Job 自动装配
- *
- */
+ * */
 public class XXLJobAutoConfiguration {
     
     @Value("${xxl-job.admin.addresses}")

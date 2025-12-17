@@ -10,8 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 分布式 ID 自动装配
- *
- */
+ * */
 @Configuration
 public class DistributedIdAutoConfiguration {
 

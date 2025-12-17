@@ -12,8 +12,7 @@ import com.noinch.mall.biz.customer.user.domain.aggregate.CustomerUser;
 
 /**
  * C 端用户 Entity 转换 DTO
- *
- */
+ * */
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface CustomerUserToDTOAssembler {
     

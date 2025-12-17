@@ -8,8 +8,7 @@ import org.springframework.data.redis.serializer.SerializationException;
 import java.nio.charset.Charset;
 
 /**
- * 自定义 Redis Key 序列化器
- */
+ * 自定义 Redis Key 序列化器 */
 @RequiredArgsConstructor
 public class RedisKeySerializer implements InitializingBean, RedisSerializer<String> {
 

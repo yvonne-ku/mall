@@ -13,8 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 分布式缓存
- *
- */
+ * */
 public interface DistributedCache extends Cache {
     
     /**

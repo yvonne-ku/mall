@@ -7,8 +7,7 @@ import org.springframework.context.annotation.Bean;
 
 /**
  * 日志自动装配
- *
- */
+ * */
 public class LogAutoConfiguration {
     
     /**

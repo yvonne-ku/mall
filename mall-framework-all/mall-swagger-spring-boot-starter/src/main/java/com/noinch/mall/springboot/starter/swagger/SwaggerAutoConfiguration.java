@@ -25,8 +25,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 /**
- * Swagger 自动装配
- */
+ * Swagger 自动装配 */
 @EnableOpenApi
 @Profile({"dev", "local", "test"})
 @ConditionalOnProperty(name = "mall.swagger.enabled", havingValue = "true", matchIfMissing = true)

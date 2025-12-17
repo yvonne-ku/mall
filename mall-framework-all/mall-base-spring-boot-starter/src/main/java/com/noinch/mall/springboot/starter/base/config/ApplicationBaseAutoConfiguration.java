@@ -9,8 +9,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 
 /**
- * 应用基础自动装配
- */
+ * 应用基础自动装配 */
 public class ApplicationBaseAutoConfiguration {
 
     @Bean
