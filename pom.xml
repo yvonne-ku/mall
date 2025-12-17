@@ -9,6 +9,9 @@
 
     <modules>
         <module>mall-framework-all</module>
+        <module>mall-gateway</module>
+        <module>mall-customer-user</module>
+        <module>mall-message</module>
     </modules>
 
     <properties>
@@ -21,7 +24,7 @@
         <!-- Spring Cloud Alibaba相关版本 -->
         <spring-cloud-starter-alibaba.version>2023.0.3.2</spring-cloud-starter-alibaba.version>
         <!-- Spring Cloud相关版本 -->
-        <spring-cloud-starter-openfeign.version>4.1.3</spring-cloud-starter-openfeign.version>
+        <spring-cloud-starter.version>4.1.3</spring-cloud-starter.version>
         <!-- ShardingSphere相关版本 -->
         <shardingsphere.version>5.2.1</shardingsphere.version>
 
@@ -116,7 +119,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-openfeign</artifactId>
-                <version>${spring-cloud-starter-openfeign.version}</version>
+                <version>${spring-cloud-starter.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.springframework.cloud</groupId>
@@ -217,6 +220,13 @@
                 <version>${dypnsapi20170525.version}</version>
             </dependency>
 
+            <!-- Validation API -->
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>${validation-api.version}</version>
+            </dependency>
+
             <!-- Hibernate Validator -->
             <dependency>
                 <groupId>org.hibernate.validator</groupId>
@@ -237,13 +247,6 @@
                 <artifactId>mapstruct-processor</artifactId>
                 <version>${mapstruct.version}</version>
                 <scope>provided</scope>
-            </dependency>
-
-            <!-- Validation API -->
-            <dependency>
-                <groupId>jakarta.validation</groupId>
-                <artifactId>jakarta.validation-api</artifactId>
-                <version>${validation-api.version}</version>
             </dependency>
 
             <!-- FastJSON2 -->

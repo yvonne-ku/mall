@@ -25,6 +25,12 @@ mall:
     redis:
       prefix: 'mall:customer-user:'
       value-timeout: 50000
+  jwt:
+    iss: "mall-customer-user-service"
+    alg: "HS256"
+    secret: "ODMwODExNzI1MzE0NTQ2MTQ3NjE4Mzc2MDE2MjczMDc="
+    expire: 3600
+    subject: "Mall-Login"
 
 customer:
   user:
