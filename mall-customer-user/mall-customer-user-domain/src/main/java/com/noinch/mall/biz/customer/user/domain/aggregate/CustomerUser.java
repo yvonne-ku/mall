@@ -1,7 +1,6 @@
 
 package com.noinch.mall.biz.customer.user.domain.aggregate;
 
-import com.noinch.mall.biz.customer.user.domain.toolkit.TokenUtil;
 import lombok.*;
 import com.noinch.mall.biz.customer.user.domain.dp.*;
 import com.noinch.mall.biz.customer.user.domain.event.OperationLogEvent;
@@ -11,12 +10,10 @@ import java.util.List;
 
 /**
  * C 端用户实体
-
  */
 @Data
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 @Setter(AccessLevel.PRIVATE)
 public class CustomerUser {
     
@@ -39,10 +36,6 @@ public class CustomerUser {
     private OperationLogEvent operationLogEvent;
     
     private List<ReceiveAddress> receiveAddresses;
-
-    public String generateAccessToken() {
-        return TokenUtil.genAccessToken(this.username.getUsername());
-    }
 
     public Boolean checkPassword(String password) {
         return password.equals(this.password.getPassword());

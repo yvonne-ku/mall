@@ -5,14 +5,17 @@ import com.noinch.mall.biz.customer.user.application.resp.UserLoginRespDTO;
 import com.noinch.mall.biz.customer.user.domain.aggregate.CustomerUser;
 import com.noinch.mall.biz.customer.user.domain.repository.CustomerUserRepository;
 import com.noinch.mall.springboot.starter.designpattern.strategy.AbstractExecuteStrategy;
-import lombok.RequiredArgsConstructor;
+import com.noinch.mall.springboot.starter.jwt.toolkit.TokenUtil;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class LoginByUsernameHandler implements AbstractExecuteStrategy<UserLoginCommand, UserLoginRespDTO> {
 
     private final CustomerUserRepository customerUserRepository;
+
+    private final TokenUtil tokenUtil;
 
     @Override
     public String mark() {
@@ -26,7 +29,7 @@ public class LoginByUsernameHandler implements AbstractExecuteStrategy<UserLogin
                 .customerUserId(customerUser.getCustomerUserId())
                 .account(customerUser.getAccount())
                 .username(customerUser.getUsername())
-                .accessToken(customerUser.generateAccessToken())
+                .accessToken(tokenUtil.generateAccessToken(customerUser.getUsername(), customerUser.getCustomerUserId().toString()))
                 .build();
     }
 }

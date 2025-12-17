@@ -1,0 +1,11 @@
+com\noinch\mall\springboot\starter\cache\core\CacheLoadMissingHandler.class
+com\noinch\mall\springboot\starter\cache\StringRedisTemplateProxy.class
+com\noinch\mall\springboot\starter\cache\config\properties\RedisDistributedProperties.class
+com\noinch\mall\springboot\starter\cache\Cache.class
+com\noinch\mall\springboot\starter\cache\config\CacheAutoConfiguration.class
+com\noinch\mall\springboot\starter\cache\config\properties\BloomFilterPenetrateProperties.class
+com\noinch\mall\springboot\starter\cache\DistributedCache.class
+com\noinch\mall\springboot\starter\cache\RedisKeySerializer.class
+com\noinch\mall\springboot\starter\cache\toolkit\CacheUtil.class
+com\noinch\mall\springboot\starter\cache\core\CacheLoader.class
+com\noinch\mall\springboot\starter\cache\toolkit\FastJson2Util.class

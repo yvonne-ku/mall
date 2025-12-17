@@ -1,0 +1,15 @@
+com\noinch\mall\biz\customer\user\infrastructure\dao\entity\ReceiveAddressDO.class
+com\noinch\mall\biz\customer\user\infrastructure\dao\mapper\ReceiveAddressMapper.class
+com\noinch\mall\biz\customer\user\infrastructure\config\GeetestConfig.class
+com\noinch\mall\biz\customer\user\infrastructure\repository\CustomerUserRepositoryImpl.class
+com\noinch\mall\biz\customer\user\infrastructure\remote\MessageServiceFeignClient.class
+com\noinch\mall\biz\customer\user\infrastructure\dao\entity\CustomerUserDO.class
+com\noinch\mall\biz\customer\user\infrastructure\service\impl\GeetestServiceImpl.class
+com\noinch\mall\biz\customer\user\infrastructure\sdk\GeetestLib.class
+com\noinch\mall\biz\customer\user\infrastructure\dao\entity\OperationLogDO.class
+com\noinch\mall\biz\customer\user\infrastructure\repository\ReceiveAddressRepositoryImpl.class
+com\noinch\mall\biz\customer\user\infrastructure\converter\CustomerUserConverter.class
+com\noinch\mall\biz\customer\user\infrastructure\converter\CustomerUserConverterImpl.class
+com\noinch\mall\biz\customer\user\infrastructure\dao\mapper\CustomerUserMapper.class
+com\noinch\mall\biz\customer\user\infrastructure\dao\mapper\OperationLogMapper.class
+com\noinch\mall\biz\customer\user\infrastructure\service\impl\MessageRemoteServiceImpl.class

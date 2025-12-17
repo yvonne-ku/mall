@@ -24,6 +24,8 @@
         <module>mall-minio-spring-boot-starter</module>
         <module>mall-xxljob-spring-boot-starter</module>
         <module>mall-swagger-spring-boot-starter</module>
+        <module>mall-openfeign-spring-boot-starter</module>
+        <module>mall-jwt-spring-boot-starter</module>
     </modules>
 
 </project>

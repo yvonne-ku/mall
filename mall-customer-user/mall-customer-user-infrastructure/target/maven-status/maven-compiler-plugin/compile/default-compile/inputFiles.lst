@@ -1,0 +1,14 @@
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\service\impl\GeetestServiceImpl.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\repository\CustomerUserRepositoryImpl.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\dao\mapper\CustomerUserMapper.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\dao\mapper\OperationLogMapper.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\dao\entity\CustomerUserDO.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\config\GeetestConfig.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\service\impl\MessageRemoteServiceImpl.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\dao\entity\ReceiveAddressDO.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\sdk\GeetestLib.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\dao\mapper\ReceiveAddressMapper.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\dao\entity\OperationLogDO.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\repository\ReceiveAddressRepositoryImpl.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\remote\MessageServiceFeignClient.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\converter\CustomerUserConverter.java

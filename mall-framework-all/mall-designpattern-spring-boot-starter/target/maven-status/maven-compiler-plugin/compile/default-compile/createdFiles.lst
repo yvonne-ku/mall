@@ -1,0 +1,6 @@
+com\noinch\mall\springboot\starter\designpattern\strategy\AbstractStrategyChoose.class
+com\noinch\mall\springboot\starter\designpattern\chain\AbstractChainHandler.class
+com\noinch\mall\springboot\starter\designpattern\chain\AbstractChainContext.class
+com\noinch\mall\springboot\starter\designpattern\builder\Builder.class
+com\noinch\mall\springboot\starter\designpattern\config\DesignPatternAutoConfiguration.class
+com\noinch\mall\springboot\starter\designpattern\strategy\AbstractExecuteStrategy.class

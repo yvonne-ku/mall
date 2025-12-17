@@ -1,0 +1,5 @@
+com\noinch\mall\springboot\starter\web\GlobalExceptionHandler.class
+com\noinch\mall\springboot\starter\web\initialize\InitializeDispatcherServletHandler.class
+com\noinch\mall\springboot\starter\web\config\WebAutoConfiguration.class
+com\noinch\mall\springboot\starter\web\Results.class
+com\noinch\mall\springboot\starter\web\initialize\InitializeDispatcherServletController.class

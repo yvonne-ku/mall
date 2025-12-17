@@ -1,0 +1,6 @@
+com\noinch\mall\springboot\starter\swagger\SwaggerAutoConfiguration.class
+com\noinch\mall\springboot\starter\swagger\SwaggerProperties.class
+com\noinch\mall\springboot\starter\swagger\SwaggerProperties$Authorization.class
+com\noinch\mall\springboot\starter\swagger\SwaggerProperties$AuthorizationScope.class
+com\noinch\mall\springboot\starter\swagger\SwaggerProperties$Contact.class
+com\noinch\mall\springboot\starter\swagger\Knife4jDocUrlPrintHandler.class
