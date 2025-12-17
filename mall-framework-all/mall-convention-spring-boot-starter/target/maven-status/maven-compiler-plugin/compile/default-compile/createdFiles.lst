@@ -1,0 +1,10 @@
+com\noinch\mall\springboot\starter\convention\exception\ClientException.class
+com\noinch\mall\springboot\starter\convention\exception\ServiceException.class
+com\noinch\mall\springboot\starter\convention\page\PageRequest.class
+com\noinch\mall\springboot\starter\convention\page\PageResponse$PageResponseBuilder.class
+com\noinch\mall\springboot\starter\convention\exception\AbstractException.class
+com\noinch\mall\springboot\starter\convention\page\PageResponse.class
+com\noinch\mall\springboot\starter\convention\exception\RemoteException.class
+com\noinch\mall\springboot\starter\convention\result\Result.class
+com\noinch\mall\springboot\starter\convention\errorcode\BaseErrorCode.class
+com\noinch\mall\springboot\starter\convention\errorcode\IErrorCode.class

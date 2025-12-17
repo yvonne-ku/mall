@@ -1,0 +1,6 @@
+D:\MyProjects\mall\mall-framework-all\mall-designpattern-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\designpattern\chain\AbstractChainContext.java
+D:\MyProjects\mall\mall-framework-all\mall-designpattern-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\designpattern\chain\AbstractChainHandler.java
+D:\MyProjects\mall\mall-framework-all\mall-designpattern-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\designpattern\strategy\AbstractStrategyChoose.java
+D:\MyProjects\mall\mall-framework-all\mall-designpattern-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\designpattern\builder\Builder.java
+D:\MyProjects\mall\mall-framework-all\mall-designpattern-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\designpattern\strategy\AbstractExecuteStrategy.java
+D:\MyProjects\mall\mall-framework-all\mall-designpattern-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\designpattern\config\DesignPatternAutoConfiguration.java
