@@ -9,8 +9,7 @@ import java.util.Date;
 
 /**
  * 数据持久层基础属性
- *
- */
+ * */
 @Data
 public class BaseDO {
     

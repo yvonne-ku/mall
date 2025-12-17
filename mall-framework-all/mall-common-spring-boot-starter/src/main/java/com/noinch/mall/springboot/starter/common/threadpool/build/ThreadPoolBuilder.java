@@ -10,8 +10,7 @@ import java.util.concurrent.*;
 
 /**
  * 线程池 {@link ThreadPoolExecutor} 构建器, 构建者模式
- *
- */
+ * */
 public final class ThreadPoolBuilder implements Builder<ThreadPoolExecutor> {
     
     private int corePoolSize = calculateCoreNum();

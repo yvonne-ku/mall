@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Swagger 配置
- */
+ * Swagger 配置 */
 @Data
 @ConfigurationProperties("mall.swagger")
 public class SwaggerProperties {

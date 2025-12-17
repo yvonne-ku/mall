@@ -13,8 +13,7 @@ import java.util.Optional;
 
 /**
  * 策略选择器
- *
- */
+ * */
 public class AbstractStrategyChoose implements ApplicationListener<ApplicationInitializingEvent> {
     
     /**

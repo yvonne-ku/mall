@@ -16,8 +16,7 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * Token 工具类
- */
+ * Token 工具类 */
 @Component
 @AllArgsConstructor
 public class TokenUtil {

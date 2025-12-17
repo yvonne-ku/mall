@@ -13,8 +13,7 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Web 组件自动装配
- */
+ * Web 组件自动装配 */
 @Configuration
 public class WebAutoConfiguration {
     

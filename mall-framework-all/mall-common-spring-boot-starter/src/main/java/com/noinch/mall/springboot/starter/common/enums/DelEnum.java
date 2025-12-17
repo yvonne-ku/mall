@@ -2,8 +2,7 @@ package com.noinch.mall.springboot.starter.common.enums;
 
 /**
  * 删除标记枚举
- *
- */
+ * */
 public enum DelEnum {
 
     /**

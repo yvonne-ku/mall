@@ -6,8 +6,7 @@ import com.noinch.mall.springboot.starter.convention.errorcode.IErrorCode;
 
 /**
  * 客户端异常
- *
- */
+ * */
 public class ClientException extends AbstractException {
     
     public ClientException(IErrorCode errorCode) {

@@ -13,8 +13,7 @@ import static com.noinch.mall.springboot.starter.web.config.WebAutoConfiguration
 
 /**
  * 通过 {@link InitializeDispatcherServletController} 初始化 {@link DispatcherServlet}
- * 使用 RestTemplate 发送 HTTP 请求来触发 DispatcherServlet 的预热
- */
+ * 使用 RestTemplate 发送 HTTP 请求来触发 DispatcherServlet 的预热 */
 @RequiredArgsConstructor
 public final class InitializeDispatcherServletHandler implements CommandLineRunner {
     

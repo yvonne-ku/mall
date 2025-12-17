@@ -6,8 +6,7 @@ import com.noinch.mall.springboot.starter.convention.errorcode.IErrorCode;
 
 /**
  * 服务端异常
- *
- */
+ * */
 public class ServiceException extends AbstractException {
     
     public ServiceException(String message) {

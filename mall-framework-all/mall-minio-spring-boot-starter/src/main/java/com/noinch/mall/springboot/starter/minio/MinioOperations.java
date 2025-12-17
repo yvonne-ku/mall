@@ -6,8 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 抽象一组基本 Minio 操作的接口，由 {@link MinioTemplate} 实现
- *
- */
+ * */
 public interface MinioOperations {
 
     /**

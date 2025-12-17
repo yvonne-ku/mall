@@ -18,8 +18,7 @@ import java.util.HashMap;
 
 /**
  * Java SDK
- * 
- */
+ *  */
 public class GeetestLib {
 
 	protected final String verName = "3.3.0";// SDK版本编号

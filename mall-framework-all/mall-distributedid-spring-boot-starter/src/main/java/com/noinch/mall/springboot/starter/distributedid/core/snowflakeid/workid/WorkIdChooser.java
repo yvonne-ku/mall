@@ -1,8 +1,7 @@
 package com.noinch.mall.springboot.starter.distributedid.core.snowflakeid.workid;
 
 /**
- * WorkId选择器接口 - 单一职责：选择WorkId
- */
+ * WorkId选择器接口 - 单一职责：选择WorkId */
 public interface WorkIdChooser {
 
     /**

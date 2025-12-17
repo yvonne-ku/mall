@@ -5,7 +5,6 @@ import lombok.Data;
 
 /**
  * C 端用户
-
  */
 @Data
 public class CustomerUserDTO {
