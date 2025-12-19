@@ -1,0 +1,46 @@
+
+server:
+  port: 8004
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: product-service
+  dynamic:
+    thread-pool:
+      default-executor:
+        active-alarm: 80
+        alarm: false
+        allow-core-thread-time-out: true
+        blocking-queue: ResizableCapacityLinkedBlockingQueue
+        capacity-alarm: 80
+        core-pool-size: 20
+        execute-time-out: 100
+        keep-alive-time: 9999
+        maximum-pool-size: 40
+        queue-capacity: 4096
+        rejected-handler: AbortPolicy
+
+mall:
+  fastjson:
+    safe-mode: true
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath:mapper/*.xml
+#
+#seata:
+#  application-id: ${spring.application.name}
+#  enable-auto-data-source-proxy: false
+#  service:
+#    grouplist:
+#      seata-server: 127.0.0.1:8091
+#    vgroup-mapping:
+#      my-tx-group: seata-server
+#  tx-service-group: my-tx-group
+#  use-jdk-proxy: true

@@ -5,7 +5,8 @@ package com.noinch.mall.biz.product.infrastructure.dao.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import com.noinch.mall.mybatisplus.springboot.starter.BaseDO;
+import com.noinch.mall.springboot.starter.mybatisplus.BaseDO;
+
 
 /**
  * 商品品牌
