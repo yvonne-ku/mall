@@ -47,6 +47,7 @@
         <option value="$PROJECT_DIR$/mall-product/mall-product-application/pom.xml" />
         <option value="$PROJECT_DIR$/mall-product/mall-product-domain/pom.xml" />
         <option value="$PROJECT_DIR$/mall-product/mall-product-infrastructure/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-bff/mall-bff-interface/pom.xml" />
       </list>
     </option>
   </component>
