@@ -6,7 +6,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import com.noinch.mall.mybatisplus.springboot.starter.BaseDO;
+import com.noinch.mall.springboot.starter.mybatisplus.BaseDO;
+
 
 /**
  * 商品分类

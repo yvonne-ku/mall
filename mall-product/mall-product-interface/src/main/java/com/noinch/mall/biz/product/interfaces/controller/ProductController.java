@@ -26,7 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
     
     private final ProductService productService;
-    
+
+    @GetMapping("/api/product/page")
+    @ApiOperation(value = "商品分页查询", notes = "商品分页查询返回 SPU 信息")
+    public Result<PageResponse<ProductRespDTO>> pageQueryProduct(ProductPageQuery requestParam) {
+        return Results.success(productService.pageQueryProduct(requestParam));
+    }
+
     @GetMapping("/api/product/spu/{spuId}")
     @ApiOperation(value = "查询商品详情", notes = "根据 spuId 查询商品详情")
     @ApiImplicitParams({
@@ -35,11 +41,5 @@ public class ProductController {
     public Result<ProductRespDTO> getProductBySpuId(@PathVariable("spuId") String spuId) {
         ProductRespDTO result = productService.getProductBySpuId(Long.parseLong(spuId));
         return Results.success(result);
-    }
-    
-    @GetMapping("/api/product/page")
-    @ApiOperation(value = "商品分页查询", notes = "商品分页查询返回 SPU 信息")
-    public Result<PageResponse<ProductRespDTO>> pageQueryProduct(ProductPageQuery requestParam) {
-        return Results.success(productService.pageQueryProduct(requestParam));
     }
 }

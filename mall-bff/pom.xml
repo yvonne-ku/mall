@@ -12,5 +12,7 @@
 
 	<modules>
 		<module>mall-bff-remote</module>
+		<module>mall-bff-biz</module>
+		<module>mall-bff-interface</module>
 	</modules>
 </project>
