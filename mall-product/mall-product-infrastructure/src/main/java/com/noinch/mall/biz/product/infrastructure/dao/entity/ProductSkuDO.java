@@ -4,7 +4,7 @@ package com.noinch.mall.biz.product.infrastructure.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
-import com.noinch.mall.mybatisplus.springboot.starter.BaseDO;
+import com.noinch.mall.springboot.starter.mybatisplus.BaseDO;
 
 import java.math.BigDecimal;
 
