@@ -6,6 +6,10 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: bff
+          uri: http://localhost:8004
+          predicates:
+            - Path=/home/**
         - id: message-service
           uri: http://localhost:8001
           predicates:
