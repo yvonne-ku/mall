@@ -48,23 +48,25 @@
 <!--            <artifactId>sentinel-annotation-aspectj</artifactId>-->
 <!--        </dependency>-->
 
-<!--        <dependency>-->
-<!--            <groupId>com.alicp.jetcache</groupId>-->
-<!--            <artifactId>jetcache-starter-redis-springdata</artifactId>-->
-<!--            <version>${jetcache.version}</version>-->
-<!--            <exclusions>-->
-<!--                <exclusion>-->
-<!--                    <groupId>org.springframework.boot</groupId>-->
-<!--                    <artifactId>spring-boot-starter-logging</artifactId>-->
-<!--                </exclusion>-->
-<!--            </exclusions>-->
-<!--        </dependency>-->
+        <!--  常用缓存工具，本地缓存 + 二级缓存（redis）  -->
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-starter-redis-springdata</artifactId>
+            <version>${jetcache.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.esotericsoftware.kryo</groupId>-->
-<!--            <artifactId>kryo5</artifactId>-->
-<!--            <version>${kryo5.version}</version>-->
-<!--        </dependency>-->
+        <!--  常用序列化工具  -->
+        <dependency>
+            <groupId>com.esotericsoftware.kryo</groupId>
+            <artifactId>kryo5</artifactId>
+            <version>${kryo5.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

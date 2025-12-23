@@ -3,12 +3,12 @@ package com.noinch.mall.biz.customer.user.infrastructure.repository;
 
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.noinch.mall.springboot.starter.common.toolkit.BeanUtil;
 import lombok.AllArgsConstructor;
 import com.noinch.mall.biz.customer.user.domain.mode.ReceiveAddress;
 import com.noinch.mall.biz.customer.user.domain.repository.ReceiveAddressRepository;
 import com.noinch.mall.biz.customer.user.infrastructure.dao.entity.ReceiveAddressDO;
 import com.noinch.mall.biz.customer.user.infrastructure.dao.mapper.ReceiveAddressMapper;
-import com.noinch.mall.springboot.starter.common.toolkit.BeanUtil;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
