@@ -1,6 +1,5 @@
 package com.noinch.mall.biz.bff.remote;
 
-
 import com.noinch.mall.biz.bff.remote.resp.ProductRespDTO;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
 import com.noinch.mall.springboot.starter.convention.result.Result;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 商品服务远程调用
  *
  */
-@FeignClient(value = "product-service", url = "${mall.aggregation.remote-url:}")
+@FeignClient(value = "product-service", url = "${mall.product-service.url:}")
 public interface ProductRemoteService {
 
     /**
