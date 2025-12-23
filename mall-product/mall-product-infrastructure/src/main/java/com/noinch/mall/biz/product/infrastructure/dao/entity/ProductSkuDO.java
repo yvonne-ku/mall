@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
-@TableName("product_sku")
+@TableName("product_sku_test")
 public class ProductSkuDO extends BaseDO {
     
     /**

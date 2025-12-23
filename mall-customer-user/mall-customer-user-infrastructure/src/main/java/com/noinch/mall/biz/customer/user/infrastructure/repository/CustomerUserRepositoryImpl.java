@@ -5,12 +5,12 @@ package com.noinch.mall.biz.customer.user.infrastructure.repository;
 import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.noinch.mall.biz.customer.user.infrastructure.converter.CustomerUserToDOConverter;
 import com.noinch.mall.springboot.starter.convention.exception.ClientException;
 import lombok.AllArgsConstructor;
 import com.noinch.mall.biz.customer.user.domain.aggregate.CustomerUser;
 import com.noinch.mall.biz.customer.user.domain.event.OperationLogEvent;
 import com.noinch.mall.biz.customer.user.domain.repository.CustomerUserRepository;
-import com.noinch.mall.biz.customer.user.infrastructure.converter.CustomerUserConverter;
 import com.noinch.mall.biz.customer.user.infrastructure.dao.entity.CustomerUserDO;
 import com.noinch.mall.biz.customer.user.infrastructure.dao.entity.OperationLogDO;
 import com.noinch.mall.biz.customer.user.infrastructure.dao.mapper.CustomerUserMapper;
@@ -30,33 +30,33 @@ public class CustomerUserRepositoryImpl implements CustomerUserRepository {
     
     private final CustomerUserMapper customerUserMapper;
     
-    private final CustomerUserConverter customerUserConverter;
+    private final CustomerUserToDOConverter customerUserToDOConverter;
 
     private final OperationLogMapper operationLogMapper;
     
     @Override
     public CustomerUser find(Long customerUserId) {
         CustomerUserDO customerUserDO = customerUserMapper.selectById(customerUserId);
-        return customerUserConverter.doToCustomerUser(customerUserDO);
+        return customerUserToDOConverter.doToCustomerUser(customerUserDO);
     }
     
     @Override
     public CustomerUser findByMail(String mail) {
         LambdaQueryWrapper<CustomerUserDO> queryWrapper = Wrappers.lambdaQuery(CustomerUserDO.class).eq(CustomerUserDO::getMail, mail);
         CustomerUserDO customerUserDO = customerUserMapper.selectOne(queryWrapper);
-        return customerUserConverter.doToCustomerUser(customerUserDO);
+        return customerUserToDOConverter.doToCustomerUser(customerUserDO);
     }
     
     @Override
     public CustomerUser findByAccount(String account) {
         LambdaQueryWrapper<CustomerUserDO> queryWrapper = Wrappers.lambdaQuery(CustomerUserDO.class).eq(CustomerUserDO::getAccount, account);
         CustomerUserDO customerUserDO = customerUserMapper.selectOne(queryWrapper);
-        return customerUserConverter.doToCustomerUser(customerUserDO);
+        return customerUserToDOConverter.doToCustomerUser(customerUserDO);
     }
     
     @Override
     public CustomerUser register(CustomerUser customerUser) {
-        CustomerUserDO customerUserDO = customerUserConverter.customerUserToDO(customerUser);
+        CustomerUserDO customerUserDO = customerUserToDOConverter.customerUserToDO(customerUser);
         int insert = customerUserMapper.insert(customerUserDO);
         if (insert < 1) {
             throw new ServiceException(BaseErrorCode.USER_REGISTER_ERROR);
@@ -95,7 +95,7 @@ public class CustomerUserRepositoryImpl implements CustomerUserRepository {
         LambdaQueryWrapper<CustomerUserDO> queryWrapper = Wrappers.lambdaQuery(CustomerUserDO.class)
                 .eq(CustomerUserDO::getUsername, username);
         CustomerUserDO customerUserDO = customerUserMapper.selectOne(queryWrapper);
-        return customerUserConverter.doToCustomerUser(customerUserDO);
+        return customerUserToDOConverter.doToCustomerUser(customerUserDO);
     }
 
     @Override

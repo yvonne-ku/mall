@@ -4,13 +4,13 @@ package com.noinch.mall.biz.product.infrastructure.repository;
 
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.noinch.mall.springboot.starter.common.toolkit.BeanUtil;
 import lombok.RequiredArgsConstructor;
 import com.noinch.mall.biz.product.domain.aggregate.ProductComment;
 import com.noinch.mall.biz.product.domain.repository.ProductCommentRepository;
 import com.noinch.mall.biz.product.infrastructure.dao.entity.ProductCommentDO;
 import com.noinch.mall.biz.product.infrastructure.dao.mapper.ProductCommentMapper;
 import com.noinch.mall.springboot.starter.common.enums.FlagEnum;
-import com.noinch.mall.springboot.starter.common.toolkit.BeanUtil;
 import org.springframework.stereotype.Repository;
 
 /**

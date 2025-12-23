@@ -34,6 +34,9 @@
         <!-- OkHttp3 -->
         <okhttp3.version>4.9.3</okhttp3.version>
 
+        <!-- Apache Commons Lang3 -->
+        <commons-lang3>3.18.0</commons-lang3>
+
         <!-- Hippo4J Config Spring Boot Starter -->
         <hippo4j-config.version>1.4.3</hippo4j-config.version>
 
@@ -51,28 +54,29 @@
 
         <!-- 缓存相关版本 -->
         <redisson.version>3.27.0</redisson.version>
+        <jetcache.version>2.7.3</jetcache.version>
 
         <!-- 数据库相关版本 -->
         <mybatis-plus-spring-boot3-starter.version>3.5.7</mybatis-plus-spring-boot3-starter.version>
         <mysql-connector-j.version>8.3.0</mysql-connector-j.version>
 
-        <!-- JWT相关版本 -->
+        <!-- JWT SDK -->
         <jjwt.version>0.12.3</jjwt.version>
-
-        <!-- Aliyun SMS -->
+        <!-- Aliyun SMS SDK -->
         <dypnsapi20170525.version>1.2.3</dypnsapi20170525.version>
 
-        <!-- 其他工具相关版本 -->
+        <!-- 通用工具相关版本 -->
+        <dozer.version>7.0.0</dozer.version>
+        <jaxb.version>2.3.1</jaxb.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
         <fastjson2.version>2.0.51</fastjson2.version>
         <hutool-all.version>5.8.28</hutool-all.version>
         <guava.version>33.2.1-jre</guava.version>
-        <dozer.version>6.5.2</dozer.version>
         <lombok.version>1.18.34</lombok.version>
         <knife4j-spring-boot-starter.version>3.0.3</knife4j-spring-boot-starter.version>
 
         <!-- 验证相关版本 -->
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <mapstruct.version>1.5.5.Final</mapstruct.version>
         <validation-api.version>3.0.2</validation-api.version>
         <javafaker.version>1.0.2</javafaker.version>
     </properties>
@@ -278,13 +282,6 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool-all.version}</version>
-            </dependency>
-
-            <!-- Dozer -->
-            <dependency>
-                <groupId>com.github.dozermapper</groupId>
-                <artifactId>dozer-core</artifactId>
-                <version>${dozer.version}</version>
             </dependency>
 
             <!-- JavaFaker -->
