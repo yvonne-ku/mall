@@ -8,30 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
       </profile>
-      <profile name="Annotation profile for mall-product" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
-        </processorPath>
-        <module name="mall-bff-biz" />
-        <module name="mall-bff-interface" />
-        <module name="mall-product-domain" />
-        <module name="mall-product-application" />
-      </profile>
       <profile name="Annotation profile for test" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
@@ -53,9 +34,12 @@
         <module name="mall-log-spring-boot-starter" />
         <module name="mall-cache-spring-boot-starter" />
         <module name="mall-message-application" />
+        <module name="mall-bff-interface" />
         <module name="mall-common-spring-boot-starter" />
+        <module name="mall-product-domain" />
         <module name="mall-openfeign-spring-boot-starter" />
         <module name="mall-swagger-spring-boot-starter" />
+        <module name="mall-bff-biz" />
         <module name="mall-product-interface" />
         <module name="mall-message-infrastructure" />
         <module name="mall-ddd-framework-core" />
@@ -63,6 +47,7 @@
         <module name="mall-customer-user-application" />
         <module name="mall-customer-user-domain" />
         <module name="mall-customer-user-interface" />
+        <module name="mall-product-application" />
         <module name="mall-distributedid-spring-boot-starter" />
         <module name="mall-gateway" />
       </profile>

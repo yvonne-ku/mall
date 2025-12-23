@@ -1,8 +1,11 @@
 package com.noinch.mall.biz.bff.dto.resp.adapter;
 
+import lombok.Data;
+
 import java.util.Date;
 import java.util.List;
 
+@Data
 public class HomePanelAdapterRespDTO {
 
     /**
@@ -11,14 +14,19 @@ public class HomePanelAdapterRespDTO {
     private Integer id;
 
     /**
-     * 类型
-     */
-    private Integer type;
-
-    /**
      * 限制数量
      */
     private Integer limitNum;
+
+    /**
+     * 板块名称
+     */
+    private String name;
+
+    /**
+     * 位置
+     */
+    private Integer position;
 
     /**
      * 备注
@@ -34,6 +42,11 @@ public class HomePanelAdapterRespDTO {
      * 状态
      */
     private Integer status;
+
+    /**
+     * 类型
+     */
+    private Integer type;
 
     /**
      * 创建时间

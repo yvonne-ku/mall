@@ -12,27 +12,22 @@ import lombok.Data;
  *
  */
 @Data
-@TableName("panel")
+@TableName("panel_test")
 public class PanelDO extends BaseDO {
 
     /**
-     * id
+     * panel id
      */
     @TableId(type = IdType.AUTO)
     private Integer id;
 
     /**
-     * 类型
-     */
-    private Integer type;
-
-    /**
-     * 名称
+     * panel 名称
      */
     private String name;
 
     /**
-     * 位置
+     * panel 位置
      */
     private Integer position;
 
@@ -42,7 +37,7 @@ public class PanelDO extends BaseDO {
     private Integer limitNum;
 
     /**
-     * 排序
+     * panel 显示顺序
      */
     private Integer sortOrder;
 
@@ -50,6 +45,11 @@ public class PanelDO extends BaseDO {
      * 状态
      */
     private Integer status;
+
+    /**
+     * panel 类型
+     */
+    private Integer type;
 
     /**
      * 备注

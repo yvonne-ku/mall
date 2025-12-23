@@ -2,6 +2,7 @@
 
 package com.noinch.mall.biz.product.application.service.impl;
 
+import com.noinch.mall.springboot.starter.common.toolkit.BeanUtil;
 import lombok.AllArgsConstructor;
 import com.noinch.mall.biz.product.application.req.ProductLockStockCommand;
 import com.noinch.mall.biz.product.application.req.ProductPageQuery;
@@ -13,7 +14,6 @@ import com.noinch.mall.biz.product.domain.aggregate.Product;
 import com.noinch.mall.biz.product.domain.aggregate.ProductStock;
 import com.noinch.mall.biz.product.domain.aggregate.ProductStockDetail;
 import com.noinch.mall.biz.product.domain.repository.ProductRepository;
-import com.noinch.mall.springboot.starter.common.toolkit.BeanUtil;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
 import org.springframework.stereotype.Service;
 
