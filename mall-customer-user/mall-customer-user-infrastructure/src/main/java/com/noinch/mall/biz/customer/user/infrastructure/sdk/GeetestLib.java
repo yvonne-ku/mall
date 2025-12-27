@@ -17,8 +17,8 @@ import java.util.HashMap;
 
 
 /**
- * Java SDK
- *  */
+ * Geetest SDK
+ */
 public class GeetestLib {
 
 	protected final String verName = "3.3.0";// SDK版本编号
@@ -31,7 +31,7 @@ public class GeetestLib {
 	protected final String validateUrl = "/validate.php"; //validate url
 
 	/**
-	 * 极验验证二次验证表单数据 chllenge
+	 * 极验验证二次验证表单数据 challenge
 	 */
 	public static final String fn_geetest_challenge = "geetest_challenge";
 	
