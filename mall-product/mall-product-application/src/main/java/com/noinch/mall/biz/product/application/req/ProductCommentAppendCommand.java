@@ -2,7 +2,7 @@
 
 package com.noinch.mall.biz.product.application.req;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -11,24 +11,24 @@ import lombok.Data;
 @Data
 public class ProductCommentAppendCommand {
     
-    @ApiModelProperty("上级id，一级评论为0")
+    @Schema(description = "上级id，一级评论为0")
     private String parentId;
     
-    @ApiModelProperty("商品id")
+    @Schema(description = "商品id")
     private String productId;
     
-    @ApiModelProperty("商品sku id")
+    @Schema(description = "商品sku id")
     private String productSkuId;
     
-    @ApiModelProperty("用户id")
+    @Schema(description = "用户id")
     private String customerUserId;
     
-    @ApiModelProperty("评论")
+    @Schema(description = "评论")
     private String content;
     
-    @ApiModelProperty("匿名标识 0：匿名 1：不匿名")
+    @Schema(description = "匿名标识 0：匿名 1：不匿名")
     private Integer hideFlag;
     
-    @ApiModelProperty("评论图片/视频，json格式")
+    @Schema(description = "评论图片/视频，json格式")
     private String resource;
 }

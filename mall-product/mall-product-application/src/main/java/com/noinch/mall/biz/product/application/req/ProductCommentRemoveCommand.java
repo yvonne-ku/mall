@@ -2,7 +2,7 @@
 
 package com.noinch.mall.biz.product.application.req;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -11,9 +11,9 @@ import lombok.Data;
 @Data
 public class ProductCommentRemoveCommand {
     
-    @ApiModelProperty("id")
+    @Schema(description = "id")
     private String id;
     
-    @ApiModelProperty("商品id")
+    @Schema(description = "商品id")
     private String productId;
 }

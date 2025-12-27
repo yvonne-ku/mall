@@ -7,10 +7,8 @@ import com.noinch.mall.biz.customer.user.domain.dto.GeetestRespDTO;
 import com.noinch.mall.biz.customer.user.application.resp.UserRegisterRespDTO;
 import com.noinch.mall.springboot.starter.convention.errorcode.BaseErrorCode;
 import com.noinch.mall.springboot.starter.convention.exception.ClientException;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
 import com.noinch.mall.biz.customer.user.application.req.UserLoginCommand;
 import com.noinch.mall.biz.customer.user.application.resp.UserLoginRespDTO;
@@ -19,34 +17,33 @@ import com.noinch.mall.springboot.starter.convention.result.Result;
 import com.noinch.mall.springboot.starter.web.Results;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 /**
  * C端用户登录控制层
  * */
 @RestController
 @RequiredArgsConstructor
-@Api(tags = "C端用户登录")
 public class CustomerUserLoginController {
 
     private final CustomerUserService customerUserService;
 
     @GetMapping("/api/customer-user/geetestInit")
-    @ApiOperation(value = "初始化极验验证码", notes = "初始化极验验证码")
+    @Operation(summary = "初始化极验验证码", description = "初始化极验验证码")
     public Result<GeetestRespDTO> geetestInit() {
         GeetestRespDTO result = customerUserService.initGeetest();
         return Results.success(result);
     }
 
     @PostMapping("/api/customer-user/verify/code/send")
-    @ApiOperation(value = "验证码发送", notes = "包含注册验证码、登录验证等，发送平台包括手机、邮箱等")
+    @Operation(summary = "验证码发送", description = "包含注册验证码、登录验证等，发送平台包括手机、邮箱等")
     public Result<Void> verifyCodeSend(@RequestBody @Valid UserVerifyCodeCommand requestParam) {
         customerUserService.verifyCodeSend(requestParam);
         return Results.success();
     }
 
     @PostMapping("/api/customer-user/register")
-    @ApiOperation(value = "注册用户", notes = "注册C端用户账号")
+    @Operation(summary = "注册用户", description = "注册C端用户账号")
     public Result<UserRegisterRespDTO> register(@RequestBody @Valid UserRegisterCommand requestParam) {
         // 检验极验验证码二次验证
         boolean geetestResult = customerUserService.verifyGeetest(requestParam.getChallenge(), requestParam.getValidate(), requestParam.getSeccode(), requestParam.getStatusKey());
@@ -59,7 +56,7 @@ public class CustomerUserLoginController {
     }
 
     @PostMapping("/api/customer-user/login")
-    @ApiOperation(value = "用户登录", notes = "用户登录")
+    @Operation(summary = "用户登录", description = "用户登录")
     public Result<UserLoginRespDTO> login(@RequestBody @Valid UserLoginCommand requestParam) {
         // 检验极验验证码二次验证
         boolean geetestResult = customerUserService.verifyGeetest(requestParam.getChallenge(), requestParam.getValidate(), requestParam.getSeccode(), requestParam.getStatusKey());
@@ -72,20 +69,26 @@ public class CustomerUserLoginController {
     }
 
     @GetMapping("/api/customer-user/logout")
-    @ApiOperation(value = "用户退出登录", notes = "用户退出登录")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "accessToken", value = "用户Token", required = true, example = "JWT Token")
-    })
+    @Operation(summary = "用户退出登录", description = "用户退出登录")
+    @Parameter(
+            name = "accessToken",
+            description = "用户Token",
+            required = true,
+            example = "JWT Token"
+    )
     public Result<Void> logout(@RequestParam(required = false) String accessToken) {
         customerUserService.logout(accessToken);
         return Results.success();
     }
 
     @GetMapping("/api/customer-user/check-login")
-    @ApiOperation(value = "检查用户是否登录", notes = "通过Token检查用户是否登录")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "accessToken", value = "用户Token", required = true, example = "JWT Token")
-    })
+    @Operation(summary = "检查用户是否登录", description = "通过Token检查用户是否登录")
+    @Parameter(
+            name = "accessToken",
+            description = "用户Token",
+            required = true,
+            example = "JWT Token"
+    )
     public Result<UserLoginRespDTO> checkLogin(@RequestParam("accessToken") String accessToken) {
         UserLoginRespDTO result = customerUserService.checkLogin(accessToken);
         return Results.success(result);

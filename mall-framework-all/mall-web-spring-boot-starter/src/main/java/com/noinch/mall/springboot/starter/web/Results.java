@@ -1,5 +1,4 @@
 
-
 package com.noinch.mall.springboot.starter.web;
 
 import org.apache.skywalking.apm.toolkit.trace.TraceContext;
@@ -12,7 +11,8 @@ import java.util.Optional;
 /**
  * 全局返回对象构造器
  * failure 都是 protected 因为设计的时候就让 controller 直接 throw 到全局异常处理器，然后全局异常处理器再调用这个方法构建失败响应
- * */
+ *
+ */
 public final class Results {
     
     /**

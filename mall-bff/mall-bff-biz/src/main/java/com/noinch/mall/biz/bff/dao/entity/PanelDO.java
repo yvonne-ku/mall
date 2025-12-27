@@ -27,7 +27,7 @@ public class PanelDO extends BaseDO {
     private String name;
 
     /**
-     * panel 位置
+     * panel 位置：0 是首页板块，1 是推荐板块
      */
     private Integer position;
 

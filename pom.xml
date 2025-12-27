@@ -10,7 +10,9 @@
     <modules>
         <module>mall-framework-all</module>
         <module>mall-gateway</module>
+        <module>mall-bff</module>
         <module>mall-customer-user</module>
+        <module>mall-product</module>
         <module>mall-message</module>
     </modules>
 
@@ -40,8 +42,8 @@
         <!-- Hippo4J Config Spring Boot Starter -->
         <hippo4j-config.version>1.4.3</hippo4j-config.version>
 
-        <!-- Jakarta Servlet API -->
-        <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
+        <!-- Jakarta Validation API -->
+        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
 
         <!-- SkyWalking APM相关版本 -->
         <apm-toolkit-trace.version>8.16.0</apm-toolkit-trace.version>
@@ -65,9 +67,9 @@
         <!-- Aliyun SMS SDK -->
         <dypnsapi20170525.version>1.2.3</dypnsapi20170525.version>
 
+        <springdoc-openapi.version>2.3.0</springdoc-openapi.version>
+
         <!-- 通用工具相关版本 -->
-        <dozer.version>7.0.0</dozer.version>
-        <jaxb.version>2.3.1</jaxb.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <fastjson2.version>2.0.51</fastjson2.version>
         <hutool-all.version>5.8.28</hutool-all.version>
@@ -77,12 +79,12 @@
 
         <!-- 验证相关版本 -->
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <validation-api.version>3.0.2</validation-api.version>
         <javafaker.version>1.0.2</javafaker.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
             <!-- Spring Boot Dependencies BOM -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -205,14 +207,6 @@
                 <version>${apm-toolkit-trace.version}</version>
             </dependency>
 
-            <!-- Jakarta Servlet API -->
-            <dependency>
-                <groupId>jakarta.servlet</groupId>
-                <artifactId>jakarta.servlet-api</artifactId>
-                <version>${jakarta.servlet-api.version}</version>
-                <scope>provided</scope>
-            </dependency>
-
             <!-- MinIO -->
             <dependency>
                 <groupId>io.minio</groupId>
@@ -234,11 +228,12 @@
                 <version>${dypnsapi20170525.version}</version>
             </dependency>
 
-            <!-- Validation API -->
+
+            <!--  Jakarta Validation  -->
             <dependency>
                 <groupId>jakarta.validation</groupId>
                 <artifactId>jakarta.validation-api</artifactId>
-                <version>${validation-api.version}</version>
+                <version>${jakarta.validation-api.version}</version>
             </dependency>
 
             <!-- Hibernate Validator -->
@@ -317,6 +312,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc-openapi.version}</version>
         </dependency>
     </dependencies>
 

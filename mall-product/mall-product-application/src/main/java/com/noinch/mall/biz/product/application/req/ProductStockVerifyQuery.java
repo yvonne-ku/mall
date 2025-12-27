@@ -2,7 +2,7 @@
 
 package com.noinch.mall.biz.product.application.req;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -10,13 +10,13 @@ import lombok.Data;
  * */
 @Data
 public class ProductStockVerifyQuery {
-    
-    @ApiModelProperty("商品 id")
+
+    @Schema(description = "商品 id")
     private String productId;
     
-    @ApiModelProperty("商品 sku id")
+    @Schema(description = "商品 sku id")
     private String productSkuId;
     
-    @ApiModelProperty("商品数量")
+    @Schema(description = "商品数量")
     private Integer productQuantity;
 }
