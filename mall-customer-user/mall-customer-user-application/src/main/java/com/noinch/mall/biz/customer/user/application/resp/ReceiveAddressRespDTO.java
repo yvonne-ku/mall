@@ -2,7 +2,8 @@
 
 package com.noinch.mall.biz.customer.user.application.resp;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -12,36 +13,36 @@ import lombok.Data;
 @Data
 public class ReceiveAddressRespDTO {
     
-    @ApiModelProperty("收货地址 id")
+    @Schema(description = "收货地址 id")
     private String id;
     
-    @ApiModelProperty("c端用户 id")
+    @Schema(description = "c端用户 id")
     private String customerUserId;
     
-    @ApiModelProperty("收货人名称")
+    @Schema(description = "收货人名称")
     private String name;
     
-    @ApiModelProperty("收货人电话")
+    @Schema(description = "收货人电话")
     private String phone;
     
-    @ApiModelProperty("是否默认 0：否 1：是")
+    @Schema(description = "是否默认 0：否 1：是")
     private Integer defaultFlag;
     
-    @ApiModelProperty("标签 0：家 1：公司")
+    @Schema(description = "标签 0：家 1：公司")
     private Integer tag;
     
-    @ApiModelProperty("邮政编码")
+    @Schema(description = "邮政编码")
     private String postCode;
     
-    @ApiModelProperty("省")
+    @Schema(description = "省")
     private String province;
     
-    @ApiModelProperty("市")
+    @Schema(description = "市")
     private String city;
     
-    @ApiModelProperty("区")
+    @Schema(description = "区")
     private String region;
     
-    @ApiModelProperty("详细地址")
+    @Schema(description = "详细地址")
     private String detailAddress;
 }

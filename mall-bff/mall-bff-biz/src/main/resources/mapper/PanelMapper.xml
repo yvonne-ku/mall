@@ -11,16 +11,7 @@
           and position = 0
         order by sort_order
     </select>
-    
-    <!-- 查询捐赠板块记录 -->
-    <select id="getThank" resultType="com.noinch.mall.biz.bff.dao.entity.PanelDO">
-        select *
-        from panel_test
-        where del_flag = '0'
-          and position = 2
-    </select>
-    
-    
+
     <select id="getRecommend" resultType="com.noinch.mall.biz.bff.dao.entity.PanelDO">
         select *
         from panel_test

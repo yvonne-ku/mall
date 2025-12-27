@@ -1,13 +1,12 @@
 package com.noinch.mall.biz.message.application.req;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@ApiModel("请求短信验证码")
+@Schema(description = "请求短信验证码")
 public class PhoneSendCommand {
 
-    @ApiModelProperty("手机号")
+    @Schema(description = "手机号")
     private String phone;
 }

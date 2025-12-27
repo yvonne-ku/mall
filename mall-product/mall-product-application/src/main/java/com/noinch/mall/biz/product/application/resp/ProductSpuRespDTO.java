@@ -2,7 +2,7 @@
 
 package com.noinch.mall.biz.product.application.resp;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -10,61 +10,61 @@ import java.util.Date;
 
 /**
  * 商品 SPU 出参
- * */
+ */
 @Data
 public class ProductSpuRespDTO {
-    
-    @ApiModelProperty("id")
+
+    @Schema(description = "id")
     private Long id;
     
-    @ApiModelProperty("商品类型id")
+    @Schema(description = "商品类型id")
     private Long categoryId;
     
-    @ApiModelProperty("商品品牌id")
+    @Schema(description = "商品品牌id")
     private Long brandId;
     
-    @ApiModelProperty("商品名称")
+    @Schema(description = "商品名称")
     private String name;
     
-    @ApiModelProperty("商品编码")
+    @Schema(description = "商品编码")
     private String productSn;
     
-    @ApiModelProperty("商品主图")
+    @Schema(description = "商品主图")
     private String pic;
-    
-    @ApiModelProperty("商品图集")
+
+    @Schema(description = "商品图集")
     private String photoAlbum;
     
-    @ApiModelProperty("商品价格")
+    @Schema(description = "商品价格")
     private BigDecimal price;
     
-    @ApiModelProperty("促销价格")
+    @Schema(description = "促销价格")
     private BigDecimal promotionPrice;
     
-    @ApiModelProperty("促销开始时间")
+    @Schema(description = "促销开始时间")
     private Date promotionStartTime;
     
-    @ApiModelProperty("促销结束时间")
+    @Schema(description = "促销结束时间")
     private Date promotionEndTime;
     
-    @ApiModelProperty("副标题")
+    @Schema(description = "副标题")
     private String subTitle;
     
-    @ApiModelProperty("销量")
+    @Schema(description = "销量")
     private Integer sales;
     
-    @ApiModelProperty("单位")
+    @Schema(description = "单位")
     private String unit;
     
-    @ApiModelProperty("商品详情")
+    @Schema(description = "商品详情")
     private String detail;
     
-    @ApiModelProperty("发布状态 0：发布 1：未发布")
+    @Schema(description = "发布状态 0：发布 1：未发布")
     private Integer publishStatus;
     
-    @ApiModelProperty("新品状态 0：新品 1：非新品")
+    @Schema(description = "新品状态 0：新品 1：非新品")
     private Integer newStatus;
     
-    @ApiModelProperty("推荐状态 0：推荐 1：非推荐")
+    @Schema(description = "推荐状态 0：推荐 1：非推荐")
     private Integer recommandStatus;
 }

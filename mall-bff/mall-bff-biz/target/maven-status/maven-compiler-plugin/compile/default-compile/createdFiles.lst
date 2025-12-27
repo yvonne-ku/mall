@@ -1,0 +1,11 @@
+com\noinch\mall\biz\bff\service\impl\HomeServiceImpl.class
+com\noinch\mall\biz\bff\service\HomeService.class
+com\noinch\mall\biz\bff\common\ResultT.class
+com\noinch\mall\biz\bff\dao\mapper\PanelMapper.class
+com\noinch\mall\biz\bff\dao\mapper\PanelProductRelationMapper.class
+com\noinch\mall\biz\bff\dto\resp\adapter\HomeGoodsResultAdapterRespDTO.class
+com\noinch\mall\biz\bff\dto\resp\adapter\HomePanelAdapterRespDTO.class
+com\noinch\mall\biz\bff\dao\entity\PanelDO.class
+com\noinch\mall\biz\bff\dto\resp\adapter\HomePanelContentAdapterRespDTO.class
+com\noinch\mall\biz\bff\dao\entity\PanelProductRelationDO.class
+com\noinch\mall\biz\bff\dto\resp\adapter\HomeGoodsAdapterRespDTO.class
