@@ -7,8 +7,8 @@ import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * 用户注册
-*
-*/
+ *
+ */
 @Data
 @Schema(description = "用户注册")
 public class UserRegisterCommand {
