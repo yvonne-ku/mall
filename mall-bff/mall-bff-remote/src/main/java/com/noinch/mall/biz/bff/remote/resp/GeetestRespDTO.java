@@ -1,4 +1,4 @@
-package com.noinch.mall.biz.customer.user.domain.dto;
+package com.noinch.mall.biz.bff.remote.resp;
 
 import lombok.Data;
 

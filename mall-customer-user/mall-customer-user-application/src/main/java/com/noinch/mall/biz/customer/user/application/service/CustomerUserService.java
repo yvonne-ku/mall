@@ -7,13 +7,17 @@ import com.noinch.mall.biz.customer.user.application.req.UserVerifyCodeCommand;
 import com.noinch.mall.biz.customer.user.domain.dto.GeetestRespDTO;
 import com.noinch.mall.biz.customer.user.application.resp.UserLoginRespDTO;
 import com.noinch.mall.biz.customer.user.application.resp.UserRegisterRespDTO;
+import com.noinch.mall.springboot.starter.convention.result.Result;
+import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * C 端用户接口
 *
 */
 public interface CustomerUserService {
-    
+
+
     /**
      * C 端用户验证
      *
