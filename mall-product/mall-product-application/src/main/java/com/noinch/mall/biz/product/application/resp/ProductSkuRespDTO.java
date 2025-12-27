@@ -2,35 +2,35 @@
 
 package com.noinch.mall.biz.product.application.resp;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.math.BigDecimal;
 
 /**
  * 商品 SKU 出参
- * */
+ */
 @Data
 public class ProductSkuRespDTO {
     
-    @ApiModelProperty("id")
+    @Schema(description = "id")
     private Long id;
     
-    @ApiModelProperty("商品 id")
+    @Schema(description = "商品 id")
     private Long productId;
     
-    @ApiModelProperty("价格")
+    @Schema(description = "价格")
     private BigDecimal price;
     
-    @ApiModelProperty("库存")
+    @Schema(description = "库存")
     private Integer stock;
     
-    @ApiModelProperty("锁定库存")
+    @Schema(description = "锁定库存")
     private Integer lockStock;
     
-    @ApiModelProperty("图片")
+    @Schema(description = "图片")
     private String pic;
     
-    @ApiModelProperty("属性，json 格式")
+    @Schema(description = "属性，json 格式")
     private String attribute;
 }

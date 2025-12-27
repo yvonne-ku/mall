@@ -29,4 +29,10 @@ public interface HomeService {
      * @return 商城首页全部商品返回数据
      */
     HomeGoodsResultAdapterRespDTO allGoods(Integer page, Integer size, Integer sort, Integer priceGt, Integer priceLte);
+
+    /**
+     * 查询商城首页推荐商品数据
+     * @return 商城首页推荐商品返回数据
+     */
+    HomePanelAdapterRespDTO recommend();
 }

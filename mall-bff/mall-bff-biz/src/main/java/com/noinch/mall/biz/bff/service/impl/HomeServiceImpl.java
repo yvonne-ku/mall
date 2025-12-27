@@ -1,8 +1,9 @@
 package com.noinch.mall.biz.bff.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
-import com.alicp.jetcache.anno.Cached;
 import com.google.common.collect.Lists;
 import com.noinch.mall.biz.bff.dao.entity.PanelDO;
 import com.noinch.mall.biz.bff.dao.entity.PanelProductRelationDO;
@@ -16,7 +17,6 @@ import com.noinch.mall.biz.bff.remote.ProductRemoteService;
 import com.noinch.mall.biz.bff.remote.resp.ProductRespDTO;
 import com.noinch.mall.biz.bff.remote.resp.ProductSpuRespDTO;
 import com.noinch.mall.biz.bff.service.HomeService;
-import com.noinch.mall.springboot.starter.common.toolkit.BeanUtil;
 import com.noinch.mall.springboot.starter.convention.exception.ServiceException;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
 import com.noinch.mall.springboot.starter.convention.result.Result;
@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -47,7 +47,11 @@ public class HomeServiceImpl implements HomeService {
 //    @Cached(name = "home:", key = "panel", expire = 24, timeUnit = TimeUnit.HOURS)
     public List<HomePanelAdapterRespDTO> listHomePanel() {
         List<PanelDO> listAllPanel = panelMapper.listAllPanel();
-        List<HomePanelAdapterRespDTO> result = BeanUtil.convert(listAllPanel, HomePanelAdapterRespDTO.class);
+        List<HomePanelAdapterRespDTO> result = listAllPanel.stream().map(each -> {
+            HomePanelAdapterRespDTO homePanelAdapterRespDTO = new HomePanelAdapterRespDTO();
+            BeanUtil.copyProperties(each, homePanelAdapterRespDTO, CopyOptions.create().setIgnoreNullValue(true));
+            return homePanelAdapterRespDTO;
+        }).collect(Collectors.toList());
         result.forEach(each -> {
             // 获得当前板块下的所有商品关联记录
             List<PanelProductRelationDO> panelProductRelationList = panelProductRelationMapper.listPanelProductRelationByPanelId(each.getId());
@@ -122,4 +126,42 @@ public class HomeServiceImpl implements HomeService {
         return new HomeGoodsResultAdapterRespDTO(pageResponse.getTotal(), goodsAdapter);
     }
 
+    @Override
+//    @Cached(name = "home:", key = "'recommend'", expire = 24, timeUnit = TimeUnit.HOURS)
+    public HomePanelAdapterRespDTO recommend() {
+        PanelDO recommend = panelMapper.getRecommend();
+        HomePanelAdapterRespDTO result = new HomePanelAdapterRespDTO();
+        BeanUtil.copyProperties(recommend, result, CopyOptions.create().setIgnoreNullValue(true));
+        // 获得当前板块下的所有商品关联记录
+        List<PanelProductRelationDO> panelProductRelationList = panelProductRelationMapper.listPanelProductRelationByPanelId(recommend.getId());
+        if (CollUtil.isNotEmpty(panelProductRelationList)) {
+            List<HomePanelContentAdapterRespDTO> panelContents = new ArrayList<>();
+            panelProductRelationList.forEach(item -> {
+                Result<ProductRespDTO> productResult = productRemoteService.getProductBySpuId(String.valueOf(item.getProductId()));
+                if (productResult.isSuccess() && productResult.getData() != null) {
+                    ProductRespDTO resultData = productResult.getData();
+                    ProductSpuRespDTO productSpu = resultData.getProductSpu();
+                    HomePanelContentAdapterRespDTO productRespDTO = new HomePanelContentAdapterRespDTO();
+                    productRespDTO.setProductId(String.valueOf(productSpu.getId()));
+                    productRespDTO.setProductName(productSpu.getName());
+                    productRespDTO.setId(String.valueOf(productSpu.getId()));
+                    productRespDTO.setSalePrice(productSpu.getPrice().intValue());
+                    productRespDTO.setSortOrder(item.getSort());
+                    productRespDTO.setSubTitle(productSpu.getSubTitle());
+                    productRespDTO.setPanelId(recommend.getId());
+                    productRespDTO.setType(0);
+                    productRespDTO.setCreated(new Date());
+                    productRespDTO.setUpdated(new Date());
+                    List<String> pics = StrUtil.split(productSpu.getPic(), ",");
+                    if (pics.size() == 1) {
+                        productRespDTO.setProductImageBig(pics.get(0));
+                        productRespDTO.setPicUrl(pics.get(0));
+                    }
+                    panelContents.add(productRespDTO);
+                }
+            });
+            result.setPanelContents(panelContents);
+        }
+        return result;
+    }
 }

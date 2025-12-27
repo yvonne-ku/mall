@@ -1,11 +1,9 @@
 
 package com.noinch.mall.biz.customer.user.application.resp;
 
-import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * 用户登录返回实体
@@ -15,15 +13,15 @@ import lombok.NoArgsConstructor;
 @Builder
 public class UserLoginRespDTO {
     
-    @ApiModelProperty(value = "用户ID")
+    @Schema(description = "用户ID")
     private Long customerUserId;
     
-    @ApiModelProperty(value = "用户名")
+    @Schema(description = "用户名")
     private String username;
     
-    @ApiModelProperty(value = "账号")
+    @Schema(description = "账号")
     private String account;
     
-    @ApiModelProperty(value = "Token")
+    @Schema(description = "Token")
     private String accessToken;
 }

@@ -1,8 +1,8 @@
 
 package com.noinch.mall.biz.product.interfaces.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import com.noinch.mall.biz.product.application.req.ProductLockStockCommand;
 import com.noinch.mall.biz.product.application.req.ProductStockVerifyQuery;
@@ -20,17 +20,17 @@ import java.util.List;
 
 /**
  * 商品库存控制层
- * */
+ */
 @MLog
 @RestController
 @AllArgsConstructor
-@Api(tags = "商品库存")
+@Tag(name = "商品库存")
 public class ProductStockController {
     
     private final ProductService productService;
     
     @PostMapping("/api/product/stock/verify")
-    @ApiOperation(value = "验证商品库存", notes = "批量验证，可一次性传入多个商品信息")
+    @Operation(description = "验证商品库存")
     public Result<Boolean> verifyProductStock(@RequestBody List<ProductStockVerifyQuery> requestParams) {
         boolean result = productService.verifyProductStock(requestParams);
         return Results.success(result);
@@ -42,7 +42,7 @@ public class ProductStockController {
 //            scene = IdempotentSceneEnum.RESTAPI
 //    )
     @PutMapping("/api/product/stock/lock")
-    @ApiOperation(value = "锁定商品库存")
+    @Operation(description = "锁定商品库存")
     public Result<Boolean> lockProductStock(@RequestBody ProductLockStockCommand requestParam) {
         boolean result = productService.lockProductStock(requestParam);
         return Results.success(result);
@@ -54,7 +54,7 @@ public class ProductStockController {
 //            scene = IdempotentSceneEnum.RESTAPI
 //    )
     @PutMapping("/api/product/stock/unlock")
-    @ApiOperation(value = "解锁商品库存")
+    @Operation(description = "解锁商品库存")
     public Result<Boolean> unlockProductStock(@RequestBody ProductUnlockStockCommand requestParam) {
         boolean result = productService.unlockProductStock(requestParam);
         return Results.success(result);

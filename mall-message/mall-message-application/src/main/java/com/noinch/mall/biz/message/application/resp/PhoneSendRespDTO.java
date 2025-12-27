@@ -1,18 +1,17 @@
 package com.noinch.mall.biz.message.application.resp;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-@ApiModel("发送短信消息响应")
+@Schema(description = "发送短信消息响应")
 public class PhoneSendRespDTO {
 
-    @ApiModelProperty("手机号")
+    @Schema(description = "手机号")
     private String phone;
 
-    @ApiModelProperty("短信发送状态")
+    @Schema(description = "短信发送状态")
     private boolean status;
 }
