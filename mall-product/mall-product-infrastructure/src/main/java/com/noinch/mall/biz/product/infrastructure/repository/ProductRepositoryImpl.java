@@ -2,8 +2,9 @@
 
 package com.noinch.mall.biz.product.infrastructure.repository;
 
-import cn.hippo4j.common.toolkit.BeanUtil;
 import cn.hippo4j.core.executor.support.ThreadPoolBuilder;
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -61,12 +62,12 @@ public class ProductRepositoryImpl implements ProductRepository {
                 .submit(() -> productSkuMapper.selectList(Wrappers.lambdaQuery(ProductSkuDO.class).eq(ProductSkuDO::getProductId, spuId)));
 
         ProductSpu productSpu = new ProductSpu();
-        BeanUtil.convert(productSpuDO, productSpu);
+        BeanUtil.copyProperties(productSpuDO, productSpu, CopyOptions.create().setIgnoreNullValue(true));
         ProductBrand productBrand = new ProductBrand();
-        BeanUtil.convert(productBrandDOFuture.get(), productBrand);
+        BeanUtil.copyProperties(productBrandDOFuture.get(), productBrand, CopyOptions.create().setIgnoreNullValue(true));
         List<ProductSku> productSkus = productSkuDOListFuture.get().stream().map(each -> {
             ProductSku productSku = new ProductSku();
-            BeanUtil.convert(each, productSku);
+            BeanUtil.copyProperties(each, productSku, CopyOptions.create().setIgnoreNullValue(true));
             return productSku;
         }).collect(Collectors.toList());
         return Product.builder()
@@ -134,7 +135,11 @@ public class ProductRepositoryImpl implements ProductRepository {
                 .orderBy(pageQuery.getSort() != null, Optional.ofNullable(pageQuery.getSort()).map(each -> each == 1 ? true : false).orElse(false), ProductSpuDO::getPrice);
         Page<ProductSpuDO> selectPage = productSpuMapper.selectPage(page, queryWrapper);
         List<Product> productList = selectPage.getRecords().stream()
-                .map(each -> Product.builder().productSpu(BeanUtil.convert(each, ProductSpu.class)).build())
+                .map(each -> {
+                    ProductSpu productSpu = new ProductSpu();
+                    BeanUtil.copyProperties(each, productSpu, CopyOptions.create().setIgnoreNullValue(true));
+                    return Product.builder().productSpu(productSpu).build();
+                })
                 .collect(Collectors.toList());
         return new PageResponse<>(pageQuery.getCurrent(), pageQuery.getSize(), selectPage.getTotal(), productList);
     }

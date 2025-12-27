@@ -6,20 +6,25 @@ import com.noinch.mall.biz.customer.user.domain.dto.GeetestRespDTO;
 import com.noinch.mall.biz.customer.user.domain.service.GeetestService;
 import com.noinch.mall.biz.customer.user.infrastructure.config.GeetestConfig;
 import com.noinch.mall.biz.customer.user.infrastructure.sdk.GeetestLib;
+import com.noinch.mall.springboot.starter.cache.DistributedCache;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
- * 极验验证码服务（基于官方SDK重写） */
+ * 极验验证码服务（基于官方SDK重写）
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class GeetestServiceImpl implements GeetestService {
 
     private final GeetestConfig geetestConfig;
+
+    private final DistributedCache distributedCache;
 
     /**
      * 初始化极验验证码
@@ -35,24 +40,20 @@ public class GeetestServiceImpl implements GeetestService {
             // 创建GeetestLib实例
             GeetestLib geetestLib = new GeetestLib(geetestConfig.getCaptchaId(), geetestConfig.getPrivateKey());
 
-            // 生成用户ID
+            // statusKey, 用于后续验证，防止跨站请求伪造（CSRF）攻击
             String userId = UUID.randomUUID().toString();
 
-            // 初始化验证码（带用户ID）
-            int result = geetestLib.preProcess(userId);
+            // 调用 preProcess 方法，获取服务器状态码（1表示需要重新获取验证码，0表示可以直接展示验证码）
+            // 存入缓存，为后续验证时能够校验用户是否是合法请求
+            int gtServerStatus = geetestLib.preProcess(userId);
+            distributedCache.put(userId, String.valueOf(gtServerStatus), 360, TimeUnit.SECONDS);
 
-            // 获取初始化结果JSON
+            // 调用 getResponseStr 方法，获取初始化结果 JSON 字符串
+            // 从响应字符串中提取 gt、challenge、newCaptcha、success 字段，并构建 GeetestRespDTO 对象
             String responseStr = geetestLib.getResponseStr();
-            JSONObject jsonObject = JSON.parseObject(responseStr);
-
-            // 构建响应DTO
-            return GeetestRespDTO.builder()
-                    .gt(geetestConfig.getCaptchaId())
-                    .challenge(jsonObject.getString("challenge"))
-                    .newCaptcha(true)
-                    .success(result == 1)
-                    .statusKey(userId)
-                    .build();
+            GeetestRespDTO geetestRespDTO = JSON.parseObject(responseStr, GeetestRespDTO.class);
+            geetestRespDTO.setStatusKey(userId);
+            return geetestRespDTO;
 
         } catch (Exception e) {
             log.error("极验验证码初始化失败", e);
@@ -76,14 +77,22 @@ public class GeetestServiceImpl implements GeetestService {
         }
 
         try {
-            // 创建GeetestLib实例
             GeetestLib geetestLib = new GeetestLib(geetestConfig.getCaptchaId(), geetestConfig.getPrivateKey());
 
-            // 验证验证码
-            int result = geetestLib.enhencedValidateRequest(challenge, validate, seccode, statusKey);
-
-            log.info("极验验证结果: {}", result == 1 ? "成功" : "失败");
-            return result == 1;
+            // 从缓存中获取服务器状态码
+            // 0 表示可以直接展示验证码，1 表示需要重新获取验证码
+            int gtServerStatus = Integer.parseInt(distributedCache.get(statusKey, String.class));
+            int gtResult = -1;
+            if (gtServerStatus == 1) {
+                // 调用 enhencedValidateRequest 方法，进行验证码验证
+                gtResult = geetestLib.enhencedValidateRequest(challenge, validate, seccode, statusKey);
+            }
+            if (gtServerStatus == 0) {
+                // 调用 failBackValidateRequest 方法，进行验证码验证
+                gtResult = geetestLib.failbackValidateRequest(challenge, validate, seccode);
+            }
+            log.info("极验验证结果: {}", gtResult == 1 ? "成功" : "失败");
+            return gtResult == 1;
 
         } catch (Exception e) {
             log.error("极验验证码验证失败", e);
@@ -95,12 +104,11 @@ public class GeetestServiceImpl implements GeetestService {
      * 创建模拟的极验验证码数据（用于开发环境）
      */
     private GeetestRespDTO createMockGeetestData() {
-        return GeetestRespDTO.builder()
-                .gt("mock-gt-id")
-                .challenge(UUID.randomUUID().toString())
-                .newCaptcha(true)
-                .success(true)
-                .statusKey(UUID.randomUUID().toString())
-                .build();
+        GeetestRespDTO geetestRespDTO = new GeetestRespDTO();
+        geetestRespDTO.setGt("mock-gt-id");
+        geetestRespDTO.setChallenge(UUID.randomUUID().toString());
+        geetestRespDTO.setSuccess(true);
+        geetestRespDTO.setStatusKey(UUID.randomUUID().toString());
+        return geetestRespDTO;
     }
 }
