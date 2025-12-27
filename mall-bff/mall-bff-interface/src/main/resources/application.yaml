@@ -21,6 +21,8 @@ mall:
     safe-mode: true
   product-service:
     url: http://localhost:8004
+  customer-user-service:
+    url: http://localhost:8002
 
 jetcache:
   areaInCacheName: false
