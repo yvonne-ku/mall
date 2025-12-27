@@ -2,7 +2,7 @@
 
 package com.noinch.mall.biz.customer.user.application.req;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -10,7 +10,7 @@ import lombok.Data;
 *
 */
 @Data
-@ApiModel("删除收货地址")
+@Schema(description = "删除收货地址")
 public class ReceiveAddressDeleteCommand {
     
     /**

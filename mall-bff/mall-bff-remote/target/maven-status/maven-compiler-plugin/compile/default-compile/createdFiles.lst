@@ -1,0 +1,7 @@
+com\noinch\mall\biz\bff\remote\resp\UserLoginRespDTO.class
+com\noinch\mall\biz\bff\remote\resp\ProductBrandRespDTO.class
+com\noinch\mall\biz\bff\remote\resp\ProductRespDTO.class
+com\noinch\mall\biz\bff\remote\resp\ProductSpuRespDTO.class
+com\noinch\mall\biz\bff\remote\resp\ProductSkuRespDTO.class
+com\noinch\mall\biz\bff\remote\req\ProductPageQuery.class
+com\noinch\mall\biz\bff\remote\ProductRemoteService.class

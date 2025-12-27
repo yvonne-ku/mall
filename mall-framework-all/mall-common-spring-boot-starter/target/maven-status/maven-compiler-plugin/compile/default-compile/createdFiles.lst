@@ -3,15 +3,12 @@ com\noinch\mall\springboot\starter\common\toolkit\Assert.class
 com\noinch\mall\springboot\starter\common\enums\FlagEnum.class
 com\noinch\mall\springboot\starter\common\threadpool\build\ThreadPoolBuilder.class
 com\noinch\mall\springboot\starter\common\enums\StatusEnum.class
-com\noinch\mall\springboot\starter\common\toolkit\BeanUtil$1.class
 com\noinch\mall\springboot\starter\common\threadpool\build\ThreadFactoryBuilder$1.class
 com\noinch\mall\springboot\starter\common\toolkit\EnvironmentUtil.class
 com\noinch\mall\springboot\starter\common\threadpool\build\ThreadFactoryBuilder.class
-com\noinch\mall\springboot\starter\common\toolkit\BeanUtil$2.class
 com\noinch\mall\springboot\starter\common\enums\OperationTypeEnum.class
 com\noinch\mall\springboot\starter\common\enums\DelEnum.class
 com\noinch\mall\springboot\starter\common\threadpool\support\eager\TaskQueue.class
-com\noinch\mall\springboot\starter\common\toolkit\BeanUtil.class
 com\noinch\mall\springboot\starter\common\threadpool\proxy\RejectedProxyUtil.class
 com\noinch\mall\springboot\starter\common\threadpool\support\eager\EagerThreadPoolExecutor.class
 com\noinch\mall\springboot\starter\common\toolkit\ThreadUtil.class

@@ -16,4 +16,8 @@ public interface PanelMapper extends BaseMapper<PanelDO> {
      */
     List<PanelDO> listAllPanel();
 
+    /**
+     * 为您推荐板块
+     */
+    PanelDO getRecommend();
 }

@@ -1,6 +1,7 @@
 package com.noinch.mall.springboot.starter.mybatisplus.config;
 
 
+import cn.hutool.core.lang.Console;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;

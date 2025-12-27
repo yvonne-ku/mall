@@ -2,12 +2,12 @@
 
 package com.noinch.mall.biz.product.infrastructure.repository;
 
+import cn.hippo4j.common.toolkit.BeanUtil;
 import cn.hippo4j.core.executor.support.ThreadPoolBuilder;
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.noinch.mall.springboot.starter.common.toolkit.BeanUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import com.noinch.mall.biz.product.domain.aggregate.Product;
@@ -59,10 +59,20 @@ public class ProductRepositoryImpl implements ProductRepository {
                 .submit(() -> productBrandMapper.selectById(productSpuDO.getBrandId()));
         Future<List<ProductSkuDO>> productSkuDOListFuture = productThreadPoolExecutor
                 .submit(() -> productSkuMapper.selectList(Wrappers.lambdaQuery(ProductSkuDO.class).eq(ProductSkuDO::getProductId, spuId)));
+
+        ProductSpu productSpu = new ProductSpu();
+        BeanUtil.convert(productSpuDO, productSpu);
+        ProductBrand productBrand = new ProductBrand();
+        BeanUtil.convert(productBrandDOFuture.get(), productBrand);
+        List<ProductSku> productSkus = productSkuDOListFuture.get().stream().map(each -> {
+            ProductSku productSku = new ProductSku();
+            BeanUtil.convert(each, productSku);
+            return productSku;
+        }).collect(Collectors.toList());
         return Product.builder()
-                .productBrand(BeanUtil.convert(productBrandDOFuture.get(), ProductBrand.class))
-                .productSpu(BeanUtil.convert(productSpuDO, ProductSpu.class))
-                .productSkus(BeanUtil.convert(productSkuDOListFuture.get(), ProductSku.class))
+                .productBrand(productBrand)
+                .productSpu(productSpu)
+                .productSkus(productSkus)
                 .build();
     }
     
