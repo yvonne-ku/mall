@@ -2,8 +2,8 @@
 
 package com.noinch.mall.biz.product.interfaces.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import com.noinch.mall.biz.product.application.resp.ProductCategoryRespDTO;
 import com.noinch.mall.biz.product.application.service.ProductCategoryService;
@@ -21,13 +21,13 @@ import java.util.List;
 @MLog
 @RestController
 @AllArgsConstructor
-@Api(tags = "商品分类")
+@Tag(name = "商品分类")
 public class ProductCategoryController {
     
     private final ProductCategoryService productCategoryService;
     
     @GetMapping("/api/product/categories")
-    @ApiOperation(value = "查询商品分类集合", notes = "返回全部分类")
+    @Operation(summary = "查询商品分类集合")
     public Result<List<ProductCategoryRespDTO>> listAllProductCategory() {
         return Results.success(productCategoryService.listAllProductCategory());
     }

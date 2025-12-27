@@ -11,4 +11,4 @@ D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main
 D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\dao\entity\OperationLogDO.java
 D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\repository\ReceiveAddressRepositoryImpl.java
 D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\remote\MessageServiceFeignClient.java
-D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\converter\CustomerUserConverter.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-infrastructure\src\main\java\com\noinch\mall\biz\customer\user\infrastructure\converter\CustomerUserToDOConverter.java

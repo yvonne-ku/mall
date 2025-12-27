@@ -2,7 +2,8 @@
 
 package com.noinch.mall.biz.product.application.service.impl;
 
-import com.noinch.mall.springboot.starter.common.toolkit.BeanUtil;
+import cn.hutool.core.bean.BeanUtil;
+import com.noinch.mall.biz.product.domain.dto.ProductStockDetailDTO;
 import lombok.AllArgsConstructor;
 import com.noinch.mall.biz.product.application.req.ProductLockStockCommand;
 import com.noinch.mall.biz.product.application.req.ProductPageQuery;
@@ -18,6 +19,7 @@ import com.noinch.mall.springboot.starter.convention.page.PageResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 商品服务
@@ -31,36 +33,68 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductRespDTO getProductBySpuId(Long spuId) {
         Product product = productRepository.getProductBySpuId(spuId);
-        return BeanUtil.convert(product, ProductRespDTO.class);
+        ProductRespDTO productRespDTO = new ProductRespDTO();
+        BeanUtil.copyProperties(product, productRespDTO);
+        return productRespDTO;
     }
     
     @Override
     public Boolean verifyProductStock(List<ProductStockVerifyQuery> requestParams) {
-        ProductStock productStock = ProductStock.builder().productStockDetails(BeanUtil.convert(requestParams, ProductStockDetail.class)).build();
+        List<ProductStockDetail> productStockDetails = requestParams.stream().map(requestParam -> {
+            ProductStockDetail productStockDetail = new ProductStockDetail();
+            BeanUtil.copyProperties(requestParam, productStockDetail);
+            return productStockDetail;
+        }).collect(Collectors.toList());
+        ProductStock productStock = ProductStock.builder()
+                .productStockDetails(productStockDetails)
+                .build();
         return productRepository.verifyProductStock(productStock);
     }
     
     @Override
     public Boolean lockProductStock(ProductLockStockCommand requestParam) {
-        return productRepository.lockProductStock(BeanUtil.convert(requestParam, ProductStock.class));
+        List<ProductStockDetail> productStockDetails = requestParam.getProductStockDetails().stream().map(requestParamDetail -> {
+            ProductStockDetail productStockDetail = new ProductStockDetail();
+            BeanUtil.copyProperties(requestParamDetail, productStockDetail);
+            return productStockDetail;
+        }).collect(Collectors.toList());
+        return productRepository.lockProductStock(ProductStock.builder()
+                .orderSn(requestParam.getOrderSn())
+                .productStockDetails(productStockDetails)
+                .build());
     }
     
     @Override
     public Boolean unlockProductStock(ProductUnlockStockCommand requestParam) {
-        return productRepository.unlockProductStock(BeanUtil.convert(requestParam, ProductStock.class));
+        List<ProductStockDetail> productStockDetails = requestParam.getProductStockDetails().stream().map(requestParamDetail -> {
+            ProductStockDetail productStockDetail = new ProductStockDetail();
+            BeanUtil.copyProperties(requestParamDetail, productStockDetail);
+            return productStockDetail;
+        }).collect(Collectors.toList());
+        return productRepository.unlockProductStock(ProductStock.builder()
+                .orderSn(requestParam.getOrderSn())
+                .productStockDetails(productStockDetails)
+                .build());
     }
     
     @Override
     public PageResponse<ProductRespDTO> pageQueryProduct(ProductPageQuery requestParam) {
+        com.noinch.mall.biz.product.domain.aggregate.ProductPageQuery productPageQuery = new com.noinch.mall.biz.product.domain.aggregate.ProductPageQuery();
+        BeanUtil.copyProperties(requestParam, productPageQuery);
         Product product = Product.builder()
-                .pageQuery(BeanUtil.convert(requestParam, com.noinch.mall.biz.product.domain.aggregate.ProductPageQuery.class))
+                .pageQuery(productPageQuery)
                 .build();
         PageResponse<Product> productPageResponse = productRepository.pageQueryProduct(product);
+        List<ProductRespDTO> productRespDTOS = productPageResponse.getRecords().stream().map(each -> {
+            ProductRespDTO productRespDTO = new ProductRespDTO();
+            BeanUtil.copyProperties(each, productRespDTO);
+            return productRespDTO;
+        }).collect(Collectors.toList());
         return PageResponse.<ProductRespDTO>builder()
                 .current(productPageResponse.getCurrent())
                 .size(productPageResponse.getSize())
                 .total(productPageResponse.getTotal())
-                .records(BeanUtil.convert(productPageResponse.getRecords(), ProductRespDTO.class))
+                .records(productRespDTOS)
                 .build();
     }
 }

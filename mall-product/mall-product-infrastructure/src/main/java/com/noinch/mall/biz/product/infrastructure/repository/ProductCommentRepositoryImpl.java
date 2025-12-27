@@ -2,9 +2,10 @@
 
 package com.noinch.mall.biz.product.infrastructure.repository;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
-import com.noinch.mall.springboot.starter.common.toolkit.BeanUtil;
 import lombok.RequiredArgsConstructor;
 import com.noinch.mall.biz.product.domain.aggregate.ProductComment;
 import com.noinch.mall.biz.product.domain.repository.ProductCommentRepository;
@@ -24,7 +25,8 @@ public class ProductCommentRepositoryImpl implements ProductCommentRepository {
     
     @Override
     public void saveProductComment(ProductComment productComment) {
-        ProductCommentDO productCommentDO = BeanUtil.convert(productComment, ProductCommentDO.class);
+        ProductCommentDO productCommentDO = new ProductCommentDO();
+        BeanUtil.copyProperties(productComment, productCommentDO, CopyOptions.create().ignoreNullValue());
         productCommentMapper.insert(productCommentDO);
     }
     
@@ -38,7 +40,8 @@ public class ProductCommentRepositoryImpl implements ProductCommentRepository {
     
     @Override
     public void appendProductComment(ProductComment productComment) {
-        ProductCommentDO productCommentDO = BeanUtil.convert(productComment, ProductCommentDO.class);
+        ProductCommentDO productCommentDO = new ProductCommentDO();
+        BeanUtil.copyProperties(productComment, productCommentDO, CopyOptions.create().ignoreNullValue());
         productCommentDO.setAppendFlag(FlagEnum.TRUE.code());
         productCommentDO.setCommentFlag(FlagEnum.FALSE.code());
         productCommentMapper.insert(productCommentDO);

@@ -18,11 +18,10 @@ public class ThreadPoolConfiguration {
     @DynamicThreadPool
     public ThreadPoolExecutor productThreadPoolExecutor() {
         String productThreadPoolId = "product-common-executor";
-        ThreadPoolExecutor threadPoolExecutor = ThreadPoolBuilder.builder()
+        return ThreadPoolBuilder.builder()
                 .threadPoolId(productThreadPoolId)
                 .threadFactory(productThreadPoolId)
                 .dynamicPool()
                 .build();
-        return threadPoolExecutor;
     }
 }
