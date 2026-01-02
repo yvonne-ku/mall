@@ -1,0 +1,4 @@
+com\noinch\mall\springboot\starter\elasticsearch\config\properties\ElasticsearchProperties.class
+com\noinch\mall\springboot\starter\elasticsearch\config\properties\ElasticsearchProperties$Ssl.class
+com\noinch\mall\springboot\starter\elasticsearch\EsClientTemplate.class
+com\noinch\mall\springboot\starter\elasticsearch\config\ElasticAutoConfiguration.class
