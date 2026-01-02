@@ -1,2 +1,3 @@
 com\noinch\mall\biz\bff\interfaces\BFFApplication.class
+com\noinch\mall\biz\bff\interfaces\controller\UserLoginController.class
 com\noinch\mall\biz\bff\interfaces\controller\HomeController.class

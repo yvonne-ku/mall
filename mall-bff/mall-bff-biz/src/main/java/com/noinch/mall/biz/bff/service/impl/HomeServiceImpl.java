@@ -44,6 +44,11 @@ public class HomeServiceImpl implements HomeService {
 
 
     @Override
+    public HomeGoodsResultAdapterRespDTO quickSearch(String keyword) {
+        return null;
+    }
+
+    @Override
 //    @Cached(name = "home:", key = "panel", expire = 24, timeUnit = TimeUnit.HOURS)
     public List<HomePanelAdapterRespDTO> listHomePanel() {
         List<PanelDO> listAllPanel = panelMapper.listAllPanel();
@@ -164,4 +169,5 @@ public class HomeServiceImpl implements HomeService {
         }
         return result;
     }
+
 }

@@ -16,7 +16,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 /**
- * 缓存自动装配类 */
+ * 缓存自动装配类
+ */
 @EnableConfigurationProperties({RedisDistributedProperties.class, BloomFilterPenetrateProperties.class})
 @AutoConfigureAfter({RedisAutoConfiguration.class})
 public class CacheAutoConfiguration {
