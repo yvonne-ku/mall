@@ -3,6 +3,7 @@
 package com.noinch.mall.biz.product.application.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.noinch.mall.biz.product.application.resp.QuickSearchRespDTO;
 import com.noinch.mall.biz.product.domain.dto.ProductStockDetailDTO;
 import lombok.AllArgsConstructor;
 import com.noinch.mall.biz.product.application.req.ProductLockStockCommand;
@@ -96,5 +97,10 @@ public class ProductServiceImpl implements ProductService {
                 .total(productPageResponse.getTotal())
                 .records(productRespDTOS)
                 .build();
+    }
+
+    @Override
+    public QuickSearchRespDTO quickSearch(String keyword) {
+        return null;
     }
 }

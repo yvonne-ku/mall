@@ -25,18 +25,17 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "商城首页")
-@RequestMapping("/api/home")
 public class HomeController {
     
     private final HomeService homeService;
     
-    @GetMapping("/panel")
+    @GetMapping("/goods/panel")
     @Operation(description = "商城首页板块商品数据")
     public ResultT<List<HomePanelAdapterRespDTO>> homePanel() {
         return ResultT.success(homeService.listHomePanel());
     }
 
-    @GetMapping("/allGoods")
+    @GetMapping("/goods/allGoods")
     @Operation(description = "全部商品")
     @Parameter(name = "page", description = "全部商品列表第几页", required = true, example = "1")
     @Parameter(name = "size", description = "全部商品列表每页多少条数据", required = true, example = "10")
@@ -51,9 +50,15 @@ public class HomeController {
         return ResultT.success(homeService.allGoods(page, size, sort, priceGt, priceLte));
     }
 
-    @GetMapping("/recommend")
+    @GetMapping("/goods/recommend")
     @Operation(description = "为您推荐")
     public ResultT<List<HomePanelAdapterRespDTO>> homeRecommend() {
         return ResultT.success(Lists.newArrayList(homeService.recommend()));
+    }
+
+    @GetMapping("/goods/quickSearch")
+    @Operation(description = "快速搜索下拉框提示")
+    public ResultT<HomeGoodsResultAdapterRespDTO> homeQuickSearch(@RequestParam(value = "key", required = false) String keyword) {
+        return ResultT.success(homeService.quickSearch(keyword));
     }
 }

@@ -3,6 +3,7 @@ D:\MyProjects\mall\mall-product\mall-product-application\src\main\java\com\noinc
 D:\MyProjects\mall\mall-product\mall-product-application\src\main\java\com\noinch\mall\biz\product\application\service\ProductService.java
 D:\MyProjects\mall\mall-product\mall-product-application\src\main\java\com\noinch\mall\biz\product\application\req\ProductLockStockCommand.java
 D:\MyProjects\mall\mall-product\mall-product-application\src\main\java\com\noinch\mall\biz\product\application\req\ProductCommentAppendCommand.java
+D:\MyProjects\mall\mall-product\mall-product-application\src\main\java\com\noinch\mall\biz\product\application\resp\QuickSearchRespDTO.java
 D:\MyProjects\mall\mall-product\mall-product-application\src\main\java\com\noinch\mall\biz\product\application\resp\ProductBrandRespDTO.java
 D:\MyProjects\mall\mall-product\mall-product-application\src\main\java\com\noinch\mall\biz\product\application\resp\ProductCategoryRespDTO.java
 D:\MyProjects\mall\mall-product\mall-product-application\src\main\java\com\noinch\mall\biz\product\application\resp\ProductSpuRespDTO.java
