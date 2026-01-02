@@ -11,7 +11,13 @@ import java.util.List;
  *
  */
 public interface HomeService {
-    
+
+    /**
+     * 简单关键字搜索封装 (支持分页)
+     */
+    HomeGoodsResultAdapterRespDTO quickSearch(String keyword);
+
+
     /**
      * 查询商城首页板块数据
      *
@@ -35,4 +41,5 @@ public interface HomeService {
      * @return 商城首页推荐商品返回数据
      */
     HomePanelAdapterRespDTO recommend();
+
 }

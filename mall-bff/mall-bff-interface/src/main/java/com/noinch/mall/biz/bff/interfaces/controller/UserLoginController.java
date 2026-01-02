@@ -1,15 +1,12 @@
 
 package com.noinch.mall.biz.bff.interfaces.controller;
 
-import com.alibaba.fastjson2.JSON;
 
 import com.noinch.mall.biz.bff.common.ResultT;
 import com.noinch.mall.biz.bff.dto.req.adapter.UserRegisterAdapterReqDTO;
 import com.noinch.mall.biz.bff.dto.resp.adapter.GeeTestAdapterRespDTO;
 import com.noinch.mall.biz.bff.dto.resp.adapter.UserRegisterAdapterRespDTO;
 import com.noinch.mall.biz.bff.remote.req.UserVerifyCodeCommand;
-import com.noinch.mall.springboot.starter.convention.result.Result;
-import com.noinch.mall.springboot.starter.web.Results;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -27,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "用户登录")
-@RequestMapping("/api/member")
+@RequestMapping("/member")
 public class UserLoginController {
     
     private final UserLoginService userLoginService;

@@ -15,7 +15,6 @@ com\noinch\mall\biz\customer\user\domain\dp\CustomerUserMail.class
 com\noinch\mall\biz\customer\user\domain\aggregate\CustomerUser.class
 com\noinch\mall\biz\customer\user\domain\dp\CustomerUserPhone.class
 com\noinch\mall\biz\customer\user\domain\event\OperationLogEvent.class
-com\noinch\mall\biz\customer\user\domain\dto\GeetestRespDTO$GeetestRespDTOBuilder.class
 com\noinch\mall\biz\customer\user\domain\mode\ReceiveAddress$ReceiveAddressBuilder.class
 com\noinch\mall\biz\customer\user\domain\repository\ReceiveAddressRepository.class
 com\noinch\mall\biz\customer\user\domain\dto\CustomerUserDTO.class
