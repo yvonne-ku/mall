@@ -1,5 +1,6 @@
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\dao\entity\ProductSpuDO.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductSpuMapper.java
+D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\es\EsProductRepositoryImpl.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductCategoryMapper.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductBrandMapper.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\repository\ProductCategoryRepositoryImpl.java

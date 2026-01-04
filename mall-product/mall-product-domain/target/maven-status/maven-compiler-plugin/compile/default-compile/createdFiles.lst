@@ -1,6 +1,8 @@
 com\noinch\mall\biz\product\domain\aggregate\ProductStock.class
+com\noinch\mall\biz\product\domain\repository\EsProductRepository.class
 com\noinch\mall\biz\product\domain\mode\ProductCategory$ProductCategoryBuilder.class
 com\noinch\mall\biz\product\domain\repository\ProductCategoryRepository.class
+com\noinch\mall\biz\product\domain\mode\ProductIndex.class
 com\noinch\mall\biz\product\domain\aggregate\ProductComment.class
 com\noinch\mall\biz\product\domain\mode\ProductSku.class
 com\noinch\mall\biz\product\domain\mode\ProductCategory.class
