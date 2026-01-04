@@ -15,6 +15,7 @@
         <module>mall-product-domain</module>
         <module>mall-product-infrastructure</module>
         <module>mall-product-application</module>
+        <module>mall-product-job</module>
     </modules>
 
 </project>

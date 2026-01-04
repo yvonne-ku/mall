@@ -10,6 +10,8 @@
     <artifactId>mall-product-infrastructure</artifactId>
 
     <dependencies>
+
+
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-product-domain</artifactId>
