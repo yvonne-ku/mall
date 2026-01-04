@@ -25,6 +25,17 @@ spring:
 mall:
   fastjson:
     safe-mode: true
+  elasticsearch:
+    scheme: "https"
+    host: localhost
+    port: 9200
+    username: "elastic"
+    password: "123456"
+    socket-timeout: "10s"
+    connect-timeout: "5s"
+    ssl:
+      enabled: true
+      certificate-authorities: ./certs/http.p12
 
 mybatis-plus:
   global-config:

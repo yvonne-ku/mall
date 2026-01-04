@@ -8,3 +8,5 @@ application-*.properties
 *.jks
 *.keystore
 *.truststore
+
+**/certs/

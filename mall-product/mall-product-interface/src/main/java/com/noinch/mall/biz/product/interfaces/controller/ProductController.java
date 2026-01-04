@@ -1,6 +1,7 @@
 package com.noinch.mall.biz.product.interfaces.controller;
 
 import com.noinch.mall.biz.product.application.resp.QuickSearchRespDTO;
+import com.noinch.mall.biz.product.domain.mode.ProductIndex;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * 商品服务
@@ -47,9 +50,17 @@ public class ProductController {
         return Results.success(result);
     }
 
-    @GetMapping("/api/product/quickSearch")
-    @Operation(description = "快速搜索下拉框提示")
-    public Result<QuickSearchRespDTO> QuickSearch(@RequestParam(value = "keyword") String keyword) {
-        return Results.success(productService.quickSearch(keyword));
+    @GetMapping("/api/product/search")
+    @Operation(description = "搜索商品")
+    @Parameter(
+        name = "description",
+        description = "商品描述",
+        required = true,
+        example = "小米13"
+    )
+    public Result<List<ProductIndex>> searchProduct(@RequestParam(value = "description") String description,
+                                                    @RequestParam(value = "page", defaultValue = "1") Integer page,
+                                                    @RequestParam(value = "size", defaultValue = "10") Integer size) {
+        return Results.success(productService.searchProduct(description, page, size));
     }
 }

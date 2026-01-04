@@ -4,6 +4,8 @@ package com.noinch.mall.springboot.starter.elasticsearch.config.properties;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import java.time.Duration;
+
 /**
  * 分布式缓存配置 */
 @Data
@@ -22,7 +24,9 @@ public class ElasticsearchProperties {
 
     private String password;
 
-    private String socketTimeout = "10s";
+    private Duration socketTimeout = Duration.ofSeconds(10);
+
+    private Duration connectTimeout = Duration.ofSeconds(5);
 
     private Ssl ssl = new Ssl();
 
@@ -37,27 +41,7 @@ public class ElasticsearchProperties {
         /**
          * 证书授权机构文件路径
          */
-        private String certificateAuthorities;
-
-        /**
-         * 客户端证书文件路径
-         */
-        private String certificate;
-
-        /**
-         * 客户端私钥文件路径
-         */
-        private String certificateKey;
-
-        /**
-         * 密码
-         */
-        private String password;
-
-        /**
-         * 是否验证主机名
-         */
-        private boolean verificationMode = false;
+        private String caCertificatePath;
     }
 
 }

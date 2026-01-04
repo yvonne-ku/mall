@@ -1,4 +1,5 @@
 com\noinch\mall\biz\product\infrastructure\dao\entity\ProductSpuDO.class
+com\noinch\mall\biz\product\infrastructure\es\EsProductRepositoryImpl.class
 com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductSkuMapper.class
 com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductSpuMapper.class
 com\noinch\mall\biz\product\infrastructure\dao\entity\ProductSkuDO.class

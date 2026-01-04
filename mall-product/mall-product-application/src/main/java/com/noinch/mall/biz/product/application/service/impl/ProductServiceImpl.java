@@ -4,7 +4,8 @@ package com.noinch.mall.biz.product.application.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.noinch.mall.biz.product.application.resp.QuickSearchRespDTO;
-import com.noinch.mall.biz.product.domain.dto.ProductStockDetailDTO;
+import com.noinch.mall.biz.product.domain.mode.ProductIndex;
+import com.noinch.mall.biz.product.domain.repository.EsProductRepository;
 import lombok.AllArgsConstructor;
 import com.noinch.mall.biz.product.application.req.ProductLockStockCommand;
 import com.noinch.mall.biz.product.application.req.ProductPageQuery;
@@ -30,6 +31,8 @@ import java.util.stream.Collectors;
 public class ProductServiceImpl implements ProductService {
     
     private final ProductRepository productRepository;
+
+    private final EsProductRepository esProductRepository;
     
     @Override
     public ProductRespDTO getProductBySpuId(Long spuId) {
@@ -100,7 +103,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public QuickSearchRespDTO quickSearch(String keyword) {
-        return null;
+    public List<ProductIndex> searchProduct(String description, Integer page, Integer size) {
+        return esProductRepository.searchProduct(description, page, size);
     }
 }
