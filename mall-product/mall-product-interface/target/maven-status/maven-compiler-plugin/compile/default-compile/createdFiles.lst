@@ -1,6 +1,0 @@
-com\noinch\mall\biz\product\interfaces\controller\ProductStockController.class
-com\noinch\mall\biz\product\interfaces\controller\ProductCommentController.class
-com\noinch\mall\biz\product\interfaces\controller\ProductController.class
-com\noinch\mall\biz\product\interfaces\config\ThreadPoolConfiguration.class
-com\noinch\mall\biz\product\interfaces\ProductApplication.class
-com\noinch\mall\biz\product\interfaces\controller\ProductCategoryController.class
