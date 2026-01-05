@@ -94,13 +94,13 @@ public class ElasticAutoConfiguration {
     }
 
     @Bean
-    public ElasticsearchTransport elasticTransport(ElasticsearchProperties properties) throws CertificateException, KeyStoreException, IOException, NoSuchAlgorithmException, KeyManagementException {
+    public ElasticsearchTransport elasticsearchTransport(ElasticsearchProperties properties) throws CertificateException, KeyStoreException, IOException, NoSuchAlgorithmException, KeyManagementException {
         return new RestClientTransport(restClient(properties), new JacksonJsonpMapper());
     }
 
     @Bean
-    public ElasticsearchClient elasticClient(ElasticsearchTransport elasticTransport) {
-        return new ElasticsearchClient(elasticTransport);
+    public ElasticsearchClient elasticsearchClient(ElasticsearchTransport elasticsearchTransport) {
+        return new ElasticsearchClient(elasticsearchTransport);
     }
 
     @Bean
