@@ -10,6 +10,16 @@
     <artifactId>mall-product-job</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.noinch.mall</groupId>
+            <artifactId>mall-product-interface</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>com.noinch.mall</groupId>
+            <artifactId>mall-xxljob-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>
