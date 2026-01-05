@@ -22,11 +22,11 @@ public class ProductIndex {
     @Field(type = FieldType.Keyword)
     private String productSn;
 
-    @Field(type = FieldType.Text, analyzer = "ik_max_word")
-    private String name;
+    @Field(type = FieldType.Keyword)
+    private String categoryName;
 
     @Field(type = FieldType.Text, analyzer = "ik_max_word")
-    private String categoryName;
+    private String name;
 
     @Field(type = FieldType.Text, analyzer = "ik_max_word")
     private String brandName;
