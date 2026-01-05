@@ -1,4 +1,0 @@
-com\noinch\mall\springboot\starter\log\annotation\MLog.class
-com\noinch\mall\springboot\starter\log\aspect\MLogPrintAspect$MLogPrint.class
-com\noinch\mall\springboot\starter\log\aspect\MLogPrintAspect.class
-com\noinch\mall\springboot\starter\log\config\LogAutoConfiguration.class
