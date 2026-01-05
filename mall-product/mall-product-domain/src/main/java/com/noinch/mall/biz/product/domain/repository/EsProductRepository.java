@@ -13,9 +13,19 @@ public interface EsProductRepository {
     List<ProductIndex> searchProduct(String description, int pageNo, int pageSize);
 
     /**
+     * 批量保存商品到ES
+     */
+    void saveBatch(List<ProductIndex> productIndexList);
+
+    /**
      * 保存商品到ES
      */
     void save(ProductIndex productIndex);
+
+    /**
+     * 删除所有商品
+     */
+    void deleteAll();
 
     /**
      * 根据ID删除商品
@@ -26,4 +36,5 @@ public interface EsProductRepository {
      * 根据ID查询商品
      */
     ProductIndex findById(String id);
+
 }
