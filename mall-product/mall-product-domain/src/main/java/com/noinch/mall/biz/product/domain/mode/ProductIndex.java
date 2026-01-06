@@ -6,7 +6,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
-import java.math.BigDecimal;
 
 @Data
 @Document(indexName = "product_index_test")
@@ -58,5 +57,5 @@ public class ProductIndex {
      * 商品价格
      */
     @Field(type = FieldType.Double)
-    private BigDecimal price;
+    private Double price;
 }

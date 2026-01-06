@@ -1,0 +1,6 @@
+com\noinch\mall\biz\message\application\req\PhoneSendCommand.class
+com\noinch\mall\biz\message\application\resp\PhoneSendRespDTO.class
+com\noinch\mall\biz\message\application\service\impl\MessageServiceImpl.class
+com\noinch\mall\biz\message\application\req\PhoneVerifyCommand.class
+com\noinch\mall\biz\message\application\service\AliyunSmsService.class
+com\noinch\mall\biz\message\application\service\MessageService.class
