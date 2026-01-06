@@ -70,10 +70,29 @@ public class ProductRepositoryImpl implements ProductRepository {
             BeanUtil.copyProperties(each, productSku, CopyOptions.create().setIgnoreNullValue(true));
             return productSku;
         }).collect(Collectors.toList());
+
         return Product.builder()
                 .productBrand(productBrand)
                 .productSpu(productSpu)
                 .productSkus(productSkus)
+                .build();
+    }
+
+    @Override
+    @SneakyThrows
+    public Product getProductBySkuId(Long skuId) {
+        ProductSkuDO productSkuDO = productSkuMapper.selectById(skuId);
+        Future<ProductSpuDO> productSpuDOFuture = productThreadPoolExecutor
+                .submit(() -> productSpuMapper.selectById(productSkuDO.getProductId()));
+
+        ProductSku productSku = new ProductSku();
+        BeanUtil.copyProperties(productSkuDO, productSku, CopyOptions.create().setIgnoreNullValue(true));
+        ProductSpu productSpu = new ProductSpu();
+        BeanUtil.copyProperties(productSpuDOFuture.get(), productSpu, CopyOptions.create().setIgnoreNullValue(true));
+
+        return Product.builder()
+                .productSpu(productSpu)
+                .productSkus(List.of(productSku))
                 .build();
     }
     
