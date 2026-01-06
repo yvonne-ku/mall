@@ -43,12 +43,6 @@ public class HomeServiceImpl implements HomeService {
     // 放大显示的图片
     private static final List<String> TYPE_TWO_LIST = Lists.newArrayList("1647777981810081792", "1647788115844136960", "1647794693754322944");
 
-
-    @Override
-    public HomeGoodsResultAdapterRespDTO quickSearch(String keyword) {
-        return null;
-    }
-
     @Override
 //    @Cached(name = "home:", key = "panel", expire = 24, timeUnit = TimeUnit.HOURS)
     public List<HomePanelAdapterRespDTO> listHomePanel() {
@@ -168,8 +162,8 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
-    public HomeGoodsResultAdapterRespDTO searchGoods(String description, Integer page, Integer size) {
-        Result<List<ProductRespDTO>> result = productRemoteService.searchProduct(description, page, size);
+    public HomeGoodsResultAdapterRespDTO searchGoods(String description, Integer page, Integer size, Integer sort, Integer priceGt, Integer priceLte) {
+        Result<List<ProductRespDTO>> result = productRemoteService.searchProduct(description, page, size, sort, priceGt, priceLte);
         if (!result.isSuccess() || result.getData() == null) {
             throw new ServiceException("调用商品服务分页查询商品失败");
         }
