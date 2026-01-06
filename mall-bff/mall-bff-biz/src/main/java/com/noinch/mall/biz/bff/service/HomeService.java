@@ -42,4 +42,8 @@ public interface HomeService {
      */
     HomePanelAdapterRespDTO recommend();
 
+    /**
+     * 商品描述搜索封装 (支持分页)
+     */
+    HomeGoodsResultAdapterRespDTO searchGoods(String description, Integer page, Integer size);
 }

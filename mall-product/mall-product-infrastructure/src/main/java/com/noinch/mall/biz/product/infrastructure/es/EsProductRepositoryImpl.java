@@ -4,6 +4,7 @@ import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch.core.BulkRequest;
 import co.elastic.clients.elasticsearch.core.bulk.BulkOperation;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import com.noinch.mall.biz.product.domain.aggregate.Product;
 import com.noinch.mall.biz.product.domain.mode.ProductIndex;
 import com.noinch.mall.biz.product.domain.repository.EsProductRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -62,6 +63,7 @@ public class EsProductRepositoryImpl implements EsProductRepository {
                     .collect(Collectors.toList());
 
             log.info("ES搜索成功 - 匹配总数: {}, 当前返回数量: {}", hits.getTotalHits(), result.size());
+
             return result;
 
         } catch (Exception e) {
@@ -151,19 +153,6 @@ public class EsProductRepositoryImpl implements EsProductRepository {
             esClientTemplate.delete(id, ProductIndex.class);
         } catch (Exception e) {
             log.error("ES 删除文档失败, id: {}", id, e);
-        }
-    }
-
-    /**
-     * 根据 ID 查找
-     */
-    @Override
-    public ProductIndex findById(String id) {
-        try {
-            return esClientTemplate.get(id, ProductIndex.class);
-        } catch (Exception e) {
-            log.error("ES 获取文档失败, id: {}", id, e);
-            return null;
         }
     }
 }
