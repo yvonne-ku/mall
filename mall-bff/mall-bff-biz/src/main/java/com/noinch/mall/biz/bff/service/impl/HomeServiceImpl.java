@@ -15,6 +15,7 @@ import com.noinch.mall.biz.bff.dto.resp.adapter.HomePanelAdapterRespDTO;
 import com.noinch.mall.biz.bff.dto.resp.adapter.HomePanelContentAdapterRespDTO;
 import com.noinch.mall.biz.bff.remote.ProductRemoteService;
 import com.noinch.mall.biz.bff.remote.resp.ProductRespDTO;
+import com.noinch.mall.biz.bff.remote.resp.ProductSkuRespDTO;
 import com.noinch.mall.biz.bff.remote.resp.ProductSpuRespDTO;
 import com.noinch.mall.biz.bff.service.HomeService;
 import com.noinch.mall.springboot.starter.convention.exception.ServiceException;
@@ -107,15 +108,11 @@ public class HomeServiceImpl implements HomeService {
     @Override
 //    @Cached(name = "home:", key = "'all-goods-page-'+#page+'-'+#size+'-'+#sort+'-'+#priceGt+'-'+#priceLte", expire = 24, timeUnit = TimeUnit.HOURS)
     public HomeGoodsResultAdapterRespDTO allGoods(Integer page, Integer size, Integer sort, Integer priceGt, Integer priceLte) {
-        Result<PageResponse<ProductRespDTO>> pageResponseResult = null;
-        try {
-            pageResponseResult = productRemoteService.pageQueryProduct(page, size, sort, priceGt, priceLte);
-            if (!pageResponseResult.isSuccess() || pageResponseResult.getData() == null) {
-                throw new ServiceException("调用商品服务分页查询商品失败");
-            }
-        } catch (Throwable ex) {
-            log.error("调用商品服务分页查询商品失败", ex);
+        Result<PageResponse<ProductRespDTO>> pageResponseResult = productRemoteService.pageQueryProduct(page, size, sort, priceGt, priceLte);
+        if (!pageResponseResult.isSuccess() || pageResponseResult.getData() == null) {
+            throw new ServiceException("调用商品服务分页查询商品失败");
         }
+
         PageResponse<ProductRespDTO> pageResponse = pageResponseResult.getData();
         List<ProductRespDTO> records = pageResponse.getRecords();
         List<HomeGoodsAdapterRespDTO> goodsAdapter = new ArrayList<>();
@@ -168,6 +165,31 @@ public class HomeServiceImpl implements HomeService {
             result.setPanelContents(panelContents);
         }
         return result;
+    }
+
+    @Override
+    public HomeGoodsResultAdapterRespDTO searchGoods(String description, Integer page, Integer size) {
+        Result<List<ProductRespDTO>> result = productRemoteService.searchProduct(description, page, size);
+        if (!result.isSuccess() || result.getData() == null) {
+            throw new ServiceException("调用商品服务分页查询商品失败");
+        }
+
+        List<ProductRespDTO> productRespDTOs = result.getData();
+        List<HomeGoodsAdapterRespDTO> goodsAdapter = new ArrayList<>();
+        productRespDTOs.forEach(each -> {
+            HomeGoodsAdapterRespDTO item = new HomeGoodsAdapterRespDTO();
+
+            ProductSkuRespDTO productSku = each.getProductSkus().getFirst();
+            ProductSpuRespDTO productSpu = each.getProductSpu();
+
+            item.setProductId(String.valueOf(productSku.getId()));
+            item.setProductName(productSpu.getName());
+            item.setSubTitle(productSpu.getSubTitle());
+            item.setSalePrice(productSku.getPrice().intValue());
+            item.setProductImageBig(productSku.getPic());
+            goodsAdapter.add(item);
+        });
+        return new HomeGoodsResultAdapterRespDTO((long) productRespDTOs.size(), goodsAdapter);
     }
 
 }

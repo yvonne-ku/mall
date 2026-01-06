@@ -5,6 +5,7 @@ package com.noinch.mall.biz.product.domain.repository;
 import com.noinch.mall.biz.product.domain.aggregate.Product;
 import com.noinch.mall.biz.product.domain.aggregate.ProductStock;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
+import lombok.SneakyThrows;
 
 /**
  * 商品仓储层
@@ -18,7 +19,15 @@ public interface ProductRepository {
      * @return
      */
     Product getProductBySpuId(Long spuId);
-    
+
+    /**
+     * 根据 skuId 查询商品信息
+     *
+     * @param skuId
+     * @return
+     */
+    Product getProductBySkuId(Long skuId);
+
     /**
      * 验证商品库存
      *
@@ -50,4 +59,5 @@ public interface ProductRepository {
      * @return 分页查询商品集合返回数据
      */
     PageResponse<Product> pageQueryProduct(Product product);
+
 }
