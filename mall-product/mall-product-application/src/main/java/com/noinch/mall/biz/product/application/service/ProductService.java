@@ -62,5 +62,5 @@ public interface ProductService {
      * @param description 搜索描述
      * @return 搜索商品返回数据
      */
-     List<ProductRespDTO> searchProduct(String description, Integer page, Integer size);
+     List<ProductRespDTO> searchProduct(String description, Integer page, Integer size, Integer sort, Integer priceGt, Integer priceLte);
 }

@@ -10,7 +10,7 @@ public interface EsProductRepository {
     /**
      * 搜索商品
      */
-    List<ProductIndex> searchProduct(String description, int pageNo, int pageSize);
+    List<ProductIndex> searchProduct(String description, int pageNo, int pageSize, Integer sort, Integer priceGt, Integer priceLte);
 
     /**
      * 批量保存商品到ES

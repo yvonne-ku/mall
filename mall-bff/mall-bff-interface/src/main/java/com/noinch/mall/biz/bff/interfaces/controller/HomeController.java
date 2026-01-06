@@ -61,9 +61,15 @@ public class HomeController {
     @Parameter(name = "description", description = "商品描述", required = true, example = "小米13")
     @Parameter(name = "page", description = "搜索商品列表第几页", required = true, example = "0")
     @Parameter(name = "size", description = "搜索商品列表每页多少条数据", required = true, example = "10")
+    @Parameter(name = "sort", description = "排序方式", example = "0 不排序，1 按价格升序，2 按价格降序")
+    @Parameter(name = "priceGt", description = "价格区间开始", example = "1")
+    @Parameter(name = "priceLte", description = "价格区间结束", example = "1")
     public ResultT<HomeGoodsResultAdapterRespDTO> homeSearch(@RequestParam(value = "description") String description,
                                                              @RequestParam(value = "page", defaultValue = "0") Integer page,
-                                                             @RequestParam(value = "size", defaultValue = "10") Integer size) {
-        return ResultT.success(homeService.searchGoods(description, page, size));
+                                                             @RequestParam(value = "size", defaultValue = "10") Integer size,
+                                                             @RequestParam(value = "sort", defaultValue = "0") Integer sort,
+                                                             @RequestParam(value = "priceGt", required = false) Integer priceGt,
+                                                             @RequestParam(value = "priceLte", required = false) Integer priceLte) {
+        return ResultT.success(homeService.searchGoods(description, page, size, sort, priceGt, priceLte));
     }
 }
