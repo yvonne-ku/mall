@@ -30,7 +30,10 @@ public class ProductSkuRespDTO {
     
     @Schema(description = "图片")
     private String pic;
-    
+
+    @Schema(description = "spu 副标题")
+    private String subTitle;
+
     @Schema(description = "属性，json 格式")
     private String attribute;
 }

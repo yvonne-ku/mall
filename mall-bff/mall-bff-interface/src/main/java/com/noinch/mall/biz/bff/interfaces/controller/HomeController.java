@@ -56,9 +56,14 @@ public class HomeController {
         return ResultT.success(Lists.newArrayList(homeService.recommend()));
     }
 
-    @GetMapping("/goods/quickSearch")
-    @Operation(description = "快速搜索下拉框提示")
-    public ResultT<HomeGoodsResultAdapterRespDTO> homeQuickSearch(@RequestParam(value = "key", required = false) String keyword) {
-        return ResultT.success(homeService.quickSearch(keyword));
+    @GetMapping("/goods/search")
+    @Operation(description = "搜索商品")
+    @Parameter(name = "description", description = "商品描述", required = true, example = "小米13")
+    @Parameter(name = "page", description = "搜索商品列表第几页", required = true, example = "0")
+    @Parameter(name = "size", description = "搜索商品列表每页多少条数据", required = true, example = "10")
+    public ResultT<HomeGoodsResultAdapterRespDTO> homeSearch(@RequestParam(value = "description") String description,
+                                                             @RequestParam(value = "page", defaultValue = "0") Integer page,
+                                                             @RequestParam(value = "size", defaultValue = "10") Integer size) {
+        return ResultT.success(homeService.searchGoods(description, page, size));
     }
 }

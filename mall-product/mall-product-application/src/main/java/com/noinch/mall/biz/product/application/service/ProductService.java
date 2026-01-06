@@ -7,8 +7,6 @@ import com.noinch.mall.biz.product.application.req.ProductPageQuery;
 import com.noinch.mall.biz.product.application.req.ProductStockVerifyQuery;
 import com.noinch.mall.biz.product.application.req.ProductUnlockStockCommand;
 import com.noinch.mall.biz.product.application.resp.ProductRespDTO;
-import com.noinch.mall.biz.product.application.resp.QuickSearchRespDTO;
-import com.noinch.mall.biz.product.domain.mode.ProductIndex;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
 
 import java.util.List;
@@ -59,10 +57,10 @@ public interface ProductService {
     PageResponse<ProductRespDTO> pageQueryProduct(ProductPageQuery requestParam);
 
      /**
-     * 快速搜索下拉框提示
+     * 搜索商品
      *
      * @param description 搜索描述
-     * @return 快速搜索下拉框提示返回数据
+     * @return 搜索商品返回数据
      */
-     List<ProductIndex> searchProduct(String description, Integer page, Integer size);
+     List<ProductRespDTO> searchProduct(String description, Integer page, Integer size);
 }
