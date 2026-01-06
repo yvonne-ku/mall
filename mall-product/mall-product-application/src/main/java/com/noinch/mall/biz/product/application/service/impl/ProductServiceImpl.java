@@ -21,7 +21,6 @@ import com.noinch.mall.biz.product.domain.repository.ProductRepository;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -108,8 +107,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductRespDTO> searchProduct(String description, Integer page, Integer size) {
-        List<ProductIndex> productIndices = esProductRepository.searchProduct(description, page, size);
+    public List<ProductRespDTO> searchProduct(String description, Integer page, Integer size, Integer sort, Integer priceGt, Integer priceLte) {
+        List<ProductIndex> productIndices = esProductRepository.searchProduct(description, page, size, sort, priceGt, priceLte);
 
         // ProductIndex 转化为 ProductRespDTO
         return productIndices.stream().map(each -> {

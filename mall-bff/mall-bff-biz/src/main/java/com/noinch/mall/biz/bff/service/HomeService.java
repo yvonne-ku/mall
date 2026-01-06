@@ -13,12 +13,6 @@ import java.util.List;
 public interface HomeService {
 
     /**
-     * 简单关键字搜索封装 (支持分页)
-     */
-    HomeGoodsResultAdapterRespDTO quickSearch(String keyword);
-
-
-    /**
      * 查询商城首页板块数据
      *
      * @return 商城首页板块返回数据
@@ -45,5 +39,5 @@ public interface HomeService {
     /**
      * 商品描述搜索封装 (支持分页)
      */
-    HomeGoodsResultAdapterRespDTO searchGoods(String description, Integer page, Integer size);
+    HomeGoodsResultAdapterRespDTO searchGoods(String description, Integer page, Integer size, Integer sort, Integer priceGt, Integer priceLte);
 }

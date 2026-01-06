@@ -38,5 +38,8 @@ public interface ProductRemoteService {
     @GetMapping("/api/product/search")
     Result<List<ProductRespDTO>> searchProduct(@RequestParam(value = "description") String description,
                                                @RequestParam(value = "page", defaultValue = "0") Integer page,
-                                               @RequestParam(value = "size", defaultValue = "10") Integer size);
+                                               @RequestParam(value = "size", defaultValue = "10") Integer size,
+                                               @RequestParam(value = "sort", required = false) Integer sort,
+                                               @RequestParam(value = "priceGt", required = false) Integer priceGt,
+                                               @RequestParam(value = "priceLte", required = false) Integer priceLte);
 }
