@@ -1,0 +1,16 @@
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\aggregate\ProductStock.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\aggregate\ProductStockDetail.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\dto\ProductCategoryDTO.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\repository\ProductCategoryRepository.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\aggregate\ProductComment.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\mode\ProductSku.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\repository\EsProductRepository.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\dto\ProductStockDetailDTO.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\mode\ProductBrand.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\mode\ProductSpu.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\repository\ProductCommentRepository.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\mode\ProductIndex.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\repository\ProductRepository.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\mode\ProductCategory.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\aggregate\ProductPageQuery.java
+D:\MyProjects\mall\mall-product\mall-product-domain\src\main\java\com\noinch\mall\biz\product\domain\aggregate\Product.java
