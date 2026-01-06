@@ -3,7 +3,8 @@
 package com.noinch.mall.biz.product.application.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
-import com.noinch.mall.biz.product.application.resp.QuickSearchRespDTO;
+import com.noinch.mall.biz.product.application.resp.ProductSkuRespDTO;
+import com.noinch.mall.biz.product.application.resp.ProductSpuRespDTO;
 import com.noinch.mall.biz.product.domain.mode.ProductIndex;
 import com.noinch.mall.biz.product.domain.repository.EsProductRepository;
 import lombok.AllArgsConstructor;
@@ -20,6 +21,8 @@ import com.noinch.mall.biz.product.domain.repository.ProductRepository;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -88,7 +91,9 @@ public class ProductServiceImpl implements ProductService {
         Product product = Product.builder()
                 .pageQuery(productPageQuery)
                 .build();
+
         PageResponse<Product> productPageResponse = productRepository.pageQueryProduct(product);
+
         List<ProductRespDTO> productRespDTOS = productPageResponse.getRecords().stream().map(each -> {
             ProductRespDTO productRespDTO = new ProductRespDTO();
             BeanUtil.copyProperties(each, productRespDTO);
@@ -103,7 +108,22 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductIndex> searchProduct(String description, Integer page, Integer size) {
-        return esProductRepository.searchProduct(description, page, size);
+    public List<ProductRespDTO> searchProduct(String description, Integer page, Integer size) {
+        List<ProductIndex> productIndices = esProductRepository.searchProduct(description, page, size);
+
+        // ProductIndex 转化为 ProductRespDTO
+        return productIndices.stream().map(each -> {
+            ProductRespDTO productRespDTO = new ProductRespDTO();
+            ProductSkuRespDTO productSkuRespDTO = new ProductSkuRespDTO();
+            ProductSpuRespDTO productSpuRespDTO = new ProductSpuRespDTO();
+
+            Product product = productRepository.getProductBySkuId(Long.valueOf(each.getId()));
+            BeanUtil.copyProperties(product.getProductSkus().getFirst(), productSkuRespDTO);
+            BeanUtil.copyProperties(product.getProductSpu(), productSpuRespDTO);
+
+            productRespDTO.setProductSpu(productSpuRespDTO);
+            productRespDTO.setProductSkus(Collections.singletonList(productSkuRespDTO));
+            return productRespDTO;
+        }).collect(Collectors.toList());
     }
 }

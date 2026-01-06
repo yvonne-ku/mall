@@ -32,9 +32,4 @@ public interface EsProductRepository {
      */
     void deleteById(String id);
 
-    /**
-     * 根据ID查询商品
-     */
-    ProductIndex findById(String id);
-
 }
