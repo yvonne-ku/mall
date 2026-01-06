@@ -41,7 +41,7 @@ public class ElasticsearchProperties {
         /**
          * 证书授权机构文件路径
          */
-        private String caCertificatePath;
+        private String caCertificatePath = "";
     }
 
 }

@@ -1,0 +1,14 @@
+com\noinch\mall\springboot\starter\distributedid\core\snowflakeid\SnowflakeIdInfo$SnowflakeIdInfoBuilder.class
+com\noinch\mall\springboot\starter\distributedid\core\serviceid\DefaultServiceIdGenerator.class
+com\noinch\mall\springboot\starter\distributedid\core\snowflakeid\workid\LocalRedisWorkIdChoose.class
+com\noinch\mall\springboot\starter\distributedid\config\SnowflakeInitializer.class
+com\noinch\mall\springboot\starter\distributedid\SnowflakeIdUtil.class
+com\noinch\mall\springboot\starter\distributedid\core\IdGenerator.class
+com\noinch\mall\springboot\starter\distributedid\core\snowflakeid\workid\RandomWorkIdChoose.class
+com\noinch\mall\springboot\starter\distributedid\core\serviceid\ServiceIdGenerator.class
+com\noinch\mall\springboot\starter\distributedid\core\manager\IdGeneratorManager.class
+com\noinch\mall\springboot\starter\distributedid\config\DistributedIdAutoConfiguration.class
+com\noinch\mall\springboot\starter\distributedid\core\snowflakeid\workid\WorkIdChooser.class
+com\noinch\mall\springboot\starter\distributedid\core\snowflakeid\Snowflake.class
+com\noinch\mall\springboot\starter\distributedid\core\snowflakeid\SnowflakeIdInfo.class
+com\noinch\mall\springboot\starter\distributedid\core\snowflakeid\workid\WorkIdWrapper.class

@@ -1,0 +1,4 @@
+com\noinch\mall\springboot\starter\minio\MinioTemplate.class
+com\noinch\mall\springboot\starter\minio\config\MinioAutoConfiguration.class
+com\noinch\mall\springboot\starter\minio\config\MinioProperties.class
+com\noinch\mall\springboot\starter\minio\MinioOperations.class

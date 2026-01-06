@@ -1,0 +1,16 @@
+com\noinch\mall\biz\bff\remote\resp\UserLoginRespDTO.class
+com\noinch\mall\biz\bff\remote\req\UserLoginCommand.class
+com\noinch\mall\biz\bff\remote\req\UserVerifyCodeCommand.class
+com\noinch\mall\biz\bff\remote\resp\ReceiveAddressRespDTO.class
+com\noinch\mall\biz\bff\remote\req\ReceiveAddressSaveCommand.class
+com\noinch\mall\biz\bff\remote\resp\ProductSpuRespDTO.class
+com\noinch\mall\biz\bff\remote\req\UserRegisterCommand.class
+com\noinch\mall\biz\bff\remote\resp\UserRegisterRespDTO.class
+com\noinch\mall\biz\bff\remote\req\ProductPageQuery.class
+com\noinch\mall\biz\bff\remote\CustomerUserRemoteService.class
+com\noinch\mall\biz\bff\remote\resp\ProductBrandRespDTO.class
+com\noinch\mall\biz\bff\remote\resp\ProductRespDTO.class
+com\noinch\mall\biz\bff\remote\resp\ProductSkuRespDTO.class
+com\noinch\mall\biz\bff\remote\resp\GeetestRespDTO.class
+com\noinch\mall\biz\bff\remote\req\ReceiveAddressUpdateCommand.class
+com\noinch\mall\biz\bff\remote\ProductRemoteService.class
