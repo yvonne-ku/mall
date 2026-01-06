@@ -30,6 +30,6 @@ public interface ProductSkuMapper extends BaseMapper<ProductSkuDO> {
      */
     @Options(resultSetType = ResultSetType.FORWARD_ONLY, fetchSize = Integer.MIN_VALUE)
     @ResultType(ProductSkuDO.class)
-    @Select("SELECT * FROM product_sku WHERE del_flag = '0'")
+    @Select("SELECT * FROM product_sku_test WHERE del_flag = '0'")
     void listAllProductSkuStreamQuery(ResultHandler<ProductSkuDO> handler);
 }
