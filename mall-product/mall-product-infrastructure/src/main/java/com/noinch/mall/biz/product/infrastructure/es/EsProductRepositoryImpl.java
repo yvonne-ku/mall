@@ -1,14 +1,16 @@
 package com.noinch.mall.biz.product.infrastructure.es;
 
+import co.elastic.clients.elasticsearch._types.SortOrder;
+import co.elastic.clients.json.JsonData;
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch.core.BulkRequest;
 import co.elastic.clients.elasticsearch.core.bulk.BulkOperation;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
-import com.noinch.mall.biz.product.domain.aggregate.Product;
 import com.noinch.mall.biz.product.domain.mode.ProductIndex;
 import com.noinch.mall.biz.product.domain.repository.EsProductRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.elasticsearch.client.elc.NativeQueryBuilder;
 import org.springframework.data.elasticsearch.core.SearchHit;
 import lombok.AllArgsConstructor;
 
@@ -40,30 +42,52 @@ public class EsProductRepositoryImpl implements EsProductRepository {
     private final ElasticsearchOperations esClientTemplate;
 
     @Override
-    public List<ProductIndex> searchProduct(String description, int pageNo, int pageSize) {
-        log.info("ES搜索请求 - 关键词: [{}], 页码: {}, 每页数量: {}", description, pageNo, pageSize);
+    public List<ProductIndex> searchProduct(String description, int pageNo, int pageSize, Integer sort, Integer priceGt, Integer priceLte) {
+        log.info("ES搜索请求 - 关键词: [{}], 页码: {}, 每页数量: {}, 排序字段: {}, 价格大于: {}, 价格小于等于: {}",
+                description, pageNo, pageSize, sort, priceGt, priceLte);
         try {
-            // 1. 构建查询条件
-            Query query = NativeQuery.builder()
-                    .withQuery(q -> q
-                            .multiMatch(m -> m
-                                    .fields("name^3", "brandName^2", "categoryName^1")
-                                    .query(description)
-                            )
-                    )
-                    .withPageable(PageRequest.of(pageNo, pageSize))
-                    .build();
+            // 1. 构建布尔查询
+            NativeQueryBuilder queryBuilder = NativeQuery.builder();
+            queryBuilder.withQuery(q -> q.bool(b -> {
+                // 1.1 组合搜索词（参与评分）
+                b.must(m -> m.multiMatch(mm -> mm
+                        .fields("name^3", "brandName^2", "categoryName^1")
+                        .query(description)
+                ));
+                // 1.2 价格过滤
+                if (priceGt != null || priceLte != null) {
+                    b.filter(f -> f.range(r -> {
+                        r.field("price");
+                        if (priceGt != null) r.gt(JsonData.of(priceGt));
+                        if (priceLte != null) r.lte(JsonData.of(priceLte));
+                        return r;
+                    }));
+                }
+                return b;
+            }));
 
-            // 2. 执行查询
+            // 2. 分页设置
+            queryBuilder.withPageable(PageRequest.of(Math.max(pageNo, 1) - 1, pageSize));
+
+            // 3. 排序设置 (0: 默认评分, 1: 价格升序, 2: 价格降序)
+            if (sort != null) {
+                if (sort == 1) {
+                    queryBuilder.withSort(s -> s.field(f -> f.field("price").order(SortOrder.Asc)));
+                } else if (sort == 2) {
+                    queryBuilder.withSort(s -> s.field(f -> f.field("price").order(SortOrder.Desc)));
+                }
+            }
+
+            // 4. 执行查询
+            NativeQuery query = queryBuilder.build();
             SearchHits<ProductIndex> hits = esClientTemplate.search(query, ProductIndex.class);
 
-            // 3. 提取并记录结果日志
+            // 5. 结果处理
             List<ProductIndex> result = hits.getSearchHits().stream()
                     .map(SearchHit::getContent)
                     .collect(Collectors.toList());
 
             log.info("ES搜索成功 - 匹配总数: {}, 当前返回数量: {}", hits.getTotalHits(), result.size());
-
             return result;
 
         } catch (Exception e) {
