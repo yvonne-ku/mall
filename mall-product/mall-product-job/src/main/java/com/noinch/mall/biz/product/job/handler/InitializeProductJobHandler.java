@@ -16,6 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 import com.noinch.mall.biz.product.infrastructure.dao.entity.ProductSpuDO;
 import com.noinch.mall.biz.product.infrastructure.dao.entity.ProductSkuDO;
 import com.noinch.mall.biz.product.infrastructure.dao.mapper.ProductSkuMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -33,7 +35,6 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Component
-@RequiredArgsConstructor
 public class InitializeProductJobHandler extends IJobHandler {
     
     /**
@@ -95,6 +96,22 @@ public class InitializeProductJobHandler extends IJobHandler {
      * 打印输出监控定时器
      */
     private static final ScheduledExecutorService SCHEDULED_EXECUTOR = Executors.newSingleThreadScheduledExecutor();
+
+    public InitializeProductJobHandler(
+            ProductSkuMapper productSkuMapper,
+            ProductSpuMapper productSpuMapper,
+            ProductBrandMapper productBrandMapper,
+            ProductCategoryMapper productCategoryMapper,
+            EsProductRepository esProductRepository,
+            @Qualifier("productSkuInitSyncThreadPoolExecutor") ThreadPoolExecutor productSkuInitSyncThreadPoolExecutor
+    ) {
+        this.productSkuMapper = productSkuMapper;
+        this.productSpuMapper = productSpuMapper;
+        this.productBrandMapper = productBrandMapper;
+        this.productCategoryMapper = productCategoryMapper;
+        this.esProductRepository = esProductRepository;
+        this.productSkuInitSyncThreadPoolExecutor = productSkuInitSyncThreadPoolExecutor;
+    }
 
     /**
      * 商品 SKU 初始化同步任务
@@ -182,7 +199,7 @@ public class InitializeProductJobHandler extends IJobHandler {
                     ProductBrandDO productBrandDO = brandMap.get(brandId);
                     ProductCategoryDO productCategoryDO = categoryMap.get(categoryId);
                     if (productSpuDO == null || brandId == null || categoryId == null) {
-                        log.error("商品SKU基础数据初始化流程, 商品SPU数据或品牌数据或分类数据不存在, 商品SKU记录: {}", JSON.toJSONString(productSkuDO));
+                        log.warn("商品SKU基础数据初始化流程, 商品SPU数据或品牌数据或分类数据不存在, 商品SKU记录: {}", JSON.toJSONString(productSkuDO));
                         return null;
                     }
 
@@ -193,7 +210,7 @@ public class InitializeProductJobHandler extends IJobHandler {
                     productIndex.setName(productSpuDO.getName());
                     productIndex.setBrandName(productBrandDO.getName());
                     productIndex.setCategoryName(productCategoryDO.getName());
-                    productIndex.setPrice(productSkuDO.getPrice());
+                    productIndex.setPrice(productSkuDO.getPrice().doubleValue());
                     return productIndex;
                 }).toList();
 

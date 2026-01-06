@@ -7,9 +7,10 @@ import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.noinch.mall.biz.product.domain.mode.ProductIndex;
 import com.noinch.mall.biz.product.domain.repository.EsProductRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.SearchHit;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.PageRequest;
+
 import org.springframework.data.elasticsearch.client.elc.NativeQuery;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.SearchHits;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Repository;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -77,6 +79,7 @@ public class EsProductRepositoryImpl implements EsProductRepository {
         try {
             // 1. 构建 BulkOperation 列表
             List<BulkOperation> operations = productIndexList.stream()
+                    .filter(Objects::nonNull)   // 上游来的 list 可能混入 null 元素
                     .map(item -> BulkOperation.of(b -> b
                             .index(i -> i
                                     .index("product_index_test") // 索引名
