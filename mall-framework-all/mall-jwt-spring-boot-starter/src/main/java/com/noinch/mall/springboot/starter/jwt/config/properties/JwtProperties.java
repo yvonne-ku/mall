@@ -1,12 +1,13 @@
-package com.noinch.mall.springboot.starter.jwt.config;
+package com.noinch.mall.springboot.starter.jwt.config.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * JWT配置属性 */
+ * JWT配置属性
+ */
 @Data
-@ConfigurationProperties(prefix = "mall.jwt")
+@ConfigurationProperties(prefix = "jwt")
 public class JwtProperties {
 
     /**

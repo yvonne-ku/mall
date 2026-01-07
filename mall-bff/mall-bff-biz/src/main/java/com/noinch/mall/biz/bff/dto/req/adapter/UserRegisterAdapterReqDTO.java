@@ -15,11 +15,13 @@ public class UserRegisterAdapterReqDTO {
 
     private String phoneValidCode;
 
-    private String challenge;
+    private String captchaId;
 
-    private String validate;
+    private String lotNumber;
 
-    private String seccode;
+    private String passToken;
 
-    private String statusKey;
+    private String genTime;
+
+    private String captchaOutput;
 }
