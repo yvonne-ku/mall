@@ -28,10 +28,10 @@ class GeetestServiceImpl implements GeetestService {
     private static final String domain = "http://gcaptcha4.geetest.com";
 
     @Value("${geetest.captcha-id}")
-    private static final String captchaId = "";
+    private String captchaId = "";
 
     @Value("${geetest.captcha-key}")
-    private static final String captchaKey = "";
+    private String captchaKey = "";
 
     @Override
     public boolean verifyGeetest(String captchaId, String lotNumber, String passToken, String genTime, String captchaOutput) {
