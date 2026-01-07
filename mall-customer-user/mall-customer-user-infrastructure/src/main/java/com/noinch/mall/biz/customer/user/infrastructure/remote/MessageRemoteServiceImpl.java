@@ -1,7 +1,6 @@
-package com.noinch.mall.biz.customer.user.infrastructure.service.impl;
+package com.noinch.mall.biz.customer.user.infrastructure.remote;
 
 import com.noinch.mall.biz.customer.user.domain.service.MessageRemoteService;
-import com.noinch.mall.biz.customer.user.infrastructure.remote.MessageServiceFeignClient;
 import com.noinch.mall.biz.customer.user.domain.dto.PhoneSendReqDTO;
 import com.noinch.mall.biz.customer.user.domain.dto.PhoneVerifyReqDTO;
 import com.noinch.mall.springboot.starter.convention.result.Result;

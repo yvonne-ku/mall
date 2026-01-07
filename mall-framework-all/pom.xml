@@ -26,6 +26,7 @@
         <module>mall-xxljob-spring-boot-starter</module>
         <module>mall-openfeign-spring-boot-starter</module>
         <module>mall-jwt-spring-boot-starter</module>
+        <module>mall-geetest-spring-boot-starter</module>
     </modules>
 
 </project>

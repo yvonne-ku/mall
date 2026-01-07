@@ -1,5 +1,6 @@
 package com.noinch.mall.biz.customer.user.domain.dto;
 
+import com.alibaba.fastjson2.annotation.JSONField;
 import lombok.Data;
 
 /**
@@ -10,6 +11,9 @@ public class GeetestRespDTO {
     private String gt;
 
     private String challenge;
+
+    @JSONField(name = "new_captcha")
+    private Boolean newCaptcha;
 
     private String statusKey;
 

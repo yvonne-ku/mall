@@ -23,13 +23,6 @@ public interface UserLoginService {
     void verifyCodeSend(UserVerifyCodeCommand requestParam);
 
     /**
-     * 初始化极验验证码
-     *
-     * @return 初始化后极验配置
-     */
-    GeeTestAdapterRespDTO geetestInit();
-
-    /**
      * 用户注册
      *
      * @param requestParam 用户注册入参

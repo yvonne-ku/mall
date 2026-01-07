@@ -12,5 +12,6 @@ D:\MyProjects\mall\mall-customer-user\mall-customer-user-domain\src\main\java\co
 D:\MyProjects\mall\mall-customer-user\mall-customer-user-domain\src\main\java\com\noinch\mall\biz\customer\user\domain\dto\PhoneSendReqDTO.java
 D:\MyProjects\mall\mall-customer-user\mall-customer-user-domain\src\main\java\com\noinch\mall\biz\customer\user\domain\dp\CustomerUserPassword.java
 D:\MyProjects\mall\mall-customer-user\mall-customer-user-domain\src\main\java\com\noinch\mall\biz\customer\user\domain\dp\CustomerUserPhone.java
+D:\MyProjects\mall\mall-customer-user\mall-customer-user-domain\src\main\java\com\noinch\mall\biz\customer\user\domain\service\impl\GeetestServiceImpl.java
 D:\MyProjects\mall\mall-customer-user\mall-customer-user-domain\src\main\java\com\noinch\mall\biz\customer\user\domain\mode\ReceiveAddress.java
 D:\MyProjects\mall\mall-customer-user\mall-customer-user-domain\src\main\java\com\noinch\mall\biz\customer\user\domain\repository\ReceiveAddressRepository.java
