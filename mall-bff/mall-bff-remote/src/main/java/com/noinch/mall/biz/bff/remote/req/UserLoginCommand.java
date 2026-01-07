@@ -10,41 +10,30 @@ import org.hibernate.validator.constraints.Email;
 *
 */
 @Data
-@Schema(description = "用户登录")
 public class UserLoginCommand {
     
-    @Schema(description = "登录方式", example = "username / mail / phone / wechat")
     private String type;
 
-    @Schema(description = "用户名", example = "John")
     private String username;
 
-    @Schema(description = "密码", example = "xiao-ma-ge")
     private String password;
 
-    @Schema(description = "账号", example = "15601166692")
     private String account;
     
-    @Schema(description = "手机号", example = "15601166692")
     private String phone;
     
-    @Schema(description = "邮箱", example = "m7798432@163.com")
-    @Email
     private String mail;
     
-    @Schema(description = "邮箱验证码", example = "123456")
     private String mailValidCode;
 
-    @Schema(description = "GeeTest 验证 Challenge")
-    private String challenge;
+    private String captchaId;
 
-    @Schema(description = "GeeTest 验证 Validate")
-    private String validate;
+    private String lotNumber;
 
-    @Schema(description = "GeeTest 验证 Seccode")
-    private String seccode;
+    private String passToken;
 
-    @Schema(description = "GeeTest 验证状态 Key")
-    private String statusKey;
+    private String genTime;
+
+    private String captchaOutput;
 
 }

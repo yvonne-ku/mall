@@ -1,5 +1,6 @@
 package com.noinch.mall.biz.bff.remote.req;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -19,11 +20,13 @@ public class UserRegisterCommand {
 
     private String phoneValidCode;
 
-    private String challenge;
+    private String captchaId;
 
-    private String validate;
+    private String lotNumber;
 
-    private String seccode;
+    private String passToken;
 
-    private String statusKey;
+    private String genTime;
+
+    private String captchaOutput;
 }
