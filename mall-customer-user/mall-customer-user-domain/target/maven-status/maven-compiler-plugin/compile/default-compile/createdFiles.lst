@@ -7,6 +7,7 @@ com\noinch\mall\biz\customer\user\domain\dto\PhoneVerifyReqDTO.class
 com\noinch\mall\biz\customer\user\domain\service\GeetestService.class
 com\noinch\mall\biz\customer\user\domain\dto\GeetestRespDTO.class
 com\noinch\mall\biz\customer\user\domain\dp\CustomerUserPassword.class
+com\noinch\mall\biz\customer\user\domain\service\impl\GeetestServiceImpl.class
 com\noinch\mall\biz\customer\user\domain\mode\ReceiveAddress.class
 com\noinch\mall\biz\customer\user\domain\service\MessageRemoteService.class
 com\noinch\mall\biz\customer\user\domain\dto\PhoneVerifyReqDTO$PhoneVerifyReqDTOBuilder.class

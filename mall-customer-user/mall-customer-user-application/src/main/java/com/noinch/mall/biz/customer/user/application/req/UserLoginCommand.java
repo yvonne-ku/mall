@@ -35,16 +35,18 @@ public class UserLoginCommand {
     @Schema(description = "邮箱验证码", example = "123456")
     private String mailValidCode;
 
-    @Schema(description = "GeeTest 验证 Challenge")
-    private String challenge;
+    @Schema(description = "GeeTest 凭证 captchaId")
+    private String captchaId;
 
-    @Schema(description = "GeeTest 验证 Validate")
-    private String validate;
+    @Schema(description = "GeeTest 凭证 流水号")
+    private String lotNumber;
 
-    @Schema(description = "GeeTest 验证 Seccode")
-    private String seccode;
+    @Schema(description = "GeeTest 凭证 通过凭据")
+    private String passToken;
 
-    @Schema(description = "GeeTest 验证状态 Key")
-    private String statusKey;
+    @Schema(description = "GeeTest 凭证 时间戳")
+    private String genTime;
 
+    @Schema(description = "GeeTest 凭证 加密信息")
+    private String captchaOutput;
 }

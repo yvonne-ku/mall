@@ -39,6 +39,8 @@
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-elasticsearch-spring-boot-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-elasticsearch-spring-boot-starter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-framework-all/mall-geetest-spring-boot-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-framework-all/mall-geetest-spring-boot-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-httputil-spring-boot-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-idempotent-spring-boot-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-idempotent-spring-boot-starter/src/main/resources" charset="UTF-8" />

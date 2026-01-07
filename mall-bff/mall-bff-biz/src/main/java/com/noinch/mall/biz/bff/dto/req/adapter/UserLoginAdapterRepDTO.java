@@ -1,6 +1,7 @@
 
 package com.noinch.mall.biz.bff.dto.req.adapter;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -16,12 +17,14 @@ public class UserLoginAdapterRepDTO {
 
     private String password;
 
-    private String challenge;
-    
-    private String seccode;
-    
-    private String statusKey;
+    private String captchaId;
 
-    private String validate;
+    private String lotNumber;
+
+    private String passToken;
+
+    private String genTime;
+
+    private String captchaOutput;
     
 }

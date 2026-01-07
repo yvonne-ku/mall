@@ -25,12 +25,11 @@ mall:
     redis:
       prefix: 'mall:customer-user:'
       value-timeout: 50000
-  jwt:
-    iss: "mall-customer-user-service"
-    alg: "HS256"
-    secret: "ODMwODExNzI1MzE0NTQ2MTQ3NjE4Mzc2MDE2MjczMDc="
-    expire: 3600
-    subject: "Mall-Login"
+      bloom-filter:
+        default:
+          name: cache_penetration_bloom_filter
+          expected-insertions: 64000
+          false-probability: 0.03D
 
 customer:
   user:
@@ -45,3 +44,14 @@ mybatis-plus:
       logic-delete-field: delFlag
       logic-delete-value: 1
       logic-not-delete-value: 0
+
+geetest:
+  captcha-id: "6cfa0f940dfdf09f94df903f4a5fb077"
+  captcha-key: "a1a5fd08215159503b3c4032ec985d7d"
+
+jwt:
+  iss: "mall-customer-user-service"
+  alg: "HS256"
+  secret: "ODMwODExNzI1MzE0NTQ2MTQ3NjE4Mzc2MDE2MjczMDc="
+  expire: 3600
+  subject: "Mall-Login"

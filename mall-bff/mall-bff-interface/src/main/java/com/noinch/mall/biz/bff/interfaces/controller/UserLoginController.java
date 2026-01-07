@@ -4,7 +4,6 @@ package com.noinch.mall.biz.bff.interfaces.controller;
 
 import com.noinch.mall.biz.bff.common.ResultT;
 import com.noinch.mall.biz.bff.dto.req.adapter.UserRegisterAdapterReqDTO;
-import com.noinch.mall.biz.bff.dto.resp.adapter.GeeTestAdapterRespDTO;
 import com.noinch.mall.biz.bff.dto.resp.adapter.UserRegisterAdapterRespDTO;
 import com.noinch.mall.biz.bff.remote.req.UserVerifyCodeCommand;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,13 +28,6 @@ public class UserLoginController {
     
     private final UserLoginService userLoginService;
 
-    @GetMapping("/geetestInit")
-    @Operation(description = "初始化极验验证码")
-    public ResultT<GeeTestAdapterRespDTO> geeTestInit() {
-        GeeTestAdapterRespDTO result = userLoginService.geetestInit();
-        return ResultT.success(result);
-    }
-
     @PostMapping("/verify/code/send")
     @Operation(summary = "验证码发送", description = "包含注册验证码、登录验证等，发送平台包括手机、邮箱等")
     public ResultT<Void> verifyCodeSend(@RequestBody @Valid UserVerifyCodeCommand requestParam) {
@@ -59,12 +51,6 @@ public class UserLoginController {
 
     @GetMapping("/checkLogin")
     @Operation(description = "检查用户是否登录")
-    @Parameter(
-            name = "token",
-            description = "用户登录Token",
-            required = true,
-            example = "JWT Token"
-    )
     public ResultT<UserLoginAdapterRespDTO> checkLogin(@RequestParam(value = "token", required = false) String token) {
         UserLoginAdapterRespDTO result = userLoginService.checkLogin(token);
         return ResultT.success(result);
@@ -72,12 +58,6 @@ public class UserLoginController {
     
     @GetMapping("/loginOut")
     @Operation(description = "用户退出登录")
-    @Parameter(
-        name = "token",
-        description = "用户登录Token",
-        required = true,
-        example = "JWT Token"
-    )
     public ResultT<Void> logout(@RequestParam(value = "token", required = false) String token) {
         userLoginService.logout(token);
         return ResultT.success();

@@ -50,6 +50,7 @@
         <option value="$PROJECT_DIR$/mall-bff/mall-bff-interface/pom.xml" />
         <option value="$PROJECT_DIR$/mall-framework-all/mall-elasticsearch-spring-boot-starter/pom.xml" />
         <option value="$PROJECT_DIR$/mall-product/mall-product-job/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-geetest-spring-boot-starter/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

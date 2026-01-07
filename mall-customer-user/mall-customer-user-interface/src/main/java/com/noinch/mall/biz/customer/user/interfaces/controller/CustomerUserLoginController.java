@@ -3,10 +3,7 @@ package com.noinch.mall.biz.customer.user.interfaces.controller;
 
 import com.noinch.mall.biz.customer.user.application.req.UserRegisterCommand;
 import com.noinch.mall.biz.customer.user.application.req.UserVerifyCodeCommand;
-import com.noinch.mall.biz.customer.user.domain.dto.GeetestRespDTO;
 import com.noinch.mall.biz.customer.user.application.resp.UserRegisterRespDTO;
-import com.noinch.mall.springboot.starter.convention.errorcode.BaseErrorCode;
-import com.noinch.mall.springboot.starter.convention.exception.ClientException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
@@ -28,13 +25,6 @@ public class CustomerUserLoginController {
 
     private final CustomerUserService customerUserService;
 
-    @GetMapping("/api/customer-user/geetestInit")
-    @Operation(summary = "初始化极验验证码", description = "初始化极验验证码")
-    public Result<GeetestRespDTO> geetestInit() {
-        GeetestRespDTO result = customerUserService.initGeetest();
-        return Results.success(result);
-    }
-
     @PostMapping("/api/customer-user/verify/code/send")
     @Operation(summary = "验证码发送", description = "包含注册验证码、登录验证等，发送平台包括手机、邮箱等")
     public Result<Void> verifyCodeSend(@RequestBody @Valid UserVerifyCodeCommand requestParam) {
@@ -43,14 +33,8 @@ public class CustomerUserLoginController {
     }
 
     @PostMapping("/api/customer-user/register")
-    @Operation(summary = "注册用户", description = "注册C端用户账号")
+    @Operation(summary = "注册用户", description = "注册用户")
     public Result<UserRegisterRespDTO> register(@RequestBody @Valid UserRegisterCommand requestParam) {
-        // 检验极验验证码二次验证
-        boolean geetestResult = customerUserService.verifyGeetest(requestParam.getChallenge(), requestParam.getValidate(), requestParam.getSeccode(), requestParam.getStatusKey());
-        if (!geetestResult) {
-            throw new ClientException(BaseErrorCode.GEETEST_ERROR);
-        }
-        // 注册用户
         UserRegisterRespDTO result = customerUserService.register(requestParam);
         return Results.success(result);
     }
@@ -58,25 +42,13 @@ public class CustomerUserLoginController {
     @PostMapping("/api/customer-user/login")
     @Operation(summary = "用户登录", description = "用户登录")
     public Result<UserLoginRespDTO> login(@RequestBody @Valid UserLoginCommand requestParam) {
-        // 检验极验验证码二次验证
-        boolean geetestResult = customerUserService.verifyGeetest(requestParam.getChallenge(), requestParam.getValidate(), requestParam.getSeccode(), requestParam.getStatusKey());
-        if (!geetestResult) {
-            throw new ClientException(BaseErrorCode.GEETEST_ERROR);
-        }
-        // 登录用户
         UserLoginRespDTO result = customerUserService.login(requestParam);
         return Results.success(result);
     }
 
     @GetMapping("/api/customer-user/logout")
     @Operation(summary = "用户退出登录", description = "用户退出登录")
-    @Parameter(
-            name = "accessToken",
-            description = "用户Token",
-            required = true,
-            example = "JWT Token"
-    )
-    public Result<Void> logout(@RequestParam(required = false) String accessToken) {
+    public Result<Void> logout(@RequestParam(value = "accessToken", required = false) String accessToken) {
         customerUserService.logout(accessToken);
         return Results.success();
     }
