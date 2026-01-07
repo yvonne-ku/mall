@@ -5,6 +5,7 @@ com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductSpuMapper.class
 com\noinch\mall\biz\product\infrastructure\dao\entity\ProductSkuDO.class
 com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductBrandMapper.class
 com\noinch\mall\biz\product\infrastructure\repository\ProductCategoryRepositoryImpl.class
+com\noinch\mall\biz\product\infrastructure\es\EsProductIndexInitializer.class
 com\noinch\mall\biz\product\infrastructure\dao\entity\ProductCategoryDO.class
 com\noinch\mall\biz\product\infrastructure\repository\ProductCommentRepositoryImpl.class
 com\noinch\mall\biz\product\infrastructure\dao\entity\ProductSkuDO$ProductSkuDOBuilder.class

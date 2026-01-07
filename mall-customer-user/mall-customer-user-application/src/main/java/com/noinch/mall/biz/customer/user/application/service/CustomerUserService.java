@@ -56,7 +56,4 @@ public interface CustomerUserService {
      */
     void logout(String accessToken);
 
-    GeetestRespDTO initGeetest();
-
-    boolean verifyGeetest(String challenge, String validate, String seccode, String statusKey);
 }

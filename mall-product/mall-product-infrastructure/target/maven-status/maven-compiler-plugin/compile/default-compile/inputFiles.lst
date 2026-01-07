@@ -3,6 +3,7 @@ D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\no
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\es\EsProductRepositoryImpl.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductCategoryMapper.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductBrandMapper.java
+D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\es\EsProductIndexInitializer.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\repository\ProductCategoryRepositoryImpl.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\dao\entity\ProductCommentDO.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\dao\entity\ProductBrandDO.java

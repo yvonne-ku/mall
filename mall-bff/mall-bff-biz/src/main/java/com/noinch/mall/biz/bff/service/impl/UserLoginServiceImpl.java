@@ -37,20 +37,6 @@ public class UserLoginServiceImpl implements UserLoginService {
     private final CustomerUserRemoteService customerUserRemoteService;
 
     @Override
-    public GeeTestAdapterRespDTO geetestInit() {
-        Result<GeetestRespDTO> result = customerUserRemoteService.geetestInit();
-        GeeTestAdapterRespDTO geeTestAdapterRespDTO = new GeeTestAdapterRespDTO();
-        if (result != null && result.isSuccess()) {
-            GeetestRespDTO resultData = result.getData();
-            geeTestAdapterRespDTO.setChallenge(resultData.getChallenge());
-            geeTestAdapterRespDTO.setGt(resultData.getGt());
-            geeTestAdapterRespDTO.setStatusKey(resultData.getStatusKey());
-            geeTestAdapterRespDTO.setSuccess(resultData.getSuccess() ? 1 : 0);
-        }
-        return geeTestAdapterRespDTO;
-    }
-
-    @Override
     public void verifyCodeSend(UserVerifyCodeCommand requestParam) {
         customerUserRemoteService.verifyCodeSend(requestParam);
     }
