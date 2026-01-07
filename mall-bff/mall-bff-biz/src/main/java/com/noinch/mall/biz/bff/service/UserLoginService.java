@@ -4,7 +4,6 @@ package com.noinch.mall.biz.bff.service;
 
 import com.noinch.mall.biz.bff.dto.req.adapter.UserLoginAdapterRepDTO;
 import com.noinch.mall.biz.bff.dto.req.adapter.UserRegisterAdapterReqDTO;
-import com.noinch.mall.biz.bff.dto.resp.adapter.GeeTestAdapterRespDTO;
 import com.noinch.mall.biz.bff.dto.resp.adapter.UserLoginAdapterRespDTO;
 import com.noinch.mall.biz.bff.dto.resp.adapter.UserRegisterAdapterRespDTO;
 import com.noinch.mall.biz.bff.remote.req.UserVerifyCodeCommand;
