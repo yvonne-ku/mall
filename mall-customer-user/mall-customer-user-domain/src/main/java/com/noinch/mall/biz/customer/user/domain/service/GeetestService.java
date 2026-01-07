@@ -1,22 +1,15 @@
 package com.noinch.mall.biz.customer.user.domain.service;
 
-import com.noinch.mall.biz.customer.user.domain.dto.GeetestRespDTO;
-
 public interface GeetestService {
 
     /**
-     * 初始化极验验证码
-     * @return 验证码响应DTO
-     */
-    GeetestRespDTO initGeetest();
-
-    /**
      * 验证极验验证码
-     * @param challenge 挑战码
-     * @param validate 验证码
-     * @param seccode 安全码
-     * @param statusKey 状态Key
+     * @param captchaId 验证码ID
+     * @param lotNumber 随机数
+     * @param passToken 传递令牌
+     * @param genTime 生成时间
+     * @param captchaOutput 验证码输出
      * @return 验证结果
      */
-    boolean verifyGeetest(String challenge, String validate, String seccode, String statusKey);
+    boolean verifyGeetest(String captchaId, String lotNumber, String passToken, String genTime, String captchaOutput);
 }

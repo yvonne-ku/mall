@@ -1,6 +1,6 @@
 package com.noinch.mall.springboot.starter.jwt.toolkit;
 
-import com.noinch.mall.springboot.starter.jwt.config.JwtProperties;
+import com.noinch.mall.springboot.starter.jwt.config.properties.JwtProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwsHeader;

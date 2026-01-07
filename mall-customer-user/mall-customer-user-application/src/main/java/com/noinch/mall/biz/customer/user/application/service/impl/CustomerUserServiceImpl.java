@@ -27,6 +27,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * C 端用户接口
@@ -50,20 +51,32 @@ public class CustomerUserServiceImpl implements CustomerUserService {
     
     @Override
     public UserRegisterRespDTO register(UserRegisterCommand requestParam) {
-        // 1. 用户名唯一性
+        // 1. 极验验证码二次验证
+        boolean geetestResult = geetestService.verifyGeetest(
+                requestParam.getCaptchaId(),
+                requestParam.getLotNumber(),
+                requestParam.getPassToken(),
+                requestParam.getGenTime(),
+                requestParam.getCaptchaOutput()
+        );
+        if (!geetestResult) {
+            throw new ClientException(BaseErrorCode.GEETEST_ERROR);
+        }
+
+        // 2. 用户名唯一性
         if (customerUserRepository.findByUsername(requestParam.getUsername())) {
             throw new ClientException(BaseErrorCode.USER_NAME_EXIST_ERROR);
         }
-        // 2. 手机号唯一性
+        // 3. 手机号唯一性
         if (customerUserRepository.findByPhone(requestParam.getPhone())) {
             throw new ClientException(BaseErrorCode.PHONE_EXIST_ERROR);
         }
-        // 3. 验证码校验
+        // 4. 验证码校验
         String mark = "check_verify_code_register_by_" + requestParam.getPlatform();
         if (! (Boolean) abstractStrategyChoose.chooseAndExecuteResp(mark, requestParam)) {
             throw new ClientException(BaseErrorCode.PHONE_VERIFY_CODE_ERROR);
         }
-        // 4. 注册到数据库
+        // 5. 注册到数据库
         CustomerUser customerUser = CustomerUser.builder()
                 .username(new CustomerUserName(requestParam.getUsername()))
                 .phone(new CustomerUserPhone(requestParam.getPhone()))
@@ -80,31 +93,35 @@ public class CustomerUserServiceImpl implements CustomerUserService {
     
     @Override
     public UserLoginRespDTO login(UserLoginCommand requestParam) {
+        // 1. 极验验证码二次验证
+        boolean geetestResult = geetestService.verifyGeetest(
+                requestParam.getCaptchaId(),
+                requestParam.getLotNumber(),
+                requestParam.getPassToken(),
+                requestParam.getGenTime(),
+                requestParam.getCaptchaOutput()
+                );
+        if (!geetestResult) {
+            throw new ClientException(BaseErrorCode.GEETEST_ERROR);
+        }
+
+        // 2. 登录方式验证，成功会返回 accessToken，存入 distributedCache 方便 checkLogin
         String mark = "login_by_" + requestParam.getType();
-        // 进行验证，不成功会直接抛异常。生成了 accessToken 返回前端。
-        return abstractStrategyChoose.chooseAndExecuteResp(mark, requestParam);
+        UserLoginRespDTO userLoginRespDTO = abstractStrategyChoose.chooseAndExecuteResp(mark, requestParam);
+        distributedCache.put("accessToken:" + userLoginRespDTO.getAccessToken(), userLoginRespDTO, 3000, TimeUnit.MINUTES);
+        return userLoginRespDTO;
     }
     
     @Override
     public UserLoginRespDTO checkLogin(String accessToken) {
-        return distributedCache.get(accessToken, UserLoginRespDTO.class);
+        return distributedCache.get("accessToken:" + accessToken, UserLoginRespDTO.class);
     }
     
     @Override
     public void logout(String accessToken) {
         if (StrUtil.isNotBlank(accessToken)) {
-            distributedCache.delete(accessToken);
+            distributedCache.delete("accessToken:" + accessToken);
         }
-    }
-
-    @Override
-    public GeetestRespDTO initGeetest() {
-        return geetestService.initGeetest();
-    }
-
-    @Override
-    public boolean verifyGeetest(String challenge, String validate, String seccode, String statusKey) {
-        return geetestService.verifyGeetest(challenge, validate, seccode, statusKey);
     }
 
     private String generateByUuid() {
