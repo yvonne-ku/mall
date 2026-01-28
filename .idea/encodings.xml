@@ -9,6 +9,17 @@
     <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-cart/mall-cart-application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-cart/mall-cart-application/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-cart/mall-cart-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-cart/mall-cart-domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-cart/mall-cart-infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-cart/mall-cart-infrastructure/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-cart/mall-cart-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-cart/mall-cart-interface/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-cart/mall-cart-interfaces/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-cart/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-cart/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-customer-user/mall-customer-user-application/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-customer-user/mall-customer-user-application/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-customer-user/mall-customer-user-domain/src/main/java" charset="UTF-8" />
@@ -74,6 +85,16 @@
     <file url="file://$PROJECT_DIR$/mall-message/mall-message-interface/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-message/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-message/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-order/mall-order-application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-order/mall-order-application/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-order/mall-order-domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-order/mall-order-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-order/mall-order-interface/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-order/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-order/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-product/mall-product-application/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-product/mall-product-application/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-product/mall-product-domain/src/main/java" charset="UTF-8" />
