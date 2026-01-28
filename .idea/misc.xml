@@ -51,10 +51,22 @@
         <option value="$PROJECT_DIR$/mall-framework-all/mall-elasticsearch-spring-boot-starter/pom.xml" />
         <option value="$PROJECT_DIR$/mall-product/mall-product-job/pom.xml" />
         <option value="$PROJECT_DIR$/mall-framework-all/mall-geetest-spring-boot-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-order/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-order/mall-order-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-order/mall-order-application/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-order/mall-order-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-order/mall-order-infrastructure/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-cart/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-cart/mall-cart-interfaces/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-cart/mall-cart-application/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-cart/mall-cart-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-cart/mall-cart-infrastructure/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-cart/mall-cart-interface/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/mall-cart/mall-cart-interfaces/pom.xml" />
         <option value="$PROJECT_DIR$/mall-framework-all/mall-swagger-spring-boot-starter/pom.xml" />
       </set>
     </option>
