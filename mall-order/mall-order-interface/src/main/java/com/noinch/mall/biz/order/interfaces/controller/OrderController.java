@@ -1,0 +1,85 @@
+
+package com.noinch.mall.biz.order.interfaces.controller;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
+import com.noinch.mall.biz.order.application.req.OrderCreateCommand;
+import com.noinch.mall.biz.order.application.req.OrderPageQuery;
+import com.noinch.mall.biz.order.application.resp.OrderRespDTO;
+import com.noinch.mall.biz.order.application.service.OrderService;
+import com.noinch.mall.springboot.starter.convention.page.PageResponse;
+import com.noinch.mall.springboot.starter.convention.result.Result;
+import com.noinch.mall.springboot.starter.log.annotation.MLog;
+import com.noinch.mall.springboot.starter.web.Results;
+import org.springframework.web.bind.annotation.*;
+
+
+/**
+ * 订单控制器
+ *
+ */
+@MLog
+@RestController
+@AllArgsConstructor
+@Tag(name = "商品订单")
+@RequestMapping("/api/order")
+public class OrderController {
+    
+    private final OrderService orderService;
+    
+    @GetMapping("/{orderSn}")
+    @Operation(description = "根据订单号查询订单信息")
+    public Result<OrderRespDTO> getOrderByOrderSn(@PathVariable("orderSn") String orderSn) {
+        OrderRespDTO result = orderService.getOrderByOrderSn(orderSn);
+        return Results.success(result);
+    }
+    
+    @GetMapping
+    @Operation(description = "分页查询订单列表")
+    public Result<PageResponse<OrderRespDTO>> pageQueryOrder(OrderPageQuery requestParam) {
+        PageResponse<OrderRespDTO> result = orderService.pageQueryOrder(requestParam);
+        return Results.success(result);
+    }
+    
+    @GetMapping("/customer-user/{customerUserId}")
+    @Operation(description = "根据用户ID查询订单信息")
+    public Result<List<OrderRespDTO>> getOrderByCustomerUserId(@PathVariable("customerUserId") String customerUserId) {
+        List<OrderRespDTO> result = orderService.getOrderByCustomerUserId(customerUserId);
+        return Results.success(result);
+    }
+    
+    @PostMapping
+    @Operation(description = "商品订单下单")
+//    @Idempotent(
+//            type = IdempotentTypeEnum.PARAM,
+//            message = "订单已创建，请稍后再试"
+//    )
+    public Result<String> createOrder(@RequestBody OrderCreateCommand requestParam) {
+        String orderNo = orderService.createOrder(requestParam);
+        return Results.success(orderNo);
+    }
+    
+    @PutMapping("/{orderSn}")
+    @Operation(description = "商品订单取消")
+//    @Idempotent(
+//            type = IdempotentTypeEnum.TOKEN,
+//            message = "订单取消失败，请刷新订单状态或重新操作"
+//    )
+    public Result<Void> canalOrder(@PathVariable("orderSn") String orderSn) {
+        orderService.canalOrder(orderSn);
+        return Results.success();
+    }
+    
+    @DeleteMapping("/{orderSn}")
+    @Operation(description = "商品订单删除")
+//    @Idempotent(
+//            type = IdempotentTypeEnum.PARAM,
+//            uniqueKeyPrefix = "del_",
+//            message = "订单删除失败，请刷新订单状态或重新操作"
+//    )
+    public Result<Void> deleteOrder(@PathVariable("orderSn") String orderSn) {
+        orderService.deleteOrder(orderSn);
+        return Results.success();
+    }
+}

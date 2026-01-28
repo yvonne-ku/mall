@@ -1,0 +1,34 @@
+
+server:
+  port: 8005
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: cart-service
+
+
+mall:
+  fastjson:
+    safe-mode: true
+  cart:
+    max-product: 500
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+#
+#seata:
+#  application-id: ${spring.application.name}
+#  enable-auto-data-source-proxy: false
+#  service:
+#    grouplist:
+#      seata-server: 127.0.0.1:8091
+#    vgroup-mapping:
+#      my-tx-group: seata-server
+#  tx-service-group: my-tx-group
+#  use-jdk-proxy: true
