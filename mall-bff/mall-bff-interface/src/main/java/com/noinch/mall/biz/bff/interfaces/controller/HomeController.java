@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import com.noinch.mall.biz.bff.dto.resp.adapter.HomePanelAdapterRespDTO;
 import com.noinch.mall.biz.bff.service.HomeService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
