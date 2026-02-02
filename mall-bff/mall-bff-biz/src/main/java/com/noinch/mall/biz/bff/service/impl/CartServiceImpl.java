@@ -55,6 +55,7 @@ public class CartServiceImpl implements CartService {
                 cartAdapterRespDTO.setProductNum(each.getProductQuantity());
                 cartAdapterRespDTO.setSalePrice(each.getProductPrice().intValue());
                 cartAdapterRespDTO.setLimitNum(each.getLimitNum() != null ? each.getLimitNum() : 100);
+                cartAdapterRespDTO.setChecked(each.getSelectFlag() == 1 ?  "1" : "0");
                 return cartAdapterRespDTO;
             }).toList();
         }
@@ -141,18 +142,25 @@ public class CartServiceImpl implements CartService {
     @Override
     public Integer deleteProductCard(CartDeleteAdapterReqDTO requestParam) {
         Result<ProductRespDTO> remoteProductResult = null;
-
-        // 构造 req
-        int deleteProductCardResult = 0;
         try {
-            CartItemDelReqDTO delCartRequestParam = new CartItemDelReqDTO();
-            delCartRequestParam.setCustomerUserId(requestParam.getUserId());
-            delCartRequestParam.setProductSkuIds(Lists.newArrayList(String.valueOf(requestParam.getSkuId())));
-            cartRemoteService.clearCartItem(delCartRequestParam);
+            remoteProductResult = productRemoteService.getProductBySpuId(requestParam.getProductId());
         } catch (Throwable ex) {
-            log.error("调用购物车服务删除购物车商品失败", ex);
+            log.error("调用商品服务查询商品详细信息失败", ex);
         }
-        deleteProductCardResult = 1;
+        int deleteProductCardResult = 0;
+        if (remoteProductResult != null && remoteProductResult.isSuccess()) {
+            try {
+                ProductRespDTO productResultData = remoteProductResult.getData();
+                ProductSkuRespDTO productSkuData = productResultData.getProductSkus().get(0);
+                CartItemDelReqDTO delCartRequestParam = new CartItemDelReqDTO();
+                delCartRequestParam.setCustomerUserId(requestParam.getUserId());
+                delCartRequestParam.setProductSkuIds(Lists.newArrayList(String.valueOf(productSkuData.getId())));
+                cartRemoteService.clearCartItem(delCartRequestParam);
+            } catch (Throwable ex) {
+                log.error("调用购物车服务删除购物车商品失败", ex);
+            }
+            deleteProductCardResult = 1;
+        }
         return deleteProductCardResult;
     }
 

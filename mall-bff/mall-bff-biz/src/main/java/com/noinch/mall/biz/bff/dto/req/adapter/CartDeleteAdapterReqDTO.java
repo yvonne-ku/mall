@@ -11,9 +11,7 @@ import lombok.Data;
 @Data
 public class CartDeleteAdapterReqDTO {
     
-    private String spuId;
-
-    private String skuId;
+    private String productId;
 
     private String userId;
 }
