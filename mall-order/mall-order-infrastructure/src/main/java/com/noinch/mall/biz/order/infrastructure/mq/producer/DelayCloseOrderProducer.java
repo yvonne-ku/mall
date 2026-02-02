@@ -1,8 +1,8 @@
 package com.noinch.mall.biz.order.infrastructure.mq.producer;
 
-import com.noinch.mall.biz.order.domain.common.OrderRabbitMQConstants;
 import com.noinch.mall.biz.order.domain.dto.ProductSkuStockDTO;
 import com.noinch.mall.biz.order.domain.event.DelayCloseOrderEvent;
+import com.noinch.mall.biz.order.infrastructure.mq.config.DelayCloseOrderMQConfig;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.MessageDeliveryMode;
@@ -35,17 +35,17 @@ public class DelayCloseOrderProducer {
                             .collect(Collectors.toList())
             );
 
-            // 发送到延迟队列，TTL 设置为 30 分钟
+            // 发送到业务交换机 -> 延迟队列 -> 死信交换机 -> 业务队列 -> 消费者
             rabbitTemplate.convertAndSend(
-                    OrderRabbitMQConstants.ORDER_DELAY_EXCHANGE,
-                    OrderRabbitMQConstants.ORDER_DELAY_ROUTING_KEY,
+                    DelayCloseOrderMQConfig.ORDER_EXCHANGE,
+                    DelayCloseOrderMQConfig.DELAY_ROUTING_KEY,
                     delayEvent,
                     message -> {
                         // 1. 设置唯一消息 ID
                         String messageId = "DELAY_ORDER_" + event.getOrderSn();
                         message.getMessageProperties().setMessageId(messageId);
 
-                        // 2. 设置过期时间 (TTL)
+                        // 2. 设置消息级过期时间 (TTL)
                         // 1800000 毫秒 = 30 分钟
                         message.getMessageProperties().setExpiration("1800000");
 
