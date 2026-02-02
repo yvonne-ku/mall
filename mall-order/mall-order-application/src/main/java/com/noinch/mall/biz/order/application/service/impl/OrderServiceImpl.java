@@ -2,12 +2,12 @@
 
 package com.noinch.mall.biz.order.application.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
+import com.noinch.mall.biz.order.application.event.OrderCreateEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shardingsphere.transaction.annotation.ShardingSphereTransactionType;
-import org.apache.shardingsphere.transaction.core.TransactionType;
 import com.noinch.mall.biz.order.application.enums.OrderChainMarkEnum;
-import com.noinch.mall.biz.order.application.event.order.create.OrderCreateEvent;
 import com.noinch.mall.biz.order.application.filter.OrderCreateProductSkuStockChainHandler;
 import com.noinch.mall.biz.order.application.req.OrderCreateCommand;
 import com.noinch.mall.biz.order.application.req.OrderPageQuery;
@@ -21,7 +21,6 @@ import com.noinch.mall.biz.order.domain.repository.OrderRepository;
 import com.noinch.mall.biz.order.infrastructure.remote.CartRemoteService;
 import com.noinch.mall.biz.order.infrastructure.remote.dto.CartItemQuerySelectRespDTO;
 import com.noinch.mall.springboot.starter.base.ApplicationContextHolder;
-import com.noinch.mall.springboot.starter.common.toolkit.BeanUtil;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
 import com.noinch.mall.springboot.starter.convention.result.Result;
 import com.noinch.mall.springboot.starter.designpattern.chain.AbstractChainContext;
@@ -46,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
     private final AbstractChainContext<OrderCreateCommand> abstractChainContext;
     
     @Transactional
-    @ShardingSphereTransactionType(TransactionType.BASE)
+//    @ShardingSphereTransactionType(TransactionType.BASE)
     @Override
     public String createOrder(OrderCreateCommand requestParam) {
         // 责任链模式: 执行订单创建参数验证
@@ -56,9 +55,15 @@ public class OrderServiceImpl implements OrderService {
         // 调用购物车服务获取已选中参与结算商品
         List<CartItemQuerySelectRespDTO> cartProducts = querySelectCartByCustomerUserId(requestParam.getCustomerUserId());
         List<OrderProduct> orderProducts = cartProducts.stream()
-                .map(each -> BeanUtil.convert(each, OrderProduct.class).setOrderSn(orderSn))
-                .collect(Collectors.toList());
+                .map(each -> {
+                    OrderProduct orderProduct = new OrderProduct();
+                    BeanUtil.copyProperties(each, orderProduct);
+                    orderProduct.setOrderSn(orderSn);
+                    return orderProduct;
+                }).collect(Collectors.toList());
         // 构建订单聚合根
+        CneeInfo cneeInfo = new CneeInfo();
+        BeanUtil.copyProperties(requestParam, cneeInfo, CopyOptions.create().setIgnoreNullValue(true));
         Order order = Order.builder()
                 .customerUserId(Long.parseLong(requestParam.getCustomerUserId()))
                 .orderSn(orderSn)
@@ -67,7 +72,7 @@ public class OrderServiceImpl implements OrderService {
                 .freightAmount(requestParam.getFreightAmount())
                 .source(requestParam.getSource())
                 .type(requestParam.getType())
-                .cneeInfo(BeanUtil.convert(requestParam, CneeInfo.class))
+                .cneeInfo(cneeInfo)
                 .remark(requestParam.getRemark())
                 .status(OrderStatusEnum.PENDING_PAYMENT.getStatus())
                 .orderProducts(orderProducts)
@@ -81,20 +86,28 @@ public class OrderServiceImpl implements OrderService {
     public OrderRespDTO getOrderByOrderSn(String orderSn) {
         Order order = orderRepository.findOrderByOrderSn(orderSn);
         CneeInfo cneeInfo = order.getCneeInfo();
-        OrderRespDTO result = BeanUtil.convert(order, OrderRespDTO.class);
-        BeanUtil.convertIgnoreNullAndBlank(cneeInfo, result);
+        OrderRespDTO result = new OrderRespDTO();
+        BeanUtil.copyProperties(order, result);
+        BeanUtil.copyProperties(cneeInfo, result, CopyOptions.create().setIgnoreNullValue(true));
         return result;
     }
     
     @Override
     public List<OrderRespDTO> getOrderByCustomerUserId(String customerUserId) {
         List<Order> orderList = orderRepository.findOrderByCustomerUserId(customerUserId);
-        return BeanUtil.convert(orderList, OrderRespDTO.class);
+        return orderList.stream()
+                .map(each -> {
+                    OrderRespDTO result = new OrderRespDTO();
+                    BeanUtil.copyProperties(each, result);
+                    BeanUtil.copyProperties(each.getCneeInfo(), result, CopyOptions.create().setIgnoreNullValue(true));
+                    return result;
+                })
+                .collect(Collectors.toList());
     }
     
     @Override
-    public void canalOrder(String orderSn) {
-        orderRepository.canalOrder(orderSn);
+    public void cancelOrder(String orderSn) {
+        orderRepository.cancelOrder(orderSn);
     }
     
     @Override
@@ -105,7 +118,12 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public PageResponse<OrderRespDTO> pageQueryOrder(OrderPageQuery requestParam) {
         PageResponse<Order> pageResponse = orderRepository.pageQueryOrder(requestParam.getUserId(), requestParam);
-        return pageResponse.convert(each -> BeanUtil.convert(each, OrderRespDTO.class));
+        return pageResponse.convert(each -> {
+            OrderRespDTO result = new OrderRespDTO();
+            BeanUtil.copyProperties(each, result);
+            BeanUtil.copyProperties(each.getCneeInfo(), result, CopyOptions.create().setIgnoreNullValue(true));
+            return result;
+        });
     }
     
     /**

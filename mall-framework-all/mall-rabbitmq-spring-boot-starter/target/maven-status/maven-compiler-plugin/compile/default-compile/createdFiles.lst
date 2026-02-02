@@ -1,0 +1,5 @@
+com\noinch\mall\springboot\starter\rabbitmq\config\properties\RabbitMQProperties$Producer.class
+com\noinch\mall\springboot\starter\rabbitmq\config\properties\RabbitMQProperties$Consumer$Retry.class
+com\noinch\mall\springboot\starter\rabbitmq\config\properties\RabbitMQProperties$Consumer.class
+com\noinch\mall\springboot\starter\rabbitmq\config\properties\RabbitMQProperties.class
+com\noinch\mall\springboot\starter\rabbitmq\config\RabbitMQAutoConfiguration.class

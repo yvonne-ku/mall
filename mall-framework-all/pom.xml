@@ -16,6 +16,7 @@
         <module>mall-common-spring-boot-starter</module>
         <module>mall-convention-spring-boot-starter</module>
         <module>mall-designpattern-spring-boot-starter</module>
+        <module>mall-rabbitmq-spring-boot-starter</module>
         <module>mall-elasticsearch-spring-boot-starter</module>
         <module>mall-mybatisplus-spring-boot-starter</module>
         <module>mall-distributedid-spring-boot-starter</module>

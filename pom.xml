@@ -243,6 +243,13 @@
                 <version>${minio.verion}</version>
             </dependency>
 
+            <!-- AMQP -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
             <!-- Redisson -->
             <dependency>
                 <groupId>org.redisson</groupId>

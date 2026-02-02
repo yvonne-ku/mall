@@ -44,7 +44,7 @@ public interface OrderService {
      *
      * @param orderSn 订单号
      */
-    void canalOrder(String orderSn);
+    void cancelOrder(String orderSn);
     
     /**
      * 删除订单

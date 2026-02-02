@@ -14,6 +14,8 @@ import com.noinch.mall.springboot.starter.log.annotation.MLog;
 import com.noinch.mall.springboot.starter.web.Results;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 /**
  * 订单控制器
@@ -66,8 +68,8 @@ public class OrderController {
 //            type = IdempotentTypeEnum.TOKEN,
 //            message = "订单取消失败，请刷新订单状态或重新操作"
 //    )
-    public Result<Void> canalOrder(@PathVariable("orderSn") String orderSn) {
-        orderService.canalOrder(orderSn);
+    public Result<Void> cancelOrder(@PathVariable("orderSn") String orderSn) {
+        orderService.cancelOrder(orderSn);
         return Results.success();
     }
     

@@ -62,6 +62,7 @@
         <option value="$PROJECT_DIR$/mall-cart/mall-cart-domain/pom.xml" />
         <option value="$PROJECT_DIR$/mall-cart/mall-cart-infrastructure/pom.xml" />
         <option value="$PROJECT_DIR$/mall-cart/mall-cart-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-framework-all/mall-rabbitmq-spring-boot-starter/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
