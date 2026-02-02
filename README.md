@@ -65,4 +65,5 @@ mall-idempotent-spring-boot-starter
 ===
 订单创建场景：
 1. Spring 事件机制：订单创建，购物车清空，库存锁定，延迟关闭订单消息
-2. RabbitMQ 延迟队列 死信交换机：延迟关闭订单处理
+2. 全局回滚
+3. RabbitMQ 延迟队列 死信交换机：延迟关闭订单处理
