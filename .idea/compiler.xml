@@ -8,23 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
       </profile>
-      <profile name="Annotation profile for mall-order" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
-        </processorPath>
-        <module name="mall-order-application" />
-      </profile>
-      <profile name="Annotation profile for mall-cart" enabled="true">
+      <profile name="Annotation profile for test" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -48,8 +32,10 @@
         <module name="mall-xxljob-spring-boot-starter" />
         <module name="mall-cart-domain" />
         <module name="mall-jwt-spring-boot-starter" />
+        <module name="mall-rabbitmq-spring-boot-starter" />
         <module name="mall-cart-infrastructure" />
         <module name="mall-convention-spring-boot-starter" />
+        <module name="mall-order-application" />
         <module name="mall-elasticsearch-spring-boot-starter" />
         <module name="mall-log-spring-boot-starter" />
         <module name="mall-cache-spring-boot-starter" />
@@ -129,6 +115,7 @@
       <module name="mall-product-infrastructure" options="" />
       <module name="mall-product-interface" options="" />
       <module name="mall-product-job" options="" />
+      <module name="mall-rabbitmq-spring-boot-starter" options="" />
       <module name="mall-swagger-spring-boot-starter" options="" />
       <module name="mall-web-spring-boot-starter" options="" />
       <module name="mall-xxljob-spring-boot-starter" options="" />
