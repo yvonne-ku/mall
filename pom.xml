@@ -10,10 +10,13 @@
     <modules>
         <module>mall-framework-all</module>
         <module>mall-gateway</module>
+        <module>mall-aggregation</module>
         <module>mall-bff</module>
         <module>mall-customer-user</module>
         <module>mall-product</module>
         <module>mall-message</module>
+        <module>mall-cart</module>
+        <module>mall-order</module>
     </modules>
 
     <properties>
