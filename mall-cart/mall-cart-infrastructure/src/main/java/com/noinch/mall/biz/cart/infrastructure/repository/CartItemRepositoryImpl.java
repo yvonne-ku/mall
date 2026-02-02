@@ -49,11 +49,11 @@ public class CartItemRepositoryImpl implements CartItemRepository {
     @Override
     public PageResponse<CartItem> pageQueryCartItem(String userId, PageRequest pageRequest) {
         LambdaQueryWrapper<CartItemDO> queryWrapper = Wrappers.lambdaQuery(CartItemDO.class)
-                .eq(CartItemDO::getCustomerUserId, userId);
+                .eq(CartItemDO::getCustomerUserId, Long.parseLong(userId));
         Page<CartItemDO> selectPage = cartItemMapper.selectPage(new Page<>(pageRequest.getCurrent(), pageRequest.getSize()), queryWrapper);
         return PageUtil.convert(selectPage, CartItem.class);
     }
-    
+
     @Override
     public List<CartItem> querySelectCartItemByCustomerUserId(String customerUserId) {
         LambdaQueryWrapper<CartItemDO> queryWrapper = Wrappers.lambdaQuery(CartItemDO.class)
@@ -66,7 +66,7 @@ public class CartItemRepositoryImpl implements CartItemRepository {
             return cartItem;
         }).collect(Collectors.toList());
     }
-    
+
     @SneakyThrows
     @Override
     public void addCartItem(CartItem cartItem) {
@@ -109,11 +109,13 @@ public class CartItemRepositoryImpl implements CartItemRepository {
                 int insertFlag = cartItemMapper.insert(cartItemDO);
                 Assert.isTrue(insertFlag > 0, () -> new ServiceException("添加购物车失败"));
             }
+        } catch (Exception e) {
+            throw new ServiceException("添加购物车失败");
         } finally {
             lock.unlock();
         }
     }
-    
+
     @Override
     public void updateCheckCartItem(CartItem cartItem) {
         LambdaUpdateWrapper<CartItemDO> updateWrapper = Wrappers.lambdaUpdate(CartItemDO.class)
@@ -125,7 +127,7 @@ public class CartItemRepositoryImpl implements CartItemRepository {
         int updateFlag = cartItemMapper.update(updateCartItem, updateWrapper);
         Assert.isTrue(updateFlag > 0, () -> new ServiceException("修改购物车选中状态失败"));
     }
-    
+
     @Override
     public void updateChecksCartItem(CartItem cartItem) {
         LambdaUpdateWrapper<CartItemDO> updateWrapper = Wrappers.lambdaUpdate(CartItemDO.class)
@@ -135,7 +137,7 @@ public class CartItemRepositoryImpl implements CartItemRepository {
         int updateFlag = cartItemMapper.update(updateCartItem, updateWrapper);
         Assert.isTrue(updateFlag > 0, () -> new ServiceException("修改购物车选中状态失败"));
     }
-    
+
     @Override
     public void updateCartItem(CartItem cartItem) {
         LambdaUpdateWrapper<CartItemDO> updateWrapper = Wrappers.lambdaUpdate(CartItemDO.class)
@@ -147,7 +149,7 @@ public class CartItemRepositoryImpl implements CartItemRepository {
         int updateFlag = cartItemMapper.update(updateCartItem, updateWrapper);
         Assert.isTrue(updateFlag > 0, () -> new ServiceException("修改购物车失败"));
     }
-    
+
     @Override
     public void deleteCartItem(CartItem cartItem) {
         LambdaUpdateWrapper<CartItemDO> updateWrapper = Wrappers.lambdaUpdate(CartItemDO.class)
@@ -156,12 +158,12 @@ public class CartItemRepositoryImpl implements CartItemRepository {
         int updateFlag = cartItemMapper.delete(updateWrapper);
         Assert.isTrue(updateFlag > 0, () -> new ServiceException("删除购物车失败"));
     }
-    
+
     @Override
     public int countCartItem(String customerUserId) {
-        return Optional.ofNullable(cartItemMapper.countUserCartItem(customerUserId)).orElse(0);
+        return Optional.ofNullable(cartItemMapper.countCartItem(customerUserId)).orElse(0);
     }
-    
+
     @Override
     public void deleteCheckCartItem(CartItem cartItem) {
         LambdaUpdateWrapper<CartItemDO> updateWrapper = Wrappers.lambdaUpdate(CartItemDO.class)
