@@ -1,4 +1,5 @@
 com\noinch\mall\springboot\starter\mybatisplus\config\MybatisPlusAutoConfiguration.class
 com\noinch\mall\springboot\starter\mybatisplus\CustomIdGenerator.class
+com\noinch\mall\springboot\starter\mybatisplus\PageUtil.class
 com\noinch\mall\springboot\starter\mybatisplus\MyMetaObjectHandler.class
 com\noinch\mall\springboot\starter\mybatisplus\BaseDO.class

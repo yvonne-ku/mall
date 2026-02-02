@@ -64,28 +64,28 @@ public class CartItemController {
 
     @PutMapping("/num")
     @Operation(description = "修改购物车商品SKU数量")
-    public Result<Void> updateNumCartItem(@RequestBody CartItemNumUpdateReqDTO requestParam) {
+    public Result<Void> updateQuantityCartItem(@RequestBody CartItemNumUpdateReqDTO requestParam) {
         cartItemService.updateQuantityCartItem(requestParam);
         return Results.success();
     }
 
     @DeleteMapping
     @Operation(description = "删除购物车商品")
-    public Result<Void> clearCartProduct(@RequestBody CartItemDelReqDTO requestParam) {
+    public Result<Void> clearCartItem(@RequestBody CartItemDelReqDTO requestParam) {
         cartItemService.clearCartItem(requestParam);
         return Results.success();
     }
 
     @DeleteMapping("/delete/checks")
     @Operation(description = "删除选中购物车商品")
-    public Result<Void> clearCheckCartProduct(@RequestBody CartItemDelCheckReqDTO requestParam) {
+    public Result<Void> clearCheckCartItem(@RequestBody CartItemDelCheckReqDTO requestParam) {
         cartItemService.clearCheckCartItem(requestParam);
         return Results.success();
     }
 
     @GetMapping("/count/{customerUserId}")
     @Operation(description = "统计用户购物车商品数量")
-    public Result<Integer> countUserCartItem(@PathVariable("customerUserId") String customerUserId) {
+    public Result<Integer> countCartItem(@PathVariable("customerUserId") String customerUserId) {
         int result = cartItemService.countCartItem(customerUserId);
         return Results.success(result);
     }
