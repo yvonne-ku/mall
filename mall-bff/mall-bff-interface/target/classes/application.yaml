@@ -23,6 +23,10 @@ mall:
     url: http://localhost:8004
   customer-user-service:
     url: http://localhost:8002
+  cart-service:
+    url: http://localhost:8005
+  order-service:
+    url: http://localhost:8006
 
 jetcache:
   areaInCacheName: false

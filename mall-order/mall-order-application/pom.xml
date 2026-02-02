@@ -12,6 +12,12 @@
     <dependencies>
         <dependency>
             <groupId>com.noinch.mall</groupId>
+            <artifactId>mall-order-domain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.noinch.mall</groupId>
             <artifactId>mall-order-infrastructure</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -39,5 +45,6 @@
             <artifactId>mall-designpattern-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
+
     </dependencies>
 </project>
