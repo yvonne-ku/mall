@@ -9,4 +9,6 @@ application-*.properties
 *.keystore
 *.truststore
 
+README.md
+
 **/certs/
