@@ -13,6 +13,7 @@ import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -22,21 +23,20 @@ import org.springframework.context.annotation.Bean;
  * RabbitMQ 自动装配
  *
  */
-@EnableConfigurationProperties(RabbitMQProperties.class) // 开启配置绑定
+@EnableConfigurationProperties(RabbitMQProperties.class)
 @ConditionalOnClass({ConnectionFactory.class, RabbitTemplate.class})
 public class RabbitMQAutoConfiguration {
 
     // 序列化 Bean：统一使用 JSON
     @Bean
-    @ConditionalOnMissingBean
     public MessageConverter jackson2JsonMessageConverter() {
         return new Jackson2JsonMessageConverter();
     }
 
     // 1. 基础连接工厂：将你的 host, port, 确认模式等注入
     @Bean
-    @ConditionalOnMissingBean
-    public ConnectionFactory connectionFactory(RabbitMQProperties properties) {
+    @ConditionalOnMissingBean(name = "customConnectionFactory")
+    public ConnectionFactory customConnectionFactory(RabbitMQProperties properties) {
         CachingConnectionFactory factory = new CachingConnectionFactory();
 
         // 基础配置
@@ -55,20 +55,20 @@ public class RabbitMQAutoConfiguration {
 
     // 2. 消息发送模板：配置 JSON 序列化和强制投递
     @Bean
-    @ConditionalOnMissingBean
-    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, RabbitMQProperties properties) {
-        RabbitTemplate template = new RabbitTemplate(connectionFactory);
-        template.setMessageConverter(jackson2JsonMessageConverter());
-        template.setMandatory(properties.getProducer().isMandatory());
-        return template;
+    @ConditionalOnMissingBean(name = "customRabbitTemplate")
+    public RabbitTemplate customRabbitTemplate(@Qualifier("customConnectionFactory") ConnectionFactory customConnectionFactory, RabbitMQProperties properties) {
+        RabbitTemplate rabbitTemplate = new RabbitTemplate(customConnectionFactory);
+        rabbitTemplate.setMessageConverter(jackson2JsonMessageConverter());
+        rabbitTemplate.setMandatory(properties.getProducer().isMandatory());
+        return rabbitTemplate;
     }
 
     // 3. 消费者容器工厂：这是 @RabbitListener 的底层支持
-    @Bean(name = "rabbitListenerContainerFactory")
-    @ConditionalOnMissingBean(name = "rabbitListenerContainerFactory")
-    public SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory(ConnectionFactory connectionFactory, RabbitMQProperties properties) {
+    @Bean
+    @ConditionalOnMissingBean(name = "customRabbitListenerContainerFactory")
+    public SimpleRabbitListenerContainerFactory customRabbitListenerContainerFactory(@Qualifier("customConnectionFactory") ConnectionFactory customConnectionFactory, RabbitMQProperties properties) {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
-        factory.setConnectionFactory(connectionFactory);
+        factory.setConnectionFactory(customConnectionFactory);
         factory.setMessageConverter(jackson2JsonMessageConverter());
 
         // 对应 Consumer 内部类配置
@@ -97,8 +97,8 @@ public class RabbitMQAutoConfiguration {
 
     // 4. 管理组件：用于自动创建 Queue, Exchange
     @Bean
-    @ConditionalOnMissingBean
-    public AmqpAdmin amqpAdmin(ConnectionFactory connectionFactory) {
-        return new RabbitAdmin(connectionFactory);
+    @ConditionalOnMissingBean(name = "customAmqpAdmin")
+    public AmqpAdmin customAmqpAdmin(@Qualifier("customConnectionFactory") ConnectionFactory customConnectionFactory) {
+        return new RabbitAdmin(customConnectionFactory);
     }
 }

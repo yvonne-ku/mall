@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-bff-interface</artifactId>
+            <artifactId>mall-bff-web</artifactId>
             <version>${project.version}</version>
         </dependency>
 

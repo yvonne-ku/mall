@@ -39,4 +39,12 @@ public interface OrderService {
      * @return 是否删除成功
      */
     Integer deleteOrder(String orderSn);
+
+    /**
+     * 根据订单号取消订单
+     *
+     * @param orderSn 订单号
+     * @return 是否取消成功
+     */
+    Integer cancelOrder(String orderSn);
 }

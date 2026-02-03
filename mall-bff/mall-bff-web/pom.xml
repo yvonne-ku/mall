@@ -7,7 +7,7 @@
         <artifactId>mall-bff</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>mall-bff-interface</artifactId>
+    <artifactId>mall-bff-web</artifactId>
 
     <dependencies>
         <dependency>

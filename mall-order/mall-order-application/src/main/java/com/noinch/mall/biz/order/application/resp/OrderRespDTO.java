@@ -48,12 +48,7 @@ public class OrderRespDTO {
      * 支付方式
      */
     private Integer payType;
-    
-    /**
-     * 支付时间
-     */
-    private Date payTime;
-    
+
     /**
      * 订单来源
      */
@@ -97,7 +92,7 @@ public class OrderRespDTO {
     /**
      * 收货人所在省
      */
-    private String cneeProvinc;
+    private String cneeProvince;
     
     /**
      * 收货人所在市
@@ -115,11 +110,6 @@ public class OrderRespDTO {
     private String cneeDetailAddress;
     
     /**
-     * 收货时间
-     */
-    private Date receiveTime;
-    
-    /**
      * 订单备注信息
      */
     private String remark;
@@ -133,11 +123,26 @@ public class OrderRespDTO {
      * 订单创建时间
      */
     private Date createTime;
-    
+
+    /**
+     * 支付时间
+     */
+    private Date payTime;
+
     /**
      * 发货时间
      */
     private Date deliveryTime;
+
+    /**
+     * 收货时间
+     */
+    private Date receiveTime;
+
+    /**
+     * 关闭时间
+     */
+    private Date closeTime;
     
     /**
      * 订单状态
