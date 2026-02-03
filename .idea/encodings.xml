@@ -5,10 +5,10 @@
     <file url="file://$PROJECT_DIR$/mall-aggregation/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-interface/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-interface/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-web/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-cart/mall-cart-application/src/main/java" charset="UTF-8" />

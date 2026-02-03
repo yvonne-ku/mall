@@ -100,7 +100,7 @@ public class OrderDO extends BaseDO {
     /**
      * 收货人所在省
      */
-    private String cneeProvinc;
+    private String cneeProvince;
     
     /**
      * 收货人所在市

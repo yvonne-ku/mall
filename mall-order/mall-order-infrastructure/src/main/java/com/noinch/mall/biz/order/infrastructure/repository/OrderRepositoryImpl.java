@@ -159,7 +159,23 @@ public class OrderRepositoryImpl implements OrderRepository {
             lock.unlock();
         }
     }
-    
+
+    @Override
+    public void deleteOrder(String orderSn) {
+        LambdaQueryWrapper<OrderDO> queryWrapper = Wrappers.lambdaQuery(OrderDO.class)
+                .eq(OrderDO::getOrderSn, orderSn);
+        OrderDO orderDO = orderMapper.selectOne(queryWrapper);
+        if (orderDO == null) {
+            throw new ServiceException(OrderCancelErrorCodeEnum.ORDER_CANCEL_UNKNOWN_ERROR);
+        }
+        LambdaUpdateWrapper<OrderDO> updateWrapper = Wrappers.lambdaUpdate(OrderDO.class)
+                .eq(OrderDO::getOrderSn, orderSn);
+        int updateResult = orderMapper.delete(updateWrapper);
+        if (updateResult <= 0) {
+            throw new ServiceException(OrderCancelErrorCodeEnum.ORDER_DELETE_ERROR);
+        }
+    }
+
     @Override
     public void statusReversal(Order order) {
         LambdaQueryWrapper<OrderDO> queryWrapper = Wrappers.lambdaQuery(OrderDO.class)
@@ -187,23 +203,7 @@ public class OrderRepositoryImpl implements OrderRepository {
             lock.unlock();
         }
     }
-    
-    @Override
-    public void deleteOrder(String orderSn) {
-        LambdaQueryWrapper<OrderDO> queryWrapper = Wrappers.lambdaQuery(OrderDO.class)
-                .eq(OrderDO::getOrderSn, orderSn);
-        OrderDO orderDO = orderMapper.selectOne(queryWrapper);
-        if (orderDO == null) {
-            throw new ServiceException(OrderCancelErrorCodeEnum.ORDER_CANCEL_UNKNOWN_ERROR);
-        }
-        LambdaUpdateWrapper<OrderDO> updateWrapper = Wrappers.lambdaUpdate(OrderDO.class)
-                .eq(OrderDO::getOrderSn, orderSn);
-        int updateResult = orderMapper.delete(updateWrapper);
-        if (updateResult <= 0) {
-            throw new ServiceException(OrderCancelErrorCodeEnum.ORDER_DELETE_ERROR);
-        }
-    }
-    
+
     @Override
     public PageResponse<Order> pageQueryOrder(String userId, PageRequest pageRequest) {
         LambdaQueryWrapper<OrderDO> queryWrapper = Wrappers.lambdaQuery(OrderDO.class).eq(OrderDO::getCustomerUserId, userId);

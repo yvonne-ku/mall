@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * 订单控制层
  *
  */
-@RestController()
+@RestController
 @RequiredArgsConstructor
 @Tag(name = "订单")
 public class OrderController {
@@ -32,7 +32,7 @@ public class OrderController {
 
     @GetMapping("/member/orderDetail")
     @Operation(description = "根据订单号查询订单详情")
-    public ResultT<OrderAdapterRespDTO> getOrderDetail(@RequestParam("orderId") String orderSn) {
+    public ResultT<OrderAdapterRespDTO> getOrderDetail(@RequestParam("orderSn") String orderSn) {
         return ResultT.success(orderService.getOrderDetail(orderSn));
     }
 
@@ -49,7 +49,18 @@ public class OrderController {
 
     @GetMapping("/member/delOrder")
     @Operation(description = "订单删除")
-    public ResultT<Integer> deleteOrder(@RequestParam("orderId") String orderSn) {
+    public ResultT<Integer> deleteOrder(@RequestParam("orderSn") String orderSn) {
         return ResultT.success(orderService.deleteOrder(orderSn));
     }
+
+    @GetMapping("/member/cancelOrder")
+    @Operation(description = "订单取消")
+//    @Idempotent(
+//            type = IdempotentTypeEnum.TOKEN,
+//            message = "订单取消失败，请刷新订单状态或重新操作"
+//    )
+    public ResultT<Integer> cancelOrder(@RequestParam("orderSn") String orderSn) {
+        return ResultT.success(orderService.cancelOrder(orderSn));
+    }
+
 }
