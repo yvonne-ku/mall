@@ -3,10 +3,11 @@ package com.noinch.mall.biz.order.infrastructure.mq.producer;
 import com.noinch.mall.biz.order.domain.dto.ProductSkuStockDTO;
 import com.noinch.mall.biz.order.domain.event.DelayCloseOrderEvent;
 import com.noinch.mall.biz.order.infrastructure.mq.config.DelayCloseOrderMQConfig;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.MessageDeliveryMode;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
@@ -16,10 +17,11 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Component
-@AllArgsConstructor
 public class DelayCloseOrderProducer {
 
-    private final RabbitTemplate rabbitTemplate;
+    @Autowired
+    @Qualifier("customRabbitTemplate")
+    private RabbitTemplate rabbitTemplate;
 
     /**
      * 延迟发送订单关闭消息
@@ -56,7 +58,7 @@ public class DelayCloseOrderProducer {
             );
             log.info("延迟关单消息发送成功, 订单号: {}, 消息ID: {}", event.getOrderSn(), "DELAY_ORDER_" + event.getOrderSn());
         } catch (Exception e) {
-            log.error("发送延迟队列取消未付款订单失败", e);
+            log.error("延迟关单消息发送失败", e);
         }
     }
 }
