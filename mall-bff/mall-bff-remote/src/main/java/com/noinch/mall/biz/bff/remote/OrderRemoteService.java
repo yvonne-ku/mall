@@ -46,4 +46,10 @@ public interface OrderRemoteService {
      */
     @DeleteMapping("/api/order/{orderSn}")
     Result<Void> deleteOrder(@PathVariable("orderSn") String orderSn);
+
+     /**
+      * 根据订单号取消商品订单
+      */
+    @PutMapping("/api/order/{orderSn}")
+    Result<Void> cancelOrder(@PathVariable("orderSn") String orderSn);
 }

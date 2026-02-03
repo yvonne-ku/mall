@@ -42,7 +42,7 @@ public class OrderCreateCommand {
     private String cneePostCode;
     
     @Schema(description = "收货人所在省")
-    private String cneeProvinc;
+    private String cneeProvince;
     
     @Schema(description = "收货人所在市")
     private String cneeCity;

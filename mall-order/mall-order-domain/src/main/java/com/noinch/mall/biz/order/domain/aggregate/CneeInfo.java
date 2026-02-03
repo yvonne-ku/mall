@@ -37,7 +37,7 @@ public class CneeInfo implements ValueObject {
     /**
      * 收货人所在省
      */
-    private String cneeProvinc;
+    private String cneeProvince;
     
     /**
      * 收货人所在市
