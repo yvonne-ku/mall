@@ -186,4 +186,18 @@ public class OrderServiceImpl implements OrderService {
         }
         return deleteOrderFlag;
     }
+
+    @Override
+    public Integer cancelOrder(String orderSn) {
+        int cancelOrderFlag = 0;
+        try {
+            Result<Void> cancelledOrderResult = orderRemoteService.cancelOrder(orderSn);
+            if (cancelledOrderResult.isSuccess()) {
+                cancelOrderFlag = 1;
+            }
+        } catch (Throwable ex) {
+            log.error("调用订单服务取消订单失败", ex);
+        }
+        return cancelOrderFlag;
+    }
 }
