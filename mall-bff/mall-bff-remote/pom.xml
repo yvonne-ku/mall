@@ -21,5 +21,12 @@
 			<artifactId>mall-openfeign-spring-boot-starter</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.noinch.mall</groupId>
+			<artifactId>mall-distributedid-spring-boot-starter</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 	</dependencies>
 </project>

@@ -120,7 +120,17 @@ public class OrderRepositoryImpl implements OrderRepository {
         ).toList();
         orderItemDOList.forEach(orderItemMapper::insert);
     }
-    
+
+    @Override
+    public void updateOrderStatus(Order order) {
+        OrderDO updateOrderDO = new OrderDO();
+        BeanUtil.copyProperties(order, updateOrderDO);
+        LambdaUpdateWrapper<OrderDO> updateWrapper = Wrappers.lambdaUpdate(OrderDO.class)
+                .eq(OrderDO::getOrderSn, order.getOrderSn());
+        orderMapper.update(updateOrderDO, updateWrapper);
+
+    }
+
     @Override
     public void closeOrder(String orderSn) {
         OrderDO updateOrderDO = new OrderDO();

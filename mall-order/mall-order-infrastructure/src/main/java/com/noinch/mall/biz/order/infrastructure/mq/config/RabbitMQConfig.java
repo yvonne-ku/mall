@@ -4,37 +4,11 @@ import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import static com.noinch.mall.biz.order.infrastructure.mq.common.RabbitMQConst.*;
+
 @Configuration
-public class DelayCloseOrderMQConfig {
+public class RabbitMQConfig {
 
-    /**
-     * 业务交换机
-     */
-    public static final String ORDER_EXCHANGE = "order.exchange";
-
-    /**
-     * 延迟订单路由键
-     */
-    public static final String ORDER_DELAY_ROUTING_KEY = "order.delay";
-
-    /**
-     * 延迟队列
-     */
-    public static final String ORDER_DELAY_QUEUE = "order.delay.queue";
-
-    /**
-     * 死信交换机
-     */
-    public static final String ORDER_DLX_EXCHANGE = "order.dlx.exchange";
-
-    /**
-     * 业务队列
-     */
-    public static final String ORDER_CLOSE_QUEUE = "order.close.queue";
-
-    // 路由键
-    public static final String DELAY_ROUTING_KEY = "order.delay";
-    public static final String CLOSE_ROUTING_KEY = "order.close";
 
     /**
      * 1. 业务交换机
@@ -99,4 +73,5 @@ public class DelayCloseOrderMQConfig {
                 .to(orderDlxExchange())
                 .with(CLOSE_ROUTING_KEY);
     }
+
 }
