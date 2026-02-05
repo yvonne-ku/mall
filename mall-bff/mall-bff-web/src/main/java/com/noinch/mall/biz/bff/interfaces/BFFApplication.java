@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 //@EnableDiscoveryClient
-@EnableCreateCacheAnnotation
-@EnableMethodCache(basePackages = "com.noinch.mall.bff")
+//@EnableCreateCacheAnnotation
+//@EnableMethodCache(basePackages = "com.noinch.mall.bff")
 @MapperScan("com.noinch.mall.biz.bff.dao.mapper")
 @EnableFeignClients("com.noinch.mall.biz.bff.remote")
 @SpringBootApplication(scanBasePackages = "com.noinch.mall.biz.bff")

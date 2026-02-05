@@ -36,7 +36,14 @@ public interface OrderRepository {
      * @param order 订单聚合根
      */
     void createOrder(Order order);
-    
+
+    /**
+     * 更新订单状态
+     *
+     * @param order 订单聚合根
+     */
+    void updateOrderStatus(Order order);
+
     /**
      * 关闭订单
      *
