@@ -99,6 +99,16 @@
     <file url="file://$PROJECT_DIR$/mall-order/mall-order-interface/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-order/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-order/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-pay/mall-pay-application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-pay/mall-pay-application/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-pay/mall-pay-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-pay/mall-pay-domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-pay/mall-pay-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-pay/mall-pay-interface/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-pay/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-pay/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-product/mall-product-application/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-product/mall-product-application/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-product/mall-product-domain/src/main/java" charset="UTF-8" />

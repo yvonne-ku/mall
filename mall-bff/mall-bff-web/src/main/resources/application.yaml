@@ -27,6 +27,8 @@ mall:
     url: http://localhost:8005
   order-service:
     url: http://localhost:8006
+  pay-service:
+    url: http://localhost:8007
 
 jetcache:
   areaInCacheName: false
