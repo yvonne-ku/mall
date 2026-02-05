@@ -8,6 +8,7 @@ import lombok.Getter;
  * 订单状态枚举
  *
  */
+@Getter
 @AllArgsConstructor
 public enum OrderStatusEnum {
     
@@ -36,6 +37,5 @@ public enum OrderStatusEnum {
      */
     CLOSED(4);
     
-    @Getter
     private final int status;
 }

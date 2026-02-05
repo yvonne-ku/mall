@@ -4,7 +4,7 @@ package com.noinch.mall.biz.order.infrastructure.mq.consumer;
 import com.noinch.mall.biz.order.domain.common.OrderStatusEnum;
 import com.noinch.mall.biz.order.domain.event.DelayCloseOrderEvent;
 import com.noinch.mall.biz.order.domain.repository.OrderRepository;
-import com.noinch.mall.biz.order.infrastructure.mq.config.DelayCloseOrderMQConfig;
+import com.noinch.mall.biz.order.infrastructure.mq.common.RabbitMQConst;
 import com.noinch.mall.biz.order.infrastructure.service.OrderInfraService;
 import com.rabbitmq.client.Channel;
 import lombok.AllArgsConstructor;
@@ -34,7 +34,7 @@ public class DelayCloseOrderConsumer {
      * @param tag     消息的唯一投递表示，在当前 Channel 上唯一
      * @param messageId 在发送端手动设置的唯一消息 ID
      */
-    @RabbitListener(queues = DelayCloseOrderMQConfig.ORDER_CLOSE_QUEUE)
+    @RabbitListener(queues = RabbitMQConst.ORDER_CLOSE_QUEUE)
     public void onMessage(DelayCloseOrderEvent event,
                           Channel channel,
                           Message message,

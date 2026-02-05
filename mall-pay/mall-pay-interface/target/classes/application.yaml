@@ -1,0 +1,51 @@
+
+server:
+  port: 8007
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: pay-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-test-query: select 1
+      connection-timeout: 20000
+      idle-timeout: 300000
+      maximum-pool-size: 5
+      minimum-idle: 5
+
+mall:
+  fastjson:
+    safe-mode: true
+
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+  virtual-host: /
+  connection-timeout: 5000
+  producer:
+    confirm-type: correlated  # 可选值: none, manual, correlated
+    returns: true
+    mandatory: true
+  consumer:
+    acknowledge-mode: manual  # 可选值: auto, manual
+    prefetch: 20
+    concurrency: 5
+    max-concurrency: 10
+    retry:
+      enabled: true
+      max-attempts: 3
+      initial-interval: 2s  # 支持多种时间格式
+      multiplier: 2.0
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  mapper-locations: classpath:mapper/*.xml
