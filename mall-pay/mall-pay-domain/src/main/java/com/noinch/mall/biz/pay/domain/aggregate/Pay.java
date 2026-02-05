@@ -1,8 +1,10 @@
 
-package com.noinch.mall.biz.order.domain.event;
 
-import com.noinch.mall.ddd.framework.core.domain.DomainEvent;
+package com.noinch.mall.biz.pay.domain.aggregate;
+
+import com.noinch.mall.ddd.framework.core.domain.AggregateRoot;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,13 +12,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * 支付结果通知事件
- *
+ * 支付聚合根
  */
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PayResultNotifyMessageEvent implements DomainEvent {
+public class Pay implements AggregateRoot {
     
     /**
      * id
@@ -54,12 +56,6 @@ public class PayResultNotifyMessageEvent implements DomainEvent {
     private String tradeNo;
     
     /**
-     * 商户订单号
-     * 由商家自定义，64个字符以内，仅支持字母、数字、下划线且需保证在商户端不重复
-     */
-    private String orderRequestId;
-    
-    /**
      * 交易总金额
      */
     private BigDecimal totalAmount;
@@ -78,4 +74,9 @@ public class PayResultNotifyMessageEvent implements DomainEvent {
      * 支付状态
      */
     private String status;
+    
+    /**
+     * 商户订单号
+     */
+    private String orderRequestId;
 }

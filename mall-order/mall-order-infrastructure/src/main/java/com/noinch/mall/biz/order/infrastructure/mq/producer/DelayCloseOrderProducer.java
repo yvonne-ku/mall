@@ -1,16 +1,13 @@
 package com.noinch.mall.biz.order.infrastructure.mq.producer;
 
-import com.noinch.mall.biz.order.domain.dto.ProductSkuStockDTO;
 import com.noinch.mall.biz.order.domain.event.DelayCloseOrderEvent;
-import com.noinch.mall.biz.order.infrastructure.mq.config.DelayCloseOrderMQConfig;
+import com.noinch.mall.biz.order.infrastructure.mq.common.RabbitMQConst;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.MessageDeliveryMode;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-
-import java.util.stream.Collectors;
 
 /**
  * 延迟关闭订单生产者
@@ -29,19 +26,11 @@ public class DelayCloseOrderProducer {
      */
     public void delayCloseOrderSend(DelayCloseOrderEvent event) {
         try {
-            // DelayCloseOrderEvent 延迟关闭订单事件
-            DelayCloseOrderEvent delayEvent = new DelayCloseOrderEvent(
-                    event.getOrderSn(),
-                    event.getProductSkuStockList().stream()
-                            .map(each -> new ProductSkuStockDTO(String.valueOf(each.getProductId()), String.valueOf(each.getProductSkuId()), each.getProductQuantity()))
-                            .collect(Collectors.toList())
-            );
-
             // 发送到业务交换机 -> 延迟队列 -> 死信交换机 -> 业务队列 -> 消费者
             rabbitTemplate.convertAndSend(
-                    DelayCloseOrderMQConfig.ORDER_EXCHANGE,
-                    DelayCloseOrderMQConfig.DELAY_ROUTING_KEY,
-                    delayEvent,
+                    RabbitMQConst.ORDER_EXCHANGE,
+                    RabbitMQConst.DELAY_ROUTING_KEY,
+                    event,
                     message -> {
                         // 1. 设置唯一消息 ID
                         String messageId = "DELAY_ORDER_" + event.getOrderSn();
