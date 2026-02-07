@@ -8,7 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
       </profile>
-      <profile name="Annotation profile for mall-pay" enabled="true">
+      <profile name="Annotation profile for mall-pay-infrastructure" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -17,22 +17,18 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
         </processorPath>
-        <module name="mall-aggregation" />
-        <module name="mall-bff-biz" />
-        <module name="mall-pay-interface" />
-        <module name="mall-pay-application" />
-        <module name="mall-bff-web" />
+        <module name="mall-pay-infrastructure" />
       </profile>
       <profile name="Annotation profile for test" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
@@ -44,12 +40,13 @@
         <module name="mall-product-infrastructure" />
         <module name="mall-customer-user-infrastructure" />
         <module name="mall-minio-spring-boot-starter" />
+        <module name="mall-aggregation" />
         <module name="mall-framework-cache-test" />
         <module name="mall-base-spring-boot-starter" />
         <module name="mall-order-infrastructure" />
-        <module name="mall-pay-infrastructure" />
         <module name="mall-bff-remote" />
         <module name="mall-mybatisplus-spring-boot-starter" />
+        <module name="mall-pay-application" />
         <module name="mall-xxljob-spring-boot-starter" />
         <module name="mall-cart-domain" />
         <module name="mall-jwt-spring-boot-starter" />
@@ -65,8 +62,11 @@
         <module name="mall-common-spring-boot-starter" />
         <module name="mall-product-domain" />
         <module name="mall-openfeign-spring-boot-starter" />
+        <module name="mall-bff-web" />
         <module name="mall-order-interface" />
         <module name="mall-product-job" />
+        <module name="mall-bff-biz" />
+        <module name="mall-pay-interface" />
         <module name="mall-geetest-spring-boot-starter" />
         <module name="mall-product-interface" />
         <module name="mall-cart-application" />

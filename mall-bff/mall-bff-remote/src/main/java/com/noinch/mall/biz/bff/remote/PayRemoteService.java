@@ -6,6 +6,9 @@ import com.noinch.mall.springboot.starter.convention.result.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Map;
 
 @FeignClient(value = "pay-service", url = "${mall.pay-service.url:}")
 public interface PayRemoteService {
@@ -15,4 +18,7 @@ public interface PayRemoteService {
      */
     @PostMapping("/api/pay-service")
     Result<PayRespDTO> pay(@RequestBody PayReqDTO requestParam);
+
+    @PostMapping("/api/pay-service/callback/alipay")
+    void callbackAlipay(@RequestParam Map<String, Object> requestParam);
 }
