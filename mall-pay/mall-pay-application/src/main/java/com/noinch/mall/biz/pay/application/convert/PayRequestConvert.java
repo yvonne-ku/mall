@@ -24,11 +24,11 @@ public final class PayRequestConvert {
      */
     public static PayRequest command2PayRequest(PayCommand payCommand) {
         PayRequest payRequest = null;
-        if (Objects.equals(payCommand.getChannel(), PayChannelEnum.ALI_PAY.name())) {
+        if (Objects.equals(payCommand.getChannel(), PayChannelEnum.ALI_PAY.getChannel())) {
             payRequest = new AliPayRequest();
             BeanUtil.copyProperties(payCommand, payRequest);
         }
-        if (Objects.equals(payCommand.getChannel(), PayChannelEnum.WX_PAY.name())) {
+        if (Objects.equals(payCommand.getChannel(), PayChannelEnum.WX_PAY.getChannel())) {
             payRequest = new WeiXinPayRequest();
             BeanUtil.copyProperties(payCommand, payRequest);
         }
