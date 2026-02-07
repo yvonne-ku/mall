@@ -8,6 +8,11 @@ import java.util.Map;
 public interface PayService {
 
     /**
+     * 检查支付状态
+     */
+    String checkPaymentStatus(String orderSn);
+
+    /**
      * 普通支付
      */
     PayRespDTO commonPay(PayAdapterReqDTO requestParam);
