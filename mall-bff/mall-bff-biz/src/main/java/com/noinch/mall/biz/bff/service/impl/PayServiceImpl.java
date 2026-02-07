@@ -17,6 +17,11 @@ public class PayServiceImpl implements PayService {
     private final PayRemoteService payRemoteService;
 
     @Override
+    public String checkPaymentStatus(String orderSn) {
+        return payRemoteService.checkPaymentStatus(orderSn).getData().getStatus();
+    }
+
+    @Override
     public PayRespDTO commonPay(PayAdapterReqDTO requestParam) {
         PayReqDTO payReqDTO = new PayReqDTO();
         payReqDTO.setOrderSn(requestParam.getOrderId());

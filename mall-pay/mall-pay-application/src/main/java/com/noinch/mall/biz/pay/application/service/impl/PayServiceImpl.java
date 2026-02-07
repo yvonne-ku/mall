@@ -2,6 +2,8 @@
 package com.noinch.mall.biz.pay.application.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.noinch.mall.biz.pay.application.resp.CheckPaymentStatusRespDTO;
+import com.noinch.mall.biz.pay.domain.common.TradeStatusEnum;
 import lombok.RequiredArgsConstructor;
 import com.noinch.mall.biz.pay.application.resp.PayRespDTO;
 import com.noinch.mall.biz.pay.application.service.PayService;
@@ -24,7 +26,16 @@ public final class PayServiceImpl implements PayService {
     private final AbstractStrategyChoose abstractStrategyChoose;
     
     private final PayRepository payRepository;
-    
+
+    @Override
+    public CheckPaymentStatusRespDTO checkPaymentStatus(String orderSn) {
+        Pay pay = payRepository.findPayByOrderSn(orderSn);
+        CheckPaymentStatusRespDTO dto = new CheckPaymentStatusRespDTO();
+        dto.setOrderSn(orderSn);
+        dto.setStatus(pay.getStatus());
+        return dto;
+    }
+
     @Override
     public PayRespDTO commonPay(PayRequest requestParam) {
         // 执行支付
@@ -33,6 +44,7 @@ public final class PayServiceImpl implements PayService {
         // 数据库层面创建 PayDO
         Pay pay = new Pay();
         BeanUtil.copyProperties(requestParam, pay);
+        pay.setStatus(TradeStatusEnum.WAIT_BUYER_PAY.name());
         payRepository.createPay(pay);
 
         // 返回
@@ -40,7 +52,7 @@ public final class PayServiceImpl implements PayService {
         BeanUtil.copyProperties(result, dto);
         return dto;
     }
-    
+
     @Override
     public void callback(PayCallbackRequest requestParam) {
         // 执行支付回调

@@ -27,6 +27,13 @@ public class PayController {
 
     private final PayService payService;
 
+    @Operation(description = "查找支付状态")
+    @PostMapping("/member/pay/checkPaymentStatus")
+    public ResultT<String> checkPaymentStatus(@RequestParam("orderSn") String orderSn) {
+        String status = payService.checkPaymentStatus(orderSn);
+        return ResultT.success(status);
+    }
+
     @Operation(description = "公共支付接口对接常用支付方式，比如：支付宝、微信以及银行卡等")
     @PostMapping("/member/pay")
     public ResultT<PayRespDTO> pay(HttpServletResponse httpResponse, @RequestBody PayAdapterReqDTO requestParam) throws IOException {
