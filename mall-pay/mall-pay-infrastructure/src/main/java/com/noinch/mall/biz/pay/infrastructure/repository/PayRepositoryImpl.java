@@ -32,7 +32,20 @@ public class PayRepositoryImpl implements PayRepository {
     private final PayMapper payMapper;
     
     private final PayResultNotifyProducer payResultNotifyProducer;
-    
+
+    @Override
+    public Pay findPayByOrderSn(String orderSn) {
+        PayDO payDO = payMapper.selectOne(Wrappers.lambdaQuery(PayDO.class)
+                .eq(PayDO::getOrderSn, orderSn));
+        if (Objects.isNull(payDO)) {
+            log.error("支付单不存在，orderSn：{}", orderSn);
+            throw new ServiceException("支付单不存在");
+        }
+        Pay pay = new Pay();
+        BeanUtil.copyProperties(payDO, pay);
+        return pay;
+    }
+
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void createPay(Pay pay) {
