@@ -1,6 +1,7 @@
 
 package com.noinch.mall.biz.pay.application.service;
 
+import com.noinch.mall.biz.pay.application.resp.CheckPaymentStatusRespDTO;
 import com.noinch.mall.biz.pay.application.resp.PayRespDTO;
 import com.noinch.mall.biz.pay.domain.base.PayCallbackRequest;
 import com.noinch.mall.biz.pay.domain.base.PayRequest;
@@ -18,7 +19,15 @@ public interface PayService {
      * @return 支付返回结果
      */
     PayRespDTO commonPay(PayRequest requestParam);
-    
+
+
+    /**
+     * 查找支付状态
+     * @param orderSn 订单号
+     * @return 返回支付状态
+     */
+    CheckPaymentStatusRespDTO checkPaymentStatus(String orderSn);
+
     /**
      * 对接三方支付平台支付结果回调
      *
