@@ -3,6 +3,7 @@ package com.noinch.mall.biz.pay.interfaces.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.noinch.mall.biz.pay.application.req.PayReqDTO;
+import com.noinch.mall.biz.pay.application.resp.CheckPaymentStatusRespDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import com.noinch.mall.biz.pay.application.convert.PayRequestConvert;
@@ -12,9 +13,7 @@ import com.noinch.mall.biz.pay.application.service.PayService;
 import com.noinch.mall.biz.pay.domain.base.PayRequest;
 import com.noinch.mall.springboot.starter.convention.result.Result;
 import com.noinch.mall.springboot.starter.web.Results;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 支付接口
@@ -25,7 +24,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class PayController {
     
     private final PayService payService;
-    
+
+    @Operation(description = "查询支付状态")
+    @GetMapping("/api/pay-service/checkStatus/{orderSn}")
+    public Result<CheckPaymentStatusRespDTO> checkPaymentStatus(@PathVariable String orderSn) {
+        CheckPaymentStatusRespDTO respDTO = payService.checkPaymentStatus(orderSn);
+        return Results.success(respDTO);
+    }
+
     @Operation(description = "公共支付接口对接常用支付方式，比如：支付宝、微信以及银行卡等")
     @PostMapping("/api/pay-service")
     public Result<PayRespDTO> pay(@RequestBody PayReqDTO requestParam) {

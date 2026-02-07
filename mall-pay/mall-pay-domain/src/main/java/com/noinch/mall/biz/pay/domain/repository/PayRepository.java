@@ -8,7 +8,12 @@ import com.noinch.mall.biz.pay.domain.aggregate.Pay;
  *
  */
 public interface PayRepository {
-    
+
+    /**
+     * 根据订单号查找支付
+     */
+    Pay findPayByOrderSn(String orderSn);
+
     /**
      * 创建支付单
      *
