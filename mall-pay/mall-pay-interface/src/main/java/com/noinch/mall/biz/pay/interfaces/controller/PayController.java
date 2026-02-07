@@ -32,7 +32,7 @@ public class PayController {
         PayCommand command = new PayCommand();
         BeanUtil.copyProperties(requestParam, command);
         PayRequest payRequest = PayRequestConvert.command2PayRequest(command);
-        PayRespDTO result = payService.commonPay(payRequest);
-        return Results.success(result);
+        PayRespDTO dto = payService.commonPay(payRequest);
+        return Results.success(dto);
     }
 }

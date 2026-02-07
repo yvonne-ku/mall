@@ -24,13 +24,13 @@ public final class PayCallbackRequestConvert {
      */
     public static PayCallbackRequest command2PayCallbackRequest(PayCallbackCommand payCallbackCommand) {
         PayCallbackRequest payCallbackRequest = null;
-        if (Objects.equals(payCallbackCommand.getChannel(), PayChannelEnum.ALI_PAY.name())) {
+        if (Objects.equals(payCallbackCommand.getChannel(), PayChannelEnum.ALI_PAY.getChannel())) {
             AliPayCallbackRequest aliPayCallbackRequest = new AliPayCallbackRequest();
             BeanUtil.copyProperties(payCallbackCommand, aliPayCallbackRequest);
             aliPayCallbackRequest.setOrderRequestId(payCallbackCommand.getOrderRequestId());
             payCallbackRequest = aliPayCallbackRequest;
         }
-        if (Objects.equals(payCallbackCommand.getChannel(), PayChannelEnum.WX_PAY.name())) {
+        if (Objects.equals(payCallbackCommand.getChannel(), PayChannelEnum.WX_PAY.getChannel())) {
             WeiXinPayCallbackRequest weiXinPayCallbackRequest = new WeiXinPayCallbackRequest();
             BeanUtil.copyProperties(payCallbackCommand, weiXinPayCallbackRequest);
             weiXinPayCallbackRequest.setOrderRequestId(payCallbackCommand.getOrderRequestId());
