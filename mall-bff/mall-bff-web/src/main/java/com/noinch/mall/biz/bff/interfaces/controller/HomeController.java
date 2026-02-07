@@ -5,6 +5,7 @@ package com.noinch.mall.biz.bff.interfaces.controller;
 import com.google.common.collect.Lists;
 import com.noinch.mall.biz.bff.common.ResultT;
 import com.noinch.mall.biz.bff.dto.resp.adapter.HomeGoodsResultAdapterRespDTO;
+import com.noinch.mall.biz.bff.dto.resp.adapter.HomeProductDetailAdapterRespDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -70,5 +71,11 @@ public class HomeController {
                                                              @RequestParam(value = "priceGt", required = false) Integer priceGt,
                                                              @RequestParam(value = "priceLte", required = false) Integer priceLte) {
         return ResultT.success(homeService.searchGoods(description, page, size, sort, priceGt, priceLte));
+    }
+
+    @GetMapping("/goods/productDet")
+    @Operation(description = "根据商品ID查询商品详情")
+    public ResultT<HomeProductDetailAdapterRespDTO> goodsDetail(@RequestParam("productId") String productId) {
+        return ResultT.success(homeService.goodsDetail(productId));
     }
 }

@@ -9,10 +9,7 @@ import com.noinch.mall.biz.bff.dao.entity.PanelDO;
 import com.noinch.mall.biz.bff.dao.entity.PanelProductRelationDO;
 import com.noinch.mall.biz.bff.dao.mapper.PanelMapper;
 import com.noinch.mall.biz.bff.dao.mapper.PanelProductRelationMapper;
-import com.noinch.mall.biz.bff.dto.resp.adapter.HomeGoodsAdapterRespDTO;
-import com.noinch.mall.biz.bff.dto.resp.adapter.HomeGoodsResultAdapterRespDTO;
-import com.noinch.mall.biz.bff.dto.resp.adapter.HomePanelAdapterRespDTO;
-import com.noinch.mall.biz.bff.dto.resp.adapter.HomePanelContentAdapterRespDTO;
+import com.noinch.mall.biz.bff.dto.resp.adapter.*;
 import com.noinch.mall.biz.bff.remote.ProductRemoteService;
 import com.noinch.mall.biz.bff.remote.resp.ProductRespDTO;
 import com.noinch.mall.biz.bff.remote.resp.ProductSkuRespDTO;
@@ -29,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -184,6 +182,31 @@ public class HomeServiceImpl implements HomeService {
             goodsAdapter.add(item);
         });
         return new HomeGoodsResultAdapterRespDTO((long) productRespDTOs.size(), goodsAdapter);
+    }
+
+    @Override
+    public HomeProductDetailAdapterRespDTO goodsDetail(String id) {
+        Result<ProductRespDTO> result = productRemoteService.getProductBySpuId(id);
+        if (!result.isSuccess() || result.getData() == null) {
+            throw new ServiceException("调用商品服务查询商品详情失败");
+        }
+        ProductRespDTO productRespDTO = result.getData();
+
+        // 构造前端返回
+        HomeProductDetailAdapterRespDTO resultData = new HomeProductDetailAdapterRespDTO();
+        resultData.setDetail(productRespDTO.getProductSpu().getDetail());
+        resultData.setProductId(String.valueOf(productRespDTO.getProductSpu().getId()));
+        resultData.setProductName(productRespDTO.getProductSpu().getName());
+        resultData.setProductImageBig(productRespDTO.getProductSkus().getFirst().getPic());
+        resultData.setProductImageSmall(productRespDTO.getProductSkus().stream().map(ProductSkuRespDTO::getPic).collect(Collectors.toList()));
+        resultData.setSalePrice(productRespDTO.getProductSpu().getPrice().intValue());
+        resultData.setSubTitle(productRespDTO.getProductSpu().getSubTitle());
+        AtomicInteger count = new AtomicInteger();
+        productRespDTO.getProductSkus().forEach(each -> {
+            count.addAndGet(each.getStock());
+        });
+        resultData.setLimitNum(count.get());
+        return resultData;
     }
 
 }

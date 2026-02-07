@@ -3,6 +3,7 @@ package com.noinch.mall.biz.bff.service;
 
 import com.noinch.mall.biz.bff.dto.resp.adapter.HomeGoodsResultAdapterRespDTO;
 import com.noinch.mall.biz.bff.dto.resp.adapter.HomePanelAdapterRespDTO;
+import com.noinch.mall.biz.bff.dto.resp.adapter.HomeProductDetailAdapterRespDTO;
 
 import java.util.List;
 
@@ -40,4 +41,9 @@ public interface HomeService {
      * 商品描述搜索封装 (支持分页)
      */
     HomeGoodsResultAdapterRespDTO searchGoods(String description, Integer page, Integer size, Integer sort, Integer priceGt, Integer priceLte);
+
+    /**
+     * 获取商品详情
+     */
+    HomeProductDetailAdapterRespDTO goodsDetail(String id);
 }

@@ -23,6 +23,6 @@ public interface PayRemoteService {
     Result<PayRespDTO> pay(@RequestBody PayReqDTO requestParam);
 
     @PostMapping("/api/pay-service/callback/alipay")
-    void callbackAlipay(@RequestParam Map<String, Object> requestParam);
+    Result<Void> callbackAlipay(@RequestParam Map<String, Object> requestParam);
 
 }
