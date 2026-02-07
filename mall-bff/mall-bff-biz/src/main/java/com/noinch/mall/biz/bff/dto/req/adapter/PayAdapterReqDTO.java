@@ -9,24 +9,19 @@ import lombok.Data;
 public class PayAdapterReqDTO {
 
     /**
-     * 名称
-     */
-    private String nickName;
-
-    /**
      * 金额
      */
     private String money;
 
     /**
-     * 用户留言
-     */
-    private String info;
-
-    /**
      * 通知邮箱
      */
     private String email;
+
+    /**
+     * 用户留言
+     */
+    private String info;
 
     /**
      * 支付订单号
@@ -41,6 +36,11 @@ public class PayAdapterReqDTO {
     /**
      * 支付方式
      */
-    private String payType;
+    private String channel;
+
+    /**
+     * 支付类型：网站、H5
+     */
+    private String tradeType;
 
 }

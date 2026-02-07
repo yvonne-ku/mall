@@ -67,3 +67,7 @@ mall-idempotent-spring-boot-starter
 1. Spring 事件机制：订单创建，购物车清空，库存锁定，延迟关闭订单消息
 2. 全局回滚
 3. RabbitMQ 延迟队列 死信交换机：延迟关闭订单处理
+
+支付场景：
+1. 策略模式多平台支付
+2. 支付回调，RabbitMQ 异步通知订单模块更新订单状态

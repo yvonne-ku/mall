@@ -1,5 +1,5 @@
 
-package com.noinch.mall.biz.pay.domain.common;
+package com.noinch.mall.biz.bff.interfaces.common;
 
 /**
  * 交易环境枚举
@@ -13,7 +13,7 @@ public enum PayTradeTypeEnum {
     NATIVE,
 
     /**
-     * 原生支付，生成二维码嵌入前端 UI
+    * yy原生支付，生成二维码支付
      */
     NATIVE_QR_CODE,
 

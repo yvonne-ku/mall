@@ -1,6 +1,6 @@
 
 
-package com.noinch.mall.biz.pay.domain.common;
+package com.noinch.mall.biz.bff.interfaces.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

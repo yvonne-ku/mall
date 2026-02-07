@@ -8,7 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 
 //@EnableTask
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @EnableDynamicThreadPool
 @SpringBootApplication(scanBasePackages = "com.noinch.mall.biz.product")
 @MapperScan("com.noinch.mall.biz.product.infrastructure.dao.mapper")
