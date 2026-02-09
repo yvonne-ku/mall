@@ -1,0 +1,4 @@
+com\noinch\mall\biz\cart\domain\common\SelectFlagEnum.class
+com\noinch\mall\biz\cart\domain\aggregate\CartItem.class
+com\noinch\mall\biz\cart\domain\repository\CartItemRepository.class
+com\noinch\mall\biz\cart\domain\aggregate\CartItem$CartItemBuilder.class

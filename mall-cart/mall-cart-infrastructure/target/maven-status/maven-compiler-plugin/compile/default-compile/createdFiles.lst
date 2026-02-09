@@ -1,0 +1,3 @@
+com\noinch\mall\biz\cart\infrastructure\dao\entity\CartItemDO.class
+com\noinch\mall\biz\cart\infrastructure\dao\mapper\CartItemMapper.class
+com\noinch\mall\biz\cart\infrastructure\repository\CartItemRepositoryImpl.class
