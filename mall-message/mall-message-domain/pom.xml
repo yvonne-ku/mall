@@ -9,12 +9,14 @@
     <artifactId>mall-message-domain</artifactId>
 
     <dependencies>
+        <!--  Framework  -->
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-ddd-framework-core</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!--  Hutool  -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>

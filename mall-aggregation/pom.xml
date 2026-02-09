@@ -10,61 +10,6 @@
 
     <artifactId>mall-aggregation</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-bff-web</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>com.noinch.mall</groupId>-->
-<!--            <artifactId>mall-basic-data-interface</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
-
-        <dependency>
-            <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-cart-interface</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-customer-user-interface</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-message-interface</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-order-interface</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>com.noinch.mall</groupId>-->
-<!--            <artifactId>mall-pay-interface</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
-
-        <dependency>
-            <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-product-interface</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-    </dependencies>
-
     <build>
         <finalName>mall-aggregation-${project.version}</finalName>
         <plugins>

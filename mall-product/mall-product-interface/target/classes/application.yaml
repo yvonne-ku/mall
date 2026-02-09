@@ -1,26 +1,19 @@
 
 server:
-  port: 8004
+  port: 8003
 
 spring:
   profiles:
     active: dev
   application:
     name: product-service
-  dynamic:
-    thread-pool:
-      default-executor:
-        active-alarm: 80
-        alarm: false
-        allow-core-thread-time-out: true
-        blocking-queue: ResizableCapacityLinkedBlockingQueue
-        capacity-alarm: 80
-        core-pool-size: 20
-        execute-time-out: 100
-        keep-alive-time: 9999
-        maximum-pool-size: 40
-        queue-capacity: 4096
-        rejected-handler: AbortPolicy
+
+product:
+  thread-pool:
+    core-pool-size: 20
+    maximum-pool-size: 40
+    keep-alive-time: 9999
+    queue-capacity: 4096
 
 mall:
   fastjson:

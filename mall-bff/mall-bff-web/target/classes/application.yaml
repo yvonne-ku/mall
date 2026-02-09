@@ -1,12 +1,13 @@
 
 server:
-  port: 8009
+  port: 8008
 
 spring:
   profiles:
     active: dev
   application:
     name: bff-service
+  # mysql
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
@@ -19,32 +20,22 @@ spring:
 mall:
   fastjson:
     safe-mode: true
-  product-service:
-    url: http://localhost:8004
-  customer-user-service:
-    url: http://localhost:8002
-  cart-service:
-    url: http://localhost:8005
-  order-service:
-    url: http://localhost:8006
-  pay-service:
-    url: http://localhost:8007
+#  bff:
+#    qps-count: 1
+  aggregation-url:
+    gateway-service: http://localhost:8000
+    message-service: http://localhost:8001
+    customer-user-service: http://localhost:8002
+    product-service: http://localhost:8003
+    product-job-service: http://localhost:9001
+    cart-service: http://localhost:8004
+    order-service: http://localhost:8005
+    pay-service: http://localhost:8006
+    basic-data-service: http://localhost:8007
+    bff-service: http://localhost:8008
+    aggregation: http://localhost:8009
 
-jetcache:
-  areaInCacheName: false
-  local:
-    default:
-      type: linkedhashmap
-      keyConvertor: fastjson2
-  remote:
-    default:
-      type: redis.springdata
-      keyConvertor: fastjson2
-      keyPrefix: 'mall-bff:'
-      valueEncoder: KRYO5
-      valueDecoder: KRYO5
-      defaultExpireInMillis: 5000
-
+# openfeign
 feign:
   client:
     config:
@@ -57,9 +48,27 @@ feign:
   okhttp:
     enabled: true
 
+# mybatis-plus
 mybatis-plus:
   global-config:
     db-config:
       logic-delete-field: delFlag
       logic-delete-value: 1
       logic-not-delete-value: 0
+
+
+
+#jetcache:
+#  areaInCacheName: false
+#  local:
+#    default:
+#      type: linkedhashmap
+#      keyConvertor: fastjson2
+#  remote:
+#    default:
+#      type: redis.springdata
+#      keyConvertor: fastjson2
+#      keyPrefix: 'mall-bff:'
+#      valueEncoder: KRYO5
+#      valueDecoder: KRYO5
+#      defaultExpireInMillis: 5000

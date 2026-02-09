@@ -16,7 +16,7 @@ import static com.baomidou.mybatisplus.annotation.IdType.AUTO;
 */
 @Data
 @NoArgsConstructor
-@TableName("customer_user_operation_log_test")
+@TableName("operation_log")
 public class OperationLogDO extends BaseDO {
     
     /**

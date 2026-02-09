@@ -10,7 +10,6 @@
     <artifactId>mall-customer-user-interface</artifactId>
 
     <dependencies>
-        <!-- 因为会有一些基础设施相关的依赖，所以 interfaces 会引入 infrastructure -->
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-customer-user-infrastructure</artifactId>
@@ -23,27 +22,13 @@
             <version>${project.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
+        <!-- Framework -->
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-web-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
 </project>

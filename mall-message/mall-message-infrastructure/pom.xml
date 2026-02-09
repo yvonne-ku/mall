@@ -16,64 +16,53 @@
             <version>${project.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-message-application</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
+        <!--  Framework  -->
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-mybatisplus-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-base-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-convention-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!-- Aliyun Sms -->
         <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>dypnsapi20170525</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-mail</artifactId>-->
-<!--        </dependency>-->
+        <!-- Nacos -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-freemarker</artifactId>-->
-<!--        </dependency>-->
+        <!-- ShardingSphere -->
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>shardingsphere-jdbc</artifactId>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-<!--        </dependency>-->
-
+        <!-- Hutool -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
 
+        <!-- Fastjson2 -->
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.apache.shardingsphere</groupId>-->
-<!--            <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>-->
-<!--        </dependency>-->
 
     </dependencies>
 </project>

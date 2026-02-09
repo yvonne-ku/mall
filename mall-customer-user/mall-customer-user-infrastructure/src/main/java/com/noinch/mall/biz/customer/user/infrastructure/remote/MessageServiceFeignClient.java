@@ -7,7 +7,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "message-service", url = "${mall.message-service.url}")
+@FeignClient(name = "message-service")
+//@FeignClient(value = "message-service",url = "${mall.remote-url.message-service}")
 public interface MessageServiceFeignClient {
 
     @PostMapping("/api/message/send/phone")

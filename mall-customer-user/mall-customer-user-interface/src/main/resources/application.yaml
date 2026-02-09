@@ -6,37 +6,29 @@ spring:
     active: dev
   application:
     name: customer-user-service
-  cloud:
-    openfeign:
-      client:
-        config:
-          mall-message-service:
-            connect-timeout: 5000
-            read-timeout: 5000
-            logger-level: basic
+#  cloud:
+#    sentinel:
+#      transport:
+#        dashboard: localhost:8686
+#        port: 8719
+
+feign:
+  client:
+    config:
+      default: # 对所有 Feign 客户端生效的默认配置
+        connect-timeout: 5000 # 连接超时时间(ms)
+        read-timeout: 5000    # 读取超时时间(ms)
+        logger-level: HEADERS   # 日志级别：NONE、BASIC、HEADERS、FULL
+  okhttp:
+    enabled: true # 启用 OkHttp 代替默认的 HttpURLConnection（推荐）
+  httpclient:
+    enabled: false # 关闭 Apache HttpClient
+
 
 # 自定义 starter 的参数
 mall:
   fastjson:
     safe-mode: true
-  message-service:
-    url: "http://localhost:8001"
-  cache:
-    redis:
-      prefix: 'mall:customer-user:'
-      value-timeout: 50000
-      bloom-filter:
-        default:
-          name: cache_penetration_bloom_filter
-          expected-insertions: 64000
-          false-probability: 0.03D
-
-customer:
-  user:
-    register:
-      verify:
-        sender: mall@163.com
-        template-id: userRegisterVerification
 
 mybatis-plus:
   global-config:

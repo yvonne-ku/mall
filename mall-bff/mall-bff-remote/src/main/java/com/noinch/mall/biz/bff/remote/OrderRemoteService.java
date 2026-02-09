@@ -14,7 +14,7 @@ import java.util.List;
  * 订单远程调用服务
  *
  */
-@FeignClient(value = "order-service", url = "${mall.order-service.url:}")
+@FeignClient(value = "order-service", url = "${mall.aggregation-url.order-service:}")
 public interface OrderRemoteService {
 
     /**

@@ -11,7 +11,7 @@ import com.noinch.mall.springboot.starter.mybatisplus.BaseDO;
 *
 */
 @Data
-@TableName("customer_user_receive_address_test")
+@TableName("receive_address")
 public class ReceiveAddressDO extends BaseDO {
     
     /**

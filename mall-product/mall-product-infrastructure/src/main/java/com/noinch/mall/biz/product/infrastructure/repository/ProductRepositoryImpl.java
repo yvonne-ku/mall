@@ -2,7 +2,6 @@
 
 package com.noinch.mall.biz.product.infrastructure.repository;
 
-import cn.hippo4j.core.executor.support.ThreadPoolBuilder;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.util.ObjectUtil;
@@ -27,12 +26,14 @@ import com.noinch.mall.biz.product.infrastructure.dao.mapper.ProductSkuMapper;
 import com.noinch.mall.biz.product.infrastructure.dao.mapper.ProductSpuMapper;
 import com.noinch.mall.springboot.starter.convention.exception.ServiceException;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.stream.Collectors;
 
 /**
@@ -45,12 +46,10 @@ public class ProductRepositoryImpl implements ProductRepository {
     private final ProductSpuMapper productSpuMapper;
     private final ProductBrandMapper productBrandMapper;
     private final ProductSkuMapper productSkuMapper;
-    
-    private ThreadPoolExecutor productThreadPoolExecutor = ThreadPoolBuilder.builder()
-            .threadFactory("product-executor")
-            .dynamicPool()
-            .build();
-    ;
+
+    @Autowired
+    @Qualifier("product-executor")
+    private final ExecutorService productThreadPoolExecutor;
     
     @Override
     @SneakyThrows

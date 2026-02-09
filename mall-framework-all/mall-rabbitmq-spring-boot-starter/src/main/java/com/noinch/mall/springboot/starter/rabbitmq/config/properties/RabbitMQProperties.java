@@ -9,6 +9,7 @@ import java.time.Duration;
 @Data
 @ConfigurationProperties(prefix = "rabbitmq")
 public class RabbitMQProperties {
+
     private String host = "localhost";
     private int port = 5672;
     private String username = "guest";

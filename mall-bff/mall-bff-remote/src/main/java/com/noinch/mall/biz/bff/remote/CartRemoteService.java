@@ -26,7 +26,7 @@ import java.util.List;
  * 商品购物车远程调用服务
  *
  */
-@FeignClient(value = "cart-service", url = "${mall.cart-service.url}")
+@FeignClient(value = "cart-service", url = "${mall.aggregation-url.cart-service}")
 public interface CartRemoteService {
 
     /**

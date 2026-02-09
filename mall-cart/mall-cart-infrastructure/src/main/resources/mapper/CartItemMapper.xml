@@ -4,7 +4,7 @@
     
     <select id="countCartItem" resultType="java.lang.Integer">
         SELECT COUNT(*)
-        FROM cart_item_test
+        FROM cart_item
         WHERE customer_user_id = #{customerUserId}
           AND select_flag = 1
           AND del_flag = 0

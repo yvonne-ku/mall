@@ -2,7 +2,6 @@
 
 package com.noinch.mall.biz.cart.infrastructure.dao.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.noinch.mall.springboot.starter.mybatisplus.BaseDO;
 import lombok.Data;
@@ -14,7 +13,7 @@ import java.math.BigDecimal;
  *
  */
 @Data
-@TableName("cart_item_test")
+@TableName("cart_item")
 public class CartItemDO extends BaseDO {
     
     /**

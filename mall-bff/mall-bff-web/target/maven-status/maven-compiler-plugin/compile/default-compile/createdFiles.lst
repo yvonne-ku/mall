@@ -1,5 +1,9 @@
+com\noinch\mall\biz\bff\interfaces\common\PayChannelEnum.class
+com\noinch\mall\biz\bff\interfaces\controller\ReceiveAddressController.class
 com\noinch\mall\biz\bff\interfaces\controller\HomeController.class
 com\noinch\mall\biz\bff\interfaces\BFFApplication.class
 com\noinch\mall\biz\bff\interfaces\controller\OrderController.class
 com\noinch\mall\biz\bff\interfaces\controller\CartController.class
+com\noinch\mall\biz\bff\interfaces\controller\PayController.class
+com\noinch\mall\biz\bff\interfaces\common\PayTradeTypeEnum.class
 com\noinch\mall\biz\bff\interfaces\controller\UserLoginController.class

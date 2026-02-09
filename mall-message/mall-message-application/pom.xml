@@ -15,12 +15,12 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!--  Framework  -->
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-ddd-framework-core</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-log-spring-boot-starter</artifactId>
