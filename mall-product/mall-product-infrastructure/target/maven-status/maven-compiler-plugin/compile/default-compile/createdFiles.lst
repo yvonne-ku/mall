@@ -1,0 +1,16 @@
+com\noinch\mall\biz\product\infrastructure\dao\entity\ProductSpuDO.class
+com\noinch\mall\biz\product\infrastructure\es\EsProductRepositoryImpl.class
+com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductSkuMapper.class
+com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductSpuMapper.class
+com\noinch\mall\biz\product\infrastructure\dao\entity\ProductSkuDO.class
+com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductBrandMapper.class
+com\noinch\mall\biz\product\infrastructure\repository\ProductCategoryRepositoryImpl.class
+com\noinch\mall\biz\product\infrastructure\es\EsProductIndexInitializer.class
+com\noinch\mall\biz\product\infrastructure\dao\entity\ProductCategoryDO.class
+com\noinch\mall\biz\product\infrastructure\repository\ProductCommentRepositoryImpl.class
+com\noinch\mall\biz\product\infrastructure\dao\entity\ProductSkuDO$ProductSkuDOBuilder.class
+com\noinch\mall\biz\product\infrastructure\dao\entity\ProductBrandDO.class
+com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductCategoryMapper.class
+com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductCommentMapper.class
+com\noinch\mall\biz\product\infrastructure\dao\entity\ProductCommentDO.class
+com\noinch\mall\biz\product\infrastructure\repository\ProductRepositoryImpl.class

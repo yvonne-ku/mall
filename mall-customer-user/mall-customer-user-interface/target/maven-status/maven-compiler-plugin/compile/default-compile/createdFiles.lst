@@ -1,0 +1,3 @@
+com\noinch\mall\biz\customer\user\interfaces\CustomerUserApplication.class
+com\noinch\mall\biz\customer\user\interfaces\controller\CustomerUserLoginController.class
+com\noinch\mall\biz\customer\user\interfaces\controller\ReceiveAddressController.class

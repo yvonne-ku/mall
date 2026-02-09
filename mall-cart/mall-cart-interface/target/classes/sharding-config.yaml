@@ -1,0 +1,26 @@
+datasource:
+  ds-cart: # 购物车库
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: 123456
+    jdbc-url: jdbc:mysql://mysql:3306/mall_cart?characterEncoding=utf-8&serverTimezone=GMT%2B8
+  names: ds-cart
+
+rules:
+  sharding:
+    sharding-algorithms:
+      cart-item_sharding_by_mod:
+        props:
+          sharding-count: 16
+        type: HASH_MOD
+    tables:
+      cart_item:
+        actual-data-nodes: ds-0.cart_item_$->{0..15}
+        table-strategy:
+          standard:
+            sharding-algorithm-name: cart-item_sharding_by_mod
+            sharding-column: customer_user_id
+
+props:
+  sql-show: true
