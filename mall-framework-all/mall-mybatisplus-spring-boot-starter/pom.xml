@@ -25,6 +25,7 @@
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
+        <!-- Framework -->
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-common-spring-boot-starter</artifactId>

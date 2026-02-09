@@ -10,53 +10,50 @@
     <artifactId>mall-customer-user-domain</artifactId>
 
     <dependencies>
+        <!--  Framework  -->
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-common-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-convention-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-base-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-common-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-ddd-framework-core</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-jwt-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-geetest-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!--  Hutool  -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
 
+        <!--  fastjson2  -->
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>

@@ -4,6 +4,7 @@ com\noinch\mall\biz\bff\remote\req\UserLoginCommand.class
 com\noinch\mall\biz\bff\remote\req\UserVerifyCodeCommand.class
 com\noinch\mall\biz\bff\remote\req\ReceiveAddressSaveCommand.class
 com\noinch\mall\biz\bff\remote\req\CartItemChecksUpdateReqDTO.class
+com\noinch\mall\biz\bff\remote\req\PayReqDTO.class
 com\noinch\mall\biz\bff\remote\resp\ProductSpuRespDTO.class
 com\noinch\mall\biz\bff\remote\resp\CartItemRespDTO.class
 com\noinch\mall\biz\bff\remote\resp\OrderProductRespDTO.class
@@ -12,6 +13,7 @@ com\noinch\mall\biz\bff\remote\req\CartItemNumUpdateReqDTO.class
 com\noinch\mall\biz\bff\remote\resp\UserRegisterRespDTO.class
 com\noinch\mall\biz\bff\remote\CartRemoteService.class
 com\noinch\mall\biz\bff\remote\resp\ProductBrandRespDTO.class
+com\noinch\mall\biz\bff\remote\resp\CheckPaymentStatusRespDTO.class
 com\noinch\mall\biz\bff\remote\resp\ReceiveAddressRespDTO.class
 com\noinch\mall\biz\bff\remote\req\CartItemCheckUpdateReqDTO.class
 com\noinch\mall\biz\bff\remote\req\CartItemAddReqDTO.class
@@ -22,9 +24,11 @@ com\noinch\mall\biz\bff\remote\resp\CartItemQuerySelectRespDTO.class
 com\noinch\mall\biz\bff\remote\CustomerUserRemoteService.class
 com\noinch\mall\biz\bff\remote\resp\OrderRespDTO.class
 com\noinch\mall\biz\bff\remote\req\OrderCreateCommand.class
+com\noinch\mall\biz\bff\remote\PayRemoteService.class
 com\noinch\mall\biz\bff\remote\resp\ProductRespDTO.class
 com\noinch\mall\biz\bff\remote\req\CartItemDelCheckReqDTO.class
 com\noinch\mall\biz\bff\remote\resp\ProductSkuRespDTO.class
 com\noinch\mall\biz\bff\remote\resp\GeetestRespDTO.class
+com\noinch\mall\biz\bff\remote\resp\PayRespDTO.class
 com\noinch\mall\biz\bff\remote\req\ReceiveAddressUpdateCommand.class
 com\noinch\mall\biz\bff\remote\ProductRemoteService.class

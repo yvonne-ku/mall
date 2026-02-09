@@ -2,9 +2,8 @@ package com.noinch.mall.biz.message.application.service.impl;
 
 import com.noinch.mall.biz.message.application.req.PhoneSendCommand;
 import com.noinch.mall.biz.message.application.req.PhoneVerifyCommand;
-import com.noinch.mall.biz.message.application.resp.PhoneSendRespDTO;
-import com.noinch.mall.biz.message.application.service.AliyunSmsService;
 import com.noinch.mall.biz.message.application.service.MessageService;
+import com.noinch.mall.biz.message.domain.service.MessageDomainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,15 +11,15 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MessageServiceImpl implements MessageService {
 
-    private final AliyunSmsService aliyunSmsService;
+    private final MessageDomainService messageDomainService;
 
     @Override
-    public PhoneSendRespDTO phoneMessageSend(PhoneSendCommand phoneSendCommand) {
-        return aliyunSmsService.sendSms(phoneSendCommand.getPhone());
+    public Boolean phoneMessageSend(PhoneSendCommand phoneSendCommand) {
+        return messageDomainService.sendSms(phoneSendCommand.getPhone());
     }
 
     @Override
     public Boolean phoneMessageVerify(PhoneVerifyCommand phoneVerifyCommand) {
-        return aliyunSmsService.verifySms(phoneVerifyCommand.getPhone(), phoneVerifyCommand.getVerifyCode());
+        return messageDomainService.verifySms(phoneVerifyCommand.getPhone(), phoneVerifyCommand.getVerifyCode());
     }
 }

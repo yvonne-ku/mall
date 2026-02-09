@@ -10,6 +10,7 @@
     <artifactId>mall-bff-web</artifactId>
 
     <dependencies>
+
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-web-spring-boot-starter</artifactId>

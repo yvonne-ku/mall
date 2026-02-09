@@ -1,9 +1,12 @@
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\req\adapter\CartChecksAdapterReqDTO.java
+D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\service\impl\ReceiveAddressServiceImpl.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\req\adapter\UserLoginAdapterRepDTO.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\resp\adapter\OrderAdapterRespDTO.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\service\impl\HomeServiceImpl.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\req\adapter\ReceiveAddressQueryAdapterReqDTO.java
+D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\req\adapter\PayAdapterReqDTO.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\resp\adapter\ReceiveAddressAdapterRespDTO.java
+D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\service\PayService.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\service\CartService.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\service\impl\OrderServiceImpl.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dao\entity\PanelDO.java
@@ -19,6 +22,7 @@ D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\d
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\service\impl\UserLoginServiceImpl.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dao\mapper\PanelProductRelationMapper.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\req\adapter\CartDeleteChecksAdapterReqDTO.java
+D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\resp\adapter\HomeProductDetailAdapterRespDTO.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\common\SelectFlagEnum.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\req\adapter\ReceiveAddressUpdateAdapterReqDTO.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\service\OrderService.java
@@ -32,6 +36,8 @@ D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\d
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\resp\adapter\HomeGoodsAdapterRespDTO.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\resp\adapter\OrderResultAdapterRespDTO.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\req\adapter\ReceiveAddressSaveAdapterReqDTO.java
+D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\service\ReceiveAddressService.java
+D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\service\impl\PayServiceImpl.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\resp\adapter\OrderAddressAdapterRespDTO.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\req\adapter\CartDeleteAdapterReqDTO.java
 D:\MyProjects\mall\mall-bff\mall-bff-biz\src\main\java\com\noinch\mall\biz\bff\dto\req\adapter\CartAddAdapterReqDTO.java

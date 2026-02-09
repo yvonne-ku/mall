@@ -11,7 +11,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>mall-order-application</module>
+        <module>mall-order-interface</module>
         <module>mall-order-domain</module>
         <module>mall-order-infrastructure</module>
         <module>mall-order-application</module>

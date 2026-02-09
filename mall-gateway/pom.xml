@@ -11,6 +11,14 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
+        <!-- Framework -->
+        <dependency>
+            <groupId>com.noinch.mall</groupId>
+            <artifactId>mall-jwt-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Gateway -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
@@ -27,6 +35,12 @@
             </exclusions>
         </dependency>
 
+        <!-- Nacos -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
@@ -36,17 +50,6 @@
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-jwt-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-<!--        </dependency>-->
     </dependencies>
 
 </project>

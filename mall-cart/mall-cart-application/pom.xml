@@ -16,11 +16,17 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!-- Framework -->
         <dependency>
             <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-cart-infrastructure</artifactId>
+            <artifactId>mall-convention-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!-- Hutool -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
     </dependencies>
 </project>

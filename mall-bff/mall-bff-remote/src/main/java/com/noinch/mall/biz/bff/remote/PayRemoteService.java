@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
-@FeignClient(value = "pay-service", url = "${mall.pay-service.url:}")
+@FeignClient(value = "pay-service", url = "${mall.aggregation-url.pay-service:}")
 public interface PayRemoteService {
 
 

@@ -2,7 +2,6 @@ package com.noinch.mall.biz.message.interfaces.controller;
 
 import com.noinch.mall.biz.message.application.req.PhoneSendCommand;
 import com.noinch.mall.biz.message.application.req.PhoneVerifyCommand;
-import com.noinch.mall.biz.message.application.resp.PhoneSendRespDTO;
 import com.noinch.mall.biz.message.application.service.MessageService;
 import com.noinch.mall.springboot.starter.convention.result.Result;
 import com.noinch.mall.springboot.starter.web.Results;
@@ -23,8 +22,8 @@ public class MessageController {
 
     @PostMapping("/api/message/send/phone")
     @Operation(summary = "发送短信验证码")
-    public Result<PhoneSendRespDTO> sendPhoneMessage(@RequestBody @Valid PhoneSendCommand phoneSendCommand) {
-        PhoneSendRespDTO result = messageService.phoneMessageSend(phoneSendCommand);
+    public Result<Boolean> sendPhoneMessage(@RequestBody @Valid PhoneSendCommand phoneSendCommand) {
+        Boolean result = messageService.phoneMessageSend(phoneSendCommand);
         return Results.success(result);
     }
 

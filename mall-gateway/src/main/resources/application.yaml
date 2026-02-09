@@ -1,22 +1,46 @@
 server:
-  port: 8003
+  port: 8000
 spring:
   application:
     name: gateway-service
   cloud:
+    nacos:
+      discovery:
+        server-addr: nacos:8848
     gateway:
+      discovery:
+        locator:
+          enabled: true # 启用服务发现定位器
       routes:
-        - id: bff
-          uri: http://localhost:8004
+        - id: bff-service
+          uri: http://bff-service
           predicates:
-            - Path=/home/**
-        - id: message-service
-          uri: http://localhost:8001
+            - Path=/member/**
+            - Path=/goods/**
+        - id: cart-service
+          uri: http://cart-service
           predicates:
-            - Path=/api/message/**
-
+            - Path=/api/cart/**
         - id: customer-user-service
-          uri: http://localhost:8002
+          uri: http://customer-user-service
           predicates:
             - Path=/api/customer-user/**
-
+        - id: message-service
+          uri: http://message-service
+          predicates:
+            - Path=/api/message/**
+        - id: order-service
+          uri: http://order-service
+          predicates:
+            - Path=/api/order/**
+        - id: pay-service
+          uri: http://pay-service
+          predicates:
+            - Path=/api/pay/**
+        - id: product-service
+          uri: http://product-service
+          predicates:
+            - Path=/api/product/**
+    loadbalancer: # 开启负载均衡
+      eager-load:
+        clients: bff-service,cart-service,customer-user-service,message-service,order-service,pay-service,product-service

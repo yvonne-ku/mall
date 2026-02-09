@@ -12,17 +12,23 @@
     <dependencies>
         <dependency>
             <groupId>com.noinch.mall</groupId>
+            <artifactId>mall-cart-infrastructure</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.noinch.mall</groupId>
             <artifactId>mall-cart-application</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!--  Framework -->
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-web-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- Unable to load io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. -->
+        <!-- Netty -->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>

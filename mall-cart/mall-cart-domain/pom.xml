@@ -10,12 +10,12 @@
     <artifactId>mall-cart-domain</artifactId>
 
     <dependencies>
+        <!--  Framework  -->
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-convention-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-ddd-framework-core</artifactId>

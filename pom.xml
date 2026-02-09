@@ -24,14 +24,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- Spring Boot相关版本 -->
+        <!-- Spring Boot -->
         <spring-boot.version>3.2.12</spring-boot.version>
-        <!-- Spring Cloud Alibaba相关版本 -->
-        <spring-cloud-starter-alibaba.version>2023.0.3.2</spring-cloud-starter-alibaba.version>
-        <!-- Spring Cloud相关版本 -->
+        <!-- Spring Cloud -->
         <spring-cloud-starter.version>4.1.3</spring-cloud-starter.version>
-        <!-- ShardingSphere相关版本 -->
-        <shardingsphere.version>5.2.1</shardingsphere.version>
+        <!-- Spring Cloud Alibaba -->
+        <spring-cloud-starter-alibaba.version>2023.0.3.2</spring-cloud-starter-alibaba.version>
+
+
+        <!-- ShardingSphere -->
+        <shardingsphere-jdbc.version>5.5.0</shardingsphere-jdbc.version>
+        <seata.version>1.8.0</seata.version>
+
 
         <!-- OpenFeign OkHttp -->
         <feign-okhttp.version>13.1</feign-okhttp.version>
@@ -44,8 +48,6 @@
         <!-- Apache Commons Lang3 -->
         <commons-lang3>3.18.0</commons-lang3>
 
-        <!-- Hippo4J Config Spring Boot Starter -->
-        <hippo4j-config.version>1.4.3</hippo4j-config.version>
 
         <!-- Jakarta Validation API -->
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
@@ -78,7 +80,12 @@
         <!-- Aliyun SMS SDK -->
         <dypnsapi20170525.version>1.2.3</dypnsapi20170525.version>
 
+
+
+
         <springdoc-openapi.version>2.3.0</springdoc-openapi.version>
+
+
 
         <!-- 通用工具相关版本 -->
         <mapstruct.version>1.5.5.Final</mapstruct.version>
@@ -122,21 +129,21 @@
                 <optional>true</optional>
             </dependency>
 
-            <!-- Spring Cloud Alibaba Nacos Discovery Starter -->
+            <!-- Alibaba Nacos  -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
                 <version>${spring-cloud-starter-alibaba.version}</version>
             </dependency>
 
-            <!-- Spring Cloud Alibaba Sentinel Starter -->
+            <!-- Alibaba Sentinel -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
                 <version>${spring-cloud-starter-alibaba.version}</version>
             </dependency>
 
-            <!-- Spring Cloud OpenFeign Starter -->
+            <!-- OpenFeign -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -148,19 +155,42 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-
             <!-- OpenFeign OkHttp -->
             <dependency>
                 <groupId>io.github.openfeign</groupId>
                 <artifactId>feign-okhttp</artifactId>
                 <version>${feign-okhttp.version}</version>
             </dependency>
-
             <!-- OkHttp3 -->
             <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
                 <version>${okhttp3.version}</version>
+            </dependency>
+
+            <!--  Sharding Sphere  -->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-jdbc</artifactId>
+                <version>${shardingsphere-jdbc.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.shardingsphere</groupId>
+                        <artifactId>shardingsphere-test-util</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!--  Sharding Sphere & Seata -->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>shardingsphere-transaction-base-seata-at</artifactId>
+                <version>${shardingsphere-jdbc.version}</version>
+            </dependency>
+            <!--  Seata -->
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata.version}</version>
             </dependency>
 
             <!-- Netty All -->
@@ -182,20 +212,6 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson-databind.version}</version>
-            </dependency>
-
-            <!-- ShardingSphere JDBC Core Spring Boot Starter -->
-            <dependency>
-                <groupId>org.apache.shardingsphere</groupId>
-                <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
-                <version>${shardingsphere.version}</version>
-            </dependency>
-
-            <!-- ShardingSphere Transaction Base Seata AT -->
-            <dependency>
-                <groupId>org.apache.shardingsphere</groupId>
-                <artifactId>shardingsphere-transaction-base-seata-at</artifactId>
-                <version>${shardingsphere.version}</version>
             </dependency>
 
             <!-- MyBatis-Plus Boot Starter -->
@@ -224,13 +240,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
                 <version>${spring-boot.version}</version>
-            </dependency>
-
-            <!-- Hippo4J Config Spring Boot Starter -->
-            <dependency>
-                <groupId>cn.hippo4j</groupId>
-                <artifactId>hippo4j-config-spring-boot-starter</artifactId>
-                <version>${hippo4j-config.version}</version>
             </dependency>
 
             <!-- SkyWalking APM Toolkit Trace -->
@@ -290,11 +299,6 @@
                 <version>${mapstruct.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.google.zxing</groupId>
-                <artifactId>core</artifactId>
-                <version>${zxing.version}</version>
-            </dependency>
 
             <!-- MapStruct Processor -->
             <dependency>

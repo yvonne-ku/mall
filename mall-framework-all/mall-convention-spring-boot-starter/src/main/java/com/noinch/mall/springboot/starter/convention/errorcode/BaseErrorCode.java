@@ -37,7 +37,8 @@ public enum BaseErrorCode implements IErrorCode {
 
     // ========== 一级宏观错误码 调用第三方服务出错 ==========
     REMOTE_ERROR("C000001", "调用第三方服务出错"),
-    REMOTE_SMS_VERIFYCODE_ERROR("C000100", "调用短信服务校验验证码出错");
+    REMOTE_SMS_SEND_ERROR("C000100", "调用短信服务发送验证码出错"),
+    REMOTE_SMS_VERIFYCODE_ERROR("C000110", "调用短信服务校验验证码出错");
     
     private final String code;
     

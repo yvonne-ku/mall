@@ -17,7 +17,7 @@ import java.util.List;
  * C端用户远程服务调用
  *
  */
-@FeignClient(value = "customer-user-service", url = "${mall.customer-user-service.url:}")
+@FeignClient(value = "customer-user-service", url = "${mall.aggregation-url.customer-user-service:}")
 public interface CustomerUserRemoteService {
 
     @PostMapping("/api/customer-user/verify/code/send")
