@@ -1,4 +1,0 @@
-com\noinch\mall\biz\message\infrastructure\sdk\service\AliyunSmsServiceImpl.class
-com\noinch\mall\biz\message\infrastructure\dao\mapper\AliyunSmsSendMapper.class
-com\noinch\mall\biz\message\infrastructure\config\AliyunSmsConfig.class
-com\noinch\mall\biz\message\infrastructure\dao\entity\AliyunSmsSendDO.class
