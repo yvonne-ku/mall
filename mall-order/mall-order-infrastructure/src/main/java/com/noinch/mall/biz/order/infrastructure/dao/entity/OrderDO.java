@@ -14,7 +14,7 @@ import java.util.Date;
  *
  */
 @Data
-@TableName("order_info_test")
+@TableName("order_info")
 public class OrderDO extends BaseDO {
     
     /**

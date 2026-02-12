@@ -6,26 +6,27 @@ spring:
     active: dev
   application:
     name: customer-user-service
+  cloud:
+    openfeign:
+      client:
+        config:
+          # default 代表全局配置，对所有 @FeignClient 生效
+          default:
+            connect-timeout: 5000     # 连接超时 (单位: 毫秒)
+            read-timeout: 5000        # 读取超时
+            logger-level: HEADERS        # 日志级别 (NONE, BASIC, HEADERS, FULL)
+      httpclient:
+        hc5:
+          enabled: false
+      okhttp:
+        enabled: true
 #  cloud:
 #    sentinel:
 #      transport:
 #        dashboard: localhost:8686
 #        port: 8719
 
-feign:
-  client:
-    config:
-      default: # 对所有 Feign 客户端生效的默认配置
-        connect-timeout: 5000 # 连接超时时间(ms)
-        read-timeout: 5000    # 读取超时时间(ms)
-        logger-level: HEADERS   # 日志级别：NONE、BASIC、HEADERS、FULL
-  okhttp:
-    enabled: true # 启用 OkHttp 代替默认的 HttpURLConnection（推荐）
-  httpclient:
-    enabled: false # 关闭 Apache HttpClient
 
-
-# 自定义 starter 的参数
 mall:
   fastjson:
     safe-mode: true

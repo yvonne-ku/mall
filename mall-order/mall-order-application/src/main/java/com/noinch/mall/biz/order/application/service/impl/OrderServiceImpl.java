@@ -4,11 +4,11 @@ package com.noinch.mall.biz.order.application.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
-import com.noinch.mall.biz.order.application.event.OrderCreateEvent;
+import com.noinch.mall.biz.order.domain.event.OrderCreateEvent;
+import com.noinch.mall.biz.order.domain.service.CartRemoteService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import com.noinch.mall.biz.order.application.enums.OrderChainMarkEnum;
-import com.noinch.mall.biz.order.application.filter.OrderCreateProductSkuStockChainHandler;
 import com.noinch.mall.biz.order.application.req.OrderCreateCommand;
 import com.noinch.mall.biz.order.application.req.OrderPageQuery;
 import com.noinch.mall.biz.order.application.resp.OrderRespDTO;
@@ -18,11 +18,8 @@ import com.noinch.mall.biz.order.domain.aggregate.Order;
 import com.noinch.mall.biz.order.domain.aggregate.OrderProduct;
 import com.noinch.mall.biz.order.domain.common.OrderStatusEnum;
 import com.noinch.mall.biz.order.domain.repository.OrderRepository;
-import com.noinch.mall.biz.order.infrastructure.remote.CartRemoteService;
-import com.noinch.mall.biz.order.infrastructure.remote.dto.CartItemQuerySelectRespDTO;
 import com.noinch.mall.springboot.starter.base.ApplicationContextHolder;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
-import com.noinch.mall.springboot.starter.convention.result.Result;
 import com.noinch.mall.springboot.starter.designpattern.chain.AbstractChainContext;
 import com.noinch.mall.springboot.starter.distributedid.SnowflakeIdUtil;
 import org.springframework.stereotype.Service;
@@ -39,13 +36,12 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
-    
+
     private final CartRemoteService cartRemoteService;
     private final OrderRepository orderRepository;
     private final AbstractChainContext<OrderCreateCommand> abstractChainContext;
     
     @Transactional
-//    @ShardingSphereTransactionType(TransactionType.BASE)
     @Override
     public String createOrder(OrderCreateCommand requestParam) {
         // 责任链模式: 执行订单创建参数验证
@@ -53,14 +49,7 @@ public class OrderServiceImpl implements OrderService {
         // 创建订单号
         String orderSn = SnowflakeIdUtil.nextIdStrByService(requestParam.getCustomerUserId());
         // 调用购物车服务获取已选中参与结算商品
-        List<CartItemQuerySelectRespDTO> cartProducts = querySelectCartByCustomerUserId(requestParam.getCustomerUserId());
-        List<OrderProduct> orderProducts = cartProducts.stream()
-                .map(each -> {
-                    OrderProduct orderProduct = new OrderProduct();
-                    BeanUtil.copyProperties(each, orderProduct);
-                    orderProduct.setOrderSn(orderSn);
-                    return orderProduct;
-                }).collect(Collectors.toList());
+        List<OrderProduct> orderProducts = cartRemoteService.querySelectCartItemByCustomerUserId(requestParam.getCustomerUserId());
         // 构建订单聚合根
         CneeInfo cneeInfo = new CneeInfo();
         BeanUtil.copyProperties(requestParam, cneeInfo, CopyOptions.create().setIgnoreNullValue(true));
@@ -124,18 +113,5 @@ public class OrderServiceImpl implements OrderService {
             BeanUtil.copyProperties(each.getCneeInfo(), result, CopyOptions.create().setIgnoreNullValue(true));
             return result;
         });
-    }
-    
-    /**
-     * 根据用户ID查询选中状态购物车商品
-     * <p>
-     * 因为创建订单前 {@link OrderCreateProductSkuStockChainHandler#handler(OrderCreateCommand)} 已经验证过，这里直接获取 Data
-     *
-     * @param customerUserId 用户ID
-     * @return 用户购物车选中商品，参与订单结算
-     */
-    private List<CartItemQuerySelectRespDTO> querySelectCartByCustomerUserId(String customerUserId) {
-        Result<List<CartItemQuerySelectRespDTO>> cartProductsResult = cartRemoteService.querySelectCartByCustomerUserId(customerUserId);
-        return cartProductsResult.getData();
     }
 }

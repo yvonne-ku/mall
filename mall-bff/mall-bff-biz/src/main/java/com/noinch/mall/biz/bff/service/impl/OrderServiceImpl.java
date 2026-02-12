@@ -5,8 +5,8 @@ import com.noinch.mall.biz.bff.dto.resp.adapter.OrderAdapterRespDTO;
 import com.noinch.mall.biz.bff.dto.resp.adapter.OrderAddressAdapterRespDTO;
 import com.noinch.mall.biz.bff.dto.resp.adapter.OrderGoodsAdapterRespDTO;
 import com.noinch.mall.biz.bff.dto.resp.adapter.OrderResultAdapterRespDTO;
-import com.noinch.mall.biz.bff.remote.CartRemoteService;
-import com.noinch.mall.biz.bff.remote.OrderRemoteService;
+import com.noinch.mall.biz.bff.remote.CartRemoteClient;
+import com.noinch.mall.biz.bff.remote.OrderRemoteClient;
 import com.noinch.mall.biz.bff.remote.req.OrderCreateCommand;
 import com.noinch.mall.biz.bff.remote.resp.CartItemQuerySelectRespDTO;
 import com.noinch.mall.biz.bff.remote.resp.OrderProductRespDTO;
@@ -29,8 +29,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
-    private final OrderRemoteService orderRemoteService;
-    private final CartRemoteService cartRemoteService;
+    private final OrderRemoteClient orderRemoteClient;
+    private final CartRemoteClient cartRemoteClient;
 
     @Override
     public OrderResultAdapterRespDTO listOrder(Integer page, Integer size, String userId) {
@@ -39,7 +39,7 @@ public class OrderServiceImpl implements OrderService {
 
         // 调用订单服务查询订单
         try {
-            orderListRemoteResult = orderRemoteService.pageQueryOrder(userId, page, size);
+            orderListRemoteResult = orderRemoteClient.pageQueryOrder(userId, page, size);
             if (!orderListRemoteResult.isSuccess() || orderListRemoteResult.getData() == null) {
                 throw new ServiceException("调用订单服务查询订单失败");
             }
@@ -87,7 +87,7 @@ public class OrderServiceImpl implements OrderService {
 
         // 调用订单服务查询订单详情
         try {
-            orderDetailRemoteResult = orderRemoteService.getOrderByOrderSn(orderSn);
+            orderDetailRemoteResult = orderRemoteClient.getOrderByOrderSn(orderSn);
             if (!orderDetailRemoteResult.isSuccess() || orderDetailRemoteResult.getData() == null) {
                 throw new ServiceException("调用订单服务查询详情失败");
             }
@@ -130,7 +130,7 @@ public class OrderServiceImpl implements OrderService {
 
         // 查询用户选中商品
         try {
-            selectCartListResult = cartRemoteService.querySelectCartItemByCustomerUserId(requestParam.getUserId());
+            selectCartListResult = cartRemoteClient.querySelectCartItemByCustomerUserId(requestParam.getUserId());
             if (!selectCartListResult.isSuccess() || selectCartListResult.getData() == null) {
                 throw new ServiceException("调用购物车服务查询用户选中商品失败");
             }
@@ -161,7 +161,7 @@ public class OrderServiceImpl implements OrderService {
         orderCreateRemoteRequestParam.setCneeDetailAddress(requestParam.getStreetName());
         Result<String> orderCreateRemoteResult;
         try {
-            orderCreateRemoteResult = orderRemoteService.createOrder(orderCreateRemoteRequestParam);
+            orderCreateRemoteResult = orderRemoteClient.createOrder(orderCreateRemoteRequestParam);
             if (!orderCreateRemoteResult.isSuccess() || orderCreateRemoteResult.getData() == null) {
                 throw new ServiceException("调用订单服务创建订单失败");
             }
@@ -177,7 +177,7 @@ public class OrderServiceImpl implements OrderService {
     public Integer deleteOrder(String orderSn) {
         int deleteOrderFlag = 0;
         try {
-            Result<Void> deletedOrderResult = orderRemoteService.deleteOrder(orderSn);
+            Result<Void> deletedOrderResult = orderRemoteClient.deleteOrder(orderSn);
             if (deletedOrderResult.isSuccess()) {
                 deleteOrderFlag = 1;
             }
@@ -191,7 +191,7 @@ public class OrderServiceImpl implements OrderService {
     public Integer cancelOrder(String orderSn) {
         int cancelOrderFlag = 0;
         try {
-            Result<Void> cancelledOrderResult = orderRemoteService.cancelOrder(orderSn);
+            Result<Void> cancelledOrderResult = orderRemoteClient.cancelOrder(orderSn);
             if (cancelledOrderResult.isSuccess()) {
                 cancelOrderFlag = 1;
             }

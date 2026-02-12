@@ -1,0 +1,10 @@
+D:\MyProjects\mall\mall-message\mall-message-infrastructure\src\main\java\com\noinch\mall\biz\message\infrastructure\sdk\service\impl\AliyunSmsServiceImpl.java
+D:\MyProjects\mall\mall-message\mall-message-infrastructure\src\main\java\com\noinch\mall\biz\message\infrastructure\config\properties\AliyunSmsProperties.java
+D:\MyProjects\mall\mall-message\mall-message-infrastructure\src\main\java\com\noinch\mall\biz\message\infrastructure\dao\entity\SendRecordDO.java
+D:\MyProjects\mall\mall-message\mall-message-infrastructure\src\main\java\com\noinch\mall\biz\message\infrastructure\dao\mapper\SendRecordExtendMapper.java
+D:\MyProjects\mall\mall-message\mall-message-infrastructure\src\main\java\com\noinch\mall\biz\message\infrastructure\dao\entity\MailTemplateDO.java
+D:\MyProjects\mall\mall-message\mall-message-infrastructure\src\main\java\com\noinch\mall\biz\message\infrastructure\dao\mapper\SendRecordMapper.java
+D:\MyProjects\mall\mall-message\mall-message-infrastructure\src\main\java\com\noinch\mall\biz\message\infrastructure\dao\mapper\MailTemplateMapper.java
+D:\MyProjects\mall\mall-message\mall-message-infrastructure\src\main\java\com\noinch\mall\biz\message\infrastructure\dao\entity\SendRecordExtendDO.java
+D:\MyProjects\mall\mall-message\mall-message-infrastructure\src\main\java\com\noinch\mall\biz\message\infrastructure\repository\MessageRepositoryImpl.java
+D:\MyProjects\mall\mall-message\mall-message-infrastructure\src\main\java\com\noinch\mall\biz\message\infrastructure\config\AliyunSmsConfig.java

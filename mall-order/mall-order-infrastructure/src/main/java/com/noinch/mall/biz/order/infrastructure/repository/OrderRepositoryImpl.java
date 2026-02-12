@@ -46,7 +46,19 @@ public class OrderRepositoryImpl implements OrderRepository {
     private final OrderMapper orderMapper;
     private final OrderItemMapper orderItemMapper;
     private final RedissonClient redissonClient;
-    
+
+    @Override
+    public List<OrderProduct> findOrderProductByOrderSn(String orderSn) {
+        LambdaQueryWrapper<OrderItemDO> queryWrapper = Wrappers.lambdaQuery(OrderItemDO.class)
+                .eq(OrderItemDO::getOrderSn, orderSn);
+        List<OrderItemDO> orderItemDOS = orderItemMapper.selectList(queryWrapper);
+        return orderItemDOS.stream().map(each -> {
+            OrderProduct orderProduct = new OrderProduct();
+            BeanUtil.copyProperties(each, orderProduct);
+            return orderProduct;
+        }).toList();
+    }
+
     @Override
     public Order findOrderByOrderSn(String orderSn) {
         LambdaQueryWrapper<OrderDO> queryWrapper = Wrappers.lambdaQuery(OrderDO.class)

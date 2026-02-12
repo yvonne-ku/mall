@@ -11,14 +11,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MessageRemoteServiceImpl implements MessageRemoteService {
 
-    private final MessageServiceFeignClient messageServiceFeignClient;
+    private final MessageServiceClient messageServiceClient;
 
     @Override
     public Boolean sendSms(String phone) {
         PhoneSendReqDTO phoneSendReqDTO = PhoneSendReqDTO.builder()
                 .phone(phone)
                 .build();
-        Result<Boolean> result = messageServiceFeignClient.sendMessage(phoneSendReqDTO);
+        Result<Boolean> result = messageServiceClient.sendMessage(phoneSendReqDTO);
         return result.getData();
     }
 
@@ -28,7 +28,7 @@ public class MessageRemoteServiceImpl implements MessageRemoteService {
                 .phone(phone)
                 .verifyCode(verifyCode)
                 .build();
-        Result<Boolean> result = messageServiceFeignClient.verifyPhoneMessage(phoneVerifyReqDTO);
+        Result<Boolean> result = messageServiceClient.verifyPhoneMessage(phoneVerifyReqDTO);
         return result.getData();
     }
 }

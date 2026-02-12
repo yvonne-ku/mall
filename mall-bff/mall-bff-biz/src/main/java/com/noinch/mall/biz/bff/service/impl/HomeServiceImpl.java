@@ -10,7 +10,7 @@ import com.noinch.mall.biz.bff.dao.entity.PanelProductRelationDO;
 import com.noinch.mall.biz.bff.dao.mapper.PanelMapper;
 import com.noinch.mall.biz.bff.dao.mapper.PanelProductRelationMapper;
 import com.noinch.mall.biz.bff.dto.resp.adapter.*;
-import com.noinch.mall.biz.bff.remote.ProductRemoteService;
+import com.noinch.mall.biz.bff.remote.ProductRemoteClient;
 import com.noinch.mall.biz.bff.remote.resp.ProductRespDTO;
 import com.noinch.mall.biz.bff.remote.resp.ProductSkuRespDTO;
 import com.noinch.mall.biz.bff.remote.resp.ProductSpuRespDTO;
@@ -36,7 +36,7 @@ public class HomeServiceImpl implements HomeService {
 
     private final PanelMapper panelMapper;
     private final PanelProductRelationMapper panelProductRelationMapper;
-    private final ProductRemoteService productRemoteService;
+    private final ProductRemoteClient productRemoteClient;
 
     // 放大显示的图片
     private static final List<String> TYPE_TWO_LIST = Lists.newArrayList("1647777981810081792", "1647788115844136960", "1647794693754322944");
@@ -57,7 +57,7 @@ public class HomeServiceImpl implements HomeService {
                 List<HomePanelContentAdapterRespDTO> panelContents = new ArrayList<>();
                 panelProductRelationList.forEach(item -> {
                     // 通过商品 ID 获得商品详情
-                    Result<ProductRespDTO> productResult = productRemoteService.getProductBySpuId(String.valueOf(item.getProductId()));
+                    Result<ProductRespDTO> productResult = productRemoteClient.getProductBySpuId(String.valueOf(item.getProductId()));
                     if (productResult.isSuccess() && productResult.getData() != null) {
                         HomePanelContentAdapterRespDTO productRespDTO = new HomePanelContentAdapterRespDTO();
                         // 补充商品 spu 信息
@@ -100,7 +100,7 @@ public class HomeServiceImpl implements HomeService {
     @Override
 //    @Cached(name = "home:", key = "'all-goods-page-'+#page+'-'+#size+'-'+#sort+'-'+#priceGt+'-'+#priceLte", expire = 24, timeUnit = TimeUnit.HOURS)
     public HomeGoodsResultAdapterRespDTO allGoods(Integer page, Integer size, Integer sort, Integer priceGt, Integer priceLte) {
-        Result<PageResponse<ProductRespDTO>> pageResponseResult = productRemoteService.pageQueryProduct(page, size, sort, priceGt, priceLte);
+        Result<PageResponse<ProductRespDTO>> pageResponseResult = productRemoteClient.pageQueryProduct(page, size, sort, priceGt, priceLte);
         if (!pageResponseResult.isSuccess() || pageResponseResult.getData() == null) {
             throw new ServiceException("调用商品服务分页查询商品失败");
         }
@@ -131,7 +131,7 @@ public class HomeServiceImpl implements HomeService {
         if (CollUtil.isNotEmpty(panelProductRelationList)) {
             List<HomePanelContentAdapterRespDTO> panelContents = new ArrayList<>();
             panelProductRelationList.forEach(item -> {
-                Result<ProductRespDTO> productResult = productRemoteService.getProductBySpuId(String.valueOf(item.getProductId()));
+                Result<ProductRespDTO> productResult = productRemoteClient.getProductBySpuId(String.valueOf(item.getProductId()));
                 if (productResult.isSuccess() && productResult.getData() != null) {
                     ProductRespDTO resultData = productResult.getData();
                     ProductSpuRespDTO productSpu = resultData.getProductSpu();
@@ -161,7 +161,7 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     public HomeGoodsResultAdapterRespDTO searchGoods(String description, Integer page, Integer size, Integer sort, Integer priceGt, Integer priceLte) {
-        Result<List<ProductRespDTO>> result = productRemoteService.searchProduct(description, page, size, sort, priceGt, priceLte);
+        Result<List<ProductRespDTO>> result = productRemoteClient.searchProduct(description, page, size, sort, priceGt, priceLte);
         if (!result.isSuccess() || result.getData() == null) {
             throw new ServiceException("调用商品服务分页查询商品失败");
         }
@@ -186,7 +186,7 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     public HomeProductDetailAdapterRespDTO goodsDetail(String id) {
-        Result<ProductRespDTO> result = productRemoteService.getProductBySpuId(id);
+        Result<ProductRespDTO> result = productRemoteClient.getProductBySpuId(id);
         if (!result.isSuccess() || result.getData() == null) {
             throw new ServiceException("调用商品服务查询商品详情失败");
         }

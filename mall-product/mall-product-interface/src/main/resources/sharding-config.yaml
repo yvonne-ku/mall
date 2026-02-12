@@ -1,0 +1,53 @@
+datasource:
+  ds-product:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: 123456
+    jdbc-url: jdbc:mysql://mysql:3306/mall_product?characterEncoding=utf-8&serverTimezone=GMT%2B8
+  names: ds-product
+
+rules:
+  sharding:
+    sharding-algorithms:
+      product-spu_sharding_by_mod_algorithm:
+        props:
+          algorithmClassName: com.noinch.mall.biz.product.infrastructure.algorithm.ProductSpuSnowflakeServiceShardingAlgorithm
+          sharding-count: 16
+          strategy: complex
+        type: CLASS_BASED
+      product-sku_sharding_by_mod_algorithm:
+        props:
+          algorithmClassName: com.noinch.mall.biz.product.infrastructure.algorithm.ProductSkuSnowflakeServiceShardingAlgorithm
+          sharding-count: 16
+          strategy: complex
+        type: CLASS_BASED
+      product-comment_sharding_by_mod:
+        props:
+          sharding-count: 16
+        type: HASH_MOD
+    tables:
+      product_spu:
+        actual-data-nodes: ds-product.product_spu_$->{0..15}
+        table-strategy:
+          complex:
+            sharding-algorithm-name: product-spu_sharding_by_mod_algorithm
+            sharding-columns: brand_id,id
+      product_sku:
+        actual-data-nodes: ds-product.product_sku_$->{0..15}
+        table-strategy:
+          complex:
+            sharding-algorithm-name: product-sku_sharding_by_mod_algorithm
+            sharding-columns: brand_id,product_id
+      product_comment:
+        actual-data-nodes: ds-product.product_comment_$->{0..15}
+        table-strategy:
+          standard:
+            sharding-algorithm-name: product-comment_sharding_by_mod
+            sharding-column: product_id
+
+props:
+  # 将默认事务设为 BASE，这样只要方法加了 Spring 的 @Transactional，
+  # 就会自动切换到 Seata，无需手动在每个 Service 上加 SS 的注解。
+  transaction-type: BASE
+  sql-show: true

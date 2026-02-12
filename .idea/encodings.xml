@@ -19,7 +19,6 @@
     <file url="file://$PROJECT_DIR$/mall-cart/mall-cart-infrastructure/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-cart/mall-cart-interface/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-cart/mall-cart-interface/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mall-cart/mall-cart-interfaces/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-cart/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-cart/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-customer-user/mall-customer-user-application/src/main/java" charset="UTF-8" />
@@ -30,8 +29,6 @@
     <file url="file://$PROJECT_DIR$/mall-customer-user/mall-customer-user-infrastructure/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-customer-user/mall-customer-user-interface/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-customer-user/mall-customer-user-interface/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mall-customer-user/mall-customer-user-mock/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mall-customer-user/mall-customer-user-mock/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-customer-user/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-customer-user/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-base-spring-boot-starter/src/main/java" charset="UTF-8" />
@@ -42,8 +39,6 @@
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mall-framework-all/mall-database-spring-boot-starter/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mall-framework-all/mall-database-spring-boot-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-ddd-framework-core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-ddd-framework-core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-designpattern-spring-boot-starter/src/main/java" charset="UTF-8" />
@@ -54,9 +49,6 @@
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-elasticsearch-spring-boot-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-geetest-spring-boot-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-geetest-spring-boot-starter/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mall-framework-all/mall-httputil-spring-boot-starter/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mall-framework-all/mall-idempotent-spring-boot-starter/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mall-framework-all/mall-idempotent-spring-boot-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-jwt-spring-boot-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-jwt-spring-boot-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-log-spring-boot-starter/src/main/java" charset="UTF-8" />
@@ -69,8 +61,6 @@
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-openfeign-spring-boot-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-rabbitmq-spring-boot-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-rabbitmq-spring-boot-starter/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mall-framework-all/mall-swagger-spring-boot-starter/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mall-framework-all/mall-swagger-spring-boot-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-web-spring-boot-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-web-spring-boot-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-framework-all/mall-xxljob-spring-boot-starter/src/main/java" charset="UTF-8" />
@@ -121,7 +111,6 @@
     <file url="file://$PROJECT_DIR$/mall-product/mall-product-job/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-product/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-product/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/test/mall-framework-cache-test/src/main/java" charset="UTF-8" />

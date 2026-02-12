@@ -1,0 +1,9 @@
+D:\MyProjects\mall\mall-order\mall-order-domain\src\main\java\com\noinch\mall\biz\order\domain\common\OrderCancelErrorCodeEnum.java
+D:\MyProjects\mall\mall-order\mall-order-domain\src\main\java\com\noinch\mall\biz\order\domain\repository\OrderRepository.java
+D:\MyProjects\mall\mall-order\mall-order-domain\src\main\java\com\noinch\mall\biz\order\domain\aggregate\CneeInfo.java
+D:\MyProjects\mall\mall-order\mall-order-domain\src\main\java\com\noinch\mall\biz\order\domain\event\DelayCloseOrderEvent.java
+D:\MyProjects\mall\mall-order\mall-order-domain\src\main\java\com\noinch\mall\biz\order\domain\aggregate\Order.java
+D:\MyProjects\mall\mall-order\mall-order-domain\src\main\java\com\noinch\mall\biz\order\domain\common\OrderCreateErrorCodeEnum.java
+D:\MyProjects\mall\mall-order\mall-order-domain\src\main\java\com\noinch\mall\biz\order\domain\common\OrderStatusEnum.java
+D:\MyProjects\mall\mall-order\mall-order-domain\src\main\java\com\noinch\mall\biz\order\domain\dto\ProductSkuStockDTO.java
+D:\MyProjects\mall\mall-order\mall-order-domain\src\main\java\com\noinch\mall\biz\order\domain\aggregate\OrderProduct.java

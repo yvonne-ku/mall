@@ -2,6 +2,7 @@
 
 package com.noinch.mall.biz.order.application.event;
 
+import com.noinch.mall.biz.order.domain.event.OrderCreateEvent;
 import com.noinch.mall.biz.order.infrastructure.mq.producer.DelayCloseOrderProducer;
 import lombok.RequiredArgsConstructor;
 import com.noinch.mall.biz.order.domain.dto.ProductSkuStockDTO;
