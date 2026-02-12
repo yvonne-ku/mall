@@ -58,5 +58,7 @@ rules:
             sharding-column: customer_user_id
 
 props:
+  # 将默认事务设为 BASE，这样只要方法加了 Spring 的 @Transactional，
+  # 就会自动切换到 Seata，无需手动在每个 Service 上加 SS 的注解。
+  transaction-type: BASE
   sql-show: true
-  max-connections-size-per-query: 10

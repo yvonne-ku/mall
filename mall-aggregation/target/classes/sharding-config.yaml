@@ -1,0 +1,183 @@
+datasource:
+  ds-cart:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: 123456
+    jdbc-url: jdbc:mysql://localhost:3306/mall_cart_dev?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=GMT%2B8
+  ds-user:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: 123456
+    jdbc-url: jdbc:mysql://localhost:3306/mall_user_dev?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=GMT%2B8
+  ds-message:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: 123456
+    jdbc-url: jdbc:mysql://localhost:3306/mall_message_dev?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=GMT%2B8
+  ds-order:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: 123456
+    jdbc-url: jdbc:mysql://localhost:3306/mall_order_dev?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=GMT%2B8
+  ds-product:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: 123456
+    jdbc-url: jdbc:mysql://localhost:3306/mall_product_dev?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=GMT%2B8
+  names: ds-cart,ds-user,ds-message,ds-order,ds-product
+rules:
+  encrypt:
+    encryptors:
+      # User Service
+      customer-user-encryptor:
+        props:
+          aes-key-value: ADbisulBtxnnKFoW
+        type: AES
+    tables:
+      # User Service
+      customer_user:
+        columns:
+          mail:
+            cipher-column: mail
+            encryptor-name: customer-user-encryptor
+          phone:
+            cipher-column: phone
+            encryptor-name: customer-user-encryptor
+      receive_address:
+        columns:
+          phone:
+            cipher-column: phone
+            encryptor-name: customer-user-encryptor
+          detail_address:
+            cipher-column: detail_address
+            encryptor-name: customer-user-encryptor
+  sharding:
+    sharding-algorithms:
+      # Cart Service
+      cart-item_sharding_by_mod:
+        props:
+          sharding-count: 16
+        type: HASH_MOD
+      # Product Service
+      product-spu_sharding_by_mod_algorithm:
+        props:
+          algorithmClassName: com.noinch.mall.biz.product.infrastructure.algorithm.ProductSpuSnowflakeServiceShardingAlgorithm
+          sharding-count: 16
+          strategy: complex
+        type: CLASS_BASED
+      product-sku_sharding_by_mod_algorithm:
+        props:
+          algorithmClassName: com.noinch.mall.biz.product.infrastructure.algorithm.ProductSkuSnowflakeServiceShardingAlgorithm
+          sharding-count: 16
+          strategy: complex
+        type: CLASS_BASED
+      product-comment_sharding_by_mod:
+        props:
+          sharding-count: 16
+        type: HASH_MOD
+      # User Service
+      user-sharding_by_mod:
+        props:
+          sharding-count: 16
+        type: HASH_MOD
+      # Message Service
+      message-snowflake_date_algorithm:
+        props:
+          algorithmClassName: com.noinch.mall.biz.message.infrastructure.algorithm.SnowflakeDateShardingAlgorithm
+          strategy: complex
+        type: CLASS_BASED
+      # Order Service
+      order-item_sharding_by_mod:
+        props:
+          algorithmClassName: com.noinch.mall.biz.order.infrastructure.algorithm.OrderSnowflakeServiceShardingAlgorithm
+          sharding-count: 16
+          strategy: complex
+        type: CLASS_BASED
+      order_snowflake-service_algorithm:
+        props:
+          algorithmClassName: com.noinch.mall.biz.order.infrastructure.algorithm.OrderSnowflakeServiceShardingAlgorithm
+          sharding-count: 16
+          strategy: complex
+        type: CLASS_BASED
+    tables:
+      # Cart Service
+      cart_item:
+        actual-data-nodes: ds-cart.cart_item_$->{0..15}
+        table-strategy:
+          standard:
+            sharding-algorithm-name: cart-item_sharding_by_mod
+            sharding-column: customer_user_id
+      # Product Service
+      product_spu:
+        actual-data-nodes: ds-product.product_spu_$->{0..15}
+        table-strategy:
+          complex:
+            sharding-algorithm-name: product_sharding_by_mod_algorithm
+            sharding-columns: brand_id,id
+      product_sku:
+        actual-data-nodes: ds-product.product_sku_$->{0..15}
+        table-strategy:
+          complex:
+            sharding-algorithm-name: product-sku_sharding_by_mod_algorithm
+            sharding-columns: brand_id,product_id
+      product_comment:
+        actual-data-nodes: ds-product.product_comment_$->{0..15}
+        table-strategy:
+          standard:
+            sharding-algorithm-name: product-comment_sharding_by_mod
+            sharding-column: product_id
+      # User Service
+      customer_user:
+        actual-data-nodes: ds-user.customer_user_$->{0..15}
+        table-strategy:
+          standard:
+            sharding-algorithm-name: user-sharding_by_mod
+            sharding-column: id
+      operation_log:
+        actual-data-nodes: ds-user.operation_log_$->{0..15}
+        table-strategy:
+          standard:
+            sharding-algorithm-name: user-sharding_by_mod
+            sharding-column: customer_user_id
+      receive_address:
+        actual-data-nodes: ds-user.receive_address_$->{0..15}
+        table-strategy:
+          standard:
+            sharding-algorithm-name: user-sharding_by_mod
+            sharding-column: customer_user_id
+      # Message Service
+      send_record:
+        actual-data-nodes: ds-message.send_record_$->{2023..2026}_m$->{1..12}
+        table-strategy:
+          complex:
+            sharding-algorithm-name: message-snowflake_date_algorithm
+            sharding-columns: create_time,msg_id
+      send_record_extend:
+        actual-data-nodes: ds-message.send_record_extend_$->{2023..2026}_m$->{1..12}
+        table-strategy:
+          complex:
+            sharding-algorithm-name: message-snowflake_date_algorithm
+            sharding-columns: create_time,msg_id
+      # Order Message
+      order_info:
+        actual-data-nodes: ds-order.order_info_$->{0..15}
+        table-strategy:
+          complex:
+            sharding-algorithm-name: order_snowflake-service_algorithm
+            sharding-columns: customer_user_id,order_sn
+      order_item:
+        actual-data-nodes: ds-order.order_item_$->{0..15}
+        table-strategy:
+          complex:
+            sharding-algorithm-name: order_snowflake-service_algorithm
+            sharding-columns: customer_user_id,order_sn
+props:
+  # 将默认事务设为 BASE，这样只要方法加了 Spring 的 @Transactional，
+  # 就会自动切换到 Seata，无需手动在每个 Service 上加 SS 的注解。
+  transaction-type: BASE
+  sql-show: true

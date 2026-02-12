@@ -12,7 +12,7 @@ import com.noinch.mall.springboot.starter.mybatisplus.BaseDO;
  * 商品品牌
  */
 @Data
-@TableName("product_brand_test")
+@TableName("product_brand")
 public class ProductBrandDO extends BaseDO {
     
     /**

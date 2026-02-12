@@ -3,6 +3,7 @@ package com.noinch.mall.biz.order.domain.repository;
 
 
 import com.noinch.mall.biz.order.domain.aggregate.Order;
+import com.noinch.mall.biz.order.domain.aggregate.OrderProduct;
 import com.noinch.mall.springboot.starter.convention.page.PageRequest;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
 
@@ -13,7 +14,14 @@ import java.util.List;
  *
  */
 public interface OrderRepository {
-    
+
+    /**
+     * 根据订单号查询订单商品
+     * @param orderSn 订单号
+     * @return 订单商品列表
+     */
+    List<OrderProduct> findOrderProductByOrderSn(String orderSn);
+
     /**
      * 根据订单号查询订单
      *

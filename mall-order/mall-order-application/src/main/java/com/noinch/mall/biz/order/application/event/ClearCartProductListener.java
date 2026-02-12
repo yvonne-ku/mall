@@ -2,6 +2,7 @@
 
 package com.noinch.mall.biz.order.application.event;
 
+import com.noinch.mall.biz.order.domain.event.OrderCreateEvent;
 import lombok.RequiredArgsConstructor;
 import com.noinch.mall.biz.order.domain.aggregate.OrderProduct;
 import com.noinch.mall.biz.order.infrastructure.remote.CartRemoteService;

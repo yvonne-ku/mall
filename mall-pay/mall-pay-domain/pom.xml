@@ -10,25 +10,29 @@
     <artifactId>mall-pay-domain</artifactId>
 
     <dependencies>
-
+        <!-- Framework -->
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-convention-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-distributedid-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-ddd-framework-core</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.noinch.mall</groupId>
+            <artifactId>mall-designpattern-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
+        <!-- Hutool -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>

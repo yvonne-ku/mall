@@ -2,11 +2,59 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
-      <profile name="Maven default annotation processors profile" enabled="true">
+      <profile name="Annotation profile for mall-pay" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
+        </processorPath>
+        <module name="mall-aggregation" />
+        <module name="mall-order-interface" />
+        <module name="mall-pay-interface" />
+        <module name="mall-pay-infrastructure" />
+        <module name="mall-message-infrastructure" />
+        <module name="mall-pay-application" />
+        <module name="mall-message-interface" />
+      </profile>
+      <profile name="Annotation profile for mall-product-interface" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
+        </processorPath>
+        <module name="mall-product-interface" />
+      </profile>
+      <profile name="Annotation profile for mall-product-job" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
+          <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
+        </processorPath>
+        <module name="mall-product-job" />
       </profile>
       <profile name="Annotation profile for test" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -18,85 +66,46 @@
           <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
           <entry name="$PROJECT_DIR$/../../MyProgramFiles/maven/apache-maven-3.8.2/repository/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
         </processorPath>
+        <module name="mall-message-domain" />
+        <module name="mall-web-spring-boot-starter" />
+        <module name="mall-product-infrastructure" />
         <module name="mall-customer-user-infrastructure" />
-        <module name="mall-aggregation" />
+        <module name="mall-minio-spring-boot-starter" />
+        <module name="mall-framework-cache-test" />
         <module name="mall-base-spring-boot-starter" />
+        <module name="mall-order-infrastructure" />
         <module name="mall-bff-remote" />
+        <module name="mall-mybatisplus-spring-boot-starter" />
+        <module name="mall-xxljob-spring-boot-starter" />
         <module name="mall-cart-domain" />
+        <module name="mall-jwt-spring-boot-starter" />
+        <module name="mall-rabbitmq-spring-boot-starter" />
         <module name="mall-cart-infrastructure" />
+        <module name="mall-convention-spring-boot-starter" />
+        <module name="mall-order-application" />
+        <module name="mall-elasticsearch-spring-boot-starter" />
+        <module name="mall-log-spring-boot-starter" />
         <module name="mall-cache-spring-boot-starter" />
+        <module name="mall-message-application" />
+        <module name="mall-pay-domain" />
+        <module name="mall-common-spring-boot-starter" />
+        <module name="mall-product-domain" />
+        <module name="mall-openfeign-spring-boot-starter" />
         <module name="mall-bff-web" />
         <module name="mall-bff-biz" />
+        <module name="mall-geetest-spring-boot-starter" />
         <module name="mall-cart-application" />
+        <module name="mall-ddd-framework-core" />
+        <module name="mall-designpattern-spring-boot-starter" />
         <module name="mall-cart-interface" />
         <module name="mall-customer-user-application" />
         <module name="mall-customer-user-domain" />
         <module name="mall-customer-user-interface" />
+        <module name="mall-product-application" />
+        <module name="mall-distributedid-spring-boot-starter" />
+        <module name="mall-gateway" />
+        <module name="mall-order-domain" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="mall-swagger-spring-boot-starter" target="21" />
-    </bytecodeTargetLevel>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="mail-message" options="" />
-      <module name="mall" options="" />
-      <module name="mall-aggregation" options="" />
-      <module name="mall-base-spring-boot-starter" options="" />
-      <module name="mall-bff-biz" options="" />
-      <module name="mall-bff-web" options="" />
-      <module name="mall-cache-spring-boot-starter" options="" />
-      <module name="mall-cart" options="" />
-      <module name="mall-cart-application" options="" />
-      <module name="mall-cart-domain" options="" />
-      <module name="mall-cart-infrastructure" options="" />
-      <module name="mall-cart-interface" options="" />
-      <module name="mall-common-spring-boot-starter" options="" />
-      <module name="mall-convention-spring-boot-starter" options="" />
-      <module name="mall-customer-user" options="" />
-      <module name="mall-customer-user-application" options="" />
-      <module name="mall-customer-user-domain" options="" />
-      <module name="mall-customer-user-infrastructure" options="" />
-      <module name="mall-customer-user-interface" options="" />
-      <module name="mall-ddd-framework-core" options="" />
-      <module name="mall-designpattern-spring-boot-starter" options="" />
-      <module name="mall-distributedid-spring-boot-starter" options="" />
-      <module name="mall-elasticsearch-spring-boot-starter" options="" />
-      <module name="mall-framework-all" options="" />
-      <module name="mall-framework-cache-test" options="" />
-      <module name="mall-gateway" options="" />
-      <module name="mall-geetest-spring-boot-starter" options="" />
-      <module name="mall-jwt-spring-boot-starter" options="" />
-      <module name="mall-log-spring-boot-starter" options="" />
-      <module name="mall-message-application" options="" />
-      <module name="mall-message-domain" options="" />
-      <module name="mall-message-infrastructure" options="" />
-      <module name="mall-message-interface" options="" />
-      <module name="mall-minio-spring-boot-starter" options="" />
-      <module name="mall-mybatisplus-spring-boot-starter" options="" />
-      <module name="mall-openfeign-spring-boot-starter" options="" />
-      <module name="mall-order" options="" />
-      <module name="mall-order-application" options="" />
-      <module name="mall-order-domain" options="" />
-      <module name="mall-order-infrastructure" options="" />
-      <module name="mall-order-interface" options="" />
-      <module name="mall-pay" options="" />
-      <module name="mall-pay-application" options="" />
-      <module name="mall-pay-domain" options="" />
-      <module name="mall-pay-infrastructure" options="" />
-      <module name="mall-pay-interface" options="" />
-      <module name="mall-product" options="" />
-      <module name="mall-product-application" options="" />
-      <module name="mall-product-domain" options="" />
-      <module name="mall-product-infrastructure" options="" />
-      <module name="mall-product-interface" options="" />
-      <module name="mall-product-job" options="" />
-      <module name="mall-rabbitmq-spring-boot-starter" options="" />
-      <module name="mall-swagger-spring-boot-starter" options="" />
-      <module name="mall-web-spring-boot-starter" options="" />
-      <module name="mall-xxljob-spring-boot-starter" options="" />
-      <module name="test" options="" />
-    </option>
   </component>
 </project>

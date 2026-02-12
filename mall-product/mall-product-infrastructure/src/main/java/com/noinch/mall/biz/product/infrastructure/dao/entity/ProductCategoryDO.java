@@ -13,7 +13,7 @@ import com.noinch.mall.springboot.starter.mybatisplus.BaseDO;
  * 商品分类
  */
 @Data
-@TableName("product_category_test")
+@TableName("product_category")
 public class ProductCategoryDO extends BaseDO {
     
     /**

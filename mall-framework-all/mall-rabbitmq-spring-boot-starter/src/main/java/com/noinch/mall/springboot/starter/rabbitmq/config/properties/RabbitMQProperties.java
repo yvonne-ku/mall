@@ -15,6 +15,7 @@ public class RabbitMQProperties {
     private String username = "guest";
     private String password = "guest";
     private String virtualHost = "/";
+    private Duration connectionTimeout = Duration.ofSeconds(5);
 
     private final Producer producer = new Producer();
     private final Consumer consumer = new Consumer();

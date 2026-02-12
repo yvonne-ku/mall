@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="665326d2-e16a-4608-8d02-4d0760e29ac0" name="Changes" comment="修复密钥泄露；修改 message-service">
+      <change afterPath="$PROJECT_DIR$/mall-aggregation/src/main/resources/sharding-config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-message/mall-message-interface/src/main/resources/sharding-config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/service/CartRemoteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/service/OrderDomainService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/service/ProductStockRemoteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/service/impl/OrderDomainServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/service/CartRemoteServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/service/ProductStockRemoteServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-order/mall-order-interface/src/main/resources/sharding-config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-product/mall-product-interface/src/main/resources/sharding-config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/MarsCodeWorkspaceAppSettings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.ask.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-aggregation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-aggregation/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-aggregation/src/main/java/com/noinch/mall/aggregation/AggregationApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-aggregation/src/main/java/com/noinch/mall/aggregation/AggregationApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-aggregation/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-aggregation/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java/com/noinch/mall/biz/bff/service/impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java/com/noinch/mall/biz/bff/service/impl/CartServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java/com/noinch/mall/biz/bff/service/impl/HomeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java/com/noinch/mall/biz/bff/service/impl/HomeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java/com/noinch/mall/biz/bff/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java/com/noinch/mall/biz/bff/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java/com/noinch/mall/biz/bff/service/impl/PayServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java/com/noinch/mall/biz/bff/service/impl/PayServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java/com/noinch/mall/biz/bff/service/impl/ReceiveAddressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java/com/noinch/mall/biz/bff/service/impl/ReceiveAddressServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java/com/noinch/mall/biz/bff/service/impl/UserLoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java/com/noinch/mall/biz/bff/service/impl/UserLoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/java/com/noinch/mall/biz/bff/remote/CartRemoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/java/com/noinch/mall/biz/bff/remote/CartRemoteClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/java/com/noinch/mall/biz/bff/remote/CustomerUserRemoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/java/com/noinch/mall/biz/bff/remote/CustomerUserRemoteClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/java/com/noinch/mall/biz/bff/remote/OrderRemoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/java/com/noinch/mall/biz/bff/remote/OrderRemoteClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/java/com/noinch/mall/biz/bff/remote/PayRemoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/java/com/noinch/mall/biz/bff/remote/PayRemoteClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/java/com/noinch/mall/biz/bff/remote/ProductRemoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/java/com/noinch/mall/biz/bff/remote/ProductRemoteClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-bff/mall-bff-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-bff/mall-bff-web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-bff/mall-bff-web/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-bff/mall-bff-web/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-application/target/classes/com/noinch/mall/biz/cart/application/req/CartItemAddReqDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-application/target/classes/com/noinch/mall/biz/cart/application/req/CartItemCheckUpdateReqDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-application/target/classes/com/noinch/mall/biz/cart/application/req/CartItemChecksUpdateReqDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-application/target/classes/com/noinch/mall/biz/cart/application/req/CartItemDelCheckReqDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-application/target/classes/com/noinch/mall/biz/cart/application/req/CartItemDelReqDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-application/target/classes/com/noinch/mall/biz/cart/application/req/CartItemNumUpdateReqDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-application/target/classes/com/noinch/mall/biz/cart/application/req/CartItemPageQueryReqDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-application/target/classes/com/noinch/mall/biz/cart/application/resp/CartItemQuerySelectRespDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-application/target/classes/com/noinch/mall/biz/cart/application/resp/CartItemRespDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-application/target/classes/com/noinch/mall/biz/cart/application/service/CartItemService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-application/target/classes/com/noinch/mall/biz/cart/application/service/impl/CartItemServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-application/target/mall-cart-application-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-cart/mall-cart-application/target/mall-cart-application-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-domain/target/classes/com/noinch/mall/biz/cart/domain/aggregate/CartItem$CartItemBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-domain/target/classes/com/noinch/mall/biz/cart/domain/aggregate/CartItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-domain/target/classes/com/noinch/mall/biz/cart/domain/common/SelectFlagEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-domain/target/classes/com/noinch/mall/biz/cart/domain/repository/CartItemRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-domain/target/mall-cart-domain-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-cart/mall-cart-domain/target/mall-cart-domain-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-infrastructure/target/mall-cart-infrastructure-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-cart/mall-cart-infrastructure/target/mall-cart-infrastructure-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-interface/src/main/resources/sharding-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-cart/mall-cart-interface/src/main/resources/sharding-config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-interface/target/mall-cart-interface-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-cart/mall-cart-interface/target/mall-cart-interface-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-infrastructure/src/main/java/com/noinch/mall/biz/customer/user/infrastructure/remote/MessageRemoteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-infrastructure/src/main/java/com/noinch/mall/biz/customer/user/infrastructure/remote/MessageRemoteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-infrastructure/src/main/java/com/noinch/mall/biz/customer/user/infrastructure/remote/MessageServiceFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-infrastructure/src/main/java/com/noinch/mall/biz/customer/user/infrastructure/remote/MessageServiceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-interface/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-interface/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-interface/src/main/resources/sharding-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-interface/src/main/resources/sharding-config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-base-spring-boot-starter/src/main/java/com/noinch/mall/springboot/starter/base/config/ApplicationBaseAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-base-spring-boot-starter/src/main/java/com/noinch/mall/springboot/starter/base/config/ApplicationBaseAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-base-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/base/ApplicationContextHolder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-base-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/base/Singleton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-base-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/base/config/ApplicationBaseAutoConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-base-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/base/init/ApplicationContentPostProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-base-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/base/init/ApplicationInitializingEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-base-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/base/safe/FastJsonSafeMode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-base-spring-boot-starter/target/mall-base-spring-boot-starter-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-base-spring-boot-starter/target/mall-base-spring-boot-starter-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-cache-spring-boot-starter/target/mall-cache-spring-boot-starter-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-cache-spring-boot-starter/target/mall-cache-spring-boot-starter-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/common/enums/DelEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/common/enums/FlagEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/common/enums/OperationTypeEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/common/enums/StatusEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/common/threadpool/build/ThreadFactoryBuilder$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/common/threadpool/build/ThreadFactoryBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/common/threadpool/build/ThreadPoolBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/common/threadpool/proxy/RejectedProxyInvocationHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/common/threadpool/proxy/RejectedProxyUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/common/threadpool/support/eager/EagerThreadPoolExecutor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/common/threadpool/support/eager/TaskQueue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/common/toolkit/Assert.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/common/toolkit/EnvironmentUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/common/toolkit/ThreadUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/mall-common-spring-boot-starter-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-common-spring-boot-starter/target/mall-common-spring-boot-starter-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/src/main/java/com/noinch/mall/springboot/starter/convention/errorcode/BaseErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/src/main/java/com/noinch/mall/springboot/starter/convention/errorcode/BaseErrorCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/convention/errorcode/BaseErrorCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/convention/errorcode/IErrorCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/convention/exception/AbstractException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/convention/exception/ClientException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/convention/exception/RemoteException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/convention/exception/ServiceException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/convention/page/PageRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/convention/page/PageResponse$PageResponseBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/convention/page/PageResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/convention/result/Result.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/target/mall-convention-spring-boot-starter-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/target/mall-convention-spring-boot-starter-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-ddd-framework-core/target/classes/com/noinch/mall/ddd/framework/core/domain/AggregateRoot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-ddd-framework-core/target/classes/com/noinch/mall/ddd/framework/core/domain/CommandHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-ddd-framework-core/target/classes/com/noinch/mall/ddd/framework/core/domain/DomainEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-ddd-framework-core/target/classes/com/noinch/mall/ddd/framework/core/domain/Entity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-ddd-framework-core/target/classes/com/noinch/mall/ddd/framework/core/domain/ValueObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-ddd-framework-core/target/mall-ddd-framework-core-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-ddd-framework-core/target/mall-ddd-framework-core-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-designpattern-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/designpattern/builder/Builder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-designpattern-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/designpattern/chain/AbstractChainContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-designpattern-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/designpattern/chain/AbstractChainHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-designpattern-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/designpattern/config/DesignPatternAutoConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-designpattern-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/designpattern/strategy/AbstractExecuteStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-designpattern-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/designpattern/strategy/AbstractStrategyChoose.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-designpattern-spring-boot-starter/target/mall-designpattern-spring-boot-starter-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-designpattern-spring-boot-starter/target/mall-designpattern-spring-boot-starter-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/distributedid/SnowflakeIdUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/distributedid/config/DistributedIdAutoConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/distributedid/config/SnowflakeInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/distributedid/core/IdGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/distributedid/core/manager/IdGeneratorManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/distributedid/core/serviceid/DefaultServiceIdGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/distributedid/core/serviceid/ServiceIdGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/distributedid/core/snowflakeid/Snowflake.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/distributedid/core/snowflakeid/SnowflakeIdInfo$SnowflakeIdInfoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/distributedid/core/snowflakeid/SnowflakeIdInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/distributedid/core/snowflakeid/workid/LocalRedisWorkIdChoose.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/distributedid/core/snowflakeid/workid/RandomWorkIdChoose.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/distributedid/core/snowflakeid/workid/WorkIdChooser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/distributedid/core/snowflakeid/workid/WorkIdWrapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/mall-distributedid-spring-boot-starter-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/mall-distributedid-spring-boot-starter-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-distributedid-spring-boot-starter/target/test-classes/com/noinch/mall/springboot/starter/distributedid/DefaultServiceIdGeneratorTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-elasticsearch-spring-boot-starter/src/main/java/com/noinch/mall/springboot/starter/elasticsearch/config/properties/ElasticsearchProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-elasticsearch-spring-boot-starter/src/main/java/com/noinch/mall/springboot/starter/elasticsearch/config/properties/ElasticsearchProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-elasticsearch-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/elasticsearch/config/ElasticAutoConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-elasticsearch-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/elasticsearch/config/properties/ElasticsearchProperties$Ssl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-elasticsearch-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/elasticsearch/config/properties/ElasticsearchProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-elasticsearch-spring-boot-starter/target/mall-elasticsearch-spring-boot-starter-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-elasticsearch-spring-boot-starter/target/mall-elasticsearch-spring-boot-starter-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-elasticsearch-spring-boot-starter/target/test-classes/com/noinch/mall/springboot/starter/elasticsearch/ElasticTest$Product.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-elasticsearch-spring-boot-starter/target/test-classes/com/noinch/mall/springboot/starter/elasticsearch/ElasticTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-jwt-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/jwt/config/JwtAutoConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-jwt-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/jwt/config/properties/JwtProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-jwt-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/jwt/toolkit/TokenUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-jwt-spring-boot-starter/target/mall-jwt-spring-boot-starter-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-jwt-spring-boot-starter/target/mall-jwt-spring-boot-starter-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-log-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/log/annotation/MLog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-log-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/log/aspect/MLogPrintAspect$MLogPrint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-log-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/log/aspect/MLogPrintAspect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-log-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/log/config/LogAutoConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-log-spring-boot-starter/target/mall-log-spring-boot-starter-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-log-spring-boot-starter/target/mall-log-spring-boot-starter-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-minio-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/minio/MinioOperations.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-minio-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/minio/MinioTemplate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-minio-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/minio/config/MinioAutoConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-minio-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/minio/config/MinioProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-minio-spring-boot-starter/target/mall-minio-spring-boot-starter-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-minio-spring-boot-starter/target/mall-minio-spring-boot-starter-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-minio-spring-boot-starter/target/test-classes/com/noinch/mall/springboot/starter/minio/MinioTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-mybatisplus-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/mybatisplus/BaseDO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-mybatisplus-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/mybatisplus/CustomIdGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-mybatisplus-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/mybatisplus/MyMetaObjectHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-mybatisplus-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/mybatisplus/PageUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-mybatisplus-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/mybatisplus/config/MybatisPlusAutoConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-mybatisplus-spring-boot-starter/target/mall-mybatisplus-spring-boot-starter-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-mybatisplus-spring-boot-starter/target/mall-mybatisplus-spring-boot-starter-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-rabbitmq-spring-boot-starter/src/main/java/com/noinch/mall/springboot/starter/rabbitmq/config/RabbitMQAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-rabbitmq-spring-boot-starter/src/main/java/com/noinch/mall/springboot/starter/rabbitmq/config/RabbitMQAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-rabbitmq-spring-boot-starter/src/main/java/com/noinch/mall/springboot/starter/rabbitmq/config/properties/RabbitMQProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-rabbitmq-spring-boot-starter/src/main/java/com/noinch/mall/springboot/starter/rabbitmq/config/properties/RabbitMQProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-rabbitmq-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/rabbitmq/config/RabbitMQAutoConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-rabbitmq-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/rabbitmq/config/properties/RabbitMQProperties$Consumer$Retry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-rabbitmq-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/rabbitmq/config/properties/RabbitMQProperties$Consumer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-rabbitmq-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/rabbitmq/config/properties/RabbitMQProperties$Producer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-rabbitmq-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/rabbitmq/config/properties/RabbitMQProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-rabbitmq-spring-boot-starter/target/mall-rabbitmq-spring-boot-starter-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-rabbitmq-spring-boot-starter/target/mall-rabbitmq-spring-boot-starter-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-web-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/web/GlobalExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-web-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/web/Results.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-web-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/web/config/WebAutoConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-web-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/web/initialize/InitializeDispatcherServletController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-web-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/web/initialize/InitializeDispatcherServletHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-web-spring-boot-starter/target/mall-web-spring-boot-starter-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-web-spring-boot-starter/target/mall-web-spring-boot-starter-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-xxljob-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/xxljob/config/XXLJobAutoConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-xxljob-spring-boot-starter/target/mall-xxljob-spring-boot-starter-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-xxljob-spring-boot-starter/target/mall-xxljob-spring-boot-starter-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-gateway/target/classes/com/noinch/mall/gateway/GatewayApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-gateway/target/classes/com/noinch/mall/gateway/filter/JwtAuthenticationFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-application/target/classes/com/noinch/mall/biz/message/application/req/PhoneSendCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-application/target/classes/com/noinch/mall/biz/message/application/req/PhoneVerifyCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-application/target/classes/com/noinch/mall/biz/message/application/service/MessageService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-application/target/classes/com/noinch/mall/biz/message/application/service/impl/MessageServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-domain/target/classes/com/noinch/mall/biz/message/domain/entity/MessageSend$MessageSendBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-domain/target/classes/com/noinch/mall/biz/message/domain/entity/MessageSend.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-domain/target/classes/com/noinch/mall/biz/message/domain/entity/MessageSendQuery$MessageSendQueryBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-domain/target/classes/com/noinch/mall/biz/message/domain/entity/MessageSendQuery.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-domain/target/classes/com/noinch/mall/biz/message/domain/repository/MessageRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-domain/target/classes/com/noinch/mall/biz/message/domain/service/AliyunSmsService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-domain/target/classes/com/noinch/mall/biz/message/domain/service/MessageDomainService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-domain/target/classes/com/noinch/mall/biz/message/domain/service/impl/MessageDomainServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/target/classes/com/noinch/mall/biz/message/infrastructure/config/AliyunSmsConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/target/classes/com/noinch/mall/biz/message/infrastructure/config/properties/AliyunSmsProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/target/classes/com/noinch/mall/biz/message/infrastructure/dao/entity/MailTemplateDO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/target/classes/com/noinch/mall/biz/message/infrastructure/dao/entity/SendRecordDO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/target/classes/com/noinch/mall/biz/message/infrastructure/dao/entity/SendRecordExtendDO$SendRecordExtendDOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/target/classes/com/noinch/mall/biz/message/infrastructure/dao/entity/SendRecordExtendDO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/target/classes/com/noinch/mall/biz/message/infrastructure/dao/mapper/MailTemplateMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/target/classes/com/noinch/mall/biz/message/infrastructure/dao/mapper/SendRecordExtendMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/target/classes/com/noinch/mall/biz/message/infrastructure/dao/mapper/SendRecordMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/target/classes/com/noinch/mall/biz/message/infrastructure/repository/MessageRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/target/classes/com/noinch/mall/biz/message/infrastructure/sdk/service/impl/AliyunSmsServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-interface/target/classes/com/noinch/mall/biz/message/interfaces/MessageApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-interface/target/classes/com/noinch/mall/biz/message/interfaces/controller/MessageController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-application/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/event/ClearCartProductListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/event/ClearCartProductListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/event/DelayCloseOrderListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/event/DelayCloseOrderListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/event/LockProductStockListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/event/LockProductStockListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/event/OrderCreateEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/event/OrderCreateEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/event/OrderCreateListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/event/OrderCreateListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/aggregate/CneeInfo$CneeInfoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/aggregate/CneeInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/aggregate/Order$OrderBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/aggregate/Order.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/aggregate/OrderProduct$OrderProductBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/aggregate/OrderProduct.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/common/OrderCancelErrorCodeEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/common/OrderCreateErrorCodeEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/common/OrderStatusEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/dto/ProductSkuStockDTO$ProductSkuStockDTOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/dto/ProductSkuStockDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/event/DelayCloseOrderEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/repository/OrderRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/dao/entity/OrderDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/dao/entity/OrderDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/dao/entity/OrderItemDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/dao/entity/OrderItemDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/mq/consumer/DelayCloseOrderConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/mq/consumer/DelayCloseOrderConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/CartRemoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/CartRemoteClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/ProductStockRemoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/ProductStockRemoteClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/repository/OrderRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/repository/OrderRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/service/OrderInfraService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/service/impl/OrderInfraServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-interface/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-interface/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-interface/src/main/java/com/noinch/mall/biz/order/interfaces/OrderApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-interface/src/main/java/com/noinch/mall/biz/order/interfaces/OrderApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-interface/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-interface/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-pay/mall-pay-application/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-pay/mall-pay-domain/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/aggregate/Pay$PayBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/aggregate/Pay.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/base/AbstractPayCallbackRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/base/AbstractPayRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/base/AliPayCallbackRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/base/AliPayRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/base/PayCallbackRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/base/PayRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/base/PayResponse$PayResponseBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/base/PayResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/base/WeiXinPayCallbackRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/base/WeiXinPayRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/common/PayChannelEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/common/PayTradeTypeEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/common/TradeStatusEnum$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/common/TradeStatusEnum$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/common/TradeStatusEnum$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/common/TradeStatusEnum$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/common/TradeStatusEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/event/PayResultNotifyMessageEvent$PayResultNotifyMessageEventBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/event/PayResultNotifyMessageEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-domain/target/classes/com/noinch/mall/biz/pay/domain/repository/PayRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/src/main/java/com/noinch/mall/biz/pay/infrastructure/dao/entity/PayDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/src/main/java/com/noinch/mall/biz/pay/infrastructure/dao/entity/PayDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/target/classes/com/noinch/mall/biz/pay/infrastructure/config/AliPayConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/target/classes/com/noinch/mall/biz/pay/infrastructure/config/properties/AliPayProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/target/classes/com/noinch/mall/biz/pay/infrastructure/dao/entity/PayDO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/target/classes/com/noinch/mall/biz/pay/infrastructure/dao/mapper/PayMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/target/classes/com/noinch/mall/biz/pay/infrastructure/handler/AliPayCallbackHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/target/classes/com/noinch/mall/biz/pay/infrastructure/handler/AliPayNativeHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/target/classes/com/noinch/mall/biz/pay/infrastructure/handler/base/AbstractPayCallbackHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/target/classes/com/noinch/mall/biz/pay/infrastructure/handler/base/AbstractPayHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-interface/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-pay/mall-pay-interface/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-interface/src/main/java/com/noinch/mall/biz/pay/interfaces/PayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-pay/mall-pay-interface/src/main/java/com/noinch/mall/biz/pay/interfaces/PayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-interface/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-pay/mall-pay-interface/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-interface/target/classes/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-application/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/req/ProductCommentAppendCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/req/ProductCommentRemoveCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/req/ProductCommentSaveCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/req/ProductLockStockCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/req/ProductPageQuery.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/req/ProductStockVerifyQuery.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/req/ProductUnlockStockCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/resp/ProductBrandRespDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/resp/ProductCategoryRespDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/resp/ProductRespDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/resp/ProductSkuRespDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/resp/ProductSpuRespDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/resp/QuickSearchRespDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/service/ProductCategoryService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/service/ProductCommentService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/service/ProductService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/service/impl/ProductCategoryServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/service/impl/ProductCommentServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-application/target/classes/com/noinch/mall/biz/product/application/service/impl/ProductServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-domain/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/aggregate/Product$ProductBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/aggregate/Product.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/aggregate/ProductComment$ProductCommentBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/aggregate/ProductComment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/aggregate/ProductPageQuery$ProductPageQueryBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/aggregate/ProductPageQuery.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/aggregate/ProductStock$ProductStockBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/aggregate/ProductStock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/aggregate/ProductStockDetail$ProductStockDetailBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/aggregate/ProductStockDetail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/dto/ProductCategoryDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/dto/ProductStockDetailDTO$ProductStockDetailDTOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/dto/ProductStockDetailDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/mode/ProductBrand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/mode/ProductCategory$ProductCategoryBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/mode/ProductCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/mode/ProductIndex.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/mode/ProductSku.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/mode/ProductSpu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/repository/EsProductRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/repository/ProductCategoryRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/repository/ProductCommentRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-domain/target/classes/com/noinch/mall/biz/product/domain/repository/ProductRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/src/main/java/com/noinch/mall/biz/product/infrastructure/config/properties/ProductThreadPoolExecutorProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/src/main/java/com/noinch/mall/biz/product/infrastructure/config/properties/ProductThreadPoolExecutorProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/src/main/java/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductBrandDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/src/main/java/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductBrandDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/src/main/java/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductCategoryDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/src/main/java/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductCategoryDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/src/main/java/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductCommentDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/src/main/java/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductCommentDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/src/main/java/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductSkuDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/src/main/java/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductSkuDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/src/main/java/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductSpuDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/src/main/java/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductSpuDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/src/main/resources/mapper/ProductSkuStockMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/src/main/resources/mapper/ProductSkuStockMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/config/ProductThreadPoolExecutorConfig$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/config/ProductThreadPoolExecutorConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/config/properties/ProductThreadPoolExecutorProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductBrandDO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductCategoryDO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductCommentDO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductSkuDO$ProductSkuDOBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductSkuDO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/dao/entity/ProductSpuDO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/dao/mapper/ProductBrandMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/dao/mapper/ProductCategoryMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/dao/mapper/ProductCommentMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/dao/mapper/ProductSkuMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/dao/mapper/ProductSpuMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/es/EsProductIndexInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/es/EsProductRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/repository/ProductCategoryRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/repository/ProductCommentRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-infrastructure/target/classes/com/noinch/mall/biz/product/infrastructure/repository/ProductRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-interface/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-interface/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-interface/src/main/java/com/noinch/mall/biz/product/interfaces/ProductApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-interface/src/main/java/com/noinch/mall/biz/product/interfaces/ProductApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-interface/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-interface/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-interface/target/classes/com/noinch/mall/biz/product/interfaces/ProductApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-interface/target/classes/com/noinch/mall/biz/product/interfaces/controller/ProductCategoryController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-interface/target/classes/com/noinch/mall/biz/product/interfaces/controller/ProductCommentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-interface/target/classes/com/noinch/mall/biz/product/interfaces/controller/ProductController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-interface/target/classes/com/noinch/mall/biz/product/interfaces/controller/ProductStockController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-job/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-job/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-job/target/classes/com/noinch/mall/biz/product/job/ProductJobApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-job/target/classes/com/noinch/mall/biz/product/job/config/JobThreadPoolExecutorConfig$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-job/target/classes/com/noinch/mall/biz/product/job/config/JobThreadPoolExecutorConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-job/target/classes/com/noinch/mall/biz/product/job/handler/InitializeProductJobHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-job/target/classes/com/noinch/mall/biz/product/job/handler/UpdateProductJobHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/mall-framework-cache-test/target/test-classes/application.yaml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "yvonne-ku"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:yvonne-ku/mall.git",
+    "accountId": "3df3b9ca-a8e1-4b59-b639-0401f2fa6cfd"
+  }
+}]]></component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="customMavenHome" value="D:\MyProgramFiles\maven\apache-maven-3.8.2" />
+        <option name="localRepository" value="D:\MyProgramFiles\maven\apache-maven-3.8.2\repository" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+        <option name="userSettingsFile" value="D:\MyProgramFiles\maven\apache-maven-3.8.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="34vDy4pRCCMtMnpe9YTzxyOpEex" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.mall-customer-user.executor": "Run",
+    "JUnit.CacheTests.debugBeans.executor": "Run",
+    "JUnit.CacheTests.executor": "Run",
+    "JUnit.CacheTests.testBloomFilter.executor": "Run",
+    "JUnit.CacheTests.testBloomFilterSafeGet.executor": "Run",
+    "JUnit.CacheTests.testBloomFilterSafePut.executor": "Run",
+    "JUnit.CacheTests.testCacheLoadMissingHandlerSafeGet.executor": "Debug",
+    "JUnit.CacheTests.testCacheLoader.executor": "Run",
+    "JUnit.CacheTests.testCacheLoaderSafeGet.executor": "Debug",
+    "JUnit.CacheTests.testSafePut.executor": "Run",
+    "JUnit.DefaultServiceIdGeneratorTest.nextId.executor": "Run",
+    "JUnit.DefaultServiceIdGeneratorTest.parseSnowflakeId.executor": "Run",
+    "JUnit.DefaultServiceIdGeneratorTest.parseSnowflakeServiceId.executor": "Run",
+    "JUnit.DistributedCacheTest.assertSafePut.executor": "Run",
+    "JUnit.DistributedCacheTest.executor": "Run",
+    "JUnit.ElasticTest.executor": "Debug",
+    "JUnit.MinioTests.assertUpload.executor": "Run",
+    "Maven.mall [clean].executor": "Run",
+    "Maven.mall [compile].executor": "Run",
+    "Maven.mall [install].executor": "Run",
+    "Maven.mall [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
+    "Maven.mall [package].executor": "Run",
+    "Maven.mall-cart [clean].executor": "Run",
+    "Maven.mall-cart [compile].executor": "Run",
+    "Maven.mall-cart [install].executor": "Run",
+    "Maven.mall-cart [package].executor": "Run",
+    "Maven.mall-customer-user [compile].executor": "Run",
+    "Maven.mall-elasticsearch-spring-boot-starter [install].executor": "Run",
+    "Maven.mall-framework-all [install].executor": "Run",
+    "Maven.mall-web-spring-boot-starter [clean...].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.AggregationApplication.executor": "Run",
+    "Spring Boot.BFFApplication.executor": "Debug",
+    "Spring Boot.CartApplication.executor": "Run",
+    "Spring Boot.CustomerUserApplication.executor": "Run",
+    "Spring Boot.GatewayApplication.executor": "Run",
+    "Spring Boot.MessageApplication.executor": "Run",
+    "Spring Boot.OrderApplication.executor": "Run",
+    "Spring Boot.PayApplication.executor": "Debug",
+    "Spring Boot.ProductApplication.executor": "Run",
+    "Spring Boot.ProductJobApplication.executor": "Debug",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "21",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/MyProjects/mall/mall-product/mall-product-interface/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.3954023",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "redis",
+      "mysql_aurora_aws",
+      "elasticsearch"
+    ]
+  }
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\MyProjects\mall\mall-product\mall-product-interface\src\main\resources" />
+      <recent name="D:\MyProjects\mall\mall-pay\mall-pay-interface\src\main\resources" />
+      <recent name="D:\MyProjects\mall\mall-message\mall-message-interface\src\main\resources" />
+      <recent name="D:\MyProjects\mall\mall-order\mall-order-interface\src\main\resources" />
+      <recent name="D:\MyProjects\mall\mall-message\mall-message-domain\src\main\java\com\noinch\mall\biz\message\domain\entity" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MyProjects\mall\mall-bff\mall-bff-web\src\main\java\com\noinch\mall\biz\bff\interfaces\controller" />
+      <recent name="D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\resources\mapper" />
+      <recent name="D:\MyProjects\mall\resources\otherapp" />
+      <recent name="D:\MyProjects\mall\mall-framework-all\mall-elasticsearch-spring-boot-starter\src\main\resources" />
+      <recent name="D:\MyProjects\mall\mall-framework-all\mall-elasticsearch-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\elasticsearch" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.noinch.mall.biz.message.infrastructure.config" />
+      <recent name="com.noinch.mall.biz.order.infrastructure.service" />
+      <recent name="com.noinch.mall.springboot.starter.xxljob.config.properties" />
+      <recent name="com.noinch.mall.springboot.starter.elasticsearch" />
+      <recent name="com.noinch.mall.biz.customer.user.interfaces" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.noinch.mall.biz.order.domain.dto" />
+      <recent name="com.noinch.mall.biz.message.infrastructure.dao.entity" />
+      <recent name="com.noinch.mall.biz.bff.dto.resp.adapter" />
+      <recent name="com.noinch.mall.biz.bff.remote.resp" />
+      <recent name="com.noinch.mall.biz.order.infrastructure.mq.common" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.AggregationApplication">
+    <configuration default="true" type="Application" factoryName="Application">
+      <shortenClasspath name="ARGS_FILE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CacheTests.testBloomFilter" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mall-framework-cache-test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.noinch.mall.test.framework.cache.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.noinch.mall.test.framework.cache" />
+      <option name="MAIN_CLASS_NAME" value="com.noinch.mall.test.framework.cache.CacheTests" />
+      <option name="METHOD_NAME" value="testBloomFilter" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CacheTests.testBloomFilterSafePut" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mall-framework-cache-test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.noinch.mall.test.framework.cache.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.noinch.mall.test.framework.cache" />
+      <option name="MAIN_CLASS_NAME" value="com.noinch.mall.test.framework.cache.CacheTests" />
+      <option name="METHOD_NAME" value="testBloomFilterSafePut" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CacheTests.testCacheLoader" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mall-framework-cache-test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.noinch.mall.test.framework.cache.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.noinch.mall.test.framework.cache" />
+      <option name="MAIN_CLASS_NAME" value="com.noinch.mall.test.framework.cache.CacheTests" />
+      <option name="METHOD_NAME" value="testCacheLoader" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ElasticTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mall-elasticsearch-spring-boot-starter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.noinch.mall.springboot.starter.elasticsearch.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.noinch.mall.springboot.starter.elasticsearch" />
+      <option name="MAIN_CLASS_NAME" value="com.noinch.mall.springboot.starter.elasticsearch.ElasticTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MinioTests.assertUpload" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mall-minio-spring-boot-starter" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.noinch.mall.springboot.starter.minio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.noinch.mall.springboot.starter.minio" />
+      <option name="MAIN_CLASS_NAME" value="com.noinch.mall.springboot.starter.minio.MinioTests" />
+      <option name="METHOD_NAME" value="assertUpload" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AggregationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="mall-aggregation" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.aggregation.AggregationApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BFFApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="mall-bff-web" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.biz.bff.interfaces.BFFApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CacheTestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="mall-framework-cache-test" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.test.framework.cache.CacheTestApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CartApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="mall-cart-interface" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.biz.cart.interfaces.CartApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerUserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="mall-customer-user-interface" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.biz.customer.user.interfaces.CustomerUserApplication" />
+      <option name="VM_PARAMETERS" value="-Xmx2g -Xms1g -XX:MaxMetaspaceSize=512m" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="mall-gateway" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.gateway.GatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MessageApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="mall-message-interface" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.biz.message.interfaces.MessageApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="mall-order-interface" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.biz.order.interfaces.OrderApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="mall-pay-interface" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.biz.pay.interfaces.PayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="mall-product-interface" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.biz.product.interfaces.ProductApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductJobApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="mall-product-job" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.biz.product.job.ProductJobApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.ElasticTest" />
+      <item itemvalue="JUnit.CacheTests.testBloomFilter" />
+      <item itemvalue="JUnit.CacheTests.testBloomFilterSafePut" />
+      <item itemvalue="JUnit.CacheTests.testCacheLoader" />
+      <item itemvalue="JUnit.MinioTests.assertUpload" />
+      <item itemvalue="Spring Boot.ProductApplication" />
+      <item itemvalue="Spring Boot.PayApplication" />
+      <item itemvalue="Spring Boot.BFFApplication" />
+      <item itemvalue="Spring Boot.OrderApplication" />
+      <item itemvalue="Spring Boot.AggregationApplication" />
+      <item itemvalue="Spring Boot.CartApplication" />
+      <item itemvalue="Spring Boot.CustomerUserApplication" />
+      <item itemvalue="Spring Boot.ProductJobApplication" />
+      <item itemvalue="Spring Boot.GatewayApplication" />
+      <item itemvalue="Spring Boot.MessageApplication" />
+      <item itemvalue="Spring Boot.CacheTestApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ElasticTest" />
+        <item itemvalue="JUnit.MinioTests.assertUpload" />
+        <item itemvalue="JUnit.CacheTests.testCacheLoader" />
+        <item itemvalue="JUnit.CacheTests.testBloomFilter" />
+        <item itemvalue="JUnit.CacheTests.testBloomFilterSafePut" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.19416.15" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.19416.15" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="665326d2-e16a-4608-8d02-4d0760e29ac0" name="Changes" comment="" />
+      <created>1762085404509</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1762085404509</updated>
+      <workItem from="1762085405646" duration="29239000" />
+      <workItem from="1762501730620" duration="7304000" />
+      <workItem from="1762578979228" duration="11804000" />
+      <workItem from="1762593854888" duration="1541000" />
+      <workItem from="1762669058384" duration="2180000" />
+      <workItem from="1762765159513" duration="6042000" />
+      <workItem from="1762777211487" duration="1102000" />
+      <workItem from="1762851358833" duration="132000" />
+      <workItem from="1762851663851" duration="15014000" />
+      <workItem from="1762931721789" duration="27576000" />
+      <workItem from="1763103262050" duration="18756000" />
+      <workItem from="1763186631084" duration="4747000" />
+      <workItem from="1763374888470" duration="6098000" />
+      <workItem from="1763445450746" duration="10810000" />
+      <workItem from="1763475404798" duration="841000" />
+      <workItem from="1763631265211" duration="4057000" />
+      <workItem from="1763642716445" duration="596000" />
+      <workItem from="1764593324328" duration="1795000" />
+      <workItem from="1764830328785" duration="20008000" />
+      <workItem from="1764851470063" duration="4673000" />
+      <workItem from="1765197787053" duration="37000" />
+      <workItem from="1765263240651" duration="354000" />
+      <workItem from="1765263623528" duration="4053000" />
+      <workItem from="1765351951590" duration="5388000" />
+      <workItem from="1765359400150" duration="305000" />
+      <workItem from="1765359796111" duration="358000" />
+      <workItem from="1765360356387" duration="5060000" />
+      <workItem from="1765521368041" duration="8861000" />
+      <workItem from="1765530283256" duration="9604000" />
+      <workItem from="1765607317046" duration="53832000" />
+      <workItem from="1765802452374" duration="3065000" />
+      <workItem from="1765805552098" duration="1982000" />
+      <workItem from="1765868441036" duration="21083000" />
+      <workItem from="1766140376467" duration="6137000" />
+      <workItem from="1766298433356" duration="4915000" />
+      <workItem from="1766382084540" duration="27872000" />
+      <workItem from="1766500285395" duration="76000" />
+      <workItem from="1766555924332" duration="11318000" />
+      <workItem from="1766725277827" duration="14977000" />
+      <workItem from="1766812430019" duration="21401000" />
+      <workItem from="1766904047202" duration="3088000" />
+      <workItem from="1767073546230" duration="4218000" />
+      <workItem from="1767327390342" duration="6927000" />
+      <workItem from="1767334404067" duration="14279000" />
+      <workItem from="1767416743962" duration="10376000" />
+      <workItem from="1767500214780" duration="10131000" />
+      <workItem from="1767589896313" duration="11850000" />
+      <workItem from="1767673034991" duration="27287000" />
+      <workItem from="1767761957945" duration="17994000" />
+      <workItem from="1769584092773" duration="15169000" />
+      <workItem from="1769929745956" duration="41479000" />
+      <workItem from="1770026741120" duration="15574000" />
+      <workItem from="1770116991380" duration="18243000" />
+      <workItem from="1770276307624" duration="19119000" />
+      <workItem from="1770394098171" duration="459000" />
+      <workItem from="1770394898989" duration="27008000" />
+      <workItem from="1770551208970" duration="18548000" />
+      <workItem from="1770574090926" duration="5973000" />
+      <workItem from="1770626880223" duration="17692000" />
+      <workItem from="1770651570113" duration="22086000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/main" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mall-customer-user/mall-customer-user-domain/src/main/java/com/noinch/mall/biz/customer/user/domain/toolkit/TokenUtil.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/mall-customer-user/mall-customer-user-application/src/main/java/com/noinch/mall/biz/customer/user/application/services/CustomerUserServiceImpl.java</url>
+          <line>51</line>
+          <properties class="com.noinch.mall.biz.customer.user.application.services.CustomerUserServiceImpl">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.aliyun.tea.interceptor.InterceptorContext" memberName="teaResponse" />
+        <PinnedItemInfo parentTag="okhttp3.Request" memberName="isHttps" />
+        <PinnedItemInfo parentTag="com.noinch.mall.biz.order.domain.aggregate.Order" memberName="orderProducts" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>

@@ -7,7 +7,21 @@ spring:
     active: dev
   application:
     name: bff-service
-  # mysql
+  cloud:
+    openfeign:
+      client:
+        config:
+          # default 代表全局配置，对所有 @FeignClient 生效
+          default:
+            connect-timeout: 5000     # 连接超时 (单位: 毫秒)
+            read-timeout: 5000        # 读取超时
+            logger-level: HEADERS        # 日志级别 (NONE, BASIC, HEADERS, FULL)
+      httpclient:
+        hc5:
+          enabled: false
+      okhttp:
+        enabled: true
+  # hikari
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
@@ -17,12 +31,13 @@ spring:
       maximum-pool-size: 5
       minimum-idle: 5
 
+
 mall:
   fastjson:
     safe-mode: true
 #  bff:
 #    qps-count: 1
-  aggregation-url:
+  remote-url:
     gateway-service: http://localhost:8000
     message-service: http://localhost:8001
     customer-user-service: http://localhost:8002
@@ -35,20 +50,8 @@ mall:
     bff-service: http://localhost:8008
     aggregation: http://localhost:8009
 
-# openfeign
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        loggerLevel: HEADERS
-        readTimeout: 5000
-  httpclient:
-    enabled: false
-  okhttp:
-    enabled: true
 
-# mybatis-plus
+
 mybatis-plus:
   global-config:
     db-config:

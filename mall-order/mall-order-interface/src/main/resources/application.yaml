@@ -7,32 +7,30 @@ spring:
     active: dev
   application:
     name: order-service
+  cloud:
+    openfeign:
+      client:
+        config:
+          # default 代表全局配置，对所有 @FeignClient 生效
+          default:
+            connect-timeout: 5000     # 连接超时 (单位: 毫秒)
+            read-timeout: 5000        # 读取超时
+            logger-level: HEADERS        # 日志级别 (NONE, BASIC, HEADERS, FULL)
+      httpclient:
+        hc5:
+          enabled: false
+      okhttp:
+        enabled: true
 
+#  cloud:
+#    sentinel:
+#      transport:
+#        dashboard: localhost:8686
+#        port: 8719
 
 mall:
   fastjson:
     safe-mode: true
-  cache:
-    redis:
-      prefix: ''
-      value-timeout: 50000
-  cart-service:
-    url: http://localhost:8005
-  product-service:
-    url: http://localhost:8004
-
-
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        loggerLevel: HEADERS
-        readTimeout: 5000
-  httpclient:
-    enabled: false
-  okhttp:
-    enabled: true
 
 mybatis-plus:
   global-config:
@@ -40,34 +38,6 @@ mybatis-plus:
       logic-delete-field: delFlag
       logic-delete-value: 1
       logic-not-delete-value: 0
-
-rabbitmq:
-  host: localhost
-  port: 5672
-  username: guest
-  password: guest
-  virtual-host: /
-  connection-timeout: 5000
-  producer:
-    confirm-type: correlated  # 可选值: none, manual, correlated
-    returns: true
-    mandatory: true
-  consumer:
-    acknowledge-mode: manual  # 可选值: auto, manual
-    prefetch: 20
-    concurrency: 5
-    max-concurrency: 10
-    retry:
-      enabled: true
-      max-attempts: 3
-      initial-interval: 2s  # 支持多种时间格式
-      multiplier: 2.0
-
-
-ribbon:
-  eager-load:
-    clients: cart-service,product-service
-    enabled: true
 
 #seata:
 #  application-id: ${spring.application.name}

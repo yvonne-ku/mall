@@ -3,10 +3,12 @@ package com.noinch.mall.biz.order.interfaces;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-//@EnableDiscoveryClient
-//@EnableTransactionManagement(proxyTargetClass = true)
+@EnableDiscoveryClient
+@EnableTransactionManagement(proxyTargetClass = true)
 @EnableFeignClients("com.noinch.mall.biz.order.infrastructure.remote")
 @SpringBootApplication(scanBasePackages = "com.noinch.mall.biz.order")
 @MapperScan("com.noinch.mall.biz.order.infrastructure.dao")

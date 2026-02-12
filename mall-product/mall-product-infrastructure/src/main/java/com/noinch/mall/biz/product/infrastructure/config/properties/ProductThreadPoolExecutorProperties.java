@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 
 @Data
-@ConfigurationProperties(prefix = "product.thread-pool")
+@ConfigurationProperties(prefix = "product.thread-pool.default-executor")
 public class ProductThreadPoolExecutorProperties {
 
     private int corePoolSize = 20;

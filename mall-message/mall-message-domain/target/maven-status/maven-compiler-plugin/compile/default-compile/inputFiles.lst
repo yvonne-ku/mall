@@ -1,0 +1,6 @@
+D:\MyProjects\mall\mall-message\mall-message-domain\src\main\java\com\noinch\mall\biz\message\domain\entity\MessageSendQuery.java
+D:\MyProjects\mall\mall-message\mall-message-domain\src\main\java\com\noinch\mall\biz\message\domain\repository\MessageRepository.java
+D:\MyProjects\mall\mall-message\mall-message-domain\src\main\java\com\noinch\mall\biz\message\domain\service\impl\MessageDomainServiceImpl.java
+D:\MyProjects\mall\mall-message\mall-message-domain\src\main\java\com\noinch\mall\biz\message\domain\service\AliyunSmsService.java
+D:\MyProjects\mall\mall-message\mall-message-domain\src\main\java\com\noinch\mall\biz\message\domain\service\MessageDomainService.java
+D:\MyProjects\mall\mall-message\mall-message-domain\src\main\java\com\noinch\mall\biz\message\domain\entity\MessageSend.java

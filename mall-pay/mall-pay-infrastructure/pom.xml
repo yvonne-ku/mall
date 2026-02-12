@@ -20,34 +20,51 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!-- Framework -->
+        <dependency>
+            <groupId>com.noinch.mall</groupId>
+            <artifactId>mall-common-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.noinch.mall</groupId>
+            <artifactId>mall-log-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.noinch.mall</groupId>
+            <artifactId>mall-mybatisplus-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.noinch.mall</groupId>
+            <artifactId>mall-rabbitmq-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Alipay SDK -->
         <dependency>
             <groupId>com.alipay.sdk</groupId>
             <artifactId>alipay-sdk-java</artifactId>
             <version>${alipay-sdk-java.version}</version>
         </dependency>
 
+        <!--  Nacos  -->
         <dependency>
-            <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-common-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
+        <!--  Sharding sphere  -->
         <dependency>
-            <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-log-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-mybatisplus-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-rabbitmq-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>shardingsphere-jdbc</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.shardingsphere</groupId>
+                    <artifactId>shardingsphere-test-util</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
     </dependencies>

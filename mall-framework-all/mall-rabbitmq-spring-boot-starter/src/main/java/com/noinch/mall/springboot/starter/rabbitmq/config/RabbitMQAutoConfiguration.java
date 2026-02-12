@@ -45,7 +45,10 @@ public class RabbitMQAutoConfiguration {
         factory.setUsername(properties.getUsername());
         factory.setPassword(properties.getPassword());
         factory.setVirtualHost(properties.getVirtualHost());
-
+        // 连接超时（Duration → 毫秒）
+        if (properties.getConnectionTimeout() != null) {
+            factory.setConnectionTimeout((int) properties.getConnectionTimeout().toMillis());
+        }
         // 对应你的 Producer 内部类配置
         factory.setPublisherConfirmType(CachingConnectionFactory.ConfirmType.valueOf(properties.getProducer().getConfirmType().toUpperCase()));
         factory.setPublisherReturns(properties.getProducer().isReturns());

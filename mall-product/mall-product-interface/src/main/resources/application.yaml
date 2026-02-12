@@ -10,25 +10,16 @@ spring:
 
 product:
   thread-pool:
-    core-pool-size: 20
-    maximum-pool-size: 40
-    keep-alive-time: 9999
-    queue-capacity: 4096
+    default-executor:
+      core-pool-size: 20
+      maximum-pool-size: 40
+      keep-alive-time: 9999
+      queue-capacity: 4096
 
 mall:
   fastjson:
     safe-mode: true
-  elasticsearch:
-    scheme: "https"
-    host: localhost
-    port: 9200
-    username: "elastic"
-    password: "123456"
-    socket-timeout: "10s"
-    connect-timeout: "5s"
-    ssl:
-      enabled: true
-      ca-certificate-path: "certs/elastic-ca.crt"
+
 
 mybatis-plus:
   global-config:

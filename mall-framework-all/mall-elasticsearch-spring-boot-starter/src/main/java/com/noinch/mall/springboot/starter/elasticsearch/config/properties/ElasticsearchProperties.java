@@ -12,7 +12,7 @@ import java.time.Duration;
 @ConfigurationProperties(prefix = ElasticsearchProperties.PREFIX)
 public class ElasticsearchProperties {
 
-    public static final String PREFIX = "mall.elasticsearch";
+    public static final String PREFIX = "elasticsearch";
 
     private String scheme = "http";
 

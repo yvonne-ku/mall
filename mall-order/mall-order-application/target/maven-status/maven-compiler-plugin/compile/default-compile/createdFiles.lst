@@ -1,0 +1,16 @@
+com\noinch\mall\biz\order\application\req\OrderCreateCommand.class
+com\noinch\mall\biz\order\application\filter\base\OrderCreateChainFilter.class
+com\noinch\mall\biz\order\application\event\ClearCartProductListener.class
+com\noinch\mall\biz\order\application\filter\OrderCreateParamVerificationChainHandler.class
+com\noinch\mall\biz\order\application\resp\OrderRespDTO.class
+com\noinch\mall\biz\order\application\filter\OrderCreateProductSkuStockChainHandler.class
+com\noinch\mall\biz\order\application\event\OrderCreateEvent.class
+com\noinch\mall\biz\order\application\event\OrderCreateListener.class
+com\noinch\mall\biz\order\application\event\LockProductStockListener.class
+com\noinch\mall\biz\order\application\enums\OrderChainMarkEnum.class
+com\noinch\mall\biz\order\application\event\DelayCloseOrderListener.class
+com\noinch\mall\biz\order\application\resp\OrderProductRespDTO.class
+com\noinch\mall\biz\order\application\req\OrderPageQuery.class
+com\noinch\mall\biz\order\application\service\OrderService.class
+com\noinch\mall\biz\order\application\filter\OrderCreateParamNotNullChainHandler.class
+com\noinch\mall\biz\order\application\service\impl\OrderServiceImpl.class

@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import com.noinch.mall.biz.bff.dto.req.adapter.ReceiveAddressSaveAdapterReqDTO;
 import com.noinch.mall.biz.bff.dto.req.adapter.ReceiveAddressUpdateAdapterReqDTO;
 import com.noinch.mall.biz.bff.dto.resp.adapter.ReceiveAddressAdapterRespDTO;
-import com.noinch.mall.biz.bff.remote.CustomerUserRemoteService;
+import com.noinch.mall.biz.bff.remote.CustomerUserRemoteClient;
 import com.noinch.mall.biz.bff.remote.req.ReceiveAddressSaveCommand;
 import com.noinch.mall.biz.bff.remote.req.ReceiveAddressUpdateCommand;
 import com.noinch.mall.biz.bff.remote.resp.ReceiveAddressRespDTO;
@@ -26,11 +26,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReceiveAddressServiceImpl implements ReceiveAddressService {
     
-    private final CustomerUserRemoteService customerUserRemoteService;
+    private final CustomerUserRemoteClient customerUserRemoteClient;
     
     @Override
     public List<ReceiveAddressAdapterRespDTO> listReceiveAddressByCustomerUserId(String customerUserId) {
-        Result<List<ReceiveAddressRespDTO>> receiveAddressRemoteResult = customerUserRemoteService.listReceiveAddress(customerUserId);
+        Result<List<ReceiveAddressRespDTO>> receiveAddressRemoteResult = customerUserRemoteClient.listReceiveAddress(customerUserId);
         List<ReceiveAddressAdapterRespDTO> result = new ArrayList<>();
         if (receiveAddressRemoteResult.isSuccess() && receiveAddressRemoteResult.getData() != null) {
             List<ReceiveAddressRespDTO> addressRemoteResultData = receiveAddressRemoteResult.getData();
@@ -58,7 +58,7 @@ public class ReceiveAddressServiceImpl implements ReceiveAddressService {
             remoteRequestParam.setPhone(requestParam.getTel());
             remoteRequestParam.setCustomerUserId(requestParam.getUserId());
             remoteRequestParam.setDefaultFlag(requestParam.getIsDefault() ? 1 : 0);
-            customerUserRemoteService.saveReceiveAddress(remoteRequestParam);
+            customerUserRemoteClient.saveReceiveAddress(remoteRequestParam);
             saveReceiveAddressFlag = 1;
         } catch (Throwable ex) {
             log.error("调用用户服务新增收货地址失败", ex);
@@ -70,7 +70,7 @@ public class ReceiveAddressServiceImpl implements ReceiveAddressService {
     public Integer removeReceiveAddress(String userId, String receiveAddressId) {
         int removeReceiveAddressFlag = 0;
         try {
-            customerUserRemoteService.removeReceiveAddress(userId, receiveAddressId);
+            customerUserRemoteClient.removeReceiveAddress(userId, receiveAddressId);
             removeReceiveAddressFlag = 1;
         } catch (Throwable ex) {
             log.error("调用用户服务删除收货地址失败", ex);
@@ -89,7 +89,7 @@ public class ReceiveAddressServiceImpl implements ReceiveAddressService {
             remoteRequestParam.setPhone(requestParam.getTel());
             remoteRequestParam.setCustomerUserId(requestParam.getUserId());
             remoteRequestParam.setDefaultFlag(requestParam.getIsDefault() ? 1 : 0);
-            customerUserRemoteService.updateReceiveAddress(remoteRequestParam);
+            customerUserRemoteClient.updateReceiveAddress(remoteRequestParam);
             updateReceiveAddressFlag = 1;
         } catch (Throwable ex) {
             log.error("调用用户服务修改收货地址失败", ex);

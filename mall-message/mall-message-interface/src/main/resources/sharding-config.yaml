@@ -1,0 +1,36 @@
+datasource:
+  ds-message:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: 123456
+    jdbc-url: jdbc:mysql://mysql:3306/mall_message?characterEncoding=utf-8&serverTimezone=GMT%2B8
+  names: ds-message
+
+rules:
+  sharding:
+    sharding-algorithms:
+      message-snowflake_date_algorithm:
+        props:
+          algorithmClassName: com.noinch.mall.biz.message.infrastructure.algorithm.SnowflakeDateShardingAlgorithm
+          strategy: complex
+        type: CLASS_BASED
+    tables:
+      send_record:
+        actual-data-nodes: ds-message.send_record_$->{2023..2026}_m$->{1..12}
+        table-strategy:
+          complex:
+            sharding-algorithm-name: message-snowflake_date_algorithm
+            sharding-columns: create_time,msg_id
+      send_record_extend:
+        actual-data-nodes: ds-message.send_record_extend_$->{2023..2026}_m$->{1..12}
+        table-strategy:
+          complex:
+            sharding-algorithm-name: message-snowflake_date_algorithm
+            sharding-columns: create_time,msg_id
+
+props:
+  # 将默认事务设为 BASE，这样只要方法加了 Spring 的 @Transactional，
+  # 就会自动切换到 Seata，无需手动在每个 Service 上加 SS 的注解。
+  transaction-type: BASE
+  sql-show: true

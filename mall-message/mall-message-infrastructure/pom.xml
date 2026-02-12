@@ -45,10 +45,16 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
-        <!-- ShardingSphere -->
+        <!--  Sharding sphere  -->
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>shardingsphere-jdbc</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.shardingsphere</groupId>
+                    <artifactId>shardingsphere-test-util</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Hutool -->
