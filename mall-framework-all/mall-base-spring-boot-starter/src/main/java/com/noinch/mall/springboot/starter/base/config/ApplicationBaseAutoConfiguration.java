@@ -9,7 +9,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 
 /**
- * 应用基础自动装配 */
+ * 应用基础自动装配
+ */
 public class ApplicationBaseAutoConfiguration {
 
     @Bean
@@ -27,7 +28,7 @@ public class ApplicationBaseAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     @ConditionalOnProperty(value = "mall.fastjson.safe-mode", havingValue = "true")
-    public FastJsonSafeMode congoFastJsonSafeMode() {
+    public FastJsonSafeMode mallFastJsonSafeMode() {
         return new FastJsonSafeMode();
     }
 }

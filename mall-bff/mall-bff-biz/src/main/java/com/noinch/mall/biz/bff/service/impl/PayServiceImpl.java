@@ -1,7 +1,7 @@
 package com.noinch.mall.biz.bff.service.impl;
 
 import com.noinch.mall.biz.bff.dto.req.adapter.PayAdapterReqDTO;
-import com.noinch.mall.biz.bff.remote.PayRemoteService;
+import com.noinch.mall.biz.bff.remote.PayRemoteClient;
 import com.noinch.mall.biz.bff.remote.req.PayReqDTO;
 import com.noinch.mall.biz.bff.remote.resp.CheckPaymentStatusRespDTO;
 import com.noinch.mall.biz.bff.remote.resp.PayRespDTO;
@@ -17,11 +17,11 @@ import java.util.Map;
 @AllArgsConstructor
 public class PayServiceImpl implements PayService {
 
-    private final PayRemoteService payRemoteService;
+    private final PayRemoteClient payRemoteClient;
 
     @Override
     public String checkPaymentStatus(String orderSn) {
-        Result<CheckPaymentStatusRespDTO> result = payRemoteService.checkPaymentStatus(orderSn);
+        Result<CheckPaymentStatusRespDTO> result = payRemoteClient.checkPaymentStatus(orderSn);
         if (!result.isSuccess() || result.getData() == null) {
             throw new ServiceException("调用支付服务查询支付状态失败");
         }
@@ -36,7 +36,7 @@ public class PayServiceImpl implements PayService {
         payReqDTO.setChannel(requestParam.getChannel());
         payReqDTO.setTradeType(requestParam.getTradeType());
 
-        Result<PayRespDTO> result = payRemoteService.pay(payReqDTO);
+        Result<PayRespDTO> result = payRemoteClient.pay(payReqDTO);
         if (!result.isSuccess() || result.getData() == null) {
             throw new ServiceException("调用支付服务支付失败");
         }
@@ -45,7 +45,7 @@ public class PayServiceImpl implements PayService {
 
     @Override
     public void callbackAlipay(Map<String, Object> requestParam) {
-        Result<Void> result = payRemoteService.callbackAlipay(requestParam);
+        Result<Void> result = payRemoteClient.callbackAlipay(requestParam);
         if (!result.isSuccess()) {
             throw new ServiceException("调用支付服务支付宝回调失败");
         }

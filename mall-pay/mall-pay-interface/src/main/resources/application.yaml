@@ -16,10 +16,6 @@ spring:
       maximum-pool-size: 5
       minimum-idle: 5
 
-mall:
-  fastjson:
-    safe-mode: true
-
 rabbitmq:
   host: localhost
   port: 5672
@@ -41,6 +37,21 @@ rabbitmq:
       max-attempts: 3
       initial-interval: 2s  # 支持多种时间格式
       multiplier: 2.0
+
+mall:
+  fastjson:
+    safe-mode: true
+
+pay:
+  alipay:
+    notify-url: http://${MY_IP:localhost}:8007/member/member/pay/callback/alipay
+    server-url: https://openapi.alipaydev.com/gateway.do
+    app-id: 2021006129679931
+    private-key: ${ALIPAY_PRIVATE_KEY}
+    alipay-public-key: ${ALIPAY_PUBLIC_KEY}
+    charset: UTF8
+    format: json
+    sign-type: RSA2
 
 mybatis-plus:
   global-config:

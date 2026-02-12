@@ -13,19 +13,21 @@
 
         <dependency>
             <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-web-spring-boot-starter</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.noinch.mall</groupId>
             <artifactId>mall-bff-biz</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-<!--        </dependency>-->
+        <!-- Framework -->
+        <dependency>
+            <groupId>com.noinch.mall</groupId>
+            <artifactId>mall-web-spring-boot-starter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Nacos -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
     </dependencies>
 </project>

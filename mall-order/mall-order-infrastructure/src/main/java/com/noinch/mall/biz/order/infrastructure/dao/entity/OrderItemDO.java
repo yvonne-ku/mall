@@ -14,7 +14,7 @@ import java.math.BigDecimal;
  */
 @Data
 @Accessors(chain = true)
-@TableName("order_item_test")
+@TableName("order_item")
 public class OrderItemDO extends BaseDO {
     
     /**

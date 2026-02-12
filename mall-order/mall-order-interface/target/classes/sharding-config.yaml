@@ -1,0 +1,43 @@
+datasource:
+  ds-order:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: 123456
+    jdbc-url: jdbc:mysql://mysql:3306/mall_order?characterEncoding=utf-8&serverTimezone=GMT%2B8
+  names: ds-order
+
+rules:
+  sharding:
+    sharding-algorithms:
+      order-item_sharding_by_mod:
+        props:
+          algorithmClassName: com.noinch.mall.biz.order.infrastructure.algorithm.OrderSnowflakeServiceShardingAlgorithm
+          sharding-count: 16
+          strategy: complex
+        type: CLASS_BASED
+      order_snowflake-service_algorithm:
+        props:
+          algorithmClassName: org.noinch.mall.biz.order.infrastructure.algorithm.OrderSnowflakeServiceShardingAlgorithm
+          sharding-count: 16
+          strategy: complex
+        type: CLASS_BASED
+    tables:
+      order_info:
+        actual-data-nodes: ds-order.order_info_$->{0..15}
+        table-strategy:
+          complex:
+            sharding-algorithm-name: order_snowflake-service_algorithm
+            sharding-columns: customer_user_id,order_sn
+      order_item:
+        actual-data-nodes: ds-order.order_item_$->{0..15}
+        table-strategy:
+          complex:
+            sharding-algorithm-name: order_snowflake-service_algorithm
+            sharding-columns: customer_user_id,order_sn
+
+props:
+  # 将默认事务设为 BASE，这样只要方法加了 Spring 的 @Transactional，
+  # 就会自动切换到 Seata，无需手动在每个 Service 上加 SS 的注解。
+  transaction-type: BASE
+  sql-show: true

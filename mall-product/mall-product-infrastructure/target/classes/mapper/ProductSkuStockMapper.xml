@@ -5,7 +5,7 @@
     <update id="lockSkuStock"
             parameterType="com.noinch.mall.biz.product.infrastructure.dao.entity.ProductSkuDO">
         UPDATE
-            product_sku_test
+            product_sku
         SET stock      = stock + #{stock},
             lock_stock = lock_stock + #{lockStock}
         WHERE id = #{id} 
@@ -16,7 +16,7 @@
     <update id="unlockSkuStock"
             parameterType="com.noinch.mall.biz.product.infrastructure.dao.entity.ProductSkuDO">
         UPDATE
-            product_sku_test
+            product_sku
         SET stock      = stock + #{stock},
             lock_stock = lock_stock + #{lockStock}
         WHERE id = #{id}

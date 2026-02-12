@@ -11,7 +11,7 @@ import com.noinch.mall.springboot.starter.mybatisplus.BaseDO;
  * 商品评论实体
  */
 @Data
-@TableName("product_comment_test")
+@TableName("product_comment")
 public class ProductCommentDO extends BaseDO {
     
     /**

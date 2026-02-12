@@ -11,10 +11,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>com.noinch.mall</groupId>
+            <artifactId>mall-pay-infrastructure</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.noinch.mall</groupId>
+            <artifactId>mall-pay-application</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
+        <!-- Framework -->
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-web-spring-boot-starter</artifactId>
@@ -22,10 +29,10 @@
         </dependency>
 
         <dependency>
-            <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-pay-application</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>

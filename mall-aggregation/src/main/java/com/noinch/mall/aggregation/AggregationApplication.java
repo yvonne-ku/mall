@@ -1,7 +1,9 @@
 package com.noinch.mall.aggregation;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 
 /**
@@ -10,16 +12,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 便于集成测试和端到端测试
  */
 //@EnableCreateCacheAnnotation
-//@MapperScan(value = {
-//        "com.noinch.mall.biz.*.infrastructure.dao.mapper",
-//        "com.noinch.mall.biz.customer.user.infrastructure.dao.mapper",
-//        "com.noinch.mall.biz.bff.dao.mapper"
-//})
-//@EnableFeignClients(value = {
-//        "com.noinch.mall.biz.bff.remote",
-//        "com.noinch.mall.biz.order.infrastructure.remote",
-//        "com.noinch.mall.biz.customer.user.infrastructure.remote"
-//})
+@MapperScan(value = {
+        "com.noinch.mall.biz.*.infrastructure.dao.mapper",
+        "com.noinch.mall.biz.customer.user.infrastructure.dao.mapper",
+        "com.noinch.mall.biz.bff.dao.mapper"
+})
+@EnableFeignClients(value = {
+        "com.noinch.mall.biz.bff.remote",
+        "com.noinch.mall.biz.order.infrastructure.remote",
+        "com.noinch.mall.biz.customer.user.infrastructure.remote"
+})
 @SpringBootApplication(scanBasePackages = {"com.noinch.mall",})
 public class AggregationApplication {
 

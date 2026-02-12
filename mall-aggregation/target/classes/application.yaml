@@ -7,202 +7,79 @@ spring:
     name: aggregation-service
   main:
     allow-bean-definition-overriding: true
-#  cloud:
-#    sentinel:
-#      transport:
-#        dashboard: localhost:8686
-#        port: 8719
-#    nacos:
-#      discovery:
-#        server-addr: 127.0.0.1:8848
-  shardingsphere:
-    datasource:
-
-      ds-message: # 消息库
-        driver-class-name: com.mysql.jdbc.Driver
-        type: com.zaxxer.hikari.HikariDataSource
-        username: root
-        password: 123456
-        jdbc-url: jdbc:mysql://${datasource.ds-message:localhost}:3306/mall_message?characterEncoding=utf-8&serverTimezone=GMT%2B8
-      ds-order: # 订单库
-        driver-class-name: com.mysql.jdbc.Driver
-        type: com.zaxxer.hikari.HikariDataSource
-        username: root
-        password: 123456
-        jdbc-url: jdbc:mysql://${datasource.ds-order:localhost}:3306/mall_order?characterEncoding=utf-8&serverTimezone=GMT%2B8
-      ds-pay: # 订单库
-        driver-class-name: com.mysql.jdbc.Driver
-        type: com.zaxxer.hikari.HikariDataSource
-        username: root
-        password: 123456
-        jdbc-url: jdbc:mysql://${datasource.ds-pay:localhost}:3306/mall_pay?characterEncoding=utf-8&serverTimezone=GMT%2B8
-      ds-product: # 商品库
-        driver-class-name: com.mysql.jdbc.Driver
-        type: com.zaxxer.hikari.HikariDataSource
-        username: root
-        password: 123456
-        jdbc-url: jdbc:mysql://${datasource.ds-product:localhost}:3306/mall_product?characterEncoding=utf-8&serverTimezone=GMT%2B8
-      # 列出所有数据源名称
-      names: ds-cart, ds-user, ds-message, ds-order, ds-pay, ds-product
-    props:
-      sql-show: true
-    rules:
-      # 用于敏感内容加密存储，encryptors 配置加密算法
-      encrypt:
-        encryptors:
-          customer-user-encryptor:
-            props:
-              aes-key-value: ADbisulBtxnnKFoW
-            type: AES
-        tables:
-          # User Service
-          customer_user:
-            columns:
-              mail:
-                cipher-column: mail
-                encryptor-name: customer-user-encryptor
-              phone:
-                cipher-column: phone
-                encryptor-name: customer-user-encryptor
-          customer_user_receive_address:
-            columns:
-              phone:
-                cipher-column: phone
-                encryptor-name: customer-user-encryptor
-              detail_address:
-                cipher-column: detail_address
-                encryptor-name: customer-user-encryptor
-      sharding:
-        # sharding-algorithms 配置分片算法
-        sharding-algorithms:
-          # Cart Service
-          cart-item_sharding_by_mod:
-            props:
-              sharding-count: 16
-            type: HASH_MOD
-          # Product Service
-          product-spu_sharding_by_mod_algorithm:
-            props:
-              algorithmClassName: com.noinch.mall.biz.product.infrastructure.algorithm.ProductSpuSnowflakeServiceShardingAlgorithm
-              sharding-count: 16
-              strategy: complex
-            type: CLASS_BASED
-          product-sku_sharding_by_mod_algorithm:
-            props:
-              algorithmClassName: com.noinch.mall.biz.product.infrastructure.algorithm.ProductSkuSnowflakeServiceShardingAlgorithm
-              sharding-count: 16
-              strategy: complex
-            type: CLASS_BASED
-          product-comment_sharding_by_mod:
-            props:
-              sharding-count: 16
-            type: HASH_MOD
-          # User Service
-          user-sharding_by_mod:
-            props:
-              sharding-count: 16
-            type: HASH_MOD
-          # Message Service
-          message-snowflake_date_algorithm:
-            props:
-              algorithmClassName: com.noinch.mall.biz.message.infrastructure.algorithm.SnowflakeDateShardingAlgorithm
-              strategy: complex
-            type: CLASS_BASED
-          # Order Service
-          order-item_sharding_by_mod:
-            props:
-              algorithmClassName: com.noinch.mall.biz.order.infrastructure.algorithm.OrderSnowflakeServiceShardingAlgorithm
-              sharding-count: 16
-              strategy: complex
-            type: CLASS_BASED
-          order_snowflake-service_algorithm:
-            props:
-              algorithmClassName: org.noinch.mall.biz.order.infrastructure.algorithm.OrderSnowflakeServiceShardingAlgorithm
-              sharding-count: 16
-              strategy: complex
-            type: CLASS_BASED
-        tables:
-          # Cart Service
-          cart_item:
-            actual-data-nodes: ds-0.cart_item_$->{0..15}
-            table-strategy:
-              standard:
-                sharding-algorithm-name: cart-item_sharding_by_mod
-                sharding-column: customer_user_id
-          # Product Service
-          product_spu:
-            actual-data-nodes: ds-0.product_spu_$->{0..15}
-            table-strategy:
-              complex:
-                sharding-algorithm-name: product-spu_sharding_by_mod_algorithm
-                sharding-columns: brand_id,id
-          product_sku:
-            actual-data-nodes: ds-0.product_sku_$->{0..15}
-            table-strategy:
-              complex:
-                sharding-algorithm-name: product-sku_sharding_by_mod_algorithm
-                sharding-columns: brand_id,product_id
-          product_comment:
-            actual-data-nodes: ds-0.product_comment_$->{0..15}
-            table-strategy:
-              standard:
-                sharding-algorithm-name: product-comment_sharding_by_mod
-                sharding-column: product_id
-          # User Service
-          customer_user:
-            actual-data-nodes: ds-0.customer_user_$->{0..15}
-            table-strategy:
-              standard:
-                sharding-algorithm-name: user-sharding_by_mod
-                sharding-column: id
-          operation_log:
-            actual-data-nodes: ds-0.operation_log_$->{0..15}
-            table-strategy:
-              standard:
-                sharding-algorithm-name: user-sharding_by_mod
-                sharding-column: customer_user_id
-          receive_address:
-            actual-data-nodes: ds-0.receive_address_$->{0..15}
-            table-strategy:
-              standard:
-                sharding-algorithm-name: user-sharding_by_mod
-                sharding-column: customer_user_id
-          # Message Service
-          send_record:
-            actual-data-nodes: ds-0.send_record_$->{2023..2026}_m$->{1..12}
-            table-strategy:
-              complex:
-                sharding-algorithm-name: message-snowflake_date_algorithm
-                sharding-columns: create_time,msg_id
-          send_record_extend:
-            actual-data-nodes: ds-0.send_record_extend_$->{2023..2026}_m$->{1..12}
-            table-strategy:
-              complex:
-                sharding-algorithm-name: message-snowflake_date_algorithm
-                sharding-columns: create_time,msg_id
-          # Order Service
-          order_info:
-            actual-data-nodes: ds-0.order_info_$->{0..15}
-            table-strategy:
-              complex:
-                sharding-algorithm-name: order_snowflake-service_algorithm
-                sharding-columns: customer_user_id,order_sn
-          order_item:
-            actual-data-nodes: ds-0.order_item_$->{0..15}
-            table-strategy:
-              complex:
-                sharding-algorithm-name: order_snowflake-service_algorithm
-                sharding-columns: customer_user_id,order_sn
-
+  cloud:
+    # Nacos
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    # Sentinel
+    sentinel:
+      transport:
+        dashboard: localhost:8686
+        port: 8719
+    # OpenFeign
+    openfeign:
+      client:
+        config:
+          # default 代表全局配置，对所有 @FeignClient 生效
+          default:
+            connect-timeout: 5000     # 连接超时 (单位: 毫秒)
+            read-timeout: 5000        # 读取超时
+            logger-level: HEADERS        # 日志级别 (NONE, BASIC, HEADERS, FULL)
+      httpclient:
+        hc5:
+          enabled: false
+      okhttp:
+        enabled: true
+  # Redis
   data:
     redis:
       host: localhost
       port: 6379
+      password: 123456
+
+# rabbitmq
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+  virtual-host: /
+  connection-timeout: 5000
+  producer:
+    confirm-type: correlated  # 可选值: none, manual, correlated
+    returns: true
+    mandatory: true
+  consumer:
+    acknowledge-mode: manual  # 可选值: auto, manual
+    prefetch: 20
+    concurrency: 5
+    max-concurrency: 10
+    retry:
+      enabled: true
+      max-attempts: 3
+      initial-interval: 2s  # 支持多种时间格式
+      multiplier: 2.0
+
+# Elasticsearch
+elasticsearch:
+  scheme: "https"
+  host: localhost
+  port: 9200
+  username: "elastic"
+  password: "123456"
+  socket-timeout: "10s"
+  connect-timeout: "5s"
+  ssl:
+    enabled: true
+    ca-certificate-path: "certs/elastic-ca.crt"
 
 mall:
   fastjson:
-    safe-mode: true
-  aggregation-url:
+    safa-mode: true
+#  bff:
+#    qps-count: 1
+  remote-url:
     gateway-service: http://localhost:8000
     message-service: http://localhost:8001
     customer-user-service: http://localhost:8002
@@ -215,7 +92,37 @@ mall:
     bff-service: http://localhost:8008
     aggregation: http://localhost:8009
 
-#
+product:
+  thread-pool:
+    default-executor:
+      core-pool-size: 20
+      maximum-pool-size: 40
+      keep-alive-time: 9999
+      queue-capacity: 4096
+
+pay:
+  alipay:
+    notify-url: http://localhost:8007/member/member/pay/callback/alipay
+    server-url: https://openapi.alipaydev.com/gateway.do
+    app-id: 2021006129679931
+    private-key: ${ALIPAY_PRIVATE_KEY}
+    alipay-public-key: ${ALIPAY_PUBLIC_KEY}
+    charset: UTF8
+    format: json
+    sign-type: RSA2
+
+
+geetest:
+  captcha-id: "6cfa0f940dfdf09f94df903f4a5fb077"
+  captcha-key: "a1a5fd08215159503b3c4032ec985d7d"
+
+jwt:
+  iss: "mall-customer-user-service"
+  alg: "HS256"
+  secret: "ODMwODExNzI1MzE0NTQ2MTQ3NjE4Mzc2MDE2MjczMDc="
+  expire: 3600
+  subject: "Mall-Login"
+
 #jetcache:
 #  areaInCacheName: false
 #  local:
@@ -226,22 +133,11 @@ mall:
 #    default:
 #      type: redis.springdata
 #      keyConvertor: fastjson2
-#      keyPrefix: 'mall-aggregation:'
+#      keyPrefix: 'congomall-aggregation:'
 #      valueEncoder: KRYO5
 #      valueDecoder: KRYO5
 #      defaultExpireInMillis: 5000
 
-feign:
-  client:
-    config:
-      default:
-        loggerLevel: HEADERS
-        connectTimeout: 5000
-        readTimeout: 5000
-  httpclient:
-    enabled: false
-  okhttp:
-    enabled: true
 
 mybatis-plus:
   configuration:
@@ -251,18 +147,6 @@ mybatis-plus:
       logic-delete-field: delFlag
       logic-delete-value: 1
       logic-not-delete-value: 0
-
-# Product Service
-product:
-  thread-pool:
-    core-pool-size: 20
-    maximum-pool-size: 40
-    keep-alive-time: 9999
-    queue-capacity: 4096
-
-geetest:
-  captcha-id: '????????'
-  private-key: '??'
 
 #seata:
 #  application-id: ${spring.application.name}

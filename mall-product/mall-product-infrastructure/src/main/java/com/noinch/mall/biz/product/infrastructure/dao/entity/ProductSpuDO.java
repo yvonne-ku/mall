@@ -14,7 +14,7 @@ import java.util.Date;
  * 商品 SPU
  */
 @Data
-@TableName("product_spu_test")
+@TableName("product_spu")
 public class ProductSpuDO extends BaseDO {
     
     /**

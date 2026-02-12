@@ -16,11 +16,6 @@
             <version>${project.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.noinch.mall</groupId>
-            <artifactId>mall-pay-infrastructure</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 
 </project>

@@ -5,8 +5,8 @@ import com.google.common.collect.Lists;
 import com.noinch.mall.biz.bff.common.SelectFlagEnum;
 import com.noinch.mall.biz.bff.dto.req.adapter.*;
 import com.noinch.mall.biz.bff.dto.resp.adapter.CartAdapterRespDTO;
-import com.noinch.mall.biz.bff.remote.CartRemoteService;
-import com.noinch.mall.biz.bff.remote.ProductRemoteService;
+import com.noinch.mall.biz.bff.remote.CartRemoteClient;
+import com.noinch.mall.biz.bff.remote.ProductRemoteClient;
 import com.noinch.mall.biz.bff.remote.req.*;
 import com.noinch.mall.biz.bff.remote.resp.CartItemRespDTO;
 import com.noinch.mall.biz.bff.remote.resp.ProductRespDTO;
@@ -27,8 +27,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CartServiceImpl implements CartService {
 
-    private final CartRemoteService cartRemoteService;
-    private final ProductRemoteService productRemoteService;
+    private final CartRemoteClient cartRemoteClient;
+    private final ProductRemoteClient productRemoteClient;
 
     private static final long PRODUCT_CART_CURRENT = 1L;
     private static final long PRODUCT_CART_SIZE = 500L;
@@ -39,7 +39,7 @@ public class CartServiceImpl implements CartService {
 
         // 调用远程服务获取所当页所有 cartItem
         try {
-            remoteProductResult = cartRemoteService.pageQueryCartItem(userId, PRODUCT_CART_CURRENT, PRODUCT_CART_SIZE);
+            remoteProductResult = cartRemoteClient.pageQueryCartItem(userId, PRODUCT_CART_CURRENT, PRODUCT_CART_SIZE);
         } catch (Throwable ex) {
             log.error("调用购物车服务查询用户购物车商品失败", ex);
         }
@@ -69,7 +69,7 @@ public class CartServiceImpl implements CartService {
 
         // 调用远程服务获取商品 spu 信息
         try {
-            remoteProductResult = productRemoteService.getProductBySpuId(productId);
+            remoteProductResult = productRemoteClient.getProductBySpuId(productId);
         } catch (Throwable ex) {
             log.error("调用商品服务查询商品详细信息失败", ex);
         }
@@ -93,7 +93,7 @@ public class CartServiceImpl implements CartService {
             cartItemAddReqDTO.setCustomerUserId(requestParam.getUserId());
             cartItemAddReqDTO.setProductQuantity(requestParam.getProductNum());
             try {
-                addCartResult = cartRemoteService.addCartItem(cartItemAddReqDTO);
+                addCartResult = cartRemoteClient.addCartItem(cartItemAddReqDTO);
             } catch (Throwable ex) {
                 log.error("调用购物车服务新增购物车商品失败", ex);
             }
@@ -107,7 +107,7 @@ public class CartServiceImpl implements CartService {
 
         // 调用远程服务获得相关 spu 信息
         try {
-            remoteProductResult = productRemoteService.getProductBySpuId(requestParam.getProductId());
+            remoteProductResult = productRemoteClient.getProductBySpuId(requestParam.getProductId());
         } catch (Throwable ex) {
             log.error("调用商品服务查询商品详细信息失败", ex);
         }
@@ -123,14 +123,14 @@ public class CartServiceImpl implements CartService {
                 updateCheckRequestParam.setProductSkuId(String.valueOf(productSkuData.getId()));
                 updateCheckRequestParam.setCustomerUserId(requestParam.getUserId());
                 updateCheckRequestParam.setSelectFlag(Integer.parseInt(requestParam.getChecked()));
-                cartRemoteService.updateCheckCartItem(updateCheckRequestParam);
+                cartRemoteClient.updateCheckCartItem(updateCheckRequestParam);
 
                 CartItemNumUpdateReqDTO updateCartRequestParam = new CartItemNumUpdateReqDTO();
                 updateCartRequestParam.setProductId(requestParam.getProductId());
                 updateCartRequestParam.setProductSkuId(String.valueOf(productSkuData.getId()));
                 updateCartRequestParam.setCustomerUserId(requestParam.getUserId());
                 updateCartRequestParam.setProductQuantity(requestParam.getProductNum());
-                cartRemoteService.updateQuantityCartItem(updateCartRequestParam);
+                cartRemoteClient.updateQuantityCartItem(updateCartRequestParam);
             } catch (Throwable ex) {
                 log.error("调用购物车服务修改购物车商品失败", ex);
             }
@@ -143,7 +143,7 @@ public class CartServiceImpl implements CartService {
     public Integer deleteProductCard(CartDeleteAdapterReqDTO requestParam) {
         Result<ProductRespDTO> remoteProductResult = null;
         try {
-            remoteProductResult = productRemoteService.getProductBySpuId(requestParam.getProductId());
+            remoteProductResult = productRemoteClient.getProductBySpuId(requestParam.getProductId());
         } catch (Throwable ex) {
             log.error("调用商品服务查询商品详细信息失败", ex);
         }
@@ -155,7 +155,7 @@ public class CartServiceImpl implements CartService {
                 CartItemDelReqDTO delCartRequestParam = new CartItemDelReqDTO();
                 delCartRequestParam.setCustomerUserId(requestParam.getUserId());
                 delCartRequestParam.setProductSkuIds(Lists.newArrayList(String.valueOf(productSkuData.getId())));
-                cartRemoteService.clearCartItem(delCartRequestParam);
+                cartRemoteClient.clearCartItem(delCartRequestParam);
             } catch (Throwable ex) {
                 log.error("调用购物车服务删除购物车商品失败", ex);
             }
@@ -174,7 +174,7 @@ public class CartServiceImpl implements CartService {
         );
         int checksProductCardResult = 0;
         try {
-            cartRemoteService.updateChecksCartItem(checksRequestParam);
+            cartRemoteClient.updateChecksCartItem(checksRequestParam);
             checksProductCardResult = 1;
         } catch (Throwable ex) {
             log.error("调用购物车服务全选或取消全选购物车商品失败", ex);
@@ -187,7 +187,7 @@ public class CartServiceImpl implements CartService {
         CartItemDelCheckReqDTO delCheckRequestParam = new CartItemDelCheckReqDTO();
         delCheckRequestParam.setCustomerUserId(requestParam.getUserId());
         try {
-            cartRemoteService.clearCheckCartItem(delCheckRequestParam);
+            cartRemoteClient.clearCheckCartItem(delCheckRequestParam);
         } catch (Throwable ex) {
             log.error("调用购物车服务删除选中购物车商品失败", ex);
         }

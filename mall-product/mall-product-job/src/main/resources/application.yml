@@ -6,21 +6,6 @@ spring:
   application:
     name: product-service-job
 
-  dynamic:
-    thread-pool:
-      default-executor:
-        active-alarm: 80
-        alarm: false
-        allow-core-thread-time-out: true
-        blocking-queue: ResizableCapacityLinkedBlockingQueue
-        capacity-alarm: 80
-        core-pool-size: 20
-        execute-time-out: 100
-        keep-alive-time: 9999
-        maximum-pool-size: 40
-        queue-capacity: 4096
-        rejected-handler: AbortPolicy
-
 mall:
   fastjson:
     safe-mode: true
@@ -34,7 +19,7 @@ mybatis-plus:
       logic-delete-value: 1
       logic-not-delete-value: 0
   mapper-locations: classpath:mapper/*.xml
-#
+
 #seata:
 #  application-id: ${spring.application.name}
 #  enable-auto-data-source-proxy: false
@@ -49,10 +34,10 @@ mybatis-plus:
 xxl-job:
   accessToken: zheshiyigeyongyudiaoduzhongxinhezhixingqitongxindeanhao
   admin:
-    addresses: http://localhost:9090/xxl-job-admin
+    addresses: http://${MY_IP:localhost}:9090/xxl-job-admin
   executor:
     appname: xxl-job-executor-product
-    ip: 192.168.3.21
+    ip: ${VM_IP:localhost}
     port: 19999
     logpath: /data/applogs/xxljob/jobhandler/product
     logretentiondays: 30

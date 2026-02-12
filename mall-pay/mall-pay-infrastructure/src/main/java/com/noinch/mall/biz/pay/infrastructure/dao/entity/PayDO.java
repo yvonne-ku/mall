@@ -14,7 +14,7 @@ import java.util.Date;
  *
  */
 @Data
-@TableName("pay_info_test")
+@TableName("pay_info")
 public class PayDO extends BaseDO {
     
     /**
