@@ -1,4 +1,4 @@
-USE `mall_bff`;
+USE `mall_bff_dev`;
 
 CREATE TABLE `navigation`
 (

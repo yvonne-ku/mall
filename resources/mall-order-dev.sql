@@ -1,4 +1,4 @@
-USE `mall_order`;
+USE `mall_order_dev`;
 
 CREATE TABLE `order_info_0`
 (

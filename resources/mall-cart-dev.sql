@@ -1,4 +1,4 @@
-USE `mall_cart`;
+USE `mall_cart_dev`;
 
 CREATE TABLE `cart_item_0`
 (

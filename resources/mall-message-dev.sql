@@ -1,4 +1,4 @@
-USE `mall_message`;
+USE `mall_message_dev`;
 
 CREATE TABLE `mail_template`
 (
