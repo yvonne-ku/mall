@@ -3,6 +3,10 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/mall-aggregation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-aggregation/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-basic-data/mall-basic-data-application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-basic-data/mall-basic-data-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-basic-data/mall-basic-data-interface/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mall-basic-data/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-biz/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-bff/mall-bff-remote/src/main/java" charset="UTF-8" />
