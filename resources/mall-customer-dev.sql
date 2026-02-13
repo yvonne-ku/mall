@@ -1,4 +1,4 @@
-USE `mall_customer`;
+USE `mall_customer_dev`;
 
 CREATE TABLE `customer_user_0`
 (

@@ -1,4 +1,4 @@
-USE `mall_product`;
+USE `mall_product_dev`;
 
 CREATE TABLE `product_attribute`
 (
