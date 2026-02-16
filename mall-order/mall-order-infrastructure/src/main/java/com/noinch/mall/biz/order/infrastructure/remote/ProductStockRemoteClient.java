@@ -2,9 +2,9 @@
 
 package com.noinch.mall.biz.order.infrastructure.remote;
 
-import com.noinch.mall.biz.order.infrastructure.remote.dto.ProductLockStockReqDTO;
-import com.noinch.mall.biz.order.infrastructure.remote.dto.ProductUnlockStockReqDTO;
-import com.noinch.mall.biz.order.infrastructure.remote.dto.ProductVerifyStockReqDTO;
+import com.noinch.mall.biz.order.domain.dto.ProductLockStockReqDTO;
+import com.noinch.mall.biz.order.domain.dto.ProductUnlockStockReqDTO;
+import com.noinch.mall.biz.order.domain.dto.ProductVerifyStockReqDTO;
 import com.noinch.mall.springboot.starter.convention.result.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;

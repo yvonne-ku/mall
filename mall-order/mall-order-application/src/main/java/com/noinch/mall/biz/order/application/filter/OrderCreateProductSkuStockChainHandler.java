@@ -4,15 +4,16 @@ package com.noinch.mall.biz.order.application.filter;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
+import com.noinch.mall.biz.order.domain.aggregate.OrderProduct;
+import com.noinch.mall.biz.order.domain.dto.CartItemQuerySelectRespDTO;
+import com.noinch.mall.biz.order.domain.dto.ProductVerifyStockReqDTO;
+import com.noinch.mall.biz.order.domain.service.CartRemoteService;
+import com.noinch.mall.biz.order.domain.service.ProductStockRemoteService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import com.noinch.mall.biz.order.application.filter.base.OrderCreateChainFilter;
 import com.noinch.mall.biz.order.application.req.OrderCreateCommand;
 import com.noinch.mall.biz.order.domain.common.OrderCreateErrorCodeEnum;
-import com.noinch.mall.biz.order.infrastructure.remote.CartRemoteService;
-import com.noinch.mall.biz.order.infrastructure.remote.ProductStockRemoteService;
-import com.noinch.mall.biz.order.infrastructure.remote.dto.CartItemQuerySelectRespDTO;
-import com.noinch.mall.biz.order.infrastructure.remote.dto.ProductVerifyStockReqDTO;
 import com.noinch.mall.springboot.starter.convention.exception.ServiceException;
 import com.noinch.mall.springboot.starter.convention.result.Result;
 import org.springframework.stereotype.Component;
@@ -35,29 +36,20 @@ public final class OrderCreateProductSkuStockChainHandler implements OrderCreate
     
     @Override
     public void handler(OrderCreateCommand requestParam) {
-        List<CartItemQuerySelectRespDTO> actualResultData;
-        try {
-            Result<List<CartItemQuerySelectRespDTO>> cartProductsResult = cartRemoteService.querySelectCartByCustomerUserId(requestParam.getCustomerUserId());
-            actualResultData = Optional.ofNullable(cartProductsResult)
-                    .filter(each -> each.isSuccess())
-                    .filter(each -> CollUtil.isNotEmpty(each.getData()))
-                    .map(each -> each.getData())
-                    .orElseThrow(() -> new ServiceException(OrderCreateErrorCodeEnum.PRODUCT_CART_ISNULL_ERROR));
-        } catch (Throwable ex) {
-            log.error(OrderCreateErrorCodeEnum.PRODUCT_CART_ISNULL_ERROR.message(), ex);
+        // 创建订单时购物车不能为空
+        List<OrderProduct> cartProductsResult = cartRemoteService.querySelectCartItemByCustomerUserId(requestParam.getCustomerUserId());
+        if (cartProductsResult == null || cartProductsResult.isEmpty()) {
+            log.error(OrderCreateErrorCodeEnum.PRODUCT_CART_ISNULL_ERROR.message());
             throw new ServiceException(OrderCreateErrorCodeEnum.PRODUCT_CART_ISNULL_ERROR);
         }
-        try {
 
-            Result<Boolean> verifyProductStockResult = productStockRemoteService.verifyProductStock(actualResultData.stream().map(each -> {
+        // 创建订单时商品必须有库存
+        try {
+            Boolean verifyProductStockResult = productStockRemoteService.verifyProductStock(cartProductsResult.stream().map(each -> {
                 ProductVerifyStockReqDTO productVerifyStockReqDTO = new ProductVerifyStockReqDTO();
                 BeanUtil.copyProperties(each, productVerifyStockReqDTO);
                 return productVerifyStockReqDTO;
             }).toList());
-            Optional.ofNullable(verifyProductStockResult)
-                    .filter(each -> each.isSuccess())
-                    .filter(each -> each.getData() != null && each.getData())
-                    .orElseThrow(() -> new ServiceException(OrderCreateErrorCodeEnum.PRODUCT_STOCK_VERIFY_ERROR));
         } catch (Throwable ex) {
             log.error(OrderCreateErrorCodeEnum.PRODUCT_STOCK_VERIFY_ERROR.message(), ex);
             throw new ServiceException(OrderCreateErrorCodeEnum.PRODUCT_STOCK_VERIFY_ERROR);
