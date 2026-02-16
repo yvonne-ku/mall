@@ -3,7 +3,7 @@
 package com.noinch.mall.biz.order.application.event;
 
 import com.noinch.mall.biz.order.domain.event.OrderCreateEvent;
-import com.noinch.mall.biz.order.infrastructure.mq.producer.DelayCloseOrderProducer;
+import com.noinch.mall.biz.order.domain.service.OrderInfraService;
 import lombok.RequiredArgsConstructor;
 import com.noinch.mall.biz.order.domain.dto.ProductSkuStockDTO;
 import com.noinch.mall.biz.order.domain.event.DelayCloseOrderEvent;
@@ -23,8 +23,8 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public class DelayCloseOrderListener implements ApplicationListener<OrderCreateEvent> {
-    
-    private final DelayCloseOrderProducer delayCloseOrderProducer;
+
+    private final OrderInfraService orderInfraService;
 
     @Override
     public void onApplicationEvent(OrderCreateEvent event) {
@@ -34,6 +34,6 @@ public class DelayCloseOrderListener implements ApplicationListener<OrderCreateE
                         .map(each -> new ProductSkuStockDTO(String.valueOf(each.getProductId()), String.valueOf(each.getProductSkuId()), each.getProductQuantity()))
                         .collect(Collectors.toList())
         );
-        delayCloseOrderProducer.delayCloseOrderSend(delayEvent);
+        orderInfraService.delayCloseOrderMessageSend(delayEvent);
     }
 }

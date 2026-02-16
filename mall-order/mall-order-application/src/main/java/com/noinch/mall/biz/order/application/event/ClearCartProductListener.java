@@ -2,11 +2,11 @@
 
 package com.noinch.mall.biz.order.application.event;
 
+import com.noinch.mall.biz.order.domain.dto.CartItemDelReqDTO;
 import com.noinch.mall.biz.order.domain.event.OrderCreateEvent;
+import com.noinch.mall.biz.order.domain.service.CartRemoteService;
 import lombok.RequiredArgsConstructor;
 import com.noinch.mall.biz.order.domain.aggregate.OrderProduct;
-import com.noinch.mall.biz.order.infrastructure.remote.CartRemoteService;
-import com.noinch.mall.biz.order.infrastructure.remote.dto.CartItemDelReqDTO;
 import org.springframework.context.ApplicationListener;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;

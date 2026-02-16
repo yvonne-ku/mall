@@ -12,6 +12,15 @@ spring:
 #      transport:
 #        dashboard: localhost:8686
 #        port: 8719
+  # hikari
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-test-query: select 1
+      connection-timeout: 20000
+      idle-timeout: 300000
+      maximum-pool-size: 5
+      minimum-idle: 5
 
 mall:
   fastjson:
@@ -25,14 +34,3 @@ mybatis-plus:
       logic-delete-field: delFlag
       logic-delete-value: 1
       logic-not-delete-value: 0
-#
-#seata:
-#  application-id: ${spring.application.name}
-#enable-auto-data-source-proxy: false # 重点：必须关闭数据源自动代理，防止和 shardingsphere 的冲突
-#  service:
-#    grouplist:
-#      seata-server: 127.0.0.1:8091
-#    vgroup-mapping:
-#      my-tx-group: seata-server
-#  tx-service-group: my-tx-group
-#  use-jdk-proxy: true

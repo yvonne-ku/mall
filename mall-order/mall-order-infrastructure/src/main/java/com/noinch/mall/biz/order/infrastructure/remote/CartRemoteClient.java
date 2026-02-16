@@ -2,8 +2,8 @@
 
 package com.noinch.mall.biz.order.infrastructure.remote;
 
-import com.noinch.mall.biz.order.infrastructure.remote.dto.CartItemDelReqDTO;
-import com.noinch.mall.biz.order.infrastructure.remote.dto.CartItemQuerySelectRespDTO;
+import com.noinch.mall.biz.order.domain.dto.CartItemDelReqDTO;
+import com.noinch.mall.biz.order.domain.dto.CartItemQuerySelectRespDTO;
 import com.noinch.mall.springboot.starter.convention.result.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,8 +17,8 @@ import java.util.List;
  * 购物车远程调用
  *
  */
-@FeignClient(value = "cart-service")
-//@FeignClient(value = "cart-service", url = "${mall.remote-url.cart-service")
+//@FeignClient(value = "cart-service")
+@FeignClient(value = "cart-service", url = "${mall.remote-url.cart-service")
 public interface CartRemoteClient {
     
     /**

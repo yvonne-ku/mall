@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
-@FeignClient(value = "pay-service")
-//@FeignClient(value = "pay-service", url = "${mall.remote-url.pay-service:}")
+//@FeignClient(value = "pay-service")
+@FeignClient(value = "pay-service", url = "${mall.remote-url.pay-service:}")
 public interface PayRemoteClient {
 
 

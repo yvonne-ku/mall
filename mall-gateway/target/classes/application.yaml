@@ -3,10 +3,6 @@ server:
 spring:
   application:
     name: gateway-service
-  cloud:
-    nacos:
-      discovery:
-        server-addr: nacos:8848
     gateway:
       discovery:
         locator:

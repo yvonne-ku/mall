@@ -4,7 +4,53 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="665326d2-e16a-4608-8d02-4d0760e29ac0" name="Changes" comment="修复密钥泄露；修改 message-service" />
+    <list default="true" id="665326d2-e16a-4608-8d02-4d0760e29ac0" name="Changes" comment="修复密钥泄露；修改 message-service">
+      <change afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/service/OrderInfraService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/service/OrderInfraServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-basic-data/mall-basic-data-infrastructure/src/main/java/com/noinch/mall/biz/basicdata/infrastructure/dao/dao/entity/RegionInfoDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-basic-data/mall-basic-data-infrastructure/src/main/java/com/noinch/mall/biz/basicdata/infrastructure/dao/entity/RegionInfoDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-basic-data/mall-basic-data-infrastructure/src/main/java/com/noinch/mall/biz/basicdata/infrastructure/dao/dao/mapper/RegionInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-basic-data/mall-basic-data-infrastructure/src/main/java/com/noinch/mall/biz/basicdata/infrastructure/dao/mapper/RegionInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-basic-data/mall-basic-data-infrastructure/src/main/java/com/noinch/mall/biz/basicdata/infrastructure/dao/repository/RegionInfoRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-basic-data/mall-basic-data-infrastructure/src/main/java/com/noinch/mall/biz/basicdata/infrastructure/repository/RegionInfoRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-interface/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-cart/mall-cart-interface/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-interface/src/main/resources/seata.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-interface/target/classes/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-cart/mall-cart-interface/target/classes/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/mall-cart-interface/target/classes/seata.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-application/target/generated-sources/annotations/com/noinch/mall/biz/customer/user/application/convertor/CustomerUserToDTOsConvertorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-application/target/generated-sources/annotations/com/noinch/mall/biz/customer/user/application/convertor/CustomerUserToDTOsConvertorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-infrastructure/src/main/java/com/noinch/mall/biz/customer/user/infrastructure/remote/MessageServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-infrastructure/src/main/java/com/noinch/mall/biz/customer/user/infrastructure/remote/MessageServiceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-infrastructure/target/generated-sources/annotations/com/noinch/mall/biz/customer/user/infrastructure/converter/CustomerUserToDOConverterImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-infrastructure/target/generated-sources/annotations/com/noinch/mall/biz/customer/user/infrastructure/converter/CustomerUserToDOConverterImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-interface/target/classes/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-customer-user/mall-customer-user-interface/target/classes/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/src/main/java/com/noinch/mall/springboot/starter/convention/errorcode/BaseErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/src/main/java/com/noinch/mall/springboot/starter/convention/errorcode/BaseErrorCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/convention/errorcode/BaseErrorCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-framework-all/mall-convention-spring-boot-starter/target/classes/com/noinch/mall/springboot/starter/convention/errorcode/BaseErrorCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-gateway/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-gateway/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/src/main/java/com/noinch/mall/biz/message/infrastructure/config/properties/AliyunSmsProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-message/mall-message-infrastructure/src/main/java/com/noinch/mall/biz/message/infrastructure/config/properties/AliyunSmsProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/event/ClearCartProductListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/event/ClearCartProductListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/event/DelayCloseOrderListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/event/DelayCloseOrderListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/filter/OrderCreateProductSkuStockChainHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-application/src/main/java/com/noinch/mall/biz/order/application/filter/OrderCreateProductSkuStockChainHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/service/CartRemoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/service/CartRemoteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/service/OrderDomainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/service/OrderDomainService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/service/ProductStockRemoteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/service/ProductStockRemoteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/service/CartRemoteService.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/service/CartRemoteService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/service/ProductStockRemoteService.class" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/target/classes/com/noinch/mall/biz/order/domain/service/ProductStockRemoteService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/CartRemoteClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/CartRemoteClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/ProductStockRemoteClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/ProductStockRemoteClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/dto/CartItemDelReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/dto/CartItemDelReqDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/dto/CartItemQuerySelectRespDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/dto/CartItemQuerySelectRespDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/dto/ProductLockStockReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/dto/ProductLockStockReqDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/dto/ProductStockDetailReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/dto/ProductStockDetailReqDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/dto/ProductUnlockStockReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/dto/ProductUnlockStockReqDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/dto/ProductVerifyStockReqDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-domain/src/main/java/com/noinch/mall/biz/order/domain/dto/ProductVerifyStockReqDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/service/CartRemoteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/service/CartRemoteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/service/ProductStockRemoteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure/remote/service/ProductStockRemoteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-interface/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-interface/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/mall-order-interface/target/classes/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/mall-order-interface/target/classes/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-pay/mall-pay-infrastructure/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-interface/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-interface/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-product/mall-product-interface/target/classes/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-product/mall-product-interface/target/classes/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,26 +61,26 @@
       <list>
         <option value="AnnotationType" />
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "yvonne-ku"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;yvonne-ku&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:yvonne-ku/mall.git",
-    "accountId": "3df3b9ca-a8e1-4b59-b639-0401f2fa6cfd"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:yvonne-ku/mall.git&quot;,
+    &quot;accountId&quot;: &quot;3df3b9ca-a8e1-4b59-b639-0401f2fa6cfd&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -95,19 +141,20 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.AggregationApplication.executor": "Run",
-    "Spring Boot.BFFApplication.executor": "Debug",
+    "Spring Boot.BFFApplication.executor": "Run",
+    "Spring Boot.BasicDataApplication.executor": "Run",
     "Spring Boot.CartApplication.executor": "Run",
     "Spring Boot.CustomerUserApplication.executor": "Run",
     "Spring Boot.GatewayApplication.executor": "Run",
     "Spring Boot.MessageApplication.executor": "Run",
     "Spring Boot.OrderApplication.executor": "Run",
-    "Spring Boot.PayApplication.executor": "Debug",
+    "Spring Boot.PayApplication.executor": "Run",
     "Spring Boot.ProductApplication.executor": "Run",
     "Spring Boot.ProductJobApplication.executor": "Debug",
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "21",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/MyProjects/mall/mall-order/mall-order-infrastructure/src/main/java/com/noinch/mall/biz/order/infrastructure",
+    "last_opened_file_path": "C:/Users/Yutong/Desktop/congomall-main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -133,18 +180,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\MyProjects\mall\mall-basic-data\mall-basic-data-interface\src\main\resources" />
+      <recent name="D:\MyProjects\mall\mall-basic-data\mall-basic-data-infrastructure\src\main\java\com\noinch\mall\biz\basicdata\infrastructure\dao" />
+      <recent name="D:\MyProjects\mall\mall-basic-data\mall-basic-data-domain\src\main\java\com\noinch\mall\biz\basicdata\domain" />
+      <recent name="D:\MyProjects\mall\mall-basic-data\mall-basic-data-application\src\main\java\com\noinch\mall\biz\basicdata\application" />
       <recent name="D:\MyProjects\mall\mall-order\mall-order-infrastructure\src\main\java\com\noinch\mall\biz\order\infrastructure" />
-      <recent name="D:\MyProjects\mall\mall-message\mall-message-infrastructure\src\main\java\com\noinch\mall\biz\message\infrastructure" />
-      <recent name="D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure" />
-      <recent name="D:\MyProjects\mall\mall-product\mall-product-interface\src\main\resources" />
-      <recent name="D:\MyProjects\mall\mall-pay\mall-pay-interface\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MyProjects\mall\resources" />
       <recent name="D:\MyProjects\mall\mall-bff\mall-bff-web\src\main\java\com\noinch\mall\biz\bff\interfaces\controller" />
       <recent name="D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\resources\mapper" />
       <recent name="D:\MyProjects\mall\resources\otherapp" />
       <recent name="D:\MyProjects\mall\mall-framework-all\mall-elasticsearch-spring-boot-starter\src\main\resources" />
-      <recent name="D:\MyProjects\mall\mall-framework-all\mall-elasticsearch-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\elasticsearch" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.noinch.mall.biz.message.infrastructure.config" />
@@ -154,11 +201,11 @@
       <recent name="com.noinch.mall.biz.customer.user.interfaces" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.noinch.mall.biz.basicdata.interfaces.controller" />
       <recent name="com.noinch.mall.biz.order.domain.dto" />
       <recent name="com.noinch.mall.biz.message.infrastructure.dao.entity" />
       <recent name="com.noinch.mall.biz.bff.dto.resp.adapter" />
       <recent name="com.noinch.mall.biz.bff.remote.resp" />
-      <recent name="com.noinch.mall.biz.order.infrastructure.mq.common" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -170,7 +217,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.AggregationApplication">
+  <component name="RunManager" selected="Spring Boot.ProductApplication">
     <configuration default="true" type="Application" factoryName="Application">
       <shortenClasspath name="ARGS_FILE" />
       <method v="2">
@@ -272,6 +319,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BasicDataApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="mall-basic-data-interface" />
+      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.biz.basicdata.interfaces.BasicDataApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CacheTestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="mall-framework-cache-test" />
       <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
@@ -305,23 +360,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MallBasicDataApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="mall-basic-data-application" />
-      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.biz.basicdata.application.MallBasicDataApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MallBasicDataInterfaceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="mall-basic-data-interface" />
-      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.biz.basicdata.interfaces.MallBasicDataInterfaceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MessageApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="ALIPAY_PRIVATE_KEY" value="MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDC0moKlzws03zciu5aqfOa9M6emc8Ae0WvqLQ0WFZMr7edR+bSt8PdAfqeqCD2UqE/hwT/i4a3zjaD7+IjomGygl2/a4tmPONohPZ101bUHIFgSKox0onxGUfPZ7xR8PsYv3ig41fLYgJ6y0NQRk1WWzBO+xWJzo1e06WqQ48krByujIrSzikaeECmexjJGPp/KA4fUxDkrtUZTMdJerf7vHje1TWYdHsa2hD19zX3UiSM3IPyvGqtD9L3OWK3gUSymqCBsiQioBctDPXu60dSKpUL5OhHTkv3QypcCjAXgkkZ14rf3h25yK9vR/qW4WrP8XgAcKrK5KZlINXjMaUtAgMBAAECggEBAK078sT2E7D8YWOuOiHuS0o3ct6+f726341B4vNEtYA9I3U8cThf5U7JKrQXZjAB65YUllIxHBqmx/zrulbbViooF/pVQ8AmVkQjLxA4W1YC/tvB4Wyp/LShOSRo5qCqOmyYHUhavz9/KBtOUM25pZ0rOrqQM2e1fima4w2SQ19kCggR0UDg6hRHYwHH6T4alLGP/hqB9wmPs14/xceaVPESOjTcrHdbhyuOuWEByiADMVlPAJKKeahQ5Jh3bxU8lk5P7TCILLaJQyhKW+ge8eWik8DLbvIH9SpztdRs4YCsCbqOAjSK/UxnPREcwJ2VvliF+BxKAjH7x1zt58+GjoECgYEA6f1D23Ifav0v/1y0uC+7EGQSCV3nQXUvcEhGKDLzxyawYpbU+rMJXExweR218BCU+oSiCaBNrQ+uyU6E+ayo1rL+EakUSGmJ4t7DJxndzrzKSatquC+jHuN+TtM+zteFmh1nKe1EfQT03mcYB+q+bRoa0J1hmtMNRYsBhwgGqw0CgYEA1SXz88BIEylMojEc+Kp3DUnWWlHLrPGuDUKztWBR09G+MtSrJUu7COpwpyWJBvN1pSfsEF2fCls7VVOEJ9SLokZzlAYAzemsS7In27XWPPtKdI8sdttPS96/Fp5/OUjjozJ5PYiWlqmNfeyhits8iVSqLBxGREHzZAeJG/zz2qECgYBAWSUbKWRYgO59NJqCeKXiGRMYvllFmBuGrmmUzoZaA1rIkiBaHXh6iI75z+Dj9ztxNZ52NT6HVGPF+rD5FLGN8cWLR8tLKrL/0DEtBKEKJMMgxWJg6sDaUse+l7uTGJQmUOW5EwYdt4o7y3BBZR4fVOmA63cXI+lncZXm858Z1QKBgCfhUAGdSl77bTEziz4jdt7vn8GKaFdVaMFmZ4VaHjVJmxKbo+H4h2glpSpA5aB9UNez3oE5YxZm93UBiUqChBW6pMlfTis4u1n2XWrIXOtQASBJ4YHjirShWpN62Eb5kk3olbKjqblKxAR5j8gROQRg6O4T5DnFNSrUFh08eMvBAoGAH833qXh5OHz8BjGQDjYLLDDedOvpKV3qIVjjKcw00wPbvZlzSS0zXf05Ew7dSV8ISRsBWd3R9yq2CgtpbfxrhBHvRYerqIs3UpSuet3bCmGDfqzgL8BM6QmGkkiP9W8QA2hh3JsM5ozM1W7zsHoP6VpOU3sZvGOCUXOw8JKrEk4=" />
+        <env name="ALIPAY_PUBLIC_KEY" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv0kd0VgdA7Dnm7POsOYjmMRLYWGbKmKXEZ/1KgWMI7QPUvGX/WIpAERr2eejdCNqrTlrNZ196XYzXXmhZPVBiJOFRcJtrhafnZ9FvpcEhKCjSoZGdPiVbL+oHYBEy5NxX4gi5NSsnkprYrXZ92TLpzp5VYcwLokI6TBI6C8fHG5vckpgERtaK4+yF5Hg+E5HpNhSvjwNNxzqspqfVAW7RFjhYsbPJci6qDzjKEwRxR+6dDG6boD2x+bic7y+74wD6qkMcRIcS/xFAa2KbBW0UFp+1EWvqh4e7dNucmLgaLLBw3o3zqb48asNpqhkx+rCppbarMhxyff29yYN3eP57QIDAQAB" />
+      </envs>
       <module name="mall-message-interface" />
       <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.noinch.mall.biz.message.interfaces.MessageApplication" />
@@ -373,8 +416,7 @@
       <item itemvalue="JUnit.CacheTests.testBloomFilterSafePut" />
       <item itemvalue="JUnit.CacheTests.testCacheLoader" />
       <item itemvalue="JUnit.MinioTests.assertUpload" />
-      <item itemvalue="Spring Boot.MallBasicDataApplication" />
-      <item itemvalue="Spring Boot.MallBasicDataInterfaceApplication" />
+      <item itemvalue="Spring Boot.BasicDataApplication" />
       <item itemvalue="Spring Boot.ProductApplication" />
       <item itemvalue="Spring Boot.PayApplication" />
       <item itemvalue="Spring Boot.BFFApplication" />
@@ -472,7 +514,9 @@
       <workItem from="1770551208970" duration="18548000" />
       <workItem from="1770574090926" duration="5973000" />
       <workItem from="1770626880223" duration="17692000" />
-      <workItem from="1770651570113" duration="27722000" />
+      <workItem from="1770651570113" duration="32488000" />
+      <workItem from="1770988405578" duration="3784000" />
+      <workItem from="1771140951778" duration="19459000" />
     </task>
     <servers />
   </component>
