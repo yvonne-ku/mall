@@ -21,9 +21,6 @@ public enum BaseErrorCode implements IErrorCode {
     PHONE_EXIST_ERROR("A000150", "手机号已存在"),
     PHONE_VERIFY_ERROR("A000151", "手机格式校验失败"),
     PHONE_VERIFY_CODE_ERROR("A000152", "手机验证码错误"),
-
-
-
     // ========== 二级宏观错误码 系统请求缺少幂等Token ==========
     IDEMPOTENT_TOKEN_NULL_ERROR("A000200", "幂等Token为空"),
     IDEMPOTENT_TOKEN_DELETE_ERROR("A000201", "幂等Token已被使用或失效"),
@@ -31,17 +28,17 @@ public enum BaseErrorCode implements IErrorCode {
 
     // ========== 一级宏观错误码 系统执行出错 ==========
     SERVICE_ERROR("B000001", "系统执行出错"),
+    SERVICE_REMOTE_ERROR("B000002", "系统调用远程服务失败"),
+    SERVICE_RABBITMQ_ERROR("B000003", "系统调用消息队列服务失败"),
     // ========== 二级宏观错误码 系统执行超时 ==========
     SERVICE_TIMEOUT_ERROR("B000100", "系统执行超时"),
-    SERVICE_REMOTE_ERROR("B000110", "系统调用远程服务失败"),
-
 
 
     // ========== 一级宏观错误码 调用第三方服务出错 ==========
     REMOTE_ERROR("C000001", "调用第三方服务出错"),
     REMOTE_SMS_SEND_ERROR("C000100", "调用短信服务发送验证码出错"),
     REMOTE_SMS_VERIFYCODE_ERROR("C000110", "调用短信服务校验验证码出错");
-    
+
     private final String code;
     
     private final String message;

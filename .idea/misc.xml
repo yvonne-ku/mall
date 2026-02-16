@@ -73,6 +73,7 @@
         <option value="$PROJECT_DIR$/mall-basic-data/mall-basic-data-interface/pom.xml" />
         <option value="$PROJECT_DIR$/mall-basic-data/mall-basic-data-application/pom.xml" />
         <option value="$PROJECT_DIR$/mall-basic-data/mall-basic-data-domain/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-basic-data/mall-basic-data-infrastructure/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

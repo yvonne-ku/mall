@@ -81,10 +81,7 @@
         <dypnsapi20170525.version>1.2.3</dypnsapi20170525.version>
 
 
-
-
         <springdoc-openapi.version>2.3.0</springdoc-openapi.version>
-
 
 
         <!-- 通用工具相关版本 -->
@@ -353,6 +350,13 @@
                 <artifactId>jjwt-jackson</artifactId>
                 <scope>runtime</scope>
                 <version>${jjwt.version}</version>
+            </dependency>
+
+            <!--  zxing  -->
+            <dependency>
+                <groupId>com.google.zxing</groupId>
+                <artifactId>core</artifactId>
+                <version>${zxing.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

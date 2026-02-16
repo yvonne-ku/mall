@@ -2,13 +2,14 @@ package com.noinch.mall.biz.order.infrastructure.remote.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.noinch.mall.biz.order.domain.aggregate.OrderProduct;
+import com.noinch.mall.biz.order.domain.dto.ProductVerifyStockReqDTO;
 import com.noinch.mall.biz.order.domain.event.OrderCreateEvent;
 import com.noinch.mall.biz.order.domain.repository.OrderRepository;
 import com.noinch.mall.biz.order.domain.service.ProductStockRemoteService;
 import com.noinch.mall.biz.order.infrastructure.remote.ProductStockRemoteClient;
-import com.noinch.mall.biz.order.infrastructure.remote.dto.ProductLockStockReqDTO;
-import com.noinch.mall.biz.order.infrastructure.remote.dto.ProductStockDetailReqDTO;
-import com.noinch.mall.biz.order.infrastructure.remote.dto.ProductUnlockStockReqDTO;
+import com.noinch.mall.biz.order.domain.dto.ProductLockStockReqDTO;
+import com.noinch.mall.biz.order.domain.dto.ProductStockDetailReqDTO;
+import com.noinch.mall.biz.order.domain.dto.ProductUnlockStockReqDTO;
 import com.noinch.mall.springboot.starter.convention.errorcode.BaseErrorCode;
 import com.noinch.mall.springboot.starter.convention.exception.ServiceException;
 import com.noinch.mall.springboot.starter.convention.result.Result;
@@ -40,7 +41,7 @@ public class ProductStockRemoteServiceImpl implements ProductStockRemoteService 
         ).collect(Collectors.toList()));
         Result<Boolean> result = productStockRemoteClient.unlockProductStock(req);
         if (! result.isSuccess()) {
-            log.error("调用远程商品库存服务失败，解锁库存失败。");
+            log.error("调用远程商品库存服务，解锁库存失败。");
             throw new ServiceException(BaseErrorCode.SERVICE_REMOTE_ERROR);
         }
     }
@@ -57,8 +58,18 @@ public class ProductStockRemoteServiceImpl implements ProductStockRemoteService 
                 .build();
         Result<Boolean> result = productStockRemoteClient.lockProductStock(req);
         if (! result.isSuccess()) {
-            log.error("调用远程商品库存服务失败，锁定库存失败。");
+            log.error("调用远程商品库存服务，锁定库存失败。");
             throw new ServiceException(BaseErrorCode.SERVICE_REMOTE_ERROR);
         }
+    }
+
+    @Override
+    public Boolean verifyProductStock(List<ProductVerifyStockReqDTO> requestParam) {
+        Result<Boolean> res = productStockRemoteClient.verifyProductStock(requestParam);
+        if (! res.isSuccess()) {
+            log.error("调用远程商品库存服务，验证库存失败。");
+            throw new ServiceException(BaseErrorCode.SERVICE_REMOTE_ERROR);
+        }
+        return true;
     }
 }
