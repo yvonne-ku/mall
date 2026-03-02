@@ -76,21 +76,9 @@ elasticsearch:
 
 mall:
   fastjson:
-    safa-mode: true
+    safe-mode: true
 #  bff:
 #    qps-count: 1
-  remote-url:
-    gateway-service: http://localhost:8000
-    message-service: http://localhost:8001
-    customer-user-service: http://localhost:8002
-    product-service: http://localhost:8003
-    product-job-service: http://localhost:9001
-    cart-service: http://localhost:8004
-    order-service: http://localhost:8005
-    pay-service: http://localhost:8006
-    basic-data-service: http://localhost:8007
-    bff-service: http://localhost:8008
-    aggregation: http://localhost:8009
 
 product:
   thread-pool:

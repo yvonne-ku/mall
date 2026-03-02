@@ -1,14 +1,13 @@
-datasource:
+dataSources:
   ds-user:
-    driver-class-name: com.mysql.jdbc.Driver
-    type: com.zaxxer.hikari.HikariDataSource
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
     username: root
     password: 123456
-    jdbc-url: jdbc:mysql://mysql:3306/mall_customer_user?characterEncoding=utf-8&serverTimezone=GMT%2B8
-  names: ds-user
+#    jdbcUrl: jdbc:mysql://mysql:3306/mall_customer?characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+    jdbcUrl: jdbc:mysql://localhost:3306/mall_customer_dev?characterEncoding=utf-8&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true&useSSL=false
 
 rules:
-  encrypt:
+  - !ENCRYPT
     encryptors:
       customer-user-encryptor:
         props:
@@ -18,47 +17,56 @@ rules:
       customer_user:
         columns:
           mail:
-            cipher-column: mail
-            encryptor-name: customer-user-encryptor
+            cipher:
+              name: mail
+              encryptorName: customer-user-encryptor
           phone:
-            cipher-column: phone
-            encryptor-name: customer-user-encryptor
-      customer_user_receive_address:
+            cipher:
+              name: phone
+              encryptorName: customer-user-encryptor
+      receive_address:
         columns:
           phone:
-            cipher-column: phone
-            encryptor-name: customer-user-encryptor
+            cipher:
+              name: phone
+              encryptorName: customer-user-encryptor
           detail_address:
-            cipher-column: detail_address
-            encryptor-name: customer-user-encryptor
-  sharding:
-    sharding-algorithms:
-      sharding_by_mod:
+            cipher:
+              name: detail_address
+              encryptorName: customer-user-encryptor
+  - !SHARDING
+    shardingAlgorithms:
+      customer_user_sharding_by_mod:
+        type: INLINE
         props:
-          sharding-count: 16
-        type: HASH_MOD
+          algorithm-expression: customer_user_${id % 16}
+      operation_log_sharding_by_mod:
+        type: INLINE
+        props:
+          algorithm-expression: operation_log_${customer_user_id % 16}
+      receive_address_sharding_by_mod:
+        type: INLINE
+        props:
+          algorithm-expression: receive_address_${customer_user_id % 16}
     tables:
       customer_user:
-        actual-data-nodes: ds-user.customer_user_$->{0..15}
-        table-strategy:
+        actualDataNodes: ds-user.customer_user_${0..15}
+        tableStrategy:
           standard:
-            sharding-algorithm-name: sharding_by_mod
-            sharding-column: id
+            shardingAlgorithmName: customer_user_sharding_by_mod
+            shardingColumn: id
       operation_log:
-        actual-data-nodes: ds-user.operation_log_$->{0..15}
-        table-strategy:
+        actualDataNodes: ds-user.operation_log_${0..15}
+        tableStrategy:
           standard:
-            sharding-algorithm-name: sharding_by_mod
-            sharding-column: customer_user_id
+            shardingAlgorithmName: operation_log_sharding_by_mod
+            shardingColumn: customer_user_id
       receive_address:
-        actual-data-nodes: ds-user.receive_address_$->{0..15}
-        table-strategy:
+        actualDataNodes: ds-user.receive_address_${0..15}
+        tableStrategy:
           standard:
-            sharding-algorithm-name: sharding_by_mod
-            sharding-column: customer_user_id
+            shardingAlgorithmName: receive_address_sharding_by_mod
+            shardingColumn: customer_user_id
 
 props:
-  # 将默认事务设为 BASE，这样只要方法加了 Spring 的 @Transactional，
-  # 就会自动切换到 Seata，无需手动在每个 Service 上加 SS 的注解。
-  transaction-type: BASE
   sql-show: true

@@ -57,7 +57,7 @@ public class CartItemRepositoryImpl implements CartItemRepository {
     @Override
     public List<CartItem> querySelectCartItemByCustomerUserId(String customerUserId) {
         LambdaQueryWrapper<CartItemDO> queryWrapper = Wrappers.lambdaQuery(CartItemDO.class)
-                .eq(CartItemDO::getCustomerUserId, customerUserId)
+                .eq(CartItemDO::getCustomerUserId, Long.parseLong(customerUserId))
                 .eq(CartItemDO::getSelectFlag, SelectFlagEnum.SELECTED.getCode());
         List<CartItemDO> selectList = cartItemMapper.selectList(queryWrapper);
         return selectList.stream().map(each -> {
@@ -154,14 +154,14 @@ public class CartItemRepositoryImpl implements CartItemRepository {
     public void deleteCartItem(CartItem cartItem) {
         LambdaUpdateWrapper<CartItemDO> updateWrapper = Wrappers.lambdaUpdate(CartItemDO.class)
                 .eq(CartItemDO::getCustomerUserId, cartItem.getCustomerUserId())
-                .in(CartItemDO::getProductSkuId, cartItem.getProductSkuIds());
+                .in(CartItemDO::getProductSkuId, cartItem.getProductSkuIds().stream().map(Long::parseLong).collect(Collectors.toList()));
         int updateFlag = cartItemMapper.delete(updateWrapper);
         Assert.isTrue(updateFlag > 0, () -> new ServiceException("删除购物车失败"));
     }
 
     @Override
     public int countCartItem(String customerUserId) {
-        return Optional.ofNullable(cartItemMapper.countCartItem(customerUserId)).orElse(0);
+        return Optional.ofNullable(cartItemMapper.countCartItem(Long.parseLong(customerUserId))).orElse(0);
     }
 
     @Override

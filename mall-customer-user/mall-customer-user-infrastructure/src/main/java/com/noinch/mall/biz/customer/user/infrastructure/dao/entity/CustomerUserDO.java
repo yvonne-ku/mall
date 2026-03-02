@@ -1,6 +1,7 @@
 
 package com.noinch.mall.biz.customer.user.infrastructure.dao.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import com.noinch.mall.springboot.starter.mybatisplus.BaseDO;
@@ -20,11 +21,13 @@ public class CustomerUserDO extends BaseDO {
     /**
      * 昵称
      */
+    @TableField("name")
     private String username;
     
     /**
      * 账号
      */
+    @TableField("account_number")
     private String account;
     
     /**

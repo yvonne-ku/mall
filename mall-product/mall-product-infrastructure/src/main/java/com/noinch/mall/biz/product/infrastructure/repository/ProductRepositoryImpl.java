@@ -99,8 +99,8 @@ public class ProductRepositoryImpl implements ProductRepository {
     public Boolean verifyProductStock(ProductStock productStock) {
         for (ProductStockDetail each : productStock.getProductStockDetails()) {
             LambdaQueryWrapper<ProductSkuDO> queryWrapper = Wrappers.lambdaQuery(ProductSkuDO.class)
-                    .eq(ProductSkuDO::getProductId, each.getProductId())
-                    .eq(ProductSkuDO::getId, each.getProductSkuId());
+                    .eq(ProductSkuDO::getProductId, Long.parseLong(each.getProductId()))
+                    .eq(ProductSkuDO::getId, Long.parseLong(each.getProductSkuId()));
             ProductSkuDO productSkuDO = productSkuMapper.selectOne(queryWrapper);
             int actualStock = productSkuDO.getStock() - productSkuDO.getLockStock();
             if (actualStock - each.getProductQuantity() < 0) {

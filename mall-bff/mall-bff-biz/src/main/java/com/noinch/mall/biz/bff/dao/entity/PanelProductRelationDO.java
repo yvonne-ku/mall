@@ -11,7 +11,7 @@ import lombok.Data;
  *
  */
 @Data
-@TableName("panel_product_relation_test")
+@TableName("panel_product_relation")
 public class PanelProductRelationDO extends BaseDO {
 
     /**

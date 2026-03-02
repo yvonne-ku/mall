@@ -1,29 +1,30 @@
-datasource:
+dataSources:
   ds-cart: # 购物车库
-    driver-class-name: com.mysql.jdbc.Driver
-    type: com.zaxxer.hikari.HikariDataSource
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
     username: root
     password: 123456
-    jdbc-url: jdbc:mysql://mysql:3306/mall_cart?characterEncoding=utf-8&serverTimezone=GMT%2B8
-  names: ds-cart
+#    jdbcUrl: jdbc:mysql://mysql:3306/mall_cart?characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+    jdbcUrl: jdbc:mysql://localhost:3306/mall_cart_dev?characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
 
 rules:
-  sharding:
-    sharding-algorithms:
+  - !SHARDING
+    shardingAlgorithms:
       cart-item_sharding_by_mod:
+        type: INLINE
         props:
-          sharding-count: 16
-        type: HASH_MOD
+          algorithm-expression: cart_item_${customer_user_id % 16}
     tables:
       cart_item:
-        actual-data-nodes: ds-cart.cart_item_$->{0..15}
-        table-strategy:
+        actualDataNodes: ds-cart.cart_item_${0..15}
+        tableStrategy:
           standard:
-            sharding-algorithm-name: cart-item_sharding_by_mod
-            sharding-column: customer_user_id
+            shardingAlgorithmName: cart-item_sharding_by_mod
+            shardingColumn: customer_user_id
+
+transaction:
+  # 将默认事务设为 BASE，这样只要方法加了 Spring 的 @Transactional，就会自动切换到 Seata
+  defaultType: BASE
+  providerType: Seata
 
 props:
-  # 将默认事务设为 BASE，这样只要方法加了 Spring 的 @Transactional，
-  # 就会自动切换到 Seata，无需手动在每个 Service 上加 SS 的注解。
-  transaction-type: BASE
   sql-show: true

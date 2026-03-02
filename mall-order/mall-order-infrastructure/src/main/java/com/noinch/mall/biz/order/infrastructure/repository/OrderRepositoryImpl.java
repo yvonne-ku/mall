@@ -84,7 +84,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     @Override
     public List<Order> findOrderByCustomerUserId(String customerUserId) {
         LambdaQueryWrapper<OrderDO> queryWrapper = Wrappers.lambdaQuery(OrderDO.class)
-                .eq(OrderDO::getCustomerUserId, customerUserId)
+                .eq(OrderDO::getCustomerUserId, Long.parseLong(customerUserId))
                 .orderByDesc(OrderDO::getCreateTime);
         List<OrderDO> orderDOList = orderMapper.selectList(queryWrapper);
         List<Order> resultOrder = orderDOList.stream().map(
@@ -118,6 +118,7 @@ public class OrderRepositoryImpl implements OrderRepository {
         OrderDO orderDO = new OrderDO();
         BeanUtil.copyProperties(order, orderDO);
         orderDO.setId(orderId);
+        orderDO.setOrderSn(String.valueOf(orderId));
         BeanUtil.copyProperties(order.getCneeInfo(), orderDO, CopyOptions.create().ignoreNullValue());
         orderMapper.insert(orderDO);
 
@@ -126,6 +127,7 @@ public class OrderRepositoryImpl implements OrderRepository {
                     OrderItemDO orderItemDO = new OrderItemDO();
                     BeanUtil.copyProperties(each, orderItemDO);
                     orderItemDO.setOrderId(orderId);
+                    orderItemDO.setOrderSn(String.valueOf(orderId));
                     orderItemDO.setCustomerUserId(order.getCustomerUserId());
                     return orderItemDO;
                 }
@@ -228,7 +230,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public PageResponse<Order> pageQueryOrder(String userId, PageRequest pageRequest) {
-        LambdaQueryWrapper<OrderDO> queryWrapper = Wrappers.lambdaQuery(OrderDO.class).eq(OrderDO::getCustomerUserId, userId);
+        LambdaQueryWrapper<OrderDO> queryWrapper = Wrappers.lambdaQuery(OrderDO.class).eq(OrderDO::getCustomerUserId, Long.parseLong(userId));
         Page<OrderDO> orderDOPage = orderMapper.selectPage(new Page<>(pageRequest.getCurrent(), pageRequest.getSize()), queryWrapper);
         PageResponse<Order> actualResult = PageUtil.convert(orderDOPage, Order.class);
         actualResult.convert(each -> {

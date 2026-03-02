@@ -1,6 +1,7 @@
 
 package com.noinch.mall.biz.order.infrastructure.dao.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.noinch.mall.springboot.starter.mybatisplus.BaseDO;
 import lombok.Data;
@@ -100,6 +101,7 @@ public class OrderDO extends BaseDO {
     /**
      * 收货人所在省
      */
+    @TableField("cnee_provinc")
     private String cneeProvince;
     
     /**

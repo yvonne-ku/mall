@@ -117,7 +117,7 @@ rules:
         actual-data-nodes: ds-product.product_spu_$->{0..15}
         table-strategy:
           complex:
-            sharding-algorithm-name: product_sharding_by_mod_algorithm
+            sharding-algorithm-name: product-spu_sharding_by_mod_algorithm
             sharding-columns: brand_id,id
       product_sku:
         actual-data-nodes: ds-product.product_sku_$->{0..15}

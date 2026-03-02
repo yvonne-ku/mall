@@ -34,7 +34,7 @@
 
         <!-- ShardingSphere -->
         <shardingsphere-jdbc.version>5.5.0</shardingsphere-jdbc.version>
-        <seata.version>1.8.0</seata.version>
+        <seata.version>2.5.0</seata.version>
 
 
         <!-- OpenFeign OkHttp -->
@@ -152,6 +152,12 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+            <!-- LoadBalancer -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                <version>${spring-cloud-starter.version}</version>
+            </dependency>
             <!-- OpenFeign OkHttp -->
             <dependency>
                 <groupId>io.github.openfeign</groupId>
@@ -185,9 +191,15 @@
             </dependency>
             <!--  Seata -->
             <dependency>
-                <groupId>io.seata</groupId>
+                <groupId>org.apache.seata</groupId>
                 <artifactId>seata-spring-boot-starter</artifactId>
                 <version>${seata.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.antlr</groupId>
+                        <artifactId>antlr4-runtime</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- Netty All -->
