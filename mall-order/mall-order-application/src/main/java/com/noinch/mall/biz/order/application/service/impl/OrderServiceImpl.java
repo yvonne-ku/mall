@@ -5,7 +5,7 @@ package com.noinch.mall.biz.order.application.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import com.noinch.mall.biz.order.domain.event.OrderCreateEvent;
-import com.noinch.mall.biz.order.domain.service.CartRemoteService;
+import com.noinch.mall.biz.order.domain.service.OrderInfraService;
 import io.seata.core.context.RootContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +38,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
-    private final CartRemoteService cartRemoteService;
+    private final OrderInfraService orderInfraService;
     private final OrderRepository orderRepository;
     private final AbstractChainContext<OrderCreateCommand> abstractChainContext;
     
@@ -50,7 +50,7 @@ public class OrderServiceImpl implements OrderService {
         // 创建订单号
         String orderSn = SnowflakeIdUtil.nextIdStrByService(requestParam.getCustomerUserId());
         // 调用购物车服务获取已选中参与结算商品
-        List<OrderProduct> orderProducts = cartRemoteService.querySelectCartItemByCustomerUserId(requestParam.getCustomerUserId());
+        List<OrderProduct> orderProducts = orderInfraService.querySelectCartItemByCustomerUserId(requestParam.getCustomerUserId());
         // 构建订单聚合根
         CneeInfo cneeInfo = new CneeInfo();
         BeanUtil.copyProperties(requestParam, cneeInfo, CopyOptions.create().setIgnoreNullValue(true));

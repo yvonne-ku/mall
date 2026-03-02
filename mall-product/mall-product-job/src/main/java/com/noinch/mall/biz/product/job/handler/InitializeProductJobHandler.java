@@ -11,12 +11,10 @@ import com.noinch.mall.biz.product.infrastructure.dao.mapper.ProductCategoryMapp
 import com.noinch.mall.biz.product.infrastructure.dao.mapper.ProductSpuMapper;
 import com.xxl.job.core.handler.IJobHandler;
 import com.xxl.job.core.handler.annotation.XxlJob;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import com.noinch.mall.biz.product.infrastructure.dao.entity.ProductSpuDO;
 import com.noinch.mall.biz.product.infrastructure.dao.entity.ProductSkuDO;
 import com.noinch.mall.biz.product.infrastructure.dao.mapper.ProductSkuMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
@@ -103,7 +101,7 @@ public class InitializeProductJobHandler extends IJobHandler {
             ProductBrandMapper productBrandMapper,
             ProductCategoryMapper productCategoryMapper,
             EsProductRepository esProductRepository,
-            @Qualifier("productSkuInitSyncThreadPoolExecutor") ThreadPoolExecutor productSkuInitSyncThreadPoolExecutor
+            @Qualifier("product-sku-init-sync-executor") ThreadPoolExecutor productSkuInitSyncThreadPoolExecutor
     ) {
         this.productSkuMapper = productSkuMapper;
         this.productSpuMapper = productSpuMapper;

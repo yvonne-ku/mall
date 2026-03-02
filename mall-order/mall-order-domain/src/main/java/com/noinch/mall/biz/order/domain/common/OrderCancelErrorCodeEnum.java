@@ -21,7 +21,7 @@ public enum OrderCancelErrorCodeEnum implements IErrorCode {
     
     ORDER_STATUS_REVERSAL_ERROR("B006005", "订单状态反转失败，请稍后再试"),
     
-    ORDER_DELETE_ERROR("B006006", "订单状态反转失败，请稍后再试");
+    ORDER_DELETE_ERROR("B006006", "订单删除失败，请稍后再试");
     
     /**
      * 错误码
