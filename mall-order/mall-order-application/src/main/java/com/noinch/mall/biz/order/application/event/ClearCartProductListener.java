@@ -4,7 +4,7 @@ package com.noinch.mall.biz.order.application.event;
 
 import com.noinch.mall.biz.order.domain.dto.CartItemDelReqDTO;
 import com.noinch.mall.biz.order.domain.event.OrderCreateEvent;
-import com.noinch.mall.biz.order.domain.service.CartRemoteService;
+import com.noinch.mall.biz.order.domain.service.OrderInfraService;
 import lombok.RequiredArgsConstructor;
 import com.noinch.mall.biz.order.domain.aggregate.OrderProduct;
 import org.springframework.context.ApplicationListener;
@@ -22,13 +22,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public final class ClearCartProductListener implements ApplicationListener<OrderCreateEvent> {
     
-    private final CartRemoteService cartRemoteService;
+    private final OrderInfraService orderInfraService;
     
     @Override
     public void onApplicationEvent(OrderCreateEvent event) {
         CartItemDelReqDTO cartItemDelReqDTO = new CartItemDelReqDTO();
         cartItemDelReqDTO.setCustomerUserId(String.valueOf(event.getOrder().getCustomerUserId()));
         cartItemDelReqDTO.setProductSkuIds(event.getOrder().getOrderProducts().stream().map(OrderProduct::getProductSkuId).map(String::valueOf).collect(Collectors.toList()));
-        cartRemoteService.clearCartProduct(cartItemDelReqDTO);
+        orderInfraService.clearCartProduct(cartItemDelReqDTO);
     }
 }

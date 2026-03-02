@@ -28,7 +28,7 @@ public class JobThreadPoolExecutorConfig {
     }
 
     @Bean(name = "product-sku-init-sync-executor")
-    public ExecutorService productSkuInitSyncThreadPoolExecutor(ProductThreadPoolExecutorProperties properties, @Qualifier("product-job-thread-factory") ThreadFactory threadFactory) {
+    public ThreadPoolExecutor productSkuInitSyncThreadPoolExecutor(ProductThreadPoolExecutorProperties properties, @Qualifier("product-job-thread-factory") ThreadFactory threadFactory) {
         return new ThreadPoolExecutor(
                 properties.getCorePoolSize(),
                 properties.getMaximumPoolSize(),

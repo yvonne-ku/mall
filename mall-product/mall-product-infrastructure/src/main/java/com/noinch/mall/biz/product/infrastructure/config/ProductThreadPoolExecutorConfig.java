@@ -24,7 +24,7 @@ public class ProductThreadPoolExecutorConfig {
     }
 
     @Bean(name = "product-executor")
-    public ExecutorService productThreadPoolExecutor(ProductThreadPoolExecutorProperties properties, @Qualifier("product-thread-factory") ThreadFactory threadFactory) {
+    public ThreadPoolExecutor productThreadPoolExecutor(ProductThreadPoolExecutorProperties properties, @Qualifier("product-thread-factory") ThreadFactory threadFactory) {
         return new ThreadPoolExecutor(
                 properties.getCorePoolSize(),
                 properties.getMaximumPoolSize(),

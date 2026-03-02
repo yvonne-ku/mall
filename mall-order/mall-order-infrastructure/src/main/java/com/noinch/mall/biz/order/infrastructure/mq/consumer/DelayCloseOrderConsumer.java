@@ -4,7 +4,7 @@ package com.noinch.mall.biz.order.infrastructure.mq.consumer;
 import com.noinch.mall.biz.order.domain.common.OrderStatusEnum;
 import com.noinch.mall.biz.order.domain.event.DelayCloseOrderEvent;
 import com.noinch.mall.biz.order.domain.repository.OrderRepository;
-import com.noinch.mall.biz.order.domain.service.OrderDomainService;
+import com.noinch.mall.biz.order.domain.service.OrderInfraService;
 import com.noinch.mall.biz.order.infrastructure.mq.common.RabbitMQConst;
 import com.rabbitmq.client.Channel;
 import lombok.AllArgsConstructor;
@@ -23,7 +23,7 @@ import java.io.IOException;
 @AllArgsConstructor
 public class DelayCloseOrderConsumer {
 
-    private final OrderDomainService orderDomainService;
+    private final OrderInfraService orderInfraService;
     private final OrderRepository orderRepository;
 
     /**
@@ -52,7 +52,7 @@ public class DelayCloseOrderConsumer {
             }
 
             // 2. 取消订单，回滚库存
-            boolean success = orderDomainService.delayCloseOrder(event.getOrderSn());
+            boolean success = orderInfraService.delayCloseOrder(event.getOrderSn());
             log.info("订单 {} 关单{}", event.getOrderSn(), success ? "成功" : "失败");
 
             // 3. 处理完毕，确认签收

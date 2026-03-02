@@ -32,25 +32,33 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.stream.Collectors;
 
 /**
  * 商品仓储层
  */
 @Component
-@RequiredArgsConstructor
 public class ProductRepositoryImpl implements ProductRepository {
     
     private final ProductSpuMapper productSpuMapper;
     private final ProductBrandMapper productBrandMapper;
     private final ProductSkuMapper productSkuMapper;
+    private final ThreadPoolExecutor productThreadPoolExecutor;
 
-    @Autowired
-    @Qualifier("product-executor")
-    private final ExecutorService productThreadPoolExecutor;
-    
+    public ProductRepositoryImpl(
+            ProductSpuMapper productSpuMapper,
+            ProductBrandMapper productBrandMapper,
+            ProductSkuMapper productSkuMapper,
+            @Qualifier("product-executor") ThreadPoolExecutor productThreadPoolExecutor
+    ) {
+        this.productSpuMapper = productSpuMapper;
+        this.productBrandMapper = productBrandMapper;
+        this.productSkuMapper = productSkuMapper;
+        this.productThreadPoolExecutor = productThreadPoolExecutor;
+    }
+
     @Override
     @SneakyThrows
     public Product getProductBySpuId(Long spuId) {

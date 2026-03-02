@@ -12,6 +12,8 @@ application-*.properties
 *.keystore
 *.truststore
 
+.idea/
+
 README.md
 
 **/certs/
