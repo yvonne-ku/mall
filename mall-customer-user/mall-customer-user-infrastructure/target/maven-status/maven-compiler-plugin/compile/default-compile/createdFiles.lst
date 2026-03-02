@@ -3,10 +3,10 @@ com\noinch\mall\biz\customer\user\infrastructure\dao\mapper\ReceiveAddressMapper
 com\noinch\mall\biz\customer\user\infrastructure\dao\entity\OperationLogDO.class
 com\noinch\mall\biz\customer\user\infrastructure\repository\CustomerUserRepositoryImpl.class
 com\noinch\mall\biz\customer\user\infrastructure\repository\ReceiveAddressRepositoryImpl.class
-com\noinch\mall\biz\customer\user\infrastructure\remote\MessageServiceFeignClient.class
 com\noinch\mall\biz\customer\user\infrastructure\converter\CustomerUserToDOConverter.class
 com\noinch\mall\biz\customer\user\infrastructure\converter\CustomerUserToDOConverterImpl.class
 com\noinch\mall\biz\customer\user\infrastructure\remote\MessageRemoteServiceImpl.class
 com\noinch\mall\biz\customer\user\infrastructure\dao\entity\CustomerUserDO.class
+com\noinch\mall\biz\customer\user\infrastructure\remote\MessageServiceClient.class
 com\noinch\mall\biz\customer\user\infrastructure\dao\mapper\CustomerUserMapper.class
 com\noinch\mall\biz\customer\user\infrastructure\dao\mapper\OperationLogMapper.class

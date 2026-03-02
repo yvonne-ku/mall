@@ -14,5 +14,5 @@ public interface CartItemMapper extends BaseMapper<CartItemDO> {
     /**
      * 统计用户购物车商品数量
      */
-    Integer countCartItem(String customerUserId);
+    Integer countCartItem(Long customerUserId);
 }

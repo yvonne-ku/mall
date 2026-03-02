@@ -11,6 +11,7 @@ import com.noinch.mall.biz.customer.user.application.service.ReceiveAddressServi
 import com.noinch.mall.biz.customer.user.domain.mode.ReceiveAddress;
 import com.noinch.mall.biz.customer.user.domain.repository.ReceiveAddressRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,6 +44,7 @@ public class ReceiveAddressServiceImpl implements ReceiveAddressService {
     }
     
     @Override
+    @Transactional
     public void removeReceiveAddress(String customerUserId, String receiveAddressId) {
         receiveAddressRepository.removeReceiveAddress(customerUserId, receiveAddressId);
     }

@@ -11,6 +11,7 @@ import com.noinch.mall.biz.customer.user.domain.repository.ReceiveAddressReposit
 import com.noinch.mall.biz.customer.user.infrastructure.dao.entity.ReceiveAddressDO;
 import com.noinch.mall.biz.customer.user.infrastructure.dao.mapper.ReceiveAddressMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +28,7 @@ public class ReceiveAddressRepositoryImpl implements ReceiveAddressRepository {
     
     @Override
     public List<ReceiveAddress> listReceiveAddressByCustomerUserId(String customerUserId) {
-        List<ReceiveAddressDO> receiveAddressDOList = receiveAddressMapper.selectList(Wrappers.lambdaQuery(ReceiveAddressDO.class).eq(ReceiveAddressDO::getCustomerUserId, customerUserId));
+        List<ReceiveAddressDO> receiveAddressDOList = receiveAddressMapper.selectList(Wrappers.lambdaQuery(ReceiveAddressDO.class).eq(ReceiveAddressDO::getCustomerUserId, Long.parseLong(customerUserId)));
         return receiveAddressDOList.stream().map(each -> {
             ReceiveAddress receiveAddress = new ReceiveAddress();
             BeanUtil.copyProperties(each, receiveAddress, CopyOptions.create().setIgnoreNullValue(true));
@@ -41,12 +42,12 @@ public class ReceiveAddressRepositoryImpl implements ReceiveAddressRepository {
         BeanUtil.copyProperties(receiveAddress, receiveAddressDO, CopyOptions.create().setIgnoreNullValue(true));
         receiveAddressMapper.insert(receiveAddressDO);
     }
-    
+
     @Override
     public void removeReceiveAddress(String customerUserId, String receiveAddressId) {
         LambdaUpdateWrapper<ReceiveAddressDO> updateWrapper = Wrappers.lambdaUpdate(ReceiveAddressDO.class)
-                .eq(ReceiveAddressDO::getCustomerUserId, customerUserId)
-                .eq(ReceiveAddressDO::getId, receiveAddressId);
+                .eq(ReceiveAddressDO::getCustomerUserId, Long.parseLong(customerUserId))
+                .eq(ReceiveAddressDO::getId, Long.parseLong(receiveAddressId));
         receiveAddressMapper.delete(updateWrapper);
     }
     

@@ -6,7 +6,7 @@
     <!-- 查询所有板块记录 -->
     <select id="listAllPanel" resultType="com.noinch.mall.biz.bff.dao.entity.PanelDO">
         select *
-        from panel_test
+        from panel
         where del_flag = '0'
           and position = 0
         order by sort_order
@@ -14,7 +14,7 @@
 
     <select id="getRecommend" resultType="com.noinch.mall.biz.bff.dao.entity.PanelDO">
         select *
-        from panel_test
+        from panel
         where del_flag = '0'
           and position = 1
     </select>

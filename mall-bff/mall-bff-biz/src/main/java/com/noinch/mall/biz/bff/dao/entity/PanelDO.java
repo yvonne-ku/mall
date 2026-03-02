@@ -12,7 +12,7 @@ import lombok.Data;
  *
  */
 @Data
-@TableName("panel_test")
+@TableName("panel")
 public class PanelDO extends BaseDO {
 
     /**

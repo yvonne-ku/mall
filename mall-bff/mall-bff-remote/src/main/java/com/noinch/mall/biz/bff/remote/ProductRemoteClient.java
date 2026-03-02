@@ -14,8 +14,7 @@ import java.util.List;
  * 商品服务远程调用
  *
  */
-//@FeignClient(value = "product-service")
-@FeignClient(value = "product-service", url = "${mall.remote-url.product-service:}")
+@FeignClient(value = "product-service")
 public interface ProductRemoteClient {
 
     /**

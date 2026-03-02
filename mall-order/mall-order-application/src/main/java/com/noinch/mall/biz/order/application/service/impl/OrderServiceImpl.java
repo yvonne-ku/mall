@@ -6,6 +6,7 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import com.noinch.mall.biz.order.domain.event.OrderCreateEvent;
 import com.noinch.mall.biz.order.domain.service.CartRemoteService;
+import io.seata.core.context.RootContext;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import com.noinch.mall.biz.order.application.enums.OrderChainMarkEnum;
@@ -68,9 +69,14 @@ public class OrderServiceImpl implements OrderService {
                 .build();
         // 观察者模式: 发布商品下单事件
         ApplicationContextHolder.getInstance().publishEvent(new OrderCreateEvent(this, order));
-        return orderSn;
+
+        System.out.println("监听器处理完毕，抛异常之前。seata xid 为," + RootContext.getXID());
+
+        throw new RuntimeException("模拟全局事务异常");
+
+//        return orderSn;
     }
-    
+
     @Override
     public OrderRespDTO getOrderByOrderSn(String orderSn) {
         Order order = orderRepository.findOrderByOrderSn(orderSn);
