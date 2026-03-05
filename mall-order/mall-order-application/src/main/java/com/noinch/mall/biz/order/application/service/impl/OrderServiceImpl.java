@@ -1,10 +1,8 @@
 
-
 package com.noinch.mall.biz.order.application.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
-import com.noinch.mall.biz.order.domain.event.OrderCreateEvent;
 import com.noinch.mall.biz.order.domain.service.OrderInfraService;
 import io.seata.core.context.RootContext;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +17,6 @@ import com.noinch.mall.biz.order.domain.aggregate.Order;
 import com.noinch.mall.biz.order.domain.aggregate.OrderProduct;
 import com.noinch.mall.biz.order.domain.common.OrderStatusEnum;
 import com.noinch.mall.biz.order.domain.repository.OrderRepository;
-import com.noinch.mall.springboot.starter.base.ApplicationContextHolder;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
 import com.noinch.mall.springboot.starter.designpattern.chain.AbstractChainContext;
 import com.noinch.mall.springboot.starter.distributedid.SnowflakeIdUtil;
@@ -67,14 +64,21 @@ public class OrderServiceImpl implements OrderService {
                 .status(OrderStatusEnum.PENDING_PAYMENT.getStatus())
                 .orderProducts(orderProducts)
                 .build();
-        // 观察者模式: 发布商品下单事件
-        ApplicationContextHolder.getInstance().publishEvent(new OrderCreateEvent(this, order));
 
-        System.out.println("监听器处理完毕，抛异常之前。seata xid 为," + RootContext.getXID());
+        // 1. 创建订单（订单服务）
+        orderRepository.createOrder(order);
+        // 2. 清空购物车（购物车服务）
+        orderInfraService.clearCartProduct(order);
+        // 3. 锁定库存（商品服务）
+        orderInfraService.lockProductStock(order);
+        // 延迟关闭订单消息发送
+        orderInfraService.delayCloseOrderMessageSend(order);
 
-        throw new RuntimeException("模拟全局事务异常");
+        System.out.println("全局事务入口 createOrder 中 seata xid 为, " + RootContext.getXID());
 
-//        return orderSn;
+//        throw new RuntimeException("模拟全局事务异常");
+
+        return orderSn;
     }
 
     @Override

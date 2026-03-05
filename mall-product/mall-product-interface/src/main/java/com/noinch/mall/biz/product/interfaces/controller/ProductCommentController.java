@@ -10,7 +10,7 @@ import com.noinch.mall.biz.product.application.req.ProductCommentSaveCommand;
 import com.noinch.mall.biz.product.application.service.ProductCommentService;
 import com.noinch.mall.springboot.starter.convention.result.Result;
 import com.noinch.mall.springboot.starter.log.annotation.MLog;
-import com.noinch.mall.springboot.starter.web.Results;
+import com.noinch.mall.springboot.starter.web.handler.Results;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

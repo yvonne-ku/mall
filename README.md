@@ -71,26 +71,42 @@ mall-convention-spring-boot-starter
 为什么不能把 web 直接移到 convention 中：
 因为 RPC 服务使用 convention 模块就行，但不依赖 web 模块
 
-mall-idempotent-spring-boot-starter
-===
-太多东西了，懒得看
+
+## 支持模块：
+
+---
+
+### mall-idempotent-spring-boot-starter
+
+幂等性处理
 
 
 
 
+## 业务模块：
 
-
-
-业务模块：
-===
+---
 
 ### mall-order
-===
+
 订单创建场景：
-1. Spring 事件机制：订单创建，购物车清空，库存锁定，延迟关闭订单消息
-2. 全局回滚
-3. RabbitMQ 延迟队列 死信交换机：延迟关闭订单处理
+1. seata 全局事务，保证本地订单创建、远程购物车清空、远程库存锁定的一致性 
+2. RabbitMQ 延迟队列死信交换机：延迟关闭订单处理
+
+### mall-pay
 
 支付场景：
 1. 策略模式多平台支付
-2. 支付回调，RabbitMQ 异步通知订单模块更新订单状态
+2. 支付成功，rabbitmq 异步回调订单服务，更新订单状态
+
+### mall-product
+
+搜索场景：
+1. xxl-job 分布式任务支持 ES 全量同步任务
+2. 集成 ES 支持关键词搜索
+
+### mall-message
+
+登录/注册验证码场景：
+1. 集成阿里云信息验证服务
+

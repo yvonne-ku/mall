@@ -12,7 +12,7 @@ import com.noinch.mall.biz.pay.application.resp.PayRespDTO;
 import com.noinch.mall.biz.pay.application.service.PayService;
 import com.noinch.mall.biz.pay.domain.base.PayRequest;
 import com.noinch.mall.springboot.starter.convention.result.Result;
-import com.noinch.mall.springboot.starter.web.Results;
+import com.noinch.mall.springboot.starter.web.handler.Results;
 import org.springframework.web.bind.annotation.*;
 
 /**

@@ -11,7 +11,7 @@ import com.noinch.mall.biz.customer.user.application.req.UserLoginCommand;
 import com.noinch.mall.biz.customer.user.application.resp.UserLoginRespDTO;
 import com.noinch.mall.biz.customer.user.application.service.CustomerUserService;
 import com.noinch.mall.springboot.starter.convention.result.Result;
-import com.noinch.mall.springboot.starter.web.Results;
+import com.noinch.mall.springboot.starter.web.handler.Results;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;

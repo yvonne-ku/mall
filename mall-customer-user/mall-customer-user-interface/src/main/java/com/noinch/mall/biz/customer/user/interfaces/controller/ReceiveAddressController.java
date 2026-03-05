@@ -10,7 +10,7 @@ import com.noinch.mall.biz.customer.user.application.req.ReceiveAddressUpdateCom
 import com.noinch.mall.biz.customer.user.application.resp.ReceiveAddressRespDTO;
 import com.noinch.mall.biz.customer.user.application.service.ReceiveAddressService;
 import com.noinch.mall.springboot.starter.convention.result.Result;
-import com.noinch.mall.springboot.starter.web.Results;
+import com.noinch.mall.springboot.starter.web.handler.Results;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

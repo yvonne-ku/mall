@@ -1,1 +1,3 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.noinch.mall.springboot.starter.web.config.WebAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.noinch.mall.springboot.starter.web.config.WebAutoConfiguration,\
+  com.noinch.mall.springboot.starter.web.config.SeataInterceptorAutoConfiguration

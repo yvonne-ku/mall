@@ -9,7 +9,7 @@ import com.noinch.mall.biz.product.application.resp.ProductCategoryRespDTO;
 import com.noinch.mall.biz.product.application.service.ProductCategoryService;
 import com.noinch.mall.springboot.starter.convention.result.Result;
 import com.noinch.mall.springboot.starter.log.annotation.MLog;
-import com.noinch.mall.springboot.starter.web.Results;
+import com.noinch.mall.springboot.starter.web.handler.Results;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
