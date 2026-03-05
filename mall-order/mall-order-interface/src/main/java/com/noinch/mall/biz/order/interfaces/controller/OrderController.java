@@ -10,7 +10,7 @@ import com.noinch.mall.biz.order.application.resp.OrderRespDTO;
 import com.noinch.mall.biz.order.application.service.OrderService;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
 import com.noinch.mall.springboot.starter.convention.result.Result;
-import com.noinch.mall.springboot.starter.web.Results;
+import com.noinch.mall.springboot.starter.web.handler.Results;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,9 +1,9 @@
 package com.noinch.mall.biz.order.infrastructure.remote.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.noinch.mall.biz.order.domain.aggregate.Order;
 import com.noinch.mall.biz.order.domain.aggregate.OrderProduct;
 import com.noinch.mall.biz.order.domain.dto.ProductVerifyStockReqDTO;
-import com.noinch.mall.biz.order.domain.event.OrderCreateEvent;
 import com.noinch.mall.biz.order.domain.repository.OrderRepository;
 import com.noinch.mall.biz.order.infrastructure.remote.ProductStockRemoteClient;
 import com.noinch.mall.biz.order.domain.dto.ProductLockStockReqDTO;
@@ -47,10 +47,10 @@ public class ProductStockRemoteServiceImpl implements ProductStockRemoteService 
     }
 
     @Override
-    public void lockProductStock(OrderCreateEvent event) {
+    public void lockProductStock(Order order) {
         ProductLockStockReqDTO req = ProductLockStockReqDTO.builder()
-                .orderSn(event.getOrder().getOrderSn())
-                .productStockDetails(event.getOrder().getOrderProducts().stream().map(each -> {
+                .orderSn(order.getOrderSn())
+                .productStockDetails(order.getOrderProducts().stream().map(each -> {
                     ProductStockDetailReqDTO productStockDetailReqDTO = new ProductStockDetailReqDTO();
                     BeanUtil.copyProperties(each, productStockDetailReqDTO);
                     return productStockDetailReqDTO;

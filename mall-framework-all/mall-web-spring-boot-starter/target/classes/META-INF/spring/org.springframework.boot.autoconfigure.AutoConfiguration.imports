@@ -1,1 +1,2 @@
 com.noinch.mall.springboot.starter.web.config.WebAutoConfiguration
+com.noinch.mall.springboot.starter.web.config.SeataInterceptorAutoConfiguration

@@ -1,14 +1,12 @@
 package com.noinch.mall.biz.order.infrastructure.service;
 
+import com.noinch.mall.biz.order.domain.aggregate.Order;
 import com.noinch.mall.biz.order.domain.aggregate.OrderProduct;
 import com.noinch.mall.biz.order.domain.dto.CartItemDelReqDTO;
 import com.noinch.mall.biz.order.domain.dto.ProductVerifyStockReqDTO;
-import com.noinch.mall.biz.order.domain.event.DelayCloseOrderEvent;
-import com.noinch.mall.biz.order.domain.event.OrderCreateEvent;
 import com.noinch.mall.biz.order.domain.repository.OrderRepository;
 import com.noinch.mall.biz.order.domain.service.OrderInfraService;
 import com.noinch.mall.biz.order.infrastructure.mq.producer.DelayCloseOrderProducer;
-import com.noinch.mall.biz.order.infrastructure.remote.CartRemoteClient;
 import com.noinch.mall.biz.order.infrastructure.remote.service.CartRemoteService;
 import com.noinch.mall.biz.order.infrastructure.remote.service.ProductStockRemoteService;
 import com.noinch.mall.springboot.starter.convention.errorcode.BaseErrorCode;
@@ -17,6 +15,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -26,25 +25,28 @@ public class OrderInfraServiceImpl implements OrderInfraService {
     private final ProductStockRemoteService productStockRemoteService;
     private final CartRemoteService cartRemoteService;
     private final OrderRepository orderRepository;
-    private final CartRemoteClient cartRemoteClient;
 
     @Override
-    public void delayCloseOrderMessageSend(DelayCloseOrderEvent event) {
+    public void delayCloseOrderMessageSend(Order order) {
         try {
-            delayCloseOrderProducer.delayCloseOrderSend(event);
+            delayCloseOrderProducer.delayCloseOrderSend(order);
         } catch (Exception e) {
             throw new ServiceException(BaseErrorCode.SERVICE_RABBITMQ_ERROR);
         }
     }
 
     @Override
-    public void lockProductStock(OrderCreateEvent event) {
-        productStockRemoteService.unlockProductStock(event.getOrder().getOrderSn());
+    public void lockProductStock(Order order) {
+        productStockRemoteService.lockProductStock(order);
     }
 
     @Override
-    public void clearCartProduct(CartItemDelReqDTO cartItemDelReqDTO) {
-        cartRemoteService.clearCartProduct(cartItemDelReqDTO);
+    public void clearCartProduct(Order order) {
+        CartItemDelReqDTO dto = CartItemDelReqDTO.builder()
+                .customerUserId(String.valueOf(order.getCustomerUserId()))
+                .productSkuIds(order.getOrderProducts().stream().map(OrderProduct::getProductSkuId).map(String::valueOf).collect(Collectors.toList()))
+                .build();
+        cartRemoteService.clearCartProduct(dto);
     }
 
     @Override

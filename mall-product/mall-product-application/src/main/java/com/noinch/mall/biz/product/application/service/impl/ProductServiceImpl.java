@@ -19,7 +19,9 @@ import com.noinch.mall.biz.product.domain.aggregate.ProductStock;
 import com.noinch.mall.biz.product.domain.aggregate.ProductStockDetail;
 import com.noinch.mall.biz.product.domain.repository.ProductRepository;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
+import org.apache.seata.core.context.RootContext;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
@@ -56,9 +58,11 @@ public class ProductServiceImpl implements ProductService {
                 .build();
         return productRepository.verifyProductStock(productStock);
     }
-    
+
+    @Transactional
     @Override
     public Boolean lockProductStock(ProductLockStockCommand requestParam) {
+        System.out.println("分支事务 lockProductStock 中 seata xid 为, " + RootContext.getXID());
         List<ProductStockDetail> productStockDetails = requestParam.getProductStockDetails().stream().map(requestParamDetail -> {
             ProductStockDetail productStockDetail = new ProductStockDetail();
             BeanUtil.copyProperties(requestParamDetail, productStockDetail);

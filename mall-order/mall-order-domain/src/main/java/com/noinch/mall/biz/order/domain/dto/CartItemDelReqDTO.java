@@ -3,6 +3,7 @@
 package com.noinch.mall.biz.order.domain.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  *
  */
 @Data
+@Builder
 public class CartItemDelReqDTO {
     
     @Schema(description = "用户ID")

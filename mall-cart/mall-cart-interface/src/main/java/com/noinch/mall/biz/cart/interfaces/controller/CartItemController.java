@@ -6,7 +6,7 @@ import com.noinch.mall.biz.cart.application.resp.CartItemRespDTO;
 import com.noinch.mall.biz.cart.application.service.CartItemService;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
 import com.noinch.mall.springboot.starter.convention.result.Result;
-import com.noinch.mall.springboot.starter.web.Results;
+import com.noinch.mall.springboot.starter.web.handler.Results;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;

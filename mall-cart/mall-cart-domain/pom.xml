@@ -21,5 +21,32 @@
             <artifactId>mall-ddd-framework-core</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.noinch.mall</groupId>
+            <artifactId>mall-seata-sharding-fix</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- ShardingSphere -->
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>shardingsphere-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>shardingsphere-transaction-base-seata-at</artifactId>
+        </dependency>
+
+        <!-- Seata -->
+        <dependency>
+            <groupId>org.apache.seata</groupId>
+            <artifactId>seata-spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.antlr</groupId>
+                    <artifactId>antlr4-runtime</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 </project>

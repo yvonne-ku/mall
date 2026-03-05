@@ -10,7 +10,9 @@ import com.noinch.mall.biz.cart.application.service.CartItemService;
 import com.noinch.mall.biz.cart.domain.aggregate.CartItem;
 import com.noinch.mall.biz.cart.domain.repository.CartItemRepository;
 import com.noinch.mall.springboot.starter.convention.page.PageResponse;
+import org.apache.seata.core.context.RootContext;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -44,7 +46,7 @@ public class CartItemServiceImpl implements CartItemService {
             return cartItemQuerySelectRespDTO;
         }).collect(Collectors.toList());
     }
-    
+
     @Override
     public void addCartItem(CartItemAddReqDTO requestParam) {
         CartItem cartItem = CartItem.builder()
@@ -92,9 +94,11 @@ public class CartItemServiceImpl implements CartItemService {
                 .build();
         cartItemRepository.updateCartItem(cartItem);
     }
-    
+
+    @Transactional
     @Override
     public void clearCartItem(CartItemDelReqDTO requestParam) {
+        System.out.println("分支事务 clearCartItem 中 seata xid 为, " + RootContext.getXID());
         CartItem cartItem = CartItem.builder()
                 .customerUserId(Long.parseLong(requestParam.getCustomerUserId()))
                 .productSkuIds(requestParam.getProductSkuIds())

@@ -1,20 +1,18 @@
 package com.noinch.mall.biz.order.domain.service;
 
+import com.noinch.mall.biz.order.domain.aggregate.Order;
 import com.noinch.mall.biz.order.domain.aggregate.OrderProduct;
-import com.noinch.mall.biz.order.domain.dto.CartItemDelReqDTO;
 import com.noinch.mall.biz.order.domain.dto.ProductVerifyStockReqDTO;
-import com.noinch.mall.biz.order.domain.event.DelayCloseOrderEvent;
-import com.noinch.mall.biz.order.domain.event.OrderCreateEvent;
 
 import java.util.List;
 
 public interface OrderInfraService {
 
-    void delayCloseOrderMessageSend(DelayCloseOrderEvent event);
+    void delayCloseOrderMessageSend(Order order);
 
-    void lockProductStock(OrderCreateEvent event);
+    void lockProductStock(Order order);
 
-    void clearCartProduct(CartItemDelReqDTO cartItemDelReqDTO);
+    void clearCartProduct(Order order);
 
     boolean delayCloseOrder(String orderSn);
 

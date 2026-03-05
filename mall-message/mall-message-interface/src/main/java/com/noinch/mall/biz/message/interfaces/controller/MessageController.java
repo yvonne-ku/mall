@@ -4,7 +4,7 @@ import com.noinch.mall.biz.message.application.req.PhoneSendCommand;
 import com.noinch.mall.biz.message.application.req.PhoneVerifyCommand;
 import com.noinch.mall.biz.message.application.service.MessageService;
 import com.noinch.mall.springboot.starter.convention.result.Result;
-import com.noinch.mall.springboot.starter.web.Results;
+import com.noinch.mall.springboot.starter.web.handler.Results;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
