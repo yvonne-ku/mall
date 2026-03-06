@@ -29,39 +29,6 @@
 | 10 | mall-bff            | BFF 层        | [http://localhost:8008](http://localhost:8008) |
 
 
-
-
-2 mall-distributedid-spring-boot-starter
-===
-实现了 Twitter 的 Snowflake 算法的工具封装，实现了分布式 ID 生成器，支持融合 serviceId。
-
-3 mall-common-spring-boot-starter
-===
-主要是实现了线程池的封装，提供了拒绝策略代理类、饥饿线程池实现类等。
-
-4 mall-log-spring-boot-starter
-===
-实现了切面入参出参执行时间日志打印。
-
-mall-base-spring-boot-starter
-===
-暂时不看 base，因为涉及到 spring 底层了
-
-mall-designpattern-spring-boot-starter
-===
-暂时不看 designpattern，因为直接看组件太抽象了，等看到业务代码的时候再看组件吧
-
-mall-flow-monitor-agent
-===
-暂时不看
-
-mall-mybatisplus-spring-boot-starter
-===
-暂时不看，因为这个东西目前只要会用就好
-实现了 MyBatis-Plus 的封装，提供了分页插件、SQL 性能分析。
-
-
-
 ## 支持模块：
 
 ---
