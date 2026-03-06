@@ -55,10 +55,6 @@ public class OrderController {
 
     @GetMapping("/member/cancelOrder")
     @Operation(description = "订单取消")
-//    @Idempotent(
-//            type = IdempotentTypeEnum.TOKEN,
-//            message = "订单取消失败，请刷新订单状态或重新操作"
-//    )
     public ResultT<Integer> cancelOrder(@RequestParam("orderSn") String orderSn) {
         return ResultT.success(orderService.cancelOrder(orderSn));
     }
