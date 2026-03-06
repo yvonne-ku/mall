@@ -4,6 +4,8 @@ package com.noinch.mall.biz.order.interfaces.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import com.noinch.mall.springboot.starter.idempotent.annotation.Idempotent;
+import com.noinch.mall.springboot.starter.idempotent.enums.IdempotentTypeEnum;
 import com.noinch.mall.biz.order.application.req.OrderCreateCommand;
 import com.noinch.mall.biz.order.application.req.OrderPageQuery;
 import com.noinch.mall.biz.order.application.resp.OrderRespDTO;
@@ -51,10 +53,10 @@ public class OrderController {
     
     @PostMapping
     @Operation(description = "商品订单下单")
-//    @Idempotent(
-//            type = IdempotentTypeEnum.PARAM,
-//            message = "订单已创建，请稍后再试"
-//    )
+    @Idempotent(
+            type = IdempotentTypeEnum.PARAM,
+            message = "订单已创建，请稍后再试"
+    )
     public Result<String> createOrder(@RequestBody OrderCreateCommand requestParam) {
         String orderNo = orderService.createOrder(requestParam);
         return Results.success(orderNo);
@@ -62,10 +64,10 @@ public class OrderController {
     
     @PutMapping("/{orderSn}")
     @Operation(description = "商品订单取消")
-//    @Idempotent(
-//            type = IdempotentTypeEnum.TOKEN,
-//            message = "订单取消失败，请刷新订单状态或重新操作"
-//    )
+    @Idempotent(
+            type = IdempotentTypeEnum.TOKEN,
+            message = "订单取消失败，请刷新订单状态或重新操作"
+    )
     public Result<Void> cancelOrder(@PathVariable("orderSn") String orderSn) {
         orderService.cancelOrder(orderSn);
         return Results.success();
@@ -73,11 +75,11 @@ public class OrderController {
     
     @DeleteMapping("/{orderSn}")
     @Operation(description = "商品订单删除")
-//    @Idempotent(
-//            type = IdempotentTypeEnum.PARAM,
-//            uniqueKeyPrefix = "del_",
-//            message = "订单删除失败，请刷新订单状态或重新操作"
-//    )
+    @Idempotent(
+            type = IdempotentTypeEnum.PARAM,
+            uniqueKeyPrefix = "del_",
+            message = "订单删除失败，请刷新订单状态或重新操作"
+    )
     public Result<Void> deleteOrder(@PathVariable("orderSn") String orderSn) {
         orderService.deleteOrder(orderSn);
         return Results.success();

@@ -1,6 +1,9 @@
 
 package com.noinch.mall.biz.product.interfaces.controller;
 
+import com.noinch.mall.springboot.starter.idempotent.annotation.Idempotent;
+import com.noinch.mall.springboot.starter.idempotent.enums.IdempotentSceneEnum;
+import com.noinch.mall.springboot.starter.idempotent.enums.IdempotentTypeEnum;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
@@ -36,11 +39,11 @@ public class ProductStockController {
         return Results.success(result);
     }
     
-//    @Idempotent(
-//            key = "'stock_lock_'+#requestParam.orderSn+'_'+#requestParam.hashCode()",
-//            type = IdempotentTypeEnum.SPEL,
-//            scene = IdempotentSceneEnum.RESTAPI
-//    )
+    @Idempotent(
+            key = "'stock_lock_'+#requestParam.orderSn+'_'+#requestParam.hashCode()",
+            type = IdempotentTypeEnum.SPEL,
+            scene = IdempotentSceneEnum.RESTAPI
+    )
     @PutMapping("/api/product/stock/lock")
     @Operation(description = "锁定商品库存")
     public Result<Boolean> lockProductStock(@RequestBody ProductLockStockCommand requestParam) {
@@ -48,11 +51,11 @@ public class ProductStockController {
         return Results.success(result);
     }
     
-//    @Idempotent(
-//            key = "'stock_unlock_'+#requestParam.orderSn+'_'+#requestParam.hashCode()",
-//            type = IdempotentTypeEnum.SPEL,
-//            scene = IdempotentSceneEnum.RESTAPI
-//    )
+    @Idempotent(
+            key = "'stock_unlock_'+#requestParam.orderSn+'_'+#requestParam.hashCode()",
+            type = IdempotentTypeEnum.SPEL,
+            scene = IdempotentSceneEnum.RESTAPI
+    )
     @PutMapping("/api/product/stock/unlock")
     @Operation(description = "解锁商品库存")
     public Result<Boolean> unlockProductStock(@RequestBody ProductUnlockStockCommand requestParam) {
