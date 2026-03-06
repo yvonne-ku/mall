@@ -10,6 +10,7 @@
     <artifactId>mall-web-spring-boot-starter</artifactId>
 
     <dependencies>
+
         <dependency>
             <groupId>com.noinch.mall</groupId>
             <artifactId>mall-convention-spring-boot-starter</artifactId>

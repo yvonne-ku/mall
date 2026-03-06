@@ -121,7 +121,8 @@ public class StringRedisTemplateProxy implements DistributedCache {
         try {
             // 二次确认，缓存中确实不存在，才更新
             if (CacheUtil.isNullOrBlank(result = get(key, clazz))) {
-                // loadAndSet：调用 CacheLoader 加载数据。对于存在的数据，更新到缓存；对于不存在的数据，返回 null，调用 CacheLoadMissingHandler 后置处理。
+                // loadAndSet 调用 CacheLoader 接口的实现加载数据。对于存在的数据，更新到缓存；对于不存在的数据，返回 null。
+                // 调用 CacheLoadMissingHandler 接口的实现进行后置处理。例如实现一个空值缓存类，将 null 缓存到 Redis 中，防止缓存穿透。
                 if (CacheUtil.isNullOrBlank(result = loadAndSet(key, cacheLoader, timeout, timeUnit, true, bloomFilter))) {
                     Optional.ofNullable(cacheLoadMissingHandler).ifPresent(each -> each.execute(key));
                 }
