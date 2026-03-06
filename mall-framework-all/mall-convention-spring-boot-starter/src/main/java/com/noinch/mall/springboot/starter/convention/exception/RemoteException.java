@@ -6,7 +6,7 @@ import com.noinch.mall.springboot.starter.convention.errorcode.IErrorCode;
 
 /**
  * 远程服务调用异常
- * */
+ */
 public class RemoteException extends AbstractException {
     
     public RemoteException(String message, IErrorCode errorCode) {

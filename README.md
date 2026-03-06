@@ -29,9 +29,7 @@
 | 10 | mall-bff            | BFF 层        | [http://localhost:8008](http://localhost:8008) |
 
 
-1 mall-cache-spring-boot-starter
-===
-实现了 StringRedisTemplate 的封装，通过 BloomFilter 解决了缓存穿透的问题。
+
 
 2 mall-distributedid-spring-boot-starter
 ===
@@ -62,14 +60,6 @@ mall-mybatisplus-spring-boot-starter
 暂时不看，因为这个东西目前只要会用就好
 实现了 MyBatis-Plus 的封装，提供了分页插件、SQL 性能分析。
 
-mall-web-spring-boot-starter
-===
-这个主要涉及了 servlet 相关的包，我暂时不打算看。晚一点在安排。
-
-mall-convention-spring-boot-starter
-===
-为什么不能把 web 直接移到 convention 中：
-因为 RPC 服务使用 convention 模块就行，但不依赖 web 模块
 
 
 ## 支持模块：
@@ -78,9 +68,21 @@ mall-convention-spring-boot-starter
 
 ### mall-idempotent-spring-boot-starter
 
-幂等性处理
+1. 自定义注解 @Idempotent 实现了幂等性处理。特别针对下单操作和库存锁定操作。
 
 
+### mall-cache-spring-boot-starter
+
+1. 实现了 StringRedisTemplate 对外接口的简化，
+2. 集成 布隆过滤器，分布式锁缓存击穿，空值缓存缓存穿透 的策略。
+
+### mall-convention-spring-boot-starter 和 mall-web-spring-boot-starter
+
+全局异常处理体系：
+统一响应格式
+设计异常分类体系
+设计宏观错误码
+进行全局异常拦截处理
 
 
 ## 业务模块：
@@ -90,14 +92,8 @@ mall-convention-spring-boot-starter
 ### mall-order
 
 订单创建场景：
-1. seata 全局事务，保证本地订单创建、远程购物车清空、远程库存锁定的一致性 
-2. RabbitMQ 延迟队列死信交换机：延迟关闭订单处理
-
-### mall-pay
-
-支付场景：
-1. 策略模式多平台支付
-2. 支付成功，rabbitmq 异步回调订单服务，更新订单状态
+1. seata 全局事务，保证本地订单创建、远程购物车清空、远程库存锁定的一致性。
+2. RabbitMQ 延迟队列死信交换机：延迟关闭订单处理。com.noinch.mall.biz.order.infrastructure.config.RabbitMQConfig
 
 ### mall-product
 
@@ -105,8 +101,16 @@ mall-convention-spring-boot-starter
 1. xxl-job 分布式任务支持 ES 全量同步任务
 2. 集成 ES 支持关键词搜索
 
-### mall-message
+### mall-pay
 
-登录/注册验证码场景：
-1. 集成阿里云信息验证服务
+支付场景：
+1. 策略模式多平台支付
+2. 支付成功，rabbitmq 异步回调订单服务，更新订单状态
 
+
+### 其他
+
+集成第三方接口：
+mall-customer-user: 极客人机验证服务。登录，注册场景。
+mall-message: 阿里云信息验证服务。登录，注册场景。
+mall-pay: 支付宝当面付。

@@ -21,8 +21,11 @@ public final class IdempotentAspect {
      */
     @Around("@annotation(com.noinch.mall.springboot.starter.idempotent.annotation.Idempotent)")
     public Object idempotentHandler(ProceedingJoinPoint joinPoint) throws Throwable {
+        // 从方法上反射获取 Idempotent 注解
         Idempotent idempotent = getIdempotent(joinPoint);
+        // 根据 Idempotent 参数，利用工厂模式创建对应的 IdempotentExecuteHandler 实例
         IdempotentExecuteHandler instance = IdempotentExecuteHandlerFactory.getInstance(idempotent.scene(), idempotent.type());
+        // 实例执行 execute 方法，执行完成后再执行原方法，最终实例执行 postProcessing 方法
         try {
             instance.execute(joinPoint, idempotent);
             return joinPoint.proceed();
