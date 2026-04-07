@@ -1,0 +1,13 @@
+com\noinch\mall\biz\message\infrastructure\sdk\service\impl\AliyunSmsServiceImpl.class
+com\noinch\mall\biz\message\infrastructure\dao\mapper\MailTemplateMapper.class
+com\noinch\mall\biz\message\infrastructure\repository\MessageRepositoryImpl.class
+com\noinch\mall\biz\message\infrastructure\dao\entity\SendRecordExtendDO$SendRecordExtendDOBuilder.class
+com\noinch\mall\biz\message\infrastructure\algorithm\SnowflakeDateShardingAlgorithm.class
+com\noinch\mall\biz\message\infrastructure\config\AliyunSmsConfig.class
+com\noinch\mall\biz\message\infrastructure\config\properties\AliyunSmsProperties.class
+com\noinch\mall\biz\message\infrastructure\algorithm\ShardModel.class
+com\noinch\mall\biz\message\infrastructure\dao\entity\MailTemplateDO.class
+com\noinch\mall\biz\message\infrastructure\dao\entity\SendRecordDO.class
+com\noinch\mall\biz\message\infrastructure\dao\mapper\SendRecordExtendMapper.class
+com\noinch\mall\biz\message\infrastructure\dao\mapper\SendRecordMapper.class
+com\noinch\mall\biz\message\infrastructure\dao\entity\SendRecordExtendDO.class

@@ -1,3 +1,4 @@
+D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\algorithm\ProductSkuSnowflakeServiceShardingAlgorithm.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\dao\entity\ProductSpuDO.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductSpuMapper.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\es\EsProductRepositoryImpl.java
@@ -12,6 +13,7 @@ D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\no
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\dao\entity\ProductCategoryDO.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\dao\entity\ProductSkuDO.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\dao\mapper\ProductSkuMapper.java
+D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\algorithm\ProductSpuSnowflakeServiceShardingAlgorithm.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\repository\ProductCommentRepositoryImpl.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\config\ProductThreadPoolExecutorConfig.java
 D:\MyProjects\mall\mall-product\mall-product-infrastructure\src\main\java\com\noinch\mall\biz\product\infrastructure\repository\ProductRepositoryImpl.java

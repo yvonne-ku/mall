@@ -1,6 +1,7 @@
-D:\MyProjects\mall\mall-framework-all\mall-web-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\web\interceptor\SeataHandlerInterceptor.java
+D:\MyProjects\mall\mall-framework-all\mall-web-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\web\interceptor\SeataFeignHandlerInterceptor.java
 D:\MyProjects\mall\mall-framework-all\mall-web-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\web\config\WebAutoConfiguration.java
 D:\MyProjects\mall\mall-framework-all\mall-web-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\web\initialize\InitializeDispatcherServletController.java
 D:\MyProjects\mall\mall-framework-all\mall-web-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\web\initialize\InitializeDispatcherServletHandler.java
 D:\MyProjects\mall\mall-framework-all\mall-web-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\web\handler\GlobalExceptionHandler.java
+D:\MyProjects\mall\mall-framework-all\mall-web-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\web\config\SeataInterceptorAutoConfiguration.java
 D:\MyProjects\mall\mall-framework-all\mall-web-spring-boot-starter\src\main\java\com\noinch\mall\springboot\starter\web\handler\Results.java

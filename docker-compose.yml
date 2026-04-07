@@ -1,0 +1,389 @@
+# Mall Project Docker Compose
+# 包含项目运行所需的全部中间件和微服务
+
+version: "3.8"
+
+services:
+  # ================================================================================================
+  # 基础中间件 (Infrastructure)
+  # ================================================================================================
+
+  # MySQL 数据库
+  mysql:
+    image: mysql:8.0
+    container_name: mall-mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./resources:/docker-entrypoint-initdb.d # 初始化 .sql 文件夹挂载
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/logs:/var/log/mysql
+      - ./mysql/conf/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - mall-network
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis 缓存
+  redis:
+    image: redis:7.0
+    container_name: mall-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis/data:/data
+    networks:
+      - mall-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Nacos 注册中心和配置中心
+  nacos:
+    image: nacos/nacos-server:v2.3.2
+    container_name: mall-nacos
+    restart: always
+    environment:
+      - MODE=standalone
+      - JVM_XMS=512m
+      - JVM_XMX=512m
+      - JVM_XMN=256m
+      - MYSQL_SERVICE_HOST=mysql
+      - MYSQL_SERVICE_DB_NAME=nacos_config
+      - MYSQL_SERVICE_USER=root
+      - MYSQL_SERVICE_PASSWORD=root
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+      - "9849:9849"
+    volumes:
+      - ./nacos/logs:/home/nacos/logs
+    networks:
+      - mall-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  # RabbitMQ 消息队列
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: mall-rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - mall-network
+
+  # Elasticsearch 搜索
+  elasticsearch:
+    image: elasticsearch:8.12.0
+    container_name: mall-elasticsearch
+    restart: always
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+    networks:
+      - mall-network
+
+  # Seata 分布式事务
+  seata:
+    image: seataio/seata-server:2.5.0
+    container_name: mall-seata
+    restart: always
+    ports:
+      - "8091:8091"
+    environment:
+      - STORE_MODE=db
+      - DB_TYPE=mysql
+      - DB_HOST=mysql
+      - DB_NAME=seata
+      - DB_USER=root
+      - DB_PASSWORD=root
+    volumes:
+      - ./seata/logs:/seata-server/logs
+    networks:
+      - mall-network
+
+  # MinIO 对象存储
+  minio:
+    image: minio/minio
+    container_name: mall-minio
+    restart: always
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    command: server /data --console-address ":9001"
+    volumes:
+      - ./minio/data:/data
+    networks:
+      - mall-network
+
+  # XXL-JOB 分布式调度
+  xxl-job-admin:
+    image: xuxueli/xxl-job-admin:2.4.0
+    container_name: mall-xxl-job
+    restart: always
+    ports:
+      - "8081:8080"
+    environment:
+      - PARAMS=--spring.datasource.url=jdbc:mysql://mysql:3306/xxl_job?Unicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true --spring.datasource.username=root --spring.datasource.password=root
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - mall-network
+
+  # ================================================================================================
+  # 微服务 (Microservices)
+  # ================================================================================================
+
+  gateway-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mall-gateway
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./mall-gateway/target/mall-gateway-0.0.1-SNAPSHOT.jar:/app/app.jar
+    environment:
+      - JAVA_OPTS=-Xms256m -Xmx256m
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER_ADDR=nacos:8848
+    depends_on:
+      nacos:
+        condition: service_started
+    networks:
+      - mall-network
+
+  message-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mall-message
+    restart: always
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./mall-message/mall-message-interface/target/mall-message-interface-0.0.1-SNAPSHOT.jar:/app/app.jar
+    environment:
+      - JAVA_OPTS=-Xms256m -Xmx256m
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER_ADDR=nacos:8848
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mall_message_dev
+      - SPRING_DATA_REDIS_HOST=redis
+    depends_on:
+      nacos:
+        condition: service_started
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - mall-network
+
+  customer-user-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mall-customer-user
+    restart: always
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./mall-customer-user/mall-customer-user-interface/target/mall-customer-user-interface-0.0.1-SNAPSHOT.jar:/app/app.jar
+    environment:
+      - JAVA_OPTS=-Xms256m -Xmx256m
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER_ADDR=nacos:8848
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mall_customer_dev
+    depends_on:
+      nacos:
+        condition: service_started
+      mysql:
+        condition: service_healthy
+    networks:
+      - mall-network
+
+  product-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mall-product
+    restart: always
+    ports:
+      - "8003:8003"
+    volumes:
+      - ./mall-product/mall-product-interface/target/mall-product-interface-0.0.1-SNAPSHOT.jar:/app/app.jar
+    environment:
+      - JAVA_OPTS=-Xms256m -Xmx256m
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER_ADDR=nacos:8848
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mall_product_dev
+      - SPRING_DATA_REDIS_HOST=redis
+      - ELASTICSEARCH_HOST=elasticsearch
+    depends_on:
+      nacos:
+        condition: service_started
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_started
+    networks:
+      - mall-network
+
+  cart-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mall-cart
+    restart: always
+    ports:
+      - "8004:8004"
+    volumes:
+      - ./mall-cart/mall-cart-interface/target/mall-cart-interface-0.0.1-SNAPSHOT.jar:/app/app.jar
+    environment:
+      - JAVA_OPTS=-Xms256m -Xmx256m
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER_ADDR=nacos:8848
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mall_cart_dev
+      - SPRING_DATA_REDIS_HOST=redis
+    depends_on:
+      nacos:
+        condition: service_started
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - mall-network
+
+  order-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mall-order
+    restart: always
+    ports:
+      - "8005:8005"
+    volumes:
+      - ./mall-order/mall-order-interface/target/mall-order-interface-0.0.1-SNAPSHOT.jar:/app/app.jar
+    environment:
+      - JAVA_OPTS=-Xms256m -Xmx256m
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER_ADDR=nacos:8848
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mall_order_dev
+      - SPRING_DATA_REDIS_HOST=redis
+      - SPRING_RABBITMQ_HOST=rabbitmq
+    depends_on:
+      nacos:
+        condition: service_started
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+    networks:
+      - mall-network
+
+  pay-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mall-pay
+    restart: always
+    ports:
+      - "8006:8006"
+    volumes:
+      - ./mall-pay/mall-pay-interface/target/mall-pay-interface-0.0.1-SNAPSHOT.jar:/app/app.jar
+    environment:
+      - JAVA_OPTS=-Xms256m -Xmx256m
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER_ADDR=nacos:8848
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mall_pay_dev
+      - SPRING_RABBITMQ_HOST=rabbitmq
+    depends_on:
+      nacos:
+        condition: service_started
+      mysql:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_started
+    networks:
+      - mall-network
+
+  basic-data-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mall-basic-data
+    restart: always
+    ports:
+      - "8007:8007"
+    volumes:
+      - ./mall-basic-data/mall-basic-data-interface/target/mall-basic-data-interface-0.0.1-SNAPSHOT.jar:/app/app.jar
+    environment:
+      - JAVA_OPTS=-Xms256m -Xmx256m
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER_ADDR=nacos:8848
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mall_basic_data_dev
+    depends_on:
+      nacos:
+        condition: service_started
+      mysql:
+        condition: service_healthy
+    networks:
+      - mall-network
+
+  bff-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mall-bff
+    restart: always
+    ports:
+      - "8008:8008"
+    volumes:
+      - ./mall-bff/mall-bff-web/target/mall-bff-web-0.0.1-SNAPSHOT.jar:/app/app.jar
+    environment:
+      - JAVA_OPTS=-Xms256m -Xmx256m
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_CLOUD_NACOS_DISCOVERY_SERVER_ADDR=nacos:8848
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mall_bff_dev
+    depends_on:
+      nacos:
+        condition: service_started
+      mysql:
+        condition: service_healthy
+    networks:
+      - mall-network
+
+networks:
+  mall-network:
+    driver: bridge

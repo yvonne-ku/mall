@@ -10,7 +10,6 @@
     <modules>
         <module>mall-framework-all</module>
         <module>mall-gateway</module>
-        <module>mall-aggregation</module>
         <module>mall-bff</module>
         <module>mall-customer-user</module>
         <module>mall-product</module>

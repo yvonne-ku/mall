@@ -65,3 +65,15 @@ DATABASE IF NOT EXISTS mall_product_dev;
 -- BFF聚合层数据库
 CREATE
 DATABASE IF NOT EXISTS mall_bff_dev;
+
+
+-- 组件
+
+-- Nacos 数据库
+CREATE DATABASE IF NOT EXISTS nacos_config;
+
+-- Seata 数据库
+CREATE DATABASE IF NOT EXISTS seata;
+
+-- XXL-JOB 数据库
+CREATE DATABASE IF NOT EXISTS xxl_job;

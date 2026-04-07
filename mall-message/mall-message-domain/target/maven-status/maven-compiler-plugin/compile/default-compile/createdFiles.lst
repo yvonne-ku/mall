@@ -1,0 +1,8 @@
+com\noinch\mall\biz\message\domain\service\impl\MessageDomainServiceImpl.class
+com\noinch\mall\biz\message\domain\entity\MessageSend$MessageSendBuilder.class
+com\noinch\mall\biz\message\domain\entity\MessageSend.class
+com\noinch\mall\biz\message\domain\repository\MessageRepository.class
+com\noinch\mall\biz\message\domain\service\AliyunSmsService.class
+com\noinch\mall\biz\message\domain\entity\MessageSendQuery$MessageSendQueryBuilder.class
+com\noinch\mall\biz\message\domain\entity\MessageSendQuery.class
+com\noinch\mall\biz\message\domain\service\MessageDomainService.class
